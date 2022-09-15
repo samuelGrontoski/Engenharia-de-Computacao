@@ -9,31 +9,30 @@ typedef struct{
     int q;  
 }Vetor;
 
-Vetor* iniciar(int n){
+Vetor* iniciar(int n)
+{
     Vetor *v = (Vetor*) malloc(sizeof(Vetor));
-
     v->n = n;
-
     v->v = (int*) malloc(sizeof(int) * n);
-    
     v->q = 0;
 
     return v;
 }
 
-int inserir(Vetor *v, int x){
-    
-    if((v != NULL) && (v->q < v->n)){
+int inserir(Vetor *v, int x)
+{
+    if((v != NULL) && (v->q < v->n))
+    {
         v->v[v->q] = x;
         v->q++;
         
         return 1;
     }
-    
     return 0;   
 }
 
-Vetor* concatenar(Vetor *v1, Vetor *v2){
+Vetor* concatenar(Vetor *v1, Vetor *v2)
+{
     Vetor *v3 = NULL;
     int i;
     
@@ -53,7 +52,8 @@ Vetor* concatenar(Vetor *v1, Vetor *v2){
     }
 }
 
-Vetor* soma(Vetor *v1, Vetor *v2){
+Vetor* soma(Vetor *v1, Vetor *v2)
+{
     int nMaior, nMenor, i;
     Vetor *v3;
 
@@ -87,7 +87,8 @@ Vetor* soma(Vetor *v1, Vetor *v2){
     return v3;
 }
 
-void imprimir(Vetor *v){
+void imprimir(Vetor *v)
+{
     int i;
     
     if(v != NULL){
@@ -125,7 +126,6 @@ int main() {
     
     v2 = soma(a, b);
     imprimir(v2);
-    
     
     return 0;
 }
