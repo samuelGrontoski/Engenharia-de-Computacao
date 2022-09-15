@@ -1,0 +1,23 @@
+Implemente uma função que receba duas pilhas de números inteiros positivos. A função deverá retornar uma terceira pilha resultante da concatenação das duas pilhas, mas os números ímpares deverão estar próximos à base e os pares próximos do topo (utilizar apenas operações de empilhar e desempilhar).
+
+Input Format
+
+Na primeira linha, enquanto "-1" não for lido, ler números inteiros e colocá-los na primeira pilha.
+
+Na segunda linha, enquanto "-1" não for lido, ler números inteiros e colocá-los na segunda pilha pilha.
+
+Constraints
+
+Os elementos da pilha devem ser acessados através da função desempilhar.
+
+Output Format
+
+Imprimir o resultado da concatenação das duas pilhas.
+
+Sample Input 0
+
+1 2 3 4 5 -1
+6 7 8 9 10 -1
+Sample Output 0
+
+4 2 10 8 6 5 3 1 9 7 
