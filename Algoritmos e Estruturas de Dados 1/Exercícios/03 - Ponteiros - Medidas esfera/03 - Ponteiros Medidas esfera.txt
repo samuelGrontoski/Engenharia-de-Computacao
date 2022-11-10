@@ -1,0 +1,16 @@
+Escreva uma função que calcule a área da superfície e o volume de uma esfera de raio R. A função deve seguir o seguinte protótipo:
+void param_esfera(float r, float *area, float *volume);
+Equações para o cálculo das medidas, onde pi = 3.14:
+area = 4 * pi * R²
+volume = (3/4) * pi * R³
+Input Format
+Na primeira linha da entrada deve ser lido um único float.
+Constraints
+.
+Output Format
+A área e o volume devem ser impressos, com duas casas decimais, na segunda linha.
+Sample Input 0
+3
+Sample Output 0
+113.04 63.58
+

@@ -1,0 +1,20 @@
+Implemente uma função que receba uma lista encadeada. A função deverá inverter a lista recebida como entrada.
+
+Input Format
+
+Enquanto -1 não for lido, ler números inteiros.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir a lista invertida.
+
+Sample Input 0
+
+1 2 3 4 5 6 -1
+Sample Output 0
+
+6 5 4 3 2 1

@@ -1,0 +1,19 @@
+Implemente uma função que receba 3 variáveis e 2 ponteiros do tipo float, conforme o seguinte cabeçalho de função:
+void raizes(float A, float B, float C, float *X1, float *X2);
+A função deverá calcular as raízes de uma equação de segundo grau: , onde o endereço apontado po X1 deverá conter o resultado da seguinte operação: 
+. Já o endereço apontado po X2 deverá conter o resultado da seguinte operação: .
+Input Format
+Na primeira linha, devem ser lidas as seguintes variáveis em sequência: A, B e C
+Constraints
+.
+Output Format
+Na próxima linha, imprimir os valores de X1 e X2 em sequência.
+Sample Input 0
+1.0 4.0 3.0
+Sample Output 0
+-1.0 -3.0
+Sample Input 1
+-2.0 16.0 0.0
+Sample Output 1
+0.0 8.0
+
