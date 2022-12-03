@@ -3,111 +3,103 @@
 #include <math.h>
 #include <stdlib.h>
 
-struct chave{
-    int num;
+typedef struct HashT HashT;
+
+struct HashT{
+    unsigned int tam;
+    int *buckets;
 };
 
-typedef struct hash Hash;
-
-Hash* criar(int n, float c);
-
-int inserir(Hash* hs, struct chave X);
-
-struct hash{
-    int qtd;
-    int n;
-    float c;
-    struct chave **key;
-};
-
-Hash* criar(int n, float c){
+HashT *criar(unsigned int tam){
+    HashT *t = malloc(sizeof(HashT));
     int i;
-    
-    Hash* hs = (Hash*)malloc(sizeof(Hash));
-    
-    hs->n = n;
-    hs->c = c;
-    
-    hs->key = (struct chave**)
-        malloc(n * sizeof(struct chave*));
-    
-    if(hs->key == NULL){
-        free(hs);
-        return NULL;
-    }
-    
-    hs->qtd = 0;
-    
-    for(i = 0; i < hs->n; i++){
-        hs->key[i] = NULL;
-    }
-    
-    return hs;
-}
-int FuncHash(float c, int n, int elem){
-    float valor;
-    
-    valor = elem * c;
-    valor = valor - (int)valor;
-    
-    return (int) (n * valor);
+
+    t->tam = tam;
+    t->buckets = malloc(tam * sizeof(int));
+
+    for (i = 0; i < tam; i++)
+        t->buckets[i] = -1;
+
+    return t;
 }
 
-int ReHash(int h1, int elem, int i, int n){
-    int h2 = 1 + elem % (n - 1);
-    
-    return (((h1 + i * h2)) % n);
+static int hash1(int k, float c, int B){
+    float aux;
+
+    aux = k * c;
+    aux = aux - (int)aux;
+
+    return (int)(aux * B);
 }
 
-int inserir(Hash* hs, struct chave X){
-    if(hs == NULL || hs->qtd == hs->n){
-        return 0;
-    }
-    
-    int i, h1, h2;
-    
-    h1 = FuncHash(hs->c, hs->n, X.num);
+static int hash2(int k, int B){
+    return 1 + k % (B - 1);
+}
 
-    for(i = 0; i < hs->n; i++){
-        h2 = ReHash(h1, X.num, i, hs->n);
-        
-        if(hs->key[h2] == NULL){
-            struct chave* new;
-            
-            new = (struct chave*)
-                malloc(sizeof(struct chave));
-            
-            if(new == NULL){
-                return 0;
-            }
-            
-            *new = X;
-            hs->key[h2] = new;
-            hs->qtd++;
-            
-            printf("%d\n", h2);
-            
+static int rehash(int h1, int h2, int B, int i, float c){
+    return (h1 + i * h2) % B;
+}
+
+int inserir(int key, HashT *t, float c){
+    int x, h1, h2, i = 1, rh;
+
+    if ((t != NULL) && (key > 0)){
+        x = hash1(key, c, t->tam);
+
+        if (t->buckets[x] <= 0){
+            t->buckets[x] = key;
+
+            printf("%d\n",x);
             return 1;
+
+        }else{
+            i = 1; 
+            rh = x; 
+            h1 = hash1(key, c, t->tam);
+            h2 = hash2(key, t->tam);
+
+            while ((i < t->tam) && (t->buckets[rh] != key) && (t->buckets[rh] > 0)){
+                rh = rehash(h1, h2, t->tam, i, c);
+                i++;
+            }
+
+            if ((i < t->tam) && (t->buckets[rh] <= 0)){
+                t->buckets[rh] = key;
+
+                printf("%d\n",rh);
+
+                return 1;
+            }
         }
     }
     return 0;
 }
 
-int main() {
-    int n, quant, i;
-    float c;
-    
-    scanf("%f %d", &c, &n);
-    scanf("%d", &quant);
+int liberar(HashT *t){
+    if (t != NULL){
+        free(t->buckets);
+        free(t);
 
-    Hash* hs = criar(n, c);
-    struct chave X;
-
-    for(i = 0; i < quant; i++){
-        scanf("%d", &X.num);
-        inserir(hs, X);
+        return 1;
     }
-    
     return 0;
 }
 
+int main() {  
+    int n, aux, i, item;
+    float c;
+
+    scanf("%f %d %d", &c, &n, &aux);
+
+    HashT *t = criar(n);
+
+    for(i = 0; i < aux; i++){
+        scanf("%d",&item);
+
+        inserir(item, t, c);
+    }
+
+    liberar(t);
+
+    return 0;
+}
