@@ -1,0 +1,34 @@
+Três estradas movimentadas ligam a uma única rodovia (principal), conforme a figura abaixo. Para o gerenciamento do trânsito, um semáforo foi adicionado para cada
+estrada, na qual, enquanto o sinal estiver verde, os veículos que chegaram primeiro podem acessar a rodovia principal. Quando o sinal estiver verde para uma estrada, 
+para as outras duas estradas, o sinal será vermelho. No entanto, como as estradas estão cheias de buracos e os veículos devem transitar vagarosamente, 
+para cada vez que o sinal estiver verde para uma estrada, apenas três veículos conseguem acessar a estrada principal antes do sinal ficar vermelho. 
+Por outro lado, os semáforos possuem um sistema inteligente, no qual, enquanto a estrada estiver vazia, o sinal será vermelho. 
+Também, durante o sinal verde, quando a estrada tiver menos que três veículos, assim que os mesmos acessarem a rodovia principal, 
+o sinal ficará vermelho antecipadamente.
+
+image
+
+Implemente uma função para o gerenciamento do trânsito conforme ilustrado acima.
+A função deverá receber, como parâmetro, 4 filas estáticas (E1, E2, E3, R). Na função, os elementos de E1, E2 e E3 devem ser transferidos para R de 
+forma que simule o trânsito descrito acima.
+
+Input Format
+
+Em cada uma das 3 primeiras linhas, enquanto -1 não for lido, ler números inteiros e inserí-los em suas respectivas filas (E1, E2 e E3).
+
+Constraints
+
+O acesso aos elementos da fila deve ser através da função desenfileirar.
+
+Output Format
+
+Imprimir a fila R.
+
+Sample Input 0
+
+1 4 7 9 -1
+2 5 -1
+3 5 8 -1
+Sample Output 0
+
+1 4 7 2 5 3 5 8 9

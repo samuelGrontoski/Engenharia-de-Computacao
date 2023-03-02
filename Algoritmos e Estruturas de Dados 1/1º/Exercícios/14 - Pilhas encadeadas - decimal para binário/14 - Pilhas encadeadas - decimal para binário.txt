@@ -1,0 +1,20 @@
+Utilizando uma pilha encadeada, escreva um método que receba um número inteiro positivo no formato decimal e o converta para o formato binário.
+
+Input Format
+
+Na primeira linha, um número inteiro deve ser lido.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o número binário.
+
+Sample Input 0
+
+150
+Sample Output 0
+
+10010110

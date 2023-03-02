@@ -1,0 +1,26 @@
+Inplemente uma função recursiva que verifique se uma string é palíndromo.
+
+Input Format
+
+Na primeira linha, deve ser lida uma string.
+
+Constraints
+
+Se a função não for recursiva, será atribuída nota 0 (zero).
+
+Output Format
+
+Imprimir "palindromo" se a string de entrada for palíndromo, ou imprimir "não palindromo", caso contrário.
+
+Sample Input 0
+
+aerea
+Sample Output 0
+
+palindromo
+Sample Input 1
+
+gil
+Sample Output 1
+
+nao palindromo
