@@ -1,0 +1,39 @@
+Implemente uma função que receba duas matrizes de números inteiros com dimensões iguais. A função deverá retornar uma matriz (int**), alocada dinamicamente, resultante da soma das duas matrizes de entrada.
+
+Input Format
+
+Na primeira linha devem ser lidos dois números inteiros: um para a quantidade de linhas (l) e outro para a quantidade de colunas (c).
+
+Em seguida, ler o conteúdo de duas matrizes lxc.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o conteúdo da matriz resultante da soma.
+
+Sample Input 0
+
+3 3
+1 2 3
+1 2 3
+1 2 3
+4 5 6
+3 2 1
+1 1 1
+Sample Output 0
+
+5 7 9
+4 4 4
+2 3 4
+Explanation 0
+
+Primeira matriz:
+
+1 2 3 1 2 3 1 2 3
+
+Segunda matriz:
+
+4 5 6 3 2 1 1 1 1

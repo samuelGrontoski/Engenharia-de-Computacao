@@ -1,0 +1,31 @@
+Implemente uma função recursiva que calcule o resto da divisão entre dois números inteiros.
+
+Input Format
+
+Na primeira linha deve ser lido um número inteiro N referente a quantidade de leituras de entradas.
+
+Para cada uma das N próximas linhas, ler dois números inteiros (a e b)
+
+Constraints
+
+.
+
+Output Format
+
+Em cada uma das N linhas, imprimir o resultado do resto da divisão dos respectivos números inteiros.
+
+Sample Input 0
+
+5
+1 2
+6 7
+8 6
+0 20
+23 6
+Sample Output 0
+
+1
+6
+2
+0
+5
