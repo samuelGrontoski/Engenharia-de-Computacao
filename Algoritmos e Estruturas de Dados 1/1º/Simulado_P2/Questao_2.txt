@@ -1,0 +1,3 @@
+Bobble, insert, select -> algoritmos de osdenação estáveis (ordem de comparação n² no pior caso);
+
+O selectsort é o mais rápido dos 3, no melhor caso, tem o nível de comparação em ordem de n, por isso é o mais rápido;
