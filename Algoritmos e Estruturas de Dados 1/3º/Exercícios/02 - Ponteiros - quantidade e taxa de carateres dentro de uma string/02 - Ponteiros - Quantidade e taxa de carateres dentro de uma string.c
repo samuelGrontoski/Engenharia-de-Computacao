@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void carac_string(char str[100], char c, int *quantidade, float *incidencia){
-    int i = 0, aux = 0, tam = 0;
+    int i = 0, aux = 0;
 
     while (str[i] != '\0')
     {
@@ -12,7 +12,6 @@ void carac_string(char str[100], char c, int *quantidade, float *incidencia){
             aux++;
         }
         i++;
-        tam++;
     }
     
     *quantidade = aux;
