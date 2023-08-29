@@ -68,6 +68,22 @@ Matriz *obter_submat(Matriz *m, int li, int ci, int lf, int cf){
     return submat;
 };
 
+void imprime_vetor(int *v, int n){
+    for(int i = 0; i < n; i++){
+        printf("%d ", v[i]);
+    }
+    printf("\n");
+};
+
+void imprime_matriz(Matriz *m){
+    for(int i = 0; i < m->l; i++){
+        for(int j = 0; j < m->c; j++){
+            printf("%d ", m->arr[i][j]);
+        }
+        printf("\n");
+    }
+};
+
 int main() {
     int l, c, pl, pc, li, ci, lf, cf;
 
@@ -107,28 +123,19 @@ int main() {
     // obtem e imprime determinada linha da matriz
     int *vl = obter_linha(m, pl);
     
-    for(int i = 0; i < c; i++){
-        printf("%d ", vl[i]);
-    }
-    printf("\n\n");
+    imprime_vetor(vl, c);
+    printf("\n");
 
     // obtem e imprime determinada coluna da matriz
     int *vc = obter_coluna(m, pc);
     
-    for(int i = 0; i < l; i++){
-        printf("%d ", vc[i]);
-    }
-    printf("\n\n");
+    imprime_vetor(vc, l);
+    printf("\n");
 
     // obtem e imprime determinada submatriz da matriz
     Matriz *submat = obter_submat(m, li, ci, lf, cf);
     
-    for(int i = 0; i < submat->l; i++){
-        for(int j = 0; j < submat->c; j++){
-            printf("%d ", submat->arr[i][j]);
-        }
-        printf("\n");
-    }
+    imprime_matriz(submat);
 
     return 0;
 }
