@@ -73,6 +73,11 @@ int main() {
 
     // le a quantidade de linhas e colunas da matriz
     scanf("%d %d", &l, &c);
+    while (l < 0 || c < 0)
+    {
+        printf("Valores Invalidos\n");
+        scanf("%d %d", &l, &c);
+    }
 
     Matriz *m = iniciar(l, c);
 
@@ -83,9 +88,21 @@ int main() {
         }
     }
 
+    // entrada para posicao de linha e coluna da matriz
     scanf("%d %d", &pl, &pc);
+    while ((pl < 0 || pc < 0) || (pl >= l || pc >= c))
+    {   
+        printf("Valores invalidos\n");
+        scanf("%d %d", &pl, &pc);
+    }
 
+    // entrada para submatriz
     scanf("%d %d %d %d", &li, &ci, &lf, &cf);
+    while (li < 0 || ci < 0 || lf < 0 || cf < 0 || li >= l || ci >= c || lf >= l || cf >= c)
+    {   
+        printf("Valores invalidos\n");
+        scanf("%d %d %d %d", &li, &ci, &lf, &cf);
+    }
 
     // obtem e imprime determinada linha da matriz
     int *vl = obter_linha(m, pl);
