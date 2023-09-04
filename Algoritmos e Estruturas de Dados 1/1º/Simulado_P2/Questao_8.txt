@@ -1,3 +1,0 @@
-8.  o que é makefile? Apresente uma utilidade para o makefile.
-
-Makefile é um conjunto de processos utilizados para automatizar tarefas.
