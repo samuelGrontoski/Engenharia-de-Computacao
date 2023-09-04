@@ -1,4 +1,4 @@
 # Engenharia-de-Computacao
-• Listas de exercícios
-• Atividades
-• Trabalhos
+## • Listas de exercícios
+## • Atividades
+## • Trabalhos
