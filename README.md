@@ -1,2 +1,4 @@
 # Engenharia-de-Computacao
-Trabalhos realizados durante a faculdade
+• Listas de exercícios
+• Atividades
+• Trabalhos
