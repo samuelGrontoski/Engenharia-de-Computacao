@@ -1,0 +1,35 @@
+Implemente o algoritmo mergesort para ordenar vetor de strings.
+
+Input Format
+
+Na primeira linha deve ser lido o tamanho do vetor. A partir da segunda linha, ler as strings do vetor.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o vetor após a ordenação.
+
+Sample Input 0
+
+8
+joao-paulo
+tereza
+joao-luiz
+vegeta
+ana
+vampeta
+yusuke
+aioria
+Sample Output 0
+
+aioria
+ana
+joao-luiz
+joao-paulo
+tereza
+vampeta
+vegeta
+yusuke

@@ -1,0 +1,59 @@
+void inserir_primeiro(int x, ListaE *l){
+    Cell *c = criar_celula();
+
+    if (l == NULL)
+        l = criar_lista();
+
+    c->next = l->head;
+
+    l->head = c;
+}
+
+Lista* intercalar(Lista* l1, Lista* l2){
+    ListaE *l3;
+    PilhaE *p;
+    Cell *aux1, *aux2;
+
+    if (l1 == NULL)
+        return l2;
+    else (l2 == NULL)
+        return l1;
+    else{
+        l = criar_lista();
+        p = criar_pilha();
+
+        while((l1->head != NULL) && (l2->head != NULL)){
+            aux1 = l1->head;
+            l1->head = aux1->next;
+            aux2 = l2->head;
+            l2->head = aux2->next;
+            empilhar(aux1->item, p);
+            empilhar(aux2->item, p);
+            free(aux1);
+            free(aux2);
+        }
+
+        while(l1->head != NULL){
+            aux1 = l1->head;
+            l1->head = aux1->next;
+            empilhar(aux1->item, p);
+            free(aux1);
+        }
+
+        while(l2->head != NULL){
+            aux2 = l2->head;
+            l2->head = aux2->next;
+            empilhar(aux2->item, p);
+            free(aux2);
+        }
+
+        while (!pilha_vazia(p))
+            inserir_primeiro(desempilhar(p), l3);
+
+        free(p);
+        free(l1);
+        free(l2);
+
+        return l3;
+    }
+}

@@ -1,0 +1,32 @@
+Implemente uma função que receba uma lista encadeada. Nessa função deverá ser implementado o método de recuperação recorrente mover-para-frente, 
+no qual, cada vez que um registro é recuperado com sucesso, ele é movimentado para a primeira posição. Por exemplo, 
+suponha que procuramos a chave 2 na seguinte: {7, 3, 4, 2, 6}. Após recuperar a chave 2, a mesma é posicionada na primeira posição: {2, 7, 3, 4, 6}.
+
+Input Format
+
+Na primeira linha, enquanto -1 não for lido, devem ser lidos os elementos da lista encadeada. Na segunda linha deve ser lida a 
+quantidade de chaves que deverão ser procuradas). A partir da próxima linha, as chaves que serão procuradas devem ser lidas.
+
+Constraints
+
+.
+
+Output Format
+
+Após execução do algoritmo para cada caso teste, imprimir a lista encadeada.
+
+Sample Input 0
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 -1
+8
+1
+6
+7
+6
+6
+0
+6
+7
+Sample Output 0
+
+7 6 1 2 3 4 5 8 9 10 11 12 13 14
