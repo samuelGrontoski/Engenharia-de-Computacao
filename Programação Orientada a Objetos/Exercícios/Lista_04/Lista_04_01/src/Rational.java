@@ -11,6 +11,11 @@ public class Rational {
         numerador = n;
         denominador = d;
 
+        if(denominador < 0){
+            numerador = numerador * -1;
+            denominador = denominador * -1;
+        }
+
         if (denominador > 1){
             for (int i = denominador; i > 1; i--){
                 if (numerador % i == 0 && denominador % i == 0){
