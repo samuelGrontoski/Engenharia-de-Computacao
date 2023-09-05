@@ -12,7 +12,7 @@ public class Rational {
         denominador = d;
 
         if (denominador > 1){
-            for (int i = 1; i <= denominador; i++){
+            for (int i = denominador; i > 1; i--){
                 if (numerador % i == 0 && denominador % i == 0){
                     numerador = numerador / i;
                     denominador = denominador / i;
