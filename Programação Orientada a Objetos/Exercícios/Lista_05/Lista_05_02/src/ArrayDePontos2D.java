@@ -11,7 +11,8 @@ public class ArrayDePontos2D {
 
     public void modifica(int posicao, Ponto2D valor) {
         if ((posicao >= 0) && (posicao < array.length))
-            array[posicao].inicializaPonto2D(valor.getX(), valor.getY());
+            //array[posicao].inicializaPonto2D(valor.getX(), valor.getY());
+            array[posicao] = valor;
     }
 
     public Ponto2D valor(int posicao) {
