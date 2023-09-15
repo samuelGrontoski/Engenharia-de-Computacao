@@ -1,8 +1,8 @@
 public class Agenda {
     private Pessoa[] agenda;
 
-    public Agenda() {
-        agenda = new Pessoa[50];
+    public Agenda(int numero) {
+        agenda = new Pessoa[numero];
     }
 
     int posicao = 0;
@@ -34,6 +34,21 @@ public class Agenda {
                 posicao++;
                 System.out.println("Pessoa cadastrada com sucesso!");
             }
+        }
+    }
+
+    public String toString(){
+        String resultado = posicao + " pessoas cadastradas:\n";
+        int n = 1;
+        if(posicao == 0){
+            String nula = "Nenhuma pessoa cadastrada\n";
+            return nula;
+        }else{
+            for(int c = 0; c < posicao; c++){
+                resultado += "Contato " + n + "\n" + agenda[c];
+                n++;
+            }
+            return resultado;
         }
     }
 

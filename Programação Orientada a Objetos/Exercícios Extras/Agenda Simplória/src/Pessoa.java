@@ -14,7 +14,7 @@ public class Pessoa implements Serializable {
     }
 
     public String getCPF(){
-        return nome;
+        return cpf;
     }
 
     public void excluirPessoa(){
@@ -22,8 +22,8 @@ public class Pessoa implements Serializable {
         this.cpf = "####";
     }
 
-    public void imprimirDados() {
-        System.out.println("Nome: " + nome);
-        System.out.println("CPF: " + cpf);
+    public String toString() {
+        String resultado = "Nome: " + nome + "\nCPF: " + cpf + "\n";
+        return resultado;
     }
 }
