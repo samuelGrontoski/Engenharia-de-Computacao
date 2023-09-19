@@ -18,8 +18,8 @@ public class Pessoa implements Serializable {
     }
 
     public void excluirPessoa(){
-        this.nome = "####";
-        this.cpf = "####";
+        this.nome = null;
+        this.cpf = null;
     }
 
     public String toString() {

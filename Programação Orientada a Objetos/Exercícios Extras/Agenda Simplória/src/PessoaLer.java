@@ -21,7 +21,7 @@ public class PessoaLer {
 
       // Uma forma de diferente do for para percorrer vetores
       for (Pessoa p : agendaArq) {
-        p.imprimirDados();
+        p.toString();
       }
     } catch (Exception ex) {
       System.err.println("erro: " + ex.toString());

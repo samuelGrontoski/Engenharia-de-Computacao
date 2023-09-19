@@ -1,4 +1,6 @@
-public class Agenda {
+import java.io.Serializable;
+
+public class Agenda implements Serializable{
     private Pessoa[] agenda;
 
     public Agenda(int numero) {
@@ -7,6 +9,7 @@ public class Agenda {
 
     int posicao = 0;
 
+    // Incluir pessoa na agenda
     public void incluir_pessoa(String nome, String cpf) {
         boolean nomeIgual = false;
         boolean cpfIgual = false;
@@ -37,8 +40,30 @@ public class Agenda {
         }
     }
 
+    // Excluir pessoa da agenda
+    public void excluir_pessoa(String nome) {
+        boolean nomeIgual = false;
+
+        for (int i = 0; i < posicao; i++) {
+            String nomeSalvo = agenda[i].getNome();
+            nomeIgual = (nomeSalvo.equals(nome));
+
+            if (nomeIgual == true) {
+                agenda[i].excluirPessoa();
+                posicao--;
+                System.out.println("Pessoa excluida com sucesso!");
+                break;
+            }
+        }
+
+        if (nomeIgual == false) {
+            System.out.println("Pessoa nao encontrada");
+        }
+    }
+
+    // Imprime o conteudo da agenda
     public String toString(){
-        String resultado = posicao + " pessoas cadastradas:\n";
+        String resultado = "\n" + posicao + " pessoas cadastradas:\n\n";
         int n = 1;
         if(posicao == 0){
             String nula = "Nenhuma pessoa cadastrada\n";
@@ -49,25 +74,6 @@ public class Agenda {
                 n++;
             }
             return resultado;
-        }
-    }
-
-    public void excluir_pessoa(String nome) {
-        boolean nomeIgual = false;
-
-        for (int i = 0; i < posicao; i++) {
-            String nomeSalvo = agenda[i].getNome();
-            nomeIgual = (nomeSalvo.equals(nome));
-
-            if (nomeIgual == true) {
-                agenda[i].excluirPessoa();
-                System.out.println("Pessoa excluida com sucesso!");
-                break;
-            }
-        }
-
-        if (nomeIgual == false) {
-            System.out.println("Pessoa nao encontrada");
         }
     }
 }
