@@ -41,7 +41,7 @@ public class JogoGeneral implements Serializable{
             } else {
                 mostraJogadas += jogadas[1][i] + " ";
             }
-            // adcionar os espaços a mais necessarios
+            // adcionar os espacos a mais necessarios
             //if(i < )
         }
 

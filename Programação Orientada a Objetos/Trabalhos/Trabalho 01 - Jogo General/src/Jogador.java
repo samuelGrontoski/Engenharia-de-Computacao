@@ -68,4 +68,18 @@ public class Jogador implements Serializable {
         System.out.println("1 2 3 4 5 6 7(T) 8(Q) 9(F) 10(S+) 11(S-) 12(G) 13(X)");
         System.out.println(jogoG.jogadaString());
     }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public String getTipoJogador(){
+        return tipoJogador;
+    }
+
+    public void excluirJogador(){
+        this.nome = null;
+        this.tipoJogador = null;
+        this.jogoG = null;
+    }
 }
