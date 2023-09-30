@@ -37,9 +37,9 @@ public class JogoGeneral implements Serializable{
 
         for(int i = 0; i < 13; i++){
             if(jogadas[0][i] == 0){
-                mostraJogadas += "- ";
+                mostraJogadas += "-\t";
             } else {
-                mostraJogadas += jogadas[1][i] + " ";
+                mostraJogadas += jogadas[1][i] + "\t";
             }
             // adcionar os espacos a mais necessarios
             //if(i < )

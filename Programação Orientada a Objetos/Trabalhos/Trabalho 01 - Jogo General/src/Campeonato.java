@@ -1,26 +1,51 @@
 import java.io.Serializable;
 
-public class Campeonato implements Serializable{
+public class Campeonato implements Serializable {
     private Jogador[] jogadores;
     private int numJogadores = 0;
 
-    public Campeonato(){
+    public Campeonato() {
         jogadores = new Jogador[10];
     }
 
     public void incluirJogador(String nome, String tipoJogador){
+        boolean nomeIgual = false;
+        Jogador novoJogador = new Jogador(nome, tipoJogador);
+
+        if (numJogadores == 0){
+            jogadores[numJogadores] = novoJogador;
+            numJogadores++;
+            System.out.println("Jogador incluido com sucesso!");
+        } else {
+            for (int i = 0; i < numJogadores; i++){
+                String nomeSalvo = jogadores[i].getNome();
+                nomeIgual = (nomeSalvo.equals(nome));
+
+                if (nomeIgual == true){
+                    System.out.println("Jogador ja registrado, tente outro nome");
+                    break;
+                }
+            }
+
+            if (nomeIgual == false){
+                jogadores[numJogadores] = novoJogador;
+                numJogadores++;
+                System.out.println("Jogador incluido com sucesso!");
+            }
+        }
+
         jogadores[0] = new Jogador(nome, tipoJogador);
         numJogadores++;
     }
 
-    public void removerJogador(String nome){
+    public void removerJogador(String nome) {
         boolean nomeIgual = false;
 
-        for (int i = 0; i < numJogadores; i++){
+        for (int i = 0; i < numJogadores; i++) {
             String nomeSalvo = jogadores[i].getNome();
             nomeIgual = (nomeSalvo.equals(nome));
 
-            if (nomeIgual == true){
+            if (nomeIgual == true) {
                 jogadores[i].excluirJogador();
                 numJogadores--;
                 System.out.println("Jogador excluido com sucesso!");
@@ -28,17 +53,17 @@ public class Campeonato implements Serializable{
             }
         }
 
-        if (nomeIgual == false){
+        if (nomeIgual == false) {
             System.out.println("Jogador nao encontrado");
         }
     }
 
-    public void iniciarCampeonato(){
-        if(numJogadores < 2){
-            System.out.println("Numero de jogadores insuficiente. Inclua ao menos 2 jogadores para iniciar.")
+    public void iniciarCampeonato() {
+        if (numJogadores < 2) {
+            System.out.println("Numero de jogadores insuficiente. Inclua ao menos 2 jogadores para iniciar.");
         } else {
-            for(int i = 0; i < 13; i++){
-                for(int j = 0; j < numJogadores; j++){
+            for (int i = 0; i < 13; i++) {
+                for (int j = 0; j < numJogadores; j++) {
                     jogadores[j].jogarDados();
                     System.out.println(jogadores[j].toString());
                 }

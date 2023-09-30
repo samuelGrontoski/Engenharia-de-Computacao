@@ -65,7 +65,7 @@ public class Jogador implements Serializable {
 
     // Mostra as jogadas executadas
     public void mostrarJogadasExecutadas(){
-        System.out.println("1 2 3 4 5 6 7(T) 8(Q) 9(F) 10(S+) 11(S-) 12(G) 13(X)");
+        System.out.println("1\t2\t3\tt4\tt5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
         System.out.println(jogoG.jogadaString());
     }
 
