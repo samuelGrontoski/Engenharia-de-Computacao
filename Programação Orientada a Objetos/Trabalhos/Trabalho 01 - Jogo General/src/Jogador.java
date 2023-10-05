@@ -26,58 +26,43 @@ public class Jogador implements Serializable {
     }
 
     // Escolhe a jogada
-    public void escolherJogada() {
-        Scanner teclado = new Scanner(System.in);
-        int jogada;
+    public boolean escolherJogada(int jogada) {
         boolean validade = false;
 
-        // Se for uma maquina, vai direto para a parte de pontuacao
-        if (tipoJogador.equals("H") == true) {
-            // Laco do while valida se o jogador esta entrando com um numero entre 1 e 13
-            do {
-                System.out.println("Para qual jogada deseja marcar: [1 - 13] " + nome + "?");
-                mostrarJogadasExecutadas();
-                jogada = teclado.nextInt();
-
-                if (jogada < 1 || jogada > 13) {
-                    System.out.println("A jogada nao e valida"); // Da um alerta de que o numero nao esta entre 1 e 13
-                } else {
-                    validade = jogoG.validarJogada(jogada); // chama a validacao da jogada se estiver entre 1 e 13
-
-                    // Se a jogada ainda nao foi escolhida, chama a metodo que pontua
-                    if (validade == true) {
-                        jogoG.pontuarJogadaHumano(jogada);
-                        System.out.println("Jogada registrada");
-                    } else {
-                        System.out.println("Esta jogada ja foi escolhida");
-                    }
-                }
-
-            } while ((jogada < 1 || jogada > 13) && validade != true);
+        // Se a jogada ainda nao foi escolhida, chama a metodo que pontua
+        if (jogoG.validarJogada(jogada - 1) == false) {
+            System.out.println("Esta jogada ja foi escolhida");
+            validade = false;
         }
-        if (tipoJogador.equals("M") == true) {
-            jogoG.pontuarJogadaMaquina();
+        if (jogoG.validarJogada(jogada - 1) == true) {
+            jogoG.pontuarJogadaHumano(jogada - 1);
             System.out.println("Jogada registrada");
+            validade = true;
         }
 
-        teclado.close();
+        return validade;
+    }
+
+    public void jogadaMaquina(){
+        jogoG.pontuarJogadaMaquina();
+            System.out.println("Jogada registrada");
     }
 
     // Mostra as jogadas executadas
-    public void mostrarJogadasExecutadas(){
+    public void mostrarJogadasExecutadas() {
         System.out.println("1\t2\t3\tt4\tt5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
         System.out.println(jogoG.jogadaString());
     }
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
-    public String getTipoJogador(){
+    public String getTipoJogador() {
         return tipoJogador;
     }
 
-    public void excluirJogador(){
+    public void excluirJogador() {
         this.nome = null;
         this.tipoJogador = null;
         this.jogoG = null;

@@ -11,6 +11,10 @@ public class JogoGeneral implements Serializable{
             dados[i] = new Dado();
         }
         jogadas = new int[2][13];
+        for (int i = 0; i < 13; i++){
+            jogadas[0][i] = 0;
+            jogadas[1][i] = 0;
+        }
     }
 
     // Rola os 5 dados
@@ -41,8 +45,6 @@ public class JogoGeneral implements Serializable{
             } else {
                 mostraJogadas += jogadas[1][i] + "\t";
             }
-            // adcionar os espacos a mais necessarios
-            //if(i < )
         }
 
         return mostraJogadas;

@@ -18,7 +18,7 @@ public class usaCampeonato {
             System.out.println("(a) Incluir jogador");
             System.out.println("(b) Remover jogador");
             System.out.println("(c) Executar rodada");
-            System.out.println("(d) Mostrar a cartela de resultados [da última rodada realizada]");
+            System.out.println("(d) Mostrar a cartela de resultados [da ultima rodada realizada]");
             System.out.println("(e) Gravar os dados do campeonato em arquivo");
             System.out.println("(f) Ler os dados docampeonato em arquivo");
             System.out.println("(g) Sair da aplicacao");
@@ -52,7 +52,8 @@ public class usaCampeonato {
                 }
                 // C - Executar rodada
                 case "c": {
-
+                    campeonato.iniciarCampeonato();
+                    break;
                 }
                 // D - Mostrar a cartela de resultados [da ultima rodada realizada
                 case "d": {
@@ -69,6 +70,7 @@ public class usaCampeonato {
                 // G - Sair da aplicacao
                 case "g": {
                     System.out.println("Obrigado por jogar!");
+                    break;
                 }
                 default : {
                     System.out.println("Opcao invalida. Tente novamente");
