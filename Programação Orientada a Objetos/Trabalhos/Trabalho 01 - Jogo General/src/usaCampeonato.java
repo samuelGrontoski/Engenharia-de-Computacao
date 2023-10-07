@@ -6,11 +6,11 @@ import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class usaCampeonato {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Campeonato campeonato = new Campeonato();
 
         Scanner teclado = new Scanner(System.in);
-        String opcao = "Sem valor";
+        String opcao = "";
 
         do {
             // Menu
@@ -25,7 +25,7 @@ public class usaCampeonato {
             System.out.println("Escolha uma opcao: ");
             opcao = teclado.nextLine();
 
-            switch (opcao){
+            switch (opcao) {
                 // A - Incluir jogador
                 case "a": {
                     System.out.println("Nome do jogador: ");
@@ -57,34 +57,28 @@ public class usaCampeonato {
                 }
                 // D - Mostrar a cartela de resultados [da ultima rodada realizada
                 case "d": {
-
+                    campeonato.mostrarCartela();
+                    break;
                 }
                 // E - Gravar os dados do campeonato em arquivo
                 case "e": {
-
+                    break;
                 }
                 // F - Ler os dados do campeonato em arquivo
                 case "f": {
-
+                    break;
                 }
                 // G - Sair da aplicacao
                 case "g": {
                     System.out.println("Obrigado por jogar!");
                     break;
                 }
-                default : {
+                default: {
                     System.out.println("Opcao invalida. Tente novamente");
                 }
-
-            } 
-
-            
+            }
         } while (opcao.equals("g") == false);
-        
+
         teclado.close();
-    }
-
-    static void menu() {
-
     }
 }

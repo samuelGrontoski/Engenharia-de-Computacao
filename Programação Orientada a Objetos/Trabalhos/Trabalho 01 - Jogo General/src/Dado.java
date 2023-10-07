@@ -14,6 +14,11 @@ public class Dado implements Serializable{
         return sideUp;
     }
 
+    // Atualiza o valor do resultado do dado
+    public void atualizaValor(int valor){
+        sideUp = valor;
+    }
+
     // Rola o dado
     public void roll(){
         Random x = new Random();

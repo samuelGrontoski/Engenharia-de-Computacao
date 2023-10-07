@@ -77,6 +77,7 @@ public class Campeonato implements Serializable {
                         jogadores[j].mostrarJogadasExecutadas();
                         do { // Valida a jogada entre 1 e 13
                             jogada = teclado.nextInt();
+                            teclado.nextLine();
                             if (jogada < 1 || jogada > 13) {
                                 System.out.println("A jogada nao e valida");
                             }
@@ -92,5 +93,56 @@ public class Campeonato implements Serializable {
             }
         }
         teclado.close();
+    }
+
+    public void mostrarCartela(){
+        System.out.println("-- Cartela de Resultados --");
+        String nomesJogadores = " \t";
+        for (int i = 0; i < numJogadores; i++){
+            nomesJogadores += jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ") \t";
+        }
+        System.out.println(nomesJogadores);
+
+        for (int i = 1; i <= 13; i++){
+            String pontos = "" + i;
+            switch (i) {
+                case 7: {
+                    pontos += "(T)\t";
+                    break;
+                }
+                case 8 : {
+                    pontos += "(Q)\t";
+                    break;
+                }
+                case 9 : {
+                    pontos += "(F)\t";
+                    break;
+                }
+                case 10 : {
+                    pontos += "(S+)\t";
+                    break;
+                }
+                case 11 : {
+                    pontos += "(S-)\t";
+                    break;
+                }
+                case 12 : {
+                    pontos += "(G)\t";
+                    break;
+                }
+                case 13 : {
+                    pontos += "(X)\t";
+                    break;
+                }
+                default : {
+                    pontos += "\t";
+                    break;
+                }
+            }
+            for (int j = 0; j < numJogadores; j++){
+                pontos += jogadores[j].valorJogada(i - 1) + "\t";
+            } 
+            System.out.println("" + pontos);
+        }
     }
 }
