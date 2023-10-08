@@ -48,37 +48,12 @@ public class usaCampeonato {
                 }
                 // E - Gravar os dados do campeonato em arquivo
                 case "e": {
-                    File arquivo = new File("campeonato.dat");
-                    try {
-                        FileOutputStream fout = new FileOutputStream(arquivo);
-                        ObjectOutputStream oos = new ObjectOutputStream(fout);
-                        oos.writeObject(campeonato);
-                        oos.flush();
-                        oos.close();
-                        fout.close();
-                        System.out.println("\nArquivo gravado com sucesso!");
-                    } catch (Exception ex) {
-                        System.err.println("erro: " + ex.toString());
-                    }
+                    campeonato.gravarEmArquivo();
                     break;
                 }
                 // F - Ler os dados do campeonato em arquivo
                 case "f": {
-                    File arquivo = new File("campeonato.dat");
-
-                    try {
-                        FileInputStream fin = new FileInputStream(arquivo);
-                        ObjectInputStream oin = new ObjectInputStream(fin);
-
-                        Campeonato campeonatoArq = (Campeonato) oin.readObject();
-                        oin.close();
-                        fin.close();
-
-                        campeonatoArq.mostrarCartela();
-                        
-                    } catch (Exception ex) {
-                        System.err.println("erro: " + ex.toString());
-                    }
+                    campeonato.lerDoArquivo();
                     break;
                 }
                 // G - Sair da aplicacao

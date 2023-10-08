@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -63,7 +68,7 @@ public class Campeonato implements Serializable {
 
             if (nomeIgual == true) {
                 jogadores[i].excluirJogador();
-                for (int j = i; j < numJogadores; j++){
+                for (int j = i; j < numJogadores; j++) {
                     jogadores[j] = jogadores[j + 1];
                 }
                 numJogadores--;
@@ -82,7 +87,7 @@ public class Campeonato implements Serializable {
         Scanner teclado = new Scanner(System.in);
         int jogada;
 
-        for (int i = 0; i < numJogadores; i++){
+        for (int i = 0; i < numJogadores; i++) {
             jogadores[i].reiniciaJogoG();
         }
 
@@ -172,18 +177,50 @@ public class Campeonato implements Serializable {
             }
             System.out.println(pontos);
         }
-        for (int k = 0; k <= numJogadores; k ++){
+        for (int k = 0; k <= numJogadores; k++) {
             System.out.print("---------------");
         }
         System.out.println();
         String totalPontos = "\nTotal\t";
-        for (int l = 0; l  < numJogadores; l++){
+        for (int l = 0; l < numJogadores; l++) {
             int soma = 0;
-            for (int m = 0; m < 13; m++){
+            for (int m = 0; m < 13; m++) {
                 soma += jogadores[l].valorJogada(m);
             }
             totalPontos += soma + "\t\t";
         }
         System.out.println(totalPontos);
+    }
+
+    public void gravarEmArquivo() {
+        File arquivo = new File("jogadores.dat");
+        try {
+            FileOutputStream fout = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(jogadores);
+            oos.flush();
+            oos.close();
+            fout.close();
+            System.out.println("\nArquivo gravado com sucesso!");
+        } catch (Exception ex) {
+            System.err.println("erro: " + ex.toString());
+        }
+    }
+
+    public void lerDoArquivo() {
+        File arquivo = new File("jogadores.dat");
+
+        try {
+            FileInputStream fin = new FileInputStream(arquivo);
+            ObjectInputStream oin = new ObjectInputStream(fin);
+            
+            oin.close();
+            fin.close();
+
+            mostrarCartela();
+
+        } catch (Exception ex) {
+            System.err.println("erro: " + ex.toString());
+        }
     }
 }
