@@ -34,7 +34,7 @@ public class Jogador implements Serializable {
         }
         if (validade == true) {
             jogoG.pontuarJogadaHumano(jogada);
-            System.out.println("Jogada registrada");
+            System.out.println("Jogada registrada\n");
             validade = true;
         }
 
@@ -42,8 +42,8 @@ public class Jogador implements Serializable {
     }
 
     public void jogadaMaquina(){
+        System.out.print("Jogada escolhida por " + getNome() + "(" + getTipoJogador() + ") [1 - 13]: ");
         jogoG.pontuarJogadaMaquina();
-            System.out.println("Jogada registrada");
     }
 
     // Mostra as jogadas executadas
@@ -71,5 +71,9 @@ public class Jogador implements Serializable {
         this.nome = null;
         this.tipoJogador = null;
         this.jogoG = null;
+    }
+
+    public void reiniciaJogoG() {
+        this.jogoG = new JogoGeneral();
     }
 }
