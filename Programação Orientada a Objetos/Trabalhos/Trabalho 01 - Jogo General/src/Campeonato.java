@@ -63,6 +63,9 @@ public class Campeonato implements Serializable {
 
             if (nomeIgual == true) {
                 jogadores[i].excluirJogador();
+                for (int j = i; j < numJogadores; j++){
+                    jogadores[j] = jogadores[j + 1];
+                }
                 numJogadores--;
                 System.out.println("\nJogador excluido com sucesso!");
                 break;

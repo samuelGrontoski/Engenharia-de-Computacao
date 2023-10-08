@@ -443,7 +443,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 6)
                                 count6++;
                         }
-                        if (count6 == 2) {
+                        if (count6 >= 1) {
                             jogadas[1][5] = count6 * 6;
                             jogadas[0][5] = 1;
                             System.out.println("6");
@@ -462,7 +462,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 5)
                                 count5++;
                         }
-                        if (count5 == 2) {
+                        if (count5 >= 1) {
                             jogadas[1][4] = count5 * 5;
                             jogadas[0][4] = 1;
                             System.out.println("5");
@@ -481,7 +481,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 4)
                                 count4++;
                         }
-                        if (count4 == 2) {
+                        if (count4 >= 1) {
                             jogadas[1][3] = count4 * 4;
                             jogadas[0][3] = 1;
                             System.out.println("4");
@@ -499,7 +499,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 3)
                                 count3++;
                         }
-                        if (count3 == 2) {
+                        if (count3 >= 1) {
                             jogadas[1][2] = count3 * 3;
                             jogadas[0][2] = 1;
                             System.out.println("3");
@@ -517,7 +517,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 2)
                                 count2++;
                         }
-                        if (count2 == 2) {
+                        if (count2 >= 1) {
                             jogadas[1][1] = count2 * 2;
                             jogadas[0][1] = 1;
                             System.out.println("2");
@@ -535,7 +535,7 @@ public class JogoGeneral implements Serializable {
                             if (dados[i].getSideUp() == 1)
                                 count1++;
                         }
-                        if (count1 == 2) {
+                        if (count1 >= 1) {
                             jogadas[1][0] = count1 * 1;
                             jogadas[0][0] = 1;
                             System.out.println("1");
