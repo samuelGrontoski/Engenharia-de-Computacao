@@ -46,7 +46,6 @@ public class JogoGeneral implements Serializable {
                 mostraJogadas += jogadas[1][i] + "\t";
             }
         }
-
         return mostraJogadas;
     }
 
@@ -66,7 +65,7 @@ public class JogoGeneral implements Serializable {
         return validade;
     }
 
-    // Ordena os dados para facilitar as contagens na pontuacao
+    // Ordena os dados para facilitar as contagens em algumas pontuacoes
     public void ordenaDados() {
         int x;
 
@@ -80,7 +79,7 @@ public class JogoGeneral implements Serializable {
         }
     }
 
-    // Pontua a jogada do humano
+    // Pontua a jogada escolhida pelo humano
     public void pontuarJogadaHumano(int jogada) {
         jogadas[0][jogada - 1] = 1;
         int pontos = 0;
@@ -200,6 +199,7 @@ public class JogoGeneral implements Serializable {
             case 9: {
                 ordenaDados();
                 int trio = 0, dupla = 0;
+                // Verifica se ha um trio
                 for (int i = 1; i <= 6; i++) {
                     trio = 0;
                     for (int j = 0; j < 5; j++) {
@@ -211,6 +211,7 @@ public class JogoGeneral implements Serializable {
                         break;
                     }
                 }
+                // Verifica se ha uma dupla
                 for (int i = 1; i <= 6; i++) {
                     dupla = 0;
                     for (int j = 0; j < 5; j++) {
@@ -222,6 +223,7 @@ public class JogoGeneral implements Serializable {
                         break;
                     }
                 }
+                // Se existir um trio e uma dupla, pontua
                 if (dupla == 2 && trio == 3) {
                     jogadas[1][jogada - 1] = 25;
                 } else {
@@ -270,6 +272,7 @@ public class JogoGeneral implements Serializable {
                 }
                 break;
             }
+            // Jogada aleatoria
             case 13: {
                 pontos = 0;
                 for (int k = 0; k < 5; k++) {
@@ -281,14 +284,14 @@ public class JogoGeneral implements Serializable {
         }
     }
 
-    // Pontua a jogada da maquina
+    // Pontua automaticamente a jogada da maquina, buscando maximizar a pontuacao total (obviamente poderia ser melhor)
     public void pontuarJogadaMaquina(){
         boolean jogadaFeita = false;
         int repeticao = 13;
         int maiorRepeticao = 0;
         int pontos = 0;
 
-        do {
+        do { // O laco do serve para garantir que todas as opcoes sejam verificadas
             repeticao--;
             switch (repeticao) {
                 // General
@@ -343,6 +346,7 @@ public class JogoGeneral implements Serializable {
                     if (jogadas[0][8] == 0) {
                         ordenaDados();
                         int trio = 0, dupla = 0;
+                        // Verifica se ha um trio
                         for (int i = 1; i <= 6; i++) {
                             trio = 0;
                             for (int j = 0; j < 5; j++) {
@@ -354,6 +358,7 @@ public class JogoGeneral implements Serializable {
                                 break;
                             }
                         }
+                        // Verifica se ha uma dupla
                         for (int i = 1; i <= 6; i++) {
                             dupla = 0;
                             for (int j = 0; j < 5; j++) {
@@ -365,6 +370,7 @@ public class JogoGeneral implements Serializable {
                                 break;
                             }
                         }
+                        // Se existir um trio e uma dupla, pontua
                         if (dupla == 2 && trio == 3) {
                             jogadas[1][8] = 25;
                             jogadas[0][8] = 1;
@@ -553,6 +559,7 @@ public class JogoGeneral implements Serializable {
                     break;
                 }
                 // Jogada em sequencia
+                // Se ate aqui uma posicao adequada nao foi encontrada, e escolhida a primeira posicao livre
                 default: {
                     for (int i = 0; i < 13; i++) {
                         int valor = 0;

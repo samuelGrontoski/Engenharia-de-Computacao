@@ -5,10 +5,12 @@ public class Campeonato implements Serializable {
     private Jogador[] jogadores;
     private int numJogadores = 0;
 
+    // Construtor
     public Campeonato() {
         jogadores = new Jogador[10];
     }
 
+    // Inclui um novo jogador a lista de jogadores
     public void incluirJogador() {
         Scanner teclado = new Scanner(System.in);
         boolean nomeIgual = false;
@@ -47,6 +49,7 @@ public class Campeonato implements Serializable {
         }
     }
 
+    // Remove um novo jogador a lista de jogadores
     public void removerJogador() {
         Scanner teclado = new Scanner(System.in);
         boolean nomeIgual = false;
@@ -71,6 +74,7 @@ public class Campeonato implements Serializable {
         }
     }
 
+    // Inicia o campeonato
     public void iniciarCampeonato() {
         Scanner teclado = new Scanner(System.in);
         int jogada;
@@ -115,6 +119,7 @@ public class Campeonato implements Serializable {
         }
     }
 
+    // Mostra a cartela
     public void mostrarCartela() {
         System.out.println("\n-- Cartela de Resultados --");
         String nomesJogadores = " \t";

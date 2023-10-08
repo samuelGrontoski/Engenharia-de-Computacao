@@ -9,7 +9,7 @@ public class Dado implements Serializable{
         sideUp = 1;
     }
 
-    // Retorna o resultado da rolagem
+    // Obtem e retorna o resultado da rolagem
     public int getSideUp(){
         return sideUp;
     }

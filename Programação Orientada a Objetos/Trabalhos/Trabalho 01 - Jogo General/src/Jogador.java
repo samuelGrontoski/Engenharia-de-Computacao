@@ -17,14 +17,14 @@ public class Jogador implements Serializable {
         jogoG.rolarDados();
     }
 
-    // Passa o resultados dos dados jogados pelo jogador
+    // Passa o resultados dos dados jogados pelo jogador para uma string
     public String toString() {
         String resultado = jogoG.toString();
 
         return resultado;
     }
 
-    // Escolhe a jogada
+    // Escolhe a jogada e verifica se ela e valida
     public boolean escolherJogada(int jogada) {
         boolean validade = jogoG.validarJogada(jogada - 1);
 
@@ -41,6 +41,7 @@ public class Jogador implements Serializable {
         return validade;
     }
 
+    // Faz a jogada automatica da maquina
     public void jogadaMaquina(){
         System.out.print("Jogada escolhida por " + getNome() + "(" + getTipoJogador() + ") [1 - 13]: ");
         jogoG.pontuarJogadaMaquina();
@@ -52,27 +53,31 @@ public class Jogador implements Serializable {
         System.out.println(jogoG.jogadaString());
     }
 
-    // Obtem o valor da jogada especifica
+    // Obtem e retorna o valor da jogada especifica
     public int valorJogada(int posicao){
         int pontos = jogoG.pontosJogada(posicao);
 
         return pontos;
     }
 
+    // Obtem e retorna o nome do jogador
     public String getNome() {
         return nome;
     }
 
+    // Obtem e retorna o tipo do jogador
     public String getTipoJogador() {
         return tipoJogador;
     }
 
+    // Exclui o jogador
     public void excluirJogador() {
         this.nome = null;
         this.tipoJogador = null;
         this.jogoG = null;
     }
 
+    // Reinicia o jogo general do jogador toda vez que um campeonato e iniciado
     public void reiniciaJogoG() {
         this.jogoG = new JogoGeneral();
     }
