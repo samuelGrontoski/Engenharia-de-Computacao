@@ -283,6 +283,7 @@ public class JogoGeneral implements Serializable {
             }
         }
     }
+    // ?Ninguem no mundo consegue o que quer, e eu acho isso lindo.?
 
     // Pontua automaticamente a jogada da maquina, buscando maximizar a pontuacao total (obviamente poderia ser melhor)
     public void pontuarJogadaMaquina(){
@@ -407,6 +408,7 @@ public class JogoGeneral implements Serializable {
                     }
                     break;
                 }
+                // Codigo desenvolvido por Samuel Grontoski
                 // Trinca
                 case 7: {
                     if (jogadas[0][6] == 0) {
