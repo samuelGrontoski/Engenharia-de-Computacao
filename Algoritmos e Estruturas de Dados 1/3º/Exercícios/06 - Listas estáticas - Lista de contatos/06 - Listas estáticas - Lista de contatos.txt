@@ -1,0 +1,31 @@
+Dada uma função que receba uma lista estática de contatos e uma string. Essa função deverá imprimir os contatos que contêm essa string no nome. Por exemplo, para a string "son", podem ser encontrados nomes como: Son**ia, Ander**son, Jeffer**son**.
+
+Input Format
+
+A primeira linha a ser lida deve ser a string que deve ser procurada. Em seguida, deve ser lida um número inteiro referente à quantidade de nomes que devem ser incluídos na lista.
+
+Constraints
+
+Usar TAD de listas estáticas.
+
+Output Format
+
+Imprimir os nomes que contêm a string procurada.
+
+Sample Input 0
+
+son
+8
+ana
+anderson
+tiago
+sonia
+enzo
+chimonstrufia
+jefferson
+rosana
+Sample Output 0
+
+anderson
+sonia
+jefferson
