@@ -283,7 +283,7 @@ public class JogoGeneral implements Serializable {
             }
         }
     }
-    // ?Ninguem no mundo consegue o que quer, e eu acho isso lindo.?
+    // Ninguem no mundo consegue o que quer, e eu acho isso lindo.
 
     // Pontua automaticamente a jogada da maquina, buscando maximizar a pontuacao total (obviamente poderia ser melhor)
     public void pontuarJogadaMaquina(){
