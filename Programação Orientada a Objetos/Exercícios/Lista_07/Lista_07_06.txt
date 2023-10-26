@@ -1,0 +1,49 @@
+// Enunciado
+Crie duas classes, A e B, com construtores do tipo padrão (lista de argumentos vazia) que inicializam seus atributos com valores defaut. 
+
+Crie uma nova classe derivada chamada C a partir de A, e crie um membro de B dentro de C. Não crie um construtor para C. 
+
+Crie um objeto da classe C e observe os resultados. 
+
+Comente a respeito.
+
+// Resposta
+class A {
+    int valorA;
+
+    public A() {
+        valorA = 10;
+    }
+}
+
+class B {
+    int valorB;
+
+    public B() {
+        valorB = 11;
+    }
+}
+
+class C extends A {
+    B objetoB;
+
+    public C() {
+        objetoB = new B();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C objetoC = new C();
+
+        System.out.println("A em C: " + objetoC.valorA);
+        System.out.println("B em C: " + objetoC.objetoB.valorB);
+    }
+}
+
+/*
+Quando criamos o objeto da classe C, podemos acessar o conteúdo de A e B, isso porquê o objeto C herda os atributos de A e possui um objeto da classe B.
+Esse programa retornaria:
+A em C: 10
+B em C: 11
+ */

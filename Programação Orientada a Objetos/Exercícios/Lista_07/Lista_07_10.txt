@@ -1,0 +1,30 @@
+// Enunciado
+Preencha as lacunas em cada uma das seguintes instruções:
+
+ a)____________________ é uma forma de reutilização de software para que novas classes adquiram os membros de classes existentes e aprimorem essas classes com novas capacidades.
+
+ b) Os membros _________________ de uma superclasse podem ser acessados na declaração de superclasse e nas declarações de subclasse.
+
+ c) Em um relacionamento _______________, um objeto de uma subclasse também pode ser tratado como um objeto de sua superclasse.
+
+ d) Em um relacionamento _________________, um objeto de classe tem referências a objetos de outras classes como membros.
+
+ e) Na herança simples, há uma classe em um relacionamento ____________ com suas subclasses.
+
+ f) Numa superclasse, membros ____________________ são acessíveis em qualquer lugar que o programa tem uma referência para um objeto daquela superclasse ou para um objeto de uma de suas subclasses.
+
+ g) Quando um objeto de uma subclasse  é instanciado, um ____________ da superclasse é chamado implícita ou explicitamente.
+
+ h) Os construtores de subclasse podem chamar construtores de superclasse via a palavra-chave ___________________.
+
+// Resposta
+
+a) Herança
+b) protegidos
+c) "é-um"
+d) "tem-um"
+e) de superclasse
+f) public e protected
+g) construtor
+h) super
+

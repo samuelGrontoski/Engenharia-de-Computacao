@@ -1,0 +1,22 @@
+// Enunciado
+Especifique para cada par abaixo se o relacionamento entre eles é "é-um'' ou "tem-um"
+
+a) bicicleta, veículo
+
+b) bicicleta, pneu
+
+c) triângulo, polígono
+
+d) couve-manteiga, vegetal
+
+e) pessoa, conta bancária
+
+f) general, soldado
+
+//Resposta
+a) é-um
+b) tem-um
+c) é-um
+d) é-um
+e) tem-um
+f) é-um

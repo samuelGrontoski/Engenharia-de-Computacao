@@ -1,0 +1,26 @@
+// Enunciado
+Dado:
+
+class Zing{
+ protected Hmpf h;
+}
+class Woop extends Zing{}
+class Hmpf{}
+Quais opções são verdadeiras? (Aponte todas as corretas)
+
+a) Woop "é-um'' Hmpf e "tem-um'' Zing.
+
+b) Zing "é-um'' Woop e "tem-um'' Hmpf.
+
+c) Hmpf "tem-um'' Woop e Woop "é-um'' Zing.
+
+d) Woop "tem-um'' Hmpf e Woop "é-um'' Zing.
+
+// Resposta
+a) Verdadeira. Woop é uma subclasse de Zing, então Woop "é-um" Zing. Além disso, a classe Zing tem um membro do tipo Hmpf (h), então Zing "tem-um" Hmpf.
+
+b) Falsa. Zing não é uma subclasse de Woop, portanto Zing não "é-um" Woop. No entanto, a classe Zing tem um membro do tipo Hmpf (h), então Zing "tem-um" Hmpf.
+
+c) Falsa. A classe Hmpf não tem uma relação de composição com Woop, então Hmpf não "tem-um" Woop. Além disso, Woop "é-um" Zing.
+
+d) Falsa. Woop tem uma referência a um objeto do tipo Hmpf, mas isso não significa que Woop "tem-um" Hmpf. Além disso, Woop "é-um" Zing.

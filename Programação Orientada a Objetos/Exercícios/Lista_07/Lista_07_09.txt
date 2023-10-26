@@ -1,0 +1,38 @@
+// Enunciado
+Analise o arquivo Chess.java abaixo e comente sobre o construtor da classe Chess.
+
+Explique o que acontece.
+
+class Game {
+  Game(int i) {
+    System.out.println("Game constructor");
+  }
+}
+
+class BoardGame extends Game {
+  BoardGame(int i) {
+    super(i);
+    System.out.println("BoardGame constructor");
+  }
+}
+
+public class Chess extends BoardGame {
+  Chess() {
+    super(11);
+    System.out.println("Chess constructor");
+  }
+  public static void main(String[] args) {
+    Chess x = new Chess();
+  }
+}
+
+// Resposta
+Ordem de hierarquia: Game <-- BoardGame <-- Chess
+
+Como "Chess" herda de "BoardGame" que herda de "Game", o primeiro construtor a ser chamado será o de "Game".
+Em seguida, por "Chess" herdar de "BoardGame", o segundo construtor a ser chamado é o de "BoardGame".
+Por fim, o construtor de "Chess" é chamado.
+A saída final será a seguinte:
+Game constructor
+BoardGame constructor
+Chess constructor

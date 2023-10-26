@@ -1,0 +1,37 @@
+// Enunciado
+Analise o arquivo Cartoon.java abaixo e comente sobre o construtor da classe Cartoon. 
+
+Explique o que acontece.
+
+class Art {
+  Art() {
+    System.out.println("Art constructor");
+  }
+}
+
+class Drawing extends Art {
+  Drawing() {
+    System.out.println("Drawing constructor");
+  }
+}
+
+public class Cartoon extends Drawing {
+  Cartoon() {
+    System.out.println("Cartoon constructor");
+  }
+  public static void main(String[] args) {
+    Cartoon x = new Cartoon();
+  }
+} 
+
+
+// Resposta
+Ordem de hierarquia: Art <-- Drawing <-- Cartoon
+
+Como "Cartoon" herda de "Drawing" que herda de "Art", o primeiro construtor a ser chamado será o de "Art".
+Em seguida, por "Cartoon" herdar de "Drawing", o segundo construtor a ser chamado é o de "Drawing".
+Por fim, o construtor de "Cartoon" é chamado.
+A saída final será a seguinte:
+Art constructor
+Drawing constructor
+Cartoon constructor

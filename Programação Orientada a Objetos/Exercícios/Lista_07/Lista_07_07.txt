@@ -1,0 +1,44 @@
+// Enunciado
+Modifique o exercício anterior tal que A e B tenham construtores com argumentos ao invés de construtores padrão.
+
+Escreva um construtor para C e realize todas as inicializações dentro dele. 
+
+Comente a respeito.
+
+// Resposta
+class A {
+    int valorA;
+
+    public A(int valorA) {
+        this.valorA = valorA;
+    }
+}
+
+class B {
+    int valorB;
+
+    public B(int valorB) {
+        this.valorB = valorB;
+    }
+}
+
+class C extends A {
+    B objetoB;
+
+    public C(int valorA, int valorB) {
+        super(valorA);
+        objetoB = new B(valorB);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C objetoC = new C(20, 50);
+
+        System.out.println("A em C: " + objetoC.valorA);
+        System.out.println("B em C: " + objetoC.objetoB.valorB);
+    }
+}
+
+Os atributos de A e B agora estão sendo definidos de acordo com os argumentos passados no construtor de C,
+onde o valor de A é definido e um novo objeto B é criado.

@@ -1,0 +1,27 @@
+// Enunciado
+Dados dois arquivos em pacotes diferentes A e B. Explique o resultado do seguinte trecho de código abaixo:
+
+package pkgA;
+public class Foo{
+	int a = 5;
+	protected int b = 6;
+	public int c = 7;
+}
+
+package pkgB;
+import pkgA.*;
+public class Baz{
+	public static void main(String[] args){
+		Foo f = new Foo();
+		System.out.print(" "+f.a);
+		System.out.print(" "+f.b);
+		System.out.print(" "+f.c);
+ }
+}
+
+// Resposta
+System.out.print(" "+f.a); tenta acessar a variável "a" de "Foo", porém "a" não é pública e só acessível dentro do pacote "pkgA", portanto isso dará erro.
+System.out.print(" "+f.b); tenta acessar a variável "b" de "Foo", como "b" é declarada como protected, ela pode ser acessada pois está no pacote "pkgB", portanto retorna 6.
+System.out.print(" "+f.c); tenta acessar a variável "c" de "Foo", como "c" é declarada como public, ela pode ser acessada e portanto retorna 7.
+
+Portanto, será impresso "6 7".
