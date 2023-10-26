@@ -1,1 +1,1 @@
-# Trabalho 01 - Jogo General
+# Trabalho 02 - Campeonato de Apostas em Jogos de Dados
