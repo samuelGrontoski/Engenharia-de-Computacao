@@ -1,0 +1,38 @@
+// Enunciado
+
+Identifique e explique o(s) erro(s) no código abaixo: 
+
+class Ponto2D
+{
+    private double x,y;
+    Ponto2D(double _x,double _y)
+    {
+        x = _x; 
+        y = _y;
+    }
+}
+
+class Ponto3D extends Ponto2D
+{
+    private double z;
+    Ponto3D(double _x,double _y,double _z)
+    {
+        x = _x;
+        y = _y;
+        z = _z;
+    }
+}
+
+// Resposta
+
+Na classe Ponto3D, a atribuição dos valores das variáveis está sendo feita de maneira incorreta, o cerreto seria:
+
+class Ponto3D EXTENDS Ponto2D
+{
+    private double z;
+    Ponto3D(double _x, double _y, double _z)
+    {
+        super(_x,_z);
+        z = _z;
+    }
+}

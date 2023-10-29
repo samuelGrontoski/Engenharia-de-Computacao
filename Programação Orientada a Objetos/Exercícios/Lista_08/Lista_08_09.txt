@@ -1,0 +1,20 @@
+// Enunciado
+
+Identifique e explique o(s) erro(s) no código abaixo: 
+
+class DataHora extends Data,Hora
+{
+    public DataHora(byte d,byte m,short a,byte hor,byte min,byte seg)
+    {
+        super(d,m,a);
+        super(hor,min,seg);
+    }
+    public String toString()
+    {
+        return super.toString()+" "+super.toString();
+    }
+}
+
+// Resposta
+
+No código, a classe DataHora declara como superclasse duas classes, Data e Hora, o que não é possível na linguagem Java.

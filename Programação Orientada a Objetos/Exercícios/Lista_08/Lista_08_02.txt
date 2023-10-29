@@ -1,0 +1,11 @@
+// Enunciado
+
+Seria possível evitar completamente a necessidade de sobreposição de métodos criando métodos em classes descendentes  que tenham assinaturas diferentes. Por exemplo, a classe Pessoa poderia ter o método imprimePessoa para imprimir seus campos, e a classe Aluno que estende a classe Pessoa poderia ter o método imprimeAluno para imprimir seus campos, e outras classes teriam seus métodos específicos para imprimir seus dados. 
+
+Que vantagens e desvantagens essa abordagem teria sobre a sobreposição de métodos?
+
+// Resposta
+
+As principais vantagens são a clareza no código e fácil manutenção, já que se torna mais fácil a visualização e entendimento do código, assim como alterações se tornam mais simples, já que uma classe não afetará as outras.
+
+Desvantagens: repetição de código, já que pode ocorrer de várias classes realizarem os mesmos procedimentos. E a potencialização da chance de erros.

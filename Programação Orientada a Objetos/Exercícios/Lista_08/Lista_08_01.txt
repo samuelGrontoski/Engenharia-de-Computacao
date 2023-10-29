@@ -1,0 +1,25 @@
+// Enunciado
+
+Determine se cada uma das instruções é verdadeira ou falsa. Se uma instrução for falsa, explique por quê.
+
+a) Os construtores de superclasse não são herdados por subclasses.
+
+b) Um relacionamento "tem um'' é implementado via herança.
+
+c) Uma classe Carro tem um relacionamento "é um'' com as classes Volante e Freio.
+
+d) A herança estimula a reutilização de software de alta qualidade comprovada.
+
+e) Quando uma subclasse redefinir um método de superclasse utilizando a mesma assinatura, diz-se que a subclasse sobrecarrega esse método de superclasse.
+
+// Resposta
+
+a) Falso, são herdados automaticamente se o método super() não foi declarado.
+
+b) Falso, relacionamentos do tipo "tem um" são implementados através de composição, que consiste em um objeto possuir outros objetos em sua composição.
+
+c) Verdadeiro.
+
+d) Verdadeiro.
+
+e) Verdadeiro.

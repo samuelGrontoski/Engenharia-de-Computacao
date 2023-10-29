@@ -1,0 +1,1 @@
+Altere o programa de testes do exercício anterior do anterior, para que ele crie aleatoriamente 10 animais, e depois imprima na tela o som de cada um deles, identificando se é um mamífero, um peixe ou uma ave.
