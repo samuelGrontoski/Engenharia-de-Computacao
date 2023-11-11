@@ -1,0 +1,20 @@
+public class App {
+    public static void main(String[] args){
+        Pessoa[] pessoa = new Pessoa[10];
+
+        pessoa[0] = new Aluno("Matheus", 110323, 2018225, 4);
+        pessoa[1] = new Aluno("Jose", 157894, 7984651, 5);
+        pessoa[2] = new Aluno("Lorenzo", 453169, 3549861, 3);
+        pessoa[3] = new Aluno("Maria", 751269, 546897, 8);
+        pessoa[4] = new Aluno("Carol", 945821, 1245687, 2);
+        pessoa[5] = new Professor("Lauro", 786422, 15.000, "Calculo");
+        pessoa[6] = new Professor("Marcia", 355412, 16.000, "Fisica");
+        pessoa[7] = new Professor("Lian", 987668, 12.000, "Algoritmos");
+        pessoa[8] = new Professor("Cassia", 216564, 18.000, "Compiladores");
+        pessoa[9] = new Professor("Geovane", 986423, 9.000, "Circuitos");
+
+        for(int i = 0; i < 10; i++){
+            pessoa[i].imprimirDados();
+        }
+    }
+}

@@ -1,0 +1,23 @@
+public abstract class Pessoa{
+    private String nome;
+    private double cpf;
+    
+    public Pessoa(String nome, double cpf){
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public double getCPF(){
+        return cpf;
+    }
+    
+    public abstract void imprimirDados();
+
+    public String toString(){
+        return nome;
+    }
+}

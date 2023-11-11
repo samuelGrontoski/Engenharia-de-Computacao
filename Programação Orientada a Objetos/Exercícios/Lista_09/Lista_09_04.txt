@@ -1,0 +1,9 @@
+public class Principal{
+    public static void main(String[] args){
+        Aluno aluno = new Aluno("Matheus", 193438104, 2018225, 4);
+        Professor professor = new Professor("Alexandre", 184130256, 2500, "CD24CP");
+
+        professor.imprimirDados();
+        aluno.imprimirDados();
+    }
+}

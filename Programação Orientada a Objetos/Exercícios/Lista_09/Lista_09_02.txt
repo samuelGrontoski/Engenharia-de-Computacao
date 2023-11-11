@@ -1,0 +1,22 @@
+public class Aluno extends Pessoa{
+    private int ra;
+    private int semestre;
+
+    public Aluno(String nome, double cpf, int ra, int semestre){
+        super(nome, cpf);
+        this.ra = ra;
+        this.semestre = semestre;
+    }
+
+    public int getra(){
+        return this.ra;
+    }
+
+    public int getSemestre(){
+        return this.semestre;
+    }
+
+    public void imprimirDados(){
+        System.out.println("Aluno: "+getNome()+", R.A: "+ra+", Semestre: "+semestre);
+    }
+}
