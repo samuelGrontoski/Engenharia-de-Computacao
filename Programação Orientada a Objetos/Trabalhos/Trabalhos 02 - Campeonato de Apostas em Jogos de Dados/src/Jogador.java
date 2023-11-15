@@ -1,31 +1,26 @@
 import java.io.Serializable;
 
-public class Jogador implements Serializable {
+public abstract class Jogador implements Serializable {
     private String nome;
     private String tipoJogador;
-    private JogoGeneral jogoG;
+    private JogoDados jogos;
+    private float saldo;
 
-    // Construtor padrao
-    public Jogador() {
+    // Construtor
+    public Jogador(String nome, String tipoJogador, float saldo) {
         this.nome = nome;
         this.tipoJogador = tipoJogador;
-        jogoG = new JogoGeneral();
-    }
-
-    public Jogador(String nome, String tipoJogador) {
-        this.nome = nome;
-        this.tipoJogador = tipoJogador;
-        jogoG = new JogoGeneral();
+        this.saldo = saldo;
     }
 
     // Joga os dados para o jogador especifico
     public void jogarDados() {
-        jogoG.rolarDados();
+        jogos.rolarDados();
     }
 
     // Passa o resultados dos dados jogados pelo jogador para uma string
     public String toString() {
-        String resultado = jogoG.toString();
+        String resultado = jogos.toString();
 
         return resultado;
     }
@@ -80,7 +75,8 @@ public class Jogador implements Serializable {
     public void excluirJogador() {
         this.nome = null;
         this.tipoJogador = null;
-        this.jogoG = null;
+        this.jogos = null;
+        this.saldo = 0;
     }
 
     // Reinicia o jogo general do jogador toda vez que um campeonato e iniciado

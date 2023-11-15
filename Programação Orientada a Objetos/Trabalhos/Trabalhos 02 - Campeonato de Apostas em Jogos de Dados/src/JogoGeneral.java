@@ -1,38 +1,14 @@
-import java.io.Serializable;
-
-public class JogoGeneral implements Serializable {
-    private Dado[] dados;
+public class JogoGeneral extends JogoDados{
     private int[][] jogadas;
 
     // Construtor
     public JogoGeneral() {
-        dados = new Dado[5];
-        for (int i = 0; i < 5; i++) {
-            dados[i] = new Dado();
-        }
+        super(2, "Jogo General");
         jogadas = new int[2][13];
         for (int i = 0; i < 13; i++) {
             jogadas[0][i] = 0;
             jogadas[1][i] = 0;
         }
-    }
-
-    // Rola os 5 dados
-    public void rolarDados() {
-        for (int i = 0; i < 5; i++) {
-            dados[i].roll();
-        }
-    }
-
-    // Passa os valores rodados para uma string
-    public String toString() {
-        String resultado = "Valores obtidos: ";
-        for (int i = 0; i < 5; i++) {
-            resultado += "" + dados[i];
-            if (i != 4)
-                resultado += "-";
-        }
-        return resultado;
     }
 
     // Passa os valores ja registrados das jogadas para uma string
