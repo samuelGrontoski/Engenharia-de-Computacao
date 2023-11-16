@@ -64,6 +64,7 @@ public final class JogoGeneral extends JogoDados {
     }
 
     // Verifica se a posicao da jogada e valida ou nao
+    @Override
     public boolean validarJogada(int jogada) {
         boolean validade = true;
         if (jogadas[0][jogada] != 0) {

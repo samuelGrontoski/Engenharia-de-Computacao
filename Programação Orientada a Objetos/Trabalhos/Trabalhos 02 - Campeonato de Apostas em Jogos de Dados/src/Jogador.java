@@ -3,17 +3,19 @@ import java.io.Serializable;
 public abstract class Jogador implements Serializable {
     private String nome;
     private JogoDados[] jogos;
+    private int numJogos;
     private float saldo;
 
     // Construtor
     public Jogador(String nome) {
         this.nome = nome;
+        this.numJogos = 0;
         this.saldo = 100;
     }
 
     // Joga os dados para o jogador especifico
-    public void jogarDados(int i) {
-        jogos[i].rolarDados();
+    public void jogarDados() {
+        jogos[numJogos].rolarDados();
     }
 
     // Passa o resultados dos dados jogados pelo jogador para uma string
@@ -23,28 +25,20 @@ public abstract class Jogador implements Serializable {
         return resultado;
     }
 
-    // Escolhe a jogada e verifica se ela e valida
-    public boolean escolherJogada(int jogada) {
-        boolean validade = jogoG.validarJogada(jogada - 1);
+    // Valida a jogada
+    public boolean validarJogada(int jogada) {
+        boolean validade = jogos[numJogos].validarJogada(jogada);
 
-        // Se a jogada ainda nao foi escolhida, chama a metodo que pontua
-        if (validade == false) {
+        if(validade == false) {
             System.out.println("Esta jogada ja foi escolhida");
         }
-        if (validade == true) {
-            jogoG.pontuarJogadaHumano(jogada);
+        if(validade == true) {
             System.out.println("Jogada registrada\n");
-            validade = true;
         }
-
         return validade;
     }
 
-    // Faz a jogada automatica da maquina
-    public void jogadaMaquina(){
-        System.out.print("Jogada escolhida por " + getNome() + "(" + getTipoJogador() + ") [1 - 13]: ");
-        jogoG.pontuarJogadaMaquina();
-    }
+    public abstract void pontuandoGeneral(int jogada);
 
     // Mostra as jogadas executadas
     public void mostrarJogadasExecutadas() {
@@ -54,7 +48,7 @@ public abstract class Jogador implements Serializable {
 
     // Obtem e retorna o valor da jogada especifica
     public int valorJogada(int posicao){
-        int pontos = jogoG.pontosJogada(posicao);
+        int pontos = jogos[posicao].pontosJogada;
 
         return pontos;
     }
@@ -64,19 +58,29 @@ public abstract class Jogador implements Serializable {
         return nome;
     }
 
-    public void setNomeJogo(String nomeJogo, int i){
-        jogos[i].setNome(nomeJogo);
+    public void setNomeJogo(String nomeJogo){
+        jogos[numJogos].setNome(nomeJogo);
+    }
+
+    public JogoDados getJogo(int posicao) {
+        return jogos[posicao];
+    }
+
+    public void setJogo(JogoDados novoJogo) {
+        jogos[numJogos] = novoJogo;
+        numJogos++;
     }
 
     // Exclui o jogador
     public void excluirJogador() {
         this.nome = null;
         this.jogos = null;
+        this.numJogos = 0;
         this.saldo = 0;
     }
 
     // Reinicia o jogo general do jogador toda vez que um campeonato e iniciado
     public void reiniciaJogoG() {
-        this.jogoG = new JogoGeneral();
+        this.jogos = null;
     }
 }

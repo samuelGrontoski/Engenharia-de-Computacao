@@ -23,6 +23,9 @@ public abstract class JogoDados implements Serializable, Estatistica {
     // Soma as faces dos dados
     public abstract int somarFacesSorteadas(Dado[] dados);
 
+    // Validar jogada
+    public abstract boolean validarJogada(int jogada);
+
     // Rola um dado
     public void rolarUmDado(int i) {
         dados[i].roll();

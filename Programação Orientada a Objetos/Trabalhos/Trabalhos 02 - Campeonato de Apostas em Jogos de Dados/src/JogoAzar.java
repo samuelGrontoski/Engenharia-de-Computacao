@@ -35,4 +35,12 @@ public final class JogoAzar extends JogoDados{
 
         return soma;
     }
+
+    // Valida se a jogada e validad ou nao
+    @Override
+    public boolean validarJogada(int jogada) {
+        boolean validade = false;
+
+        return validade;
+    }
 } 
