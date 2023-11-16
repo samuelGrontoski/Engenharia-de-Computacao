@@ -28,7 +28,7 @@ public class Campeonato implements Serializable {
             tipoJogador = teclado.nextLine();
         } while ((tipoJogador.equals("H") == false) && (tipoJogador.equals("M") == false));
 
-        Jogador novoJogador = new Jogador(nome, tipoJogador, 100);
+        Jogador novoJogador = new Jogador(nome);
 
         // Se nao houver nenhum jogador registrado, registra o primeiro jogador direto
         if (numJogadores == 0) {

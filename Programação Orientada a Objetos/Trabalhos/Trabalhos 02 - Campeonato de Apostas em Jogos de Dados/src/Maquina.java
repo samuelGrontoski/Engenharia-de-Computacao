@@ -1,5 +1,9 @@
-public class Maquina extends Jogador{
+public final class Maquina extends Jogador implements JogarComoMaquina{
     public Maquina(String nome){
-        super(nome, "M", 100);
+        super(nome);
     }
+
+    public void aplicarEstrategia(){
+
+    };
 }

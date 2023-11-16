@@ -2,20 +2,18 @@ import java.io.Serializable;
 
 public abstract class Jogador implements Serializable {
     private String nome;
-    private String tipoJogador;
-    private JogoDados jogos;
+    private JogoDados[] jogos;
     private float saldo;
 
     // Construtor
-    public Jogador(String nome, String tipoJogador, float saldo) {
+    public Jogador(String nome) {
         this.nome = nome;
-        this.tipoJogador = tipoJogador;
-        this.saldo = saldo;
+        this.saldo = 100;
     }
 
     // Joga os dados para o jogador especifico
-    public void jogarDados() {
-        jogos.rolarDados();
+    public void jogarDados(int i) {
+        jogos[i].rolarDados();
     }
 
     // Passa o resultados dos dados jogados pelo jogador para uma string
@@ -66,15 +64,13 @@ public abstract class Jogador implements Serializable {
         return nome;
     }
 
-    // Obtem e retorna o tipo do jogador
-    public String getTipoJogador() {
-        return tipoJogador;
+    public void setNomeJogo(String nomeJogo, int i){
+        jogos[i].setNome(nomeJogo);
     }
 
     // Exclui o jogador
     public void excluirJogador() {
         this.nome = null;
-        this.tipoJogador = null;
         this.jogos = null;
         this.saldo = 0;
     }
