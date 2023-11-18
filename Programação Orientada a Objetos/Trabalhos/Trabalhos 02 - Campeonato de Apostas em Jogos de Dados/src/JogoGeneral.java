@@ -25,12 +25,13 @@ public final class JogoGeneral extends JogoDados {
         int x;
 
         for (int i = 0; i < 5 - 1; i++) {
-            for (int j = 0; j < 5 - i - 1; j++)
+            for (int j = 0; j < 5 - i - 1; j++) {
                 if (getValorDado(j) > getValorDado(j + 1)) {
                     x = getValorDado(j);
                     this.setValorDado(getValorDado(j + 1), j);
                     this.setValorDado(x, j + 1);
                 }
+            }
         }
     }
 
