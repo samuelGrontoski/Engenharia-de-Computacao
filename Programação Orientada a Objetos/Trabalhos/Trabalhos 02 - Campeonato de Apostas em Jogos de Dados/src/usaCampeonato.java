@@ -5,7 +5,7 @@ public class usaCampeonato {
         Campeonato campeonato = new Campeonato();
 
         Scanner teclado = new Scanner(System.in);
-        String opcao = "";
+        char opcao;
 
         do {
             // Menu
@@ -18,51 +18,53 @@ public class usaCampeonato {
             System.out.println("(f) Imprimir estatisticas");
             System.out.println("(g) Gravar os dados do campeonato em arquivo");
             System.out.println("(h) Ler os dados do campeonato em arquivo");
-            System.out.println("(i) Sair da aplicacao");
+            System.out.println("(i) Sair da aplicacao\n");
             System.out.println("Escolha uma opcao: ");
-            opcao = teclado.nextLine();
+            opcao = teclado.next().charAt(0);
 
             switch (opcao) {
                 // A - Incluir jogador
-                case "a": {
+                case 'a': {
                     campeonato.incluirJogador();
                     break;
                 }
                 // B - Remover jogador (pelo nome)
-                case "b": {
+                case 'b': {
                     campeonato.removerJogador();
                     break;
                 }
                 // C - Executar rodadas de apostas
-                case "c": {
+                case 'c': {
                     campeonato.iniciarCampeonato();
                     break;
                 }
                 // D - Imprimir saldo(s)
-                case "d": {
-                    campeonato.mostrarCartela();
+                case 'd': {
+                    campeonato.imprimirSaldos();
                     break;
                 }
                 // E - Imprimir extratos dos resultados
-                case "e": {
+                case 'e': {
+                    campeonato.imprimirResultados();
                     break;
                 }
                 // F - Imprimir estatisticas
-                case "f": {
+                case 'f': {
+                    campeonato.imprimirEstatisticas();
                     break;
                 }
                 // G - Gravar os dados do campeonato em arquivo
-                case "g": {
+                case 'g': {
                     campeonato.gravarEmArquivo();
                     break;
                 }
                 // H - Ler os dados do campeonato em arquivo
-                case "h": {
+                case 'h': {
                     campeonato.lerDoArquivo();
                     break;
                 }
                 // I - Sair da aplicacao
-                case "i": {
+                case 'i': {
                     System.out.println("\nObrigado por jogar!");
                     System.out.println("\n");
                     break;
@@ -71,7 +73,7 @@ public class usaCampeonato {
                     System.out.println("\nOpcao invalida. Tente novamente");
                 }
             }
-        } while (opcao.equals("i") == false);
+        } while (opcao != 'i');
 
         teclado.close();
     }

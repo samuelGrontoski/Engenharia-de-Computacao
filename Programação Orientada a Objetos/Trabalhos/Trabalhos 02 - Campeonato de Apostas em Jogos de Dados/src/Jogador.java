@@ -38,7 +38,15 @@ public abstract class Jogador implements Serializable {
         return validade;
     }
 
-    public abstract void pontuandoGeneral(int jogada);
+    public abstract int escolherJogo();
+
+    public abstract int escolherJogada();
+
+    public abstract float valorAposta();
+
+    public abstract void iniciarJogoAzar(float valorAposta, int rodada);
+
+    public abstract void iniciarJogoGeneral(float valorAposta, int jogada);
 
     // Mostra as jogadas executadas
     public void mostrarJogadasExecutadas() {
@@ -71,6 +79,14 @@ public abstract class Jogador implements Serializable {
         numJogos++;
     }
 
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+
     // Exclui o jogador
     public void excluirJogador() {
         this.nome = null;
@@ -79,8 +95,8 @@ public abstract class Jogador implements Serializable {
         this.saldo = 0;
     }
 
-    // Reinicia o jogo general do jogador toda vez que um campeonato e iniciado
-    public void reiniciaJogoG() {
+    // Reinicia oas jogos do jogador toda vez que um campeonato e iniciado
+    public void reiniciaJogo() {
         this.jogos = null;
     }
 }

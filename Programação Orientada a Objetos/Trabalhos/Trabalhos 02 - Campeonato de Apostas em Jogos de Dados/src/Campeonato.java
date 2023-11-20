@@ -17,185 +17,120 @@ public class Campeonato implements Serializable {
 
     // Inclui um novo jogador a lista de jogadores
     public void incluirJogador() {
-        Scanner teclado = new Scanner(System.in);
-        boolean nomeIgual = false;
 
-        System.out.println("Nome do jogador: ");
-        String nome = teclado.nextLine();
-        String tipoJogador = "Sem valor";
-        do {
-            System.out.println("Tipo do Jogador [H - humano ou M - maquina]: ");
-            tipoJogador = teclado.nextLine();
-        } while ((tipoJogador.equals("H") == false) && (tipoJogador.equals("M") == false));
+        if (numJogadores != 10) {
+            Scanner teclado = new Scanner(System.in);
+            boolean nomeIgual = false;
 
-        Jogador novoJogador = null;
-        if(tipoJogador == "H") {
-            novoJogador = new Humano(nome);
-        }
-        if(tipoJogador == "M") {
-            novoJogador = new Maquina(nome);
-        }
+            System.out.println("Informe o nome do jogador: ");
+            String nome = teclado.nextLine();
+            String tipoJogador = "Sem valor";
+            do {
+                System.out.println("Tipo do Jogador [H - humano ou M - maquina]: ");
+                tipoJogador = teclado.nextLine();
+            } while ((tipoJogador.equals("H") == false) && (tipoJogador.equals("M") == false));
 
-        // Se nao houver nenhum jogador registrado, registra o primeiro jogador direto
-        if (numJogadores == 0) {
-            jogadores[numJogadores] = novoJogador;
-            numJogadores++;
-            System.out.println("\nJogador incluido com sucesso!");
-        } else {
-            for (int i = 0; i < numJogadores; i++) {
-                String nomeSalvo = jogadores[i].getNome();
-                nomeIgual = (nomeSalvo.equals(nome)); // Compara se o nome do jogador nao vai se repetir
+            Jogador novoJogador = null;
+            if (tipoJogador == "H") {
+                novoJogador = new Humano(nome);
+            }
+            if (tipoJogador == "M") {
+                novoJogador = new Maquina(nome);
+            }
 
-                if (nomeIgual == true) {
-                    System.out.println("\nJogador ja registrado, tente outro nome");
-                    break;
-                }
-                if (nomeIgual == false) {
-                    jogadores[numJogadores] = novoJogador;
-                    numJogadores++;
-                    System.out.println("\nJogador incluido com sucesso!");
-                    break;
+            // Se nao houver nenhum jogador registrado, registra o primeiro jogador direto
+            if (numJogadores == 0) {
+                jogadores[numJogadores] = novoJogador;
+                numJogadores++;
+                System.out.println("\nJogador incluido com sucesso!");
+            } else {
+                for (int i = 0; i < numJogadores; i++) {
+                    String nomeSalvo = jogadores[i].getNome();
+                    nomeIgual = (nomeSalvo.equals(nome)); // Compara se o nome do jogador nao vai se repetir
+
+                    if (nomeIgual == true) {
+                        System.out.println("\nJogador " + nome + " ja registrado, tente outro nome");
+                        break;
+                    }
+                    if (nomeIgual == false) {
+                        jogadores[numJogadores] = novoJogador;
+                        numJogadores++;
+                        System.out.println("\nJogador " + nome + " incluido com sucesso!");
+                        break;
+                    }
                 }
             }
+        } else {
+            System.out.println("Limite de jogadores alcancado!");
         }
     }
 
     // Remove um novo jogador a lista de jogadores
     public void removerJogador() {
-        Scanner teclado = new Scanner(System.in);
-        boolean nomeIgual = false;
+        if (numJogadores == 0) {
+            System.out.println("Nenhum jogador cadastrado");
+        } else {
+            Scanner teclado = new Scanner(System.in);
+            boolean nomeIgual = false;
 
-        System.out.println("Informe o nome do jogador que deseja excluir: ");
-        String nome = teclado.nextLine();
-
-        for (int i = 0; i < numJogadores; i++) {
-            String nomeSalvo = jogadores[i].getNome();
-            nomeIgual = (nomeSalvo.equals(nome));
-
-            if (nomeIgual == true) {
-                jogadores[i].excluirJogador();
-                for (int j = i; j < numJogadores; j++) {
-                    jogadores[j] = jogadores[j + 1];
-                }
-                numJogadores--;
-                System.out.println("\nJogador excluido com sucesso!");
-                break;
+            System.out.println("--- Jogadores cadastrados ---");
+            for (int i = 1; i <= numJogadores; i++) {
+                System.out.println(i + "- " + jogadores[i - 1].getNome());
             }
-        }
 
-        if (nomeIgual == false) {
-            System.out.println("\nJogador nao encontrado");
+            System.out.println("Informe o nome do jogador que deseja excluir: ");
+            String nome = teclado.nextLine();
+
+            for (int i = 0; i < numJogadores; i++) {
+                String nomeSalvo = jogadores[i].getNome();
+                nomeIgual = (nomeSalvo.equals(nome));
+
+                if (nomeIgual == true) {
+                    jogadores[i].excluirJogador();
+                    for (int j = i; j < numJogadores; j++) {
+                        jogadores[j] = jogadores[j + 1];
+                    }
+                    numJogadores--;
+                    System.out.println("\nJogador excluido com sucesso!");
+                    break;
+                }
+            }
+
+            if (nomeIgual == false) {
+                System.out.println("\nJogador nao encontrado");
+            }
         }
     }
 
     // Inicia o campeonato
     public void iniciarCampeonato() {
-        Scanner teclado = new Scanner(System.in);
-        int jogada;
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Iniciando a rodada numero " + (i + 1) + "!\n");
 
-        for (int i = 0; i < numJogadores; i++) {
-            jogadores[i].reiniciaJogoG();
-        }
-
-        for (int i = 0; i < 13; i++) {
             for (int j = 0; j < numJogadores; j++) {
-                // Rola os dados
-                System.out.println(
-                        "Rolando dados para " + jogadores[j].getNome() + "(" + jogadores[j].getTipoJogador() + ")...");
-                jogadores[j].jogarDados();
-                System.out.println("" + jogadores[j].toString());
-
-                // Se for humano pergunta a jogada
-                if (jogadores[j].getTipoJogador().equals("H") == true) {
-                    boolean validade;
-                    do {
-                        // Mostra as jogadas e pergunta para qual jogada quer registrar
-                        System.out.println("Para qual jogada deseja marcar: [1 - 13] " + jogadores[j].getNome() + "?");
-                        jogadores[j].mostrarJogadasExecutadas();
-                        do { // Valida a jogada entre 1 e 13
-                            jogada = teclado.nextInt();
-                            teclado.nextLine();
-                            if (jogada < 1 || jogada > 13) {
-                                System.out.println("A jogada nao e valida");
-                            }
-                        } while ((jogada < 1 || jogada > 13));
-
-                        validade = jogadores[j].escolherJogada(jogada);
-                    } while (validade != true);
+                int jogo = jogadores[j].escolherJogo();
+                float valorAposta = jogadores[j].valorAposta();
+                if (jogo == 1) {
+                    jogadores[j].iniciarJogoAzar(valorAposta, i);
                 }
-                // Se for maquina vai direto para as pontuacoes
-                if (jogadores[j].getTipoJogador().equals("M") == true) {
-                    jogadores[j].jogadaMaquina();
-                    jogadores[j].mostrarJogadasExecutadas();
-                    System.out.println("\n");
+                if (jogo == 2) {
+                    int jogada = jogadores[j].escolherJogada();
+                    jogadores[j].iniciarJogoGeneral(valorAposta, jogada);
                 }
             }
         }
     }
 
-    // Mostra a cartela
-    public void mostrarCartela() {
-        System.out.println("\n-- Cartela de Resultados --");
-        String nomesJogadores = " \t";
-        for (int i = 0; i < numJogadores; i++) {
-            nomesJogadores += jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ") \t\t";
-        }
-        System.out.println(nomesJogadores);
+    public void imprimirSaldos() {
 
-        for (int i = 1; i <= 13; i++) {
-            String pontos = "" + i;
-            switch (i) {
-                case 7: {
-                    pontos += "(T)\t";
-                    break;
-                }
-                case 8: {
-                    pontos += "(Q)\t";
-                    break;
-                }
-                case 9: {
-                    pontos += "(F)\t";
-                    break;
-                }
-                case 10: {
-                    pontos += "(S+)\t";
-                    break;
-                }
-                case 11: {
-                    pontos += "(S-)\t";
-                    break;
-                }
-                case 12: {
-                    pontos += "(G)\t";
-                    break;
-                }
-                case 13: {
-                    pontos += "(X)\t";
-                    break;
-                }
-                default: {
-                    pontos += "\t";
-                    break;
-                }
-            }
-            for (int j = 0; j < numJogadores; j++) {
-                pontos += jogadores[j].valorJogada(i - 1) + "\t\t";
-            }
-            System.out.println(pontos);
-        }
-        for (int k = 0; k <= numJogadores; k++) {
-            System.out.print("---------------");
-        }
-        System.out.println();
-        String totalPontos = "\nTotal\t";
-        for (int l = 0; l < numJogadores; l++) {
-            int soma = 0;
-            for (int m = 0; m < 13; m++) {
-                soma += jogadores[l].valorJogada(m);
-            }
-            totalPontos += soma + "\t\t";
-        }
-        System.out.println(totalPontos);
+    }
+
+    public void imprimirResultados() {
+
+    }
+
+    public void imprimirEstatisticas() {
+
     }
 
     public void gravarEmArquivo() {
@@ -219,11 +154,20 @@ public class Campeonato implements Serializable {
         try {
             FileInputStream fin = new FileInputStream(arquivo);
             ObjectInputStream oin = new ObjectInputStream(fin);
-            
+
+            Jogador[] jogadoresArq = (Jogador[]) oin.readObject();
             oin.close();
             fin.close();
 
-            mostrarCartela();
+            jogadores = jogadoresArq;
+
+            numJogadores = 0;
+            for (Jogador jog : jogadores) {
+                if (jog != null)
+                    numJogadores++;
+            }
+
+            System.out.println("Arquivo lido com sucesso!");
 
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());

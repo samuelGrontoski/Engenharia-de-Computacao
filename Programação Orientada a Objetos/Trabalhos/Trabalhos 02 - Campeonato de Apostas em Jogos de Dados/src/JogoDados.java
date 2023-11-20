@@ -15,21 +15,32 @@ public abstract class JogoDados implements Serializable, Estatistica {
     }
 
     // Rola os dados
-    public abstract void rolarDados();
+    public Dado rolarDados() {
+        for (int i = 0; i < nDados; i++){
+            dados[i].roll();
+        }
+        return dados[nDados];
+    };
 
     // Ordena os dados para facilitar as contagens em algumas pontuacoes
-    public abstract void ordenaDados();
+    public void ordenaDados() {
+        int x;
+
+        for (int i = 0; i < nDados - 1; i++) {
+            for (int j = 0; j < nDados - i - 1; j++)
+                if (dados[j].getSideUp() > dados[j + 1].getSideUp()) {
+                    x = dados[j].getSideUp();
+                    dados[j].atualizaValor(dados[j + 1].getSideUp());
+                    dados[j + 1].atualizaValor(x);
+                }
+        }
+    }
 
     // Soma as faces dos dados
     public abstract int somarFacesSorteadas(Dado[] dados);
 
     // Validar jogada
     public abstract boolean validarJogada(int jogada);
-
-    // Rola um dado
-    public void rolarUmDado(int i) {
-        dados[i].roll();
-    }
 
     public int getnDados() {
         return nDados;

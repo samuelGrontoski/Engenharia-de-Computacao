@@ -24,10 +24,4 @@ public class Dado implements Serializable{
     public void atualizaValor(int valor){
         sideUp = valor;
     }
-
-    // Passa o valor rolado para uma string, util para a impressao
-    public String toString(){
-        String resultado = "" + sideUp;
-        return resultado;
-    }
 }
