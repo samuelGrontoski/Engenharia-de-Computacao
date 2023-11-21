@@ -5,6 +5,38 @@ public final class Humano extends Jogador implements JogarComoHumano {
         super(nome);
     }
 
+    // Pergunta e valida quanto o jogador deseja apostar, e atualiza o saldo do
+    // jogador
+    @Override
+    public float valorAposta() {
+        Scanner teclado = new Scanner(System.in);
+        float valorAposta;
+
+        if (getSaldo() != 0) {
+            System.out.println("Quanto deseja apostar? Saldo atual: " + getSaldo());
+            do {
+                valorAposta = teclado.nextFloat();
+                teclado.nextLine();
+
+                if (valorAposta > getSaldo()) {
+                    System.out.println("Valor de aposta e maior que o saldo atual!\n");
+                }
+                if (valorAposta <= 0) {
+                    System.out.println("Valor de aposta invalido!\n");
+                }
+            } while (valorAposta > getSaldo() || valorAposta <= 0);
+            setSaldo(getSaldo() - valorAposta);
+            if (getSaldo() < 0) {
+                setSaldo(0);
+            }
+        } else {
+            System.out.println("Saldo esta zerado!");
+            valorAposta = 0;
+        }
+
+        return valorAposta;
+    }
+
     @Override
     public int escolherJogo() {
         Scanner teclado = new Scanner(System.in);
@@ -26,7 +58,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
     @Override
     public int escolherJogada() {
         Scanner teclado = new Scanner(System.in);
-        int jogada = 0;
+        int jogada;
 
         boolean validade;
         do {
@@ -49,36 +81,23 @@ public final class Humano extends Jogador implements JogarComoHumano {
         return jogada;
     }
 
-    // Pergunta e valida quanto o jogador deseja apostar, e atualiza o saldo do jogador
-    @Override
-    public float valorAposta() {
-        Scanner teclado = new Scanner(System.in);
-        float valorAposta = 0;
-
-        System.out.println("Quanto deseja apostar? Saldo atual: " + getSaldo());
-        do {
-            valorAposta = teclado.nextFloat();
-
-            if (valorAposta > getSaldo()) {
-                System.out.println("Valor de aposta e maior que o saldo atual!\n");
-            }
-            if (valorAposta <= 0) {
-                System.out.println("Valor de aposta invalido!\n");
-            } else {
-                setSaldo(getSaldo() - valorAposta);
-            }
-        } while (valorAposta > getSaldo() || valorAposta <= 0);
-
-        return valorAposta;
-    }
-
     @Override
     public void iniciarJogoAzar(float valorAposta, int rodada) {
-        
+        JogoDados novoJogo = new JogoAzar(valorAposta);
+        setJogo(novoJogo, rodada);
+
+        boolean resultado = executarJogo(rodada);
+
+        if (resultado == true) {
+            setSaldo(getSaldo() + (valorAposta * 2));
+        }
     };
 
     @Override
-    public void iniciarJogoGeneral(float valorAposta, int jogada) {
-        JogoDados novoJogo = new JogoGeneral();
+    public void iniciarJogoGeneral(float valorAposta, int rodada) {
+        JogoDados novoJogo = new JogoGeneral(valorAposta);
+        setJogo(novoJogo, rodada);
+
+        boolean resultado = executarJogo(rodada);
     }
 }

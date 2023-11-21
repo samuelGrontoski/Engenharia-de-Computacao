@@ -15,11 +15,10 @@ public abstract class JogoDados implements Serializable, Estatistica {
     }
 
     // Rola os dados
-    public Dado rolarDados() {
+    public void rolarDados() {
         for (int i = 0; i < nDados; i++){
             dados[i].roll();
         }
-        return dados[nDados];
     };
 
     // Ordena os dados para facilitar as contagens em algumas pontuacoes
@@ -41,6 +40,9 @@ public abstract class JogoDados implements Serializable, Estatistica {
 
     // Validar jogada
     public abstract boolean validarJogada(int jogada);
+
+    // Executa o jogo
+    public abstract boolean executarJogo();
 
     public int getnDados() {
         return nDados;

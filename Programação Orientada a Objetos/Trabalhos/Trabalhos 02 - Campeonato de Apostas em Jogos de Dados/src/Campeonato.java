@@ -8,11 +8,12 @@ import java.util.Scanner;
 
 public class Campeonato implements Serializable {
     private Jogador[] jogadores;
-    private int numJogadores = 0;
+    private int numJogadores;
 
     // Construtor
     public Campeonato() {
         jogadores = new Jogador[10];
+        this.numJogadores = 0;
     }
 
     // Inclui um novo jogador a lista de jogadores
@@ -31,10 +32,10 @@ public class Campeonato implements Serializable {
             } while ((tipoJogador.equals("H") == false) && (tipoJogador.equals("M") == false));
 
             Jogador novoJogador = null;
-            if (tipoJogador == "H") {
+            if (tipoJogador.equals("H")) {
                 novoJogador = new Humano(nome);
             }
-            if (tipoJogador == "M") {
+            if (tipoJogador.equals("M")) {
                 novoJogador = new Maquina(nome);
             }
 
@@ -42,14 +43,14 @@ public class Campeonato implements Serializable {
             if (numJogadores == 0) {
                 jogadores[numJogadores] = novoJogador;
                 numJogadores++;
-                System.out.println("\nJogador incluido com sucesso!");
+                System.out.println("\nJogador " + nome + " incluido com sucesso!");
             } else {
                 for (int i = 0; i < numJogadores; i++) {
                     String nomeSalvo = jogadores[i].getNome();
                     nomeIgual = (nomeSalvo.equals(nome)); // Compara se o nome do jogador nao vai se repetir
 
                     if (nomeIgual == true) {
-                        System.out.println("\nJogador " + nome + " ja registrado, tente outro nome");
+                        System.out.println("\nJogador " + nome + " ja registrado, tente outro nome.");
                         break;
                     }
                     if (nomeIgual == false) {
@@ -104,18 +105,27 @@ public class Campeonato implements Serializable {
 
     // Inicia o campeonato
     public void iniciarCampeonato() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Iniciando a rodada numero " + (i + 1) + "!\n");
+        if (numJogadores == 0) {
+            System.out.println("Nenhum jogador registrado, nao foi possivel iniciar o campeonato.");
+        } else {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("Iniciando a rodada numero " + (i + 1) + "!\n");
 
-            for (int j = 0; j < numJogadores; j++) {
-                int jogo = jogadores[j].escolherJogo();
-                float valorAposta = jogadores[j].valorAposta();
-                if (jogo == 1) {
-                    jogadores[j].iniciarJogoAzar(valorAposta, i);
-                }
-                if (jogo == 2) {
-                    int jogada = jogadores[j].escolherJogada();
-                    jogadores[j].iniciarJogoGeneral(valorAposta, jogada);
+                for (int j = 0; j < numJogadores; j++) {
+                    float valorAposta = jogadores[j].valorAposta();
+                    if (valorAposta != 0) {
+                        int jogo = jogadores[j].escolherJogo();
+                        if (jogo == 1) {
+                            System.out.println("Apostando R$" + valorAposta + " no Jogo de Azar!");
+                            jogadores[j].iniciarJogoAzar(valorAposta, i);
+                        }
+                        if (jogo == 2) {
+                            System.out.println("Apostando R$" + valorAposta + " no Jogo General!");
+                            jogadores[j].iniciarJogoGeneral(valorAposta, i);
+                        }
+                    } else {
+                        System.out.println("Nao e possivel realizar a rodada para " + jogadores[j].getNome());
+                    }
                 }
             }
         }

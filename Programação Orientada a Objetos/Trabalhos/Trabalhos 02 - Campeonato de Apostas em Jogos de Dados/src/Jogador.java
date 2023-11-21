@@ -9,6 +9,7 @@ public abstract class Jogador implements Serializable {
     // Construtor
     public Jogador(String nome) {
         this.nome = nome;
+        jogos = new JogoDados[10];
         this.numJogos = 0;
         this.saldo = 100;
     }
@@ -38,28 +39,27 @@ public abstract class Jogador implements Serializable {
         return validade;
     }
 
+    public abstract float valorAposta();
+
     public abstract int escolherJogo();
 
     public abstract int escolherJogada();
-
-    public abstract float valorAposta();
 
     public abstract void iniciarJogoAzar(float valorAposta, int rodada);
 
     public abstract void iniciarJogoGeneral(float valorAposta, int jogada);
 
-    // Mostra as jogadas executadas
+    public boolean executarJogo(int rodada) {
+        boolean resultado = jogos[rodada].executarJogo();
+
+        return resultado;
+    }
+
+    /* // Mostra as jogadas executadas
     public void mostrarJogadasExecutadas() {
         System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
         System.out.println(jogoG.jogadaString());
-    }
-
-    // Obtem e retorna o valor da jogada especifica
-    public int valorJogada(int posicao){
-        int pontos = jogos[posicao].pontosJogada;
-
-        return pontos;
-    }
+    } */
 
     // Obtem e retorna o nome do jogador
     public String getNome() {
@@ -74,8 +74,8 @@ public abstract class Jogador implements Serializable {
         return jogos[posicao];
     }
 
-    public void setJogo(JogoDados novoJogo) {
-        jogos[numJogos] = novoJogo;
+    public void setJogo(JogoDados novoJogo, int rodada) {
+        jogos[rodada] = novoJogo;
         numJogos++;
     }
 
