@@ -99,5 +99,9 @@ public final class Humano extends Jogador implements JogarComoHumano {
         setJogo(novoJogo, rodada);
 
         boolean resultado = executarJogo(rodada);
+
+        if (resultado == true) {
+            setSaldo(getSaldo() + (valorAposta * 2));
+        }
     }
 }
