@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public final class JogoGeneral extends JogoDados {
     private int[][] jogadas;
 
@@ -13,24 +15,14 @@ public final class JogoGeneral extends JogoDados {
 
     // Soma as faces dos dados
     @Override
-    public int somarFacesSorteadas(Dado[] dados) {
+    public int somarFacesSorteadas() {
         int soma = 0;
 
-        return soma;
-    }
-
-    // Passa os valores ja registrados das jogadas para uma string
-    public String jogadaString() {
-        String mostraJogadas = "";
-
-        for (int i = 0; i < 13; i++) {
-            if (jogadas[0][i] == 0) {
-                mostraJogadas += "-\t";
-            } else {
-                mostraJogadas += jogadas[1][i] + "\t";
-            }
+        for (int i = 0; i < 5; i++) {
+            soma += getValorDado(i);
         }
-        return mostraJogadas;
+
+        return soma;
     }
 
     // Retorna a pontuacao de uma jogada especifica
@@ -50,219 +42,407 @@ public final class JogoGeneral extends JogoDados {
         return validade;
     }
 
+    // Passa os valores ja registrados das jogadas para uma string
+    @Override
+    public String mostrarJogadas() {
+        String mostraJogadas = "";
+
+        for (int i = 0; i < 13; i++) {
+            if (jogadas[0][i] == 0) {
+                mostraJogadas += "-\t";
+            } else {
+                mostraJogadas += jogadas[1][i] + "\t";
+            }
+        }
+        return mostraJogadas;
+    }
+
+    /*
+     * public int escolherJogada() {
+     * Scanner teclado = new Scanner(System.in);
+     * int jogada;
+     * 
+     * boolean validade;
+     * do {
+     * do {
+     * System.out.println("Para qual jogada deseja marcar: [1 - 13] " +
+     * this.getNome() + "?");
+     * jogada = teclado.nextInt();
+     * teclado.nextLine();
+     * if (jogada < 1 || jogada > 13) {
+     * System.out.println("A jogada nao e valida");
+     * }
+     * 
+     * } while (jogada < 1 || jogada > 13);
+     * 
+     * validade = this.validarJogada(jogada);
+     * if (validade != true) {
+     * System.out.println("A jogada nao e valida");
+     * }
+     * } while (validade != true);
+     * 
+     * return jogada;
+     * }
+     */
+
     // Executa o jogo
     @Override
-    public boolean executarJogo(int jogada) {
+    public boolean executarJogo(Jogador jogador) {
+        Scanner teclado = new Scanner(System.in);
+        int jogada;
+        boolean validade;
         boolean resultado = true;
 
+        for (int r = 0; r < 13; r++) {
+            System.out.println("Iniciando a rodada " + (r + 1) + " do Jogo General!");
+            rolarDados();
+            System.out.println(toString());
+            // Verifica se e um humano jogando
+            if (jogador instanceof Humano) {
+                do {
+                    do {
+                        System.out.println("Para qual jogada deseja marcar: [1 - 13] " + jogador.getNome() + "?");
+                        jogada = teclado.nextInt();
+                        teclado.nextLine();
+                        if (jogada < 1 || jogada > 13) {
+                            System.out.println("A jogada nao e valida\n");
+                        }
+
+                    } while (jogada < 1 || jogada > 13);
+
+                    validade = validarJogada(jogada);
+                    if (validade != true) {
+                        System.out.println("A jogada nao e valida\n");
+                    }
+                } while (validade != true);
+
+                switch (jogada) {
+                    // Jogada de 1
+                    case 1: {
+                        int pontos = jogada1a6(1);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 1;
+                        break;
+                    }
+                    // Jogada de 2
+                    case 2: {
+                        int pontos = jogada1a6(2);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 2;
+                        break;
+                    }
+                    // Jogada de 3
+                    case 3: {
+                        int pontos = jogada1a6(3);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 3;
+                        break;
+                    }
+                    // Jogada de 4
+                    case 4: {
+                        int pontos = jogada1a6(4);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 4;
+                        break;
+                    }
+                    // Jogada de 5
+                    case 5: {
+                        int pontos = jogada1a6(5);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 5;
+                        break;
+                    }
+                    // Jogada de 6
+                    case 6: {
+                        int pontos = jogada1a6(6);
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = pontos * 6;
+                        break;
+                    }
+                    // Trinca
+                    case 7: {
+                        int pontos = 0;
+                        jogadas[0][jogada - 1] = 1;
+                        if (trinca() == true) {
+                            for (int k = 0; k < 5; k++) {
+                                pontos += getValorDado(k);
+                            }
+                        } else {
+                            pontos = 0;
+                        }
+                        jogadas[1][jogada - 1] = pontos;
+                        break;
+                    }
+                    // Quadra
+                    case 8: {
+                        int pontos = 0;
+                        jogadas[0][jogada - 1] = 1;
+                        if (quadra() == true) {
+                            for (int k = 0; k < 5; k++) {
+                                pontos += getValorDado(k);
+                            }
+                        } else {
+                            pontos = 0;
+                        }
+                        jogadas[1][jogada - 1] = pontos;
+                        break;
+                    }
+                    // Full-hand ou Full-house
+                    case 9: {
+                        jogadas[0][jogada - 1] = 1;
+                        if (fullHand() == true) {
+                            jogadas[1][jogada - 1] = 25;
+                        } else {
+                            jogadas[1][jogada - 1] = 0;
+                        }
+                        break;
+                    }
+                    // Sequencia Alta
+                    case 10: {
+                        jogadas[0][jogada - 1] = 1;
+                        if (sequenciaAlta() == true) {
+                            jogadas[1][jogada - 1] = 30;
+                        } else {
+                            jogadas[1][jogada - 1] = 0;
+                        }
+                        break;
+                    }
+                    // Sequencia Baixa
+                    case 11: {
+                        jogadas[0][jogada - 1] = 1;
+                        if (sequenciaBaixa() == true) {
+                            jogadas[1][jogada - 1] = 40;
+                        } else {
+                            jogadas[1][jogada - 1] = 0;
+                        }
+                        break;
+                    }
+                    // General
+                    case 12: {
+                        jogadas[0][jogada - 1] = 1;
+                        if (general() == true) {
+                            jogadas[1][jogada - 1] = 50;
+                        } else {
+                            jogadas[1][jogada - 1] = 0;
+                        }
+                        break;
+                    }
+                    // Jogada aleatoria
+                    case 13: {
+                        jogadas[0][jogada - 1] = 1;
+                        jogadas[1][jogada - 1] = jogadaAleatoria();
+                        break;
+                    }
+                }
+            }
+            // Verifica se e uma maquina jogando
+            if (jogador instanceof Maquina) {
+                System.out.println("Para qual jogada deseja marcar: [1 - 13] " + jogador.getNome() + "?");
+
+                boolean jogadaFeita = false;
+                int repeticao = 13;
+                do { // O laco do serve para garantir que todas as opcoes sejam verificadas
+                    repeticao--;
+                    switch (repeticao) {
+                        // General
+                        case 12: {
+                            if (jogadas[0][11] == 0 && general() == true) {
+                                jogadas[0][11] = 1;
+                                jogadas[1][11] = 50;
+                                System.out.println("12");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Sequencia Baixa
+                        case 11: {
+                            if (jogadas[0][10] == 0 && sequenciaBaixa() == true) {
+                                jogadas[0][10] = 1;
+                                jogadas[0][10] = 40;
+                                System.out.println("11");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+
+                        default:
+                            break;
+                    }
+
+                } while (jogadaFeita != true);
+            }
+            System.out.println("Jogada registrada!");
+            System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+            System.out.println(mostrarJogadas());
+        }
 
         return resultado;
     }
 
-    // Pontua a jogada escolhida pelo humano
-    public void pontuarJogadaHumano(int jogada) {
-        jogadas[0][jogada - 1] = 1;
-        int pontos = 0;
+    // Calcula a pontuacao das jogadas de 1 a 6
+    public int jogada1a6(int n) {
+        int count = 0;
 
-        switch (jogada) {
-            // Jogada de 1
-            case 1: {
-                int count1 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 1)
-                        count1++;
+        for (int i = 0; i < 5; i++) {
+            if (getValorDado(i) == n)
+                count++;
+        }
+
+        return count;
+    }
+
+    // Jogada de Trinca
+    public boolean trinca() {
+        boolean trinca;
+        int repetidoX3 = 0;
+
+        for (int i = 1; i <= 6; i++) {
+            repetidoX3 = 0;
+            for (int j = 0; j < 5; j++) {
+                if (getValorDado(j) == i) {
+                    repetidoX3++;
                 }
-                jogadas[1][jogada - 1] = count1;
-                break;
             }
-            // Jogada de 2
-            case 2: {
-                int count2 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 2)
-                        count2++;
-                }
-                jogadas[1][jogada - 1] = count2 * 2;
-                break;
-            }
-            // Jogada de 3
-            case 3: {
-                int count3 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 3)
-                        count3++;
-                }
-                jogadas[1][jogada - 1] = count3 * 3;
-                break;
-            }
-            // Jogada de 4
-            case 4: {
-                int count4 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 4)
-                        count4++;
-                }
-                jogadas[1][jogada - 1] = count4 * 4;
-                break;
-            }
-            // Jogada de 5
-            case 5: {
-                int count5 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 5)
-                        count5++;
-                }
-                jogadas[1][jogada - 1] = count5 * 5;
-                break;
-            }
-            // Jogada de 6
-            case 6: {
-                int count6 = 0;
-                for (int i = 0; i < 5; i++) {
-                    if (this.getValorDado(i) == 6)
-                        count6++;
-                }
-                jogadas[1][jogada - 1] = count6 * 6;
-                break;
-            }
-            // Trinca
-            case 7: {
-                int repetidoX3 = 0;
-                pontos = 0;
-                for (int i = 1; i <= 6; i++) {
-                    repetidoX3 = 0;
-                    for (int j = 0; j < 5; j++) {
-                        if (this.getValorDado(j) == i) {
-                            repetidoX3++;
-                        }
-                    }
-                    if (repetidoX3 == 3) {
-                        break;
-                    }
-                }
-                if (repetidoX3 == 3) {
-                    for (int k = 0; k < 5; k++) {
-                        pontos += this.getValorDado(k);
-                    }
-                    jogadas[1][jogada - 1] = pontos;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // Quadra
-            case 8: {
-                int repetidoX4 = 0;
-                pontos = 0;
-                for (int i = 1; i <= 6; i++) {
-                    repetidoX4 = 0;
-                    for (int j = 0; j < 5; j++) {
-                        if (this.getValorDado(j) == i) {
-                            repetidoX4++;
-                        }
-                    }
-                    if (repetidoX4 == 4) {
-                        break;
-                    }
-                }
-                if (repetidoX4 == 4) {
-                    for (int k = 0; k < 5; k++) {
-                        pontos += this.getValorDado(k);
-                    }
-                    jogadas[1][jogada - 1] = pontos;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // Full-hand/Full-house
-            case 9: {
-                ordenaDados();
-                int trio = 0, dupla = 0;
-                // Verifica se ha um trio
-                for (int i = 1; i <= 6; i++) {
-                    trio = 0;
-                    for (int j = 0; j < 5; j++) {
-                        if (this.getValorDado(j) == i) {
-                            trio++;
-                        }
-                    }
-                    if (trio == 3) {
-                        break;
-                    }
-                }
-                // Verifica se ha uma dupla
-                for (int i = 1; i <= 6; i++) {
-                    dupla = 0;
-                    for (int j = 0; j < 5; j++) {
-                        if (this.getValorDado(j) == i) {
-                            dupla++;
-                        }
-                    }
-                    if (dupla == 2) {
-                        break;
-                    }
-                }
-                // Se existir um trio e uma dupla, pontua
-                if (dupla == 2 && trio == 3) {
-                    jogadas[1][jogada - 1] = 25;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // Sequencia alta
-            case 10: {
-                if (this.getValorDado(0) == 2 && this.getValorDado(1) == 3 && this.getValorDado(2) == 4
-                        && this.getValorDado(3) == 5 && this.getValorDado(4) == 6) {
-                    jogadas[1][jogada - 1] = 30;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // Sequencia baixa
-            case 11: {
-                if (this.getValorDado(0) == 1 && this.getValorDado(1) == 2 && this.getValorDado(2) == 3
-                        && this.getValorDado(3) == 4 && this.getValorDado(4) == 5) {
-                    jogadas[1][jogada - 1] = 40;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // General
-            case 12: {
-                int repetidoX5 = 0;
-                for (int i = 1; i <= 6; i++) {
-                    repetidoX5 = 0;
-                    for (int j = 0; j < 5; j++) {
-                        if (this.getValorDado(j) == i) {
-                            repetidoX5++;
-                        }
-                    }
-                    if (repetidoX5 == 5) {
-                        break;
-                    }
-                }
-                if (repetidoX5 == 5) {
-                    jogadas[1][jogada - 1] = 50;
-                } else {
-                    jogadas[1][jogada - 1] = 0;
-                }
-                break;
-            }
-            // Jogada aleatoria
-            case 13: {
-                pontos = 0;
-                for (int k = 0; k < 5; k++) {
-                    pontos += this.getValorDado(k);
-                }
-                jogadas[1][jogada - 1] = pontos;
+            if (repetidoX3 == 3) {
                 break;
             }
         }
+        if (repetidoX3 == 3) {
+            trinca = true;
+        } else {
+            trinca = false;
+        }
+
+        return trinca;
     }
+
+    // Jogada de Quadra
+    public boolean quadra() {
+        boolean quadra;
+        int repetidoX4 = 0;
+
+        for (int i = 1; i <= 6; i++) {
+            repetidoX4 = 0;
+            for (int j = 0; j < 5; j++) {
+                if (getValorDado(j) == i) {
+                    repetidoX4++;
+                }
+            }
+            if (repetidoX4 == 4) {
+                break;
+            }
+        }
+        if (repetidoX4 == 4) {
+            quadra = true;
+        } else {
+            quadra = false;
+        }
+
+        return quadra;
+    }
+
+    // Jogada de Full-hand ou Full-house
+    public boolean fullHand() {
+        boolean fullHand;
+
+        ordenaDados();
+        int trio = 0, dupla = 0;
+        // Verifica se ha um trio
+        for (int i = 1; i <= 6; i++) {
+            trio = 0;
+            for (int j = 0; j < 5; j++) {
+                if (this.getValorDado(j) == i) {
+                    trio++;
+                }
+            }
+            if (trio == 3) {
+                break;
+            }
+        }
+        // Verifica se ha uma dupla
+        for (int i = 1; i <= 6; i++) {
+            dupla = 0;
+            for (int j = 0; j < 5; j++) {
+                if (this.getValorDado(j) == i) {
+                    dupla++;
+                }
+            }
+            if (dupla == 2) {
+                break;
+            }
+        }
+        if (dupla == 2 && trio == 3) {
+            fullHand = true;
+        } else {
+            fullHand = false;
+        }
+
+        return fullHand;
+    }
+
+    // Jogada de Sequencia Alta
+    public boolean sequenciaAlta() {
+        boolean sequenciaAlta;
+
+        if (getValorDado(0) == 2 && getValorDado(1) == 3 && getValorDado(2) == 4 && getValorDado(3) == 5
+                && getValorDado(4) == 6) {
+            sequenciaAlta = true;
+        } else {
+            sequenciaAlta = false;
+        }
+
+        return sequenciaAlta;
+    }
+
+    // Jogada de Sequencia Baixa
+    public boolean sequenciaBaixa() {
+        boolean sequenciaBaixa;
+
+        if (getValorDado(0) == 1 && getValorDado(1) == 2 && getValorDado(2) == 3 && getValorDado(3) == 4
+                && getValorDado(4) == 5) {
+            sequenciaBaixa = true;
+        } else {
+            sequenciaBaixa = false;
+        }
+
+        return sequenciaBaixa;
+    }
+
+    // Jogada de General
+    public boolean general() {
+        boolean general;
+
+        int repetidoX5 = 0;
+        for (int i = 1; i <= 6; i++) {
+            repetidoX5 = 0;
+            for (int j = 0; j < 5; j++) {
+                if (getValorDado(j) == i) {
+                    repetidoX5++;
+                }
+            }
+            if (repetidoX5 == 5) {
+                break;
+            }
+        }
+        if (repetidoX5 == 5) {
+            general = true;
+        } else {
+            general = false;
+        }
+
+        return general;
+    }
+
+    public int jogadaAleatoria() {
+        int pontos = 0;
+
+        for (int k = 0; k < 5; k++) {
+            pontos += getValorDado(k);
+        }
+
+        return pontos;
+    }
+
     // Ninguem no mundo consegue o que quer, e eu acho isso lindo.
 
     // Pontua automaticamente a jogada da maquina, buscando maximizar a pontuacao

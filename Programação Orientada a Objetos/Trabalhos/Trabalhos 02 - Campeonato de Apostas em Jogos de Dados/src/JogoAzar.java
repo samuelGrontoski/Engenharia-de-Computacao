@@ -6,8 +6,12 @@ public final class JogoAzar extends JogoDados {
 
     // Soma as faces dos dados
     @Override
-    public int somarFacesSorteadas(Dado[] dados) {
+    public int somarFacesSorteadas() {
         int soma = 0;
+
+        for (int i = 0; i < 2; i++) {
+            soma += getValorDado(i);
+        }
 
         return soma;
     }
@@ -20,30 +24,34 @@ public final class JogoAzar extends JogoDados {
         return validade;
     }
 
+    @Override
+    public String mostrarJogadas() {
+        String jogadas = "";
+        return jogadas;
+    }
+
     // Executa o jogo
     @Override
-    public boolean executarJogo(int rodada) {
+    public boolean executarJogo(Jogador jogador) {
         boolean resultado = false;
 
         // Rola os dados a primeira vez
-        this.rolarDados();
-        int somaFaces = 0;
-        for (int i = 0; i < 2; i++) {
-            somaFaces += getValorDado(i);
-        }
+        rolarDados();
+        int somaFaces = somarFacesSorteadas();
         System.out.println("Lancamento 1:");
         System.out.println(getValorDado(0) + " e " + getValorDado(1) + " = " + somaFaces);
 
         // Se o resultado da soma dos dados for 7 ou 11, o jogador ganha
         if (somaFaces == 7 || somaFaces == 11) {
             resultado = true;
-            System.out.println("Jogador ganhou!");
+            System.out.println("Jogador ganhou!\n");
         }
         // Se o resultado da soma dos dados for 2, 3 ou 12 , o jogador perde
         if (somaFaces == 2 || somaFaces == 3 || somaFaces == 12) {
             resultado = false;
-            System.out.println("Jogador perdeu!");
-        } else { // Caso nenhum dos casos seja cumprido, inicia o ciclo para achar o valor obtido da soma
+            System.out.println("Jogador perdeu!\n");
+        } else { // Caso nenhum dos casos seja cumprido, inicia o ciclo para achar o valor obtido
+                 // da soma
             int valorBuscado = somaFaces;
             System.out.println("Numero a ser buscado: " + valorBuscado);
             int novaSoma;
@@ -52,21 +60,19 @@ public final class JogoAzar extends JogoDados {
             do {
                 novaSoma = 0;
                 rolarDados();
-                for (int i = 0; i < 2; i++) {
-                    novaSoma += getValorDado(i);
-                }
+                novaSoma = somarFacesSorteadas();
                 System.out.println("Lancamento " + lancamentoAtual + ":");
                 System.out.println(getValorDado(0) + " e " + getValorDado(1) + " = " + novaSoma);
                 // Se o resultado da nova soma for igual a anterior, o jogador ganha
                 if (novaSoma == valorBuscado) {
                     resultado = true;
-                    System.out.println("Jogador ganhou!");
+                    System.out.println("Jogador ganhou!\n");
                     break;
                 }
                 // Se o resultado da nova soma dos dados for 2, 3 ou 12 , o jogador perde
                 if (novaSoma == 2 || novaSoma == 3 || novaSoma == 12) {
                     resultado = false;
-                    System.out.println("Jogador perdeu!");
+                    System.out.println("Jogador perdeu!\n");
                     break;
                 }
                 lancamentoAtual++;

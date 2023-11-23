@@ -28,7 +28,7 @@ public abstract class Jogador implements Serializable {
 
     // Valida a jogada
     public boolean validarJogada(int jogada) {
-        boolean validade = jogos[numJogos].validarJogada(jogada);
+        boolean validade = jogos[numJogos - 1].validarJogada(jogada);
 
         if(validade == false) {
             System.out.println("Esta jogada ja foi escolhida");
@@ -43,23 +43,21 @@ public abstract class Jogador implements Serializable {
 
     public abstract int escolherJogo();
 
-    public abstract int escolherJogada();
-
     public abstract void iniciarJogoAzar(float valorAposta, int rodada);
 
     public abstract void iniciarJogoGeneral(float valorAposta, int rodada);
 
-    public boolean executarJogo(int rodada, int n) {
-        boolean resultado = jogos[rodada].executarJogo(n);
+    public boolean executarJogo(int rodada, Jogador jogador) {
+        boolean resultado = jogos[rodada].executarJogo(jogador);
 
         return resultado;
     }
 
-    /* // Mostra as jogadas executadas
-    public void mostrarJogadasExecutadas() {
+    // Mostra as jogadas executadas
+    public void mostrarJogadasJogoGeneral(int rodada) {
         System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
-        System.out.println(jogoG.jogadaString());
-    } */
+        System.out.println(jogos[rodada].mostrarJogadas());
+    }
 
     // Obtem e retorna o nome do jogador
     public String getNome() {
@@ -67,7 +65,7 @@ public abstract class Jogador implements Serializable {
     }
 
     public void setNomeJogo(String nomeJogo){
-        jogos[numJogos].setNome(nomeJogo);
+        jogos[numJogos - 1].setNome(nomeJogo);
     }
 
     public JogoDados getJogo(int posicao) {

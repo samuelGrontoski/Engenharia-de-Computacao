@@ -56,37 +56,12 @@ public final class Humano extends Jogador implements JogarComoHumano {
     }
 
     @Override
-    public int escolherJogada() {
-        Scanner teclado = new Scanner(System.in);
-        int jogada;
-
-        boolean validade;
-        do {
-            do {
-                System.out.println("Para qual jogada deseja marcar: [1 - 13] " + this.getNome() + "?");
-                jogada = teclado.nextInt();
-                teclado.nextLine();
-                if (jogada < 1 || jogada > 13) {
-                    System.out.println("A jogada nao e valida");
-                }
-
-            } while (jogada < 1 || jogada > 13);
-
-            validade = this.validarJogada(jogada);
-            if (validade != true) {
-                System.out.println("A jogada nao e valida");
-            }
-        } while (validade != true);
-
-        return jogada;
-    }
-
-    @Override
     public void iniciarJogoAzar(float valorAposta, int rodada) {
+        Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoAzar(valorAposta);
         setJogo(novoJogo, rodada);
 
-        boolean resultado = executarJogo(rodada, rodada);
+        boolean resultado = executarJogo(rodada, jogadorAtual);
 
         if (resultado == true) {
             setSaldo(getSaldo() + (valorAposta * 2));
@@ -95,16 +70,11 @@ public final class Humano extends Jogador implements JogarComoHumano {
 
     @Override
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
+        Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoGeneral(valorAposta);
         setJogo(novoJogo, rodada);
-        boolean resultado = false;
-
-        for(int i = 0; i < 13; i++) {
-            jogarDados();
-            System.out.println(toString());
-            int jogada = escolherJogada();
-            resultado = executarJogo(rodada, jogada);
-        }
+        
+        boolean resultado = executarJogo(rodada, jogadorAtual);
 
         if (resultado == true) {
             setSaldo(getSaldo() + (valorAposta * 2));

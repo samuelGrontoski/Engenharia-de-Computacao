@@ -25,24 +25,18 @@ public final class Maquina extends Jogador implements JogarComoMaquina{
         int jogo = 1;
 
         Random x = new Random();
-        jogo = x.nextInt(1) + 1;
+        jogo = x.nextInt(2) + 1;
 
         return jogo;
     }
 
     @Override
-    public int escolherJogada() {
-        int jogada = 0;
-
-        return jogada;
-    }
-
-    @Override
     public void iniciarJogoAzar(float valorAposta, int rodada) {
+        Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoAzar(valorAposta);
         setJogo(novoJogo, rodada);
 
-        boolean resultado = executarJogo(rodada);
+        boolean resultado = executarJogo(rodada, jogadorAtual);
 
         if (resultado == true) {
             setSaldo(getSaldo() + (valorAposta * 2));

@@ -117,11 +117,11 @@ public class Campeonato implements Serializable {
                     if (valorAposta != 0) {
                         int jogo = jogadores[j].escolherJogo();
                         if (jogo == 1) {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo de Azar!");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo de Azar!\n");
                             jogadores[j].iniciarJogoAzar(valorAposta, i);
                         }
                         if (jogo == 2) {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo General!");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo General!\n");
                             jogadores[j].iniciarJogoGeneral(valorAposta, i);
                         }
                     } else {
