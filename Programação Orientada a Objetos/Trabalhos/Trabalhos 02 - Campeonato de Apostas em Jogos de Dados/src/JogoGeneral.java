@@ -57,34 +57,6 @@ public final class JogoGeneral extends JogoDados {
         return mostraJogadas;
     }
 
-    /*
-     * public int escolherJogada() {
-     * Scanner teclado = new Scanner(System.in);
-     * int jogada;
-     * 
-     * boolean validade;
-     * do {
-     * do {
-     * System.out.println("Para qual jogada deseja marcar: [1 - 13] " +
-     * this.getNome() + "?");
-     * jogada = teclado.nextInt();
-     * teclado.nextLine();
-     * if (jogada < 1 || jogada > 13) {
-     * System.out.println("A jogada nao e valida");
-     * }
-     * 
-     * } while (jogada < 1 || jogada > 13);
-     * 
-     * validade = this.validarJogada(jogada);
-     * if (validade != true) {
-     * System.out.println("A jogada nao e valida");
-     * }
-     * } while (validade != true);
-     * 
-     * return jogada;
-     * }
-     */
-
     // Executa o jogo
     @Override
     public boolean executarJogo(Jogador jogador) {
@@ -164,9 +136,7 @@ public final class JogoGeneral extends JogoDados {
                         int pontos = 0;
                         jogadas[0][jogada - 1] = 1;
                         if (trinca() == true) {
-                            for (int k = 0; k < 5; k++) {
-                                pontos += getValorDado(k);
-                            }
+                            pontos = somarFacesSorteadas();
                         } else {
                             pontos = 0;
                         }
@@ -178,9 +148,7 @@ public final class JogoGeneral extends JogoDados {
                         int pontos = 0;
                         jogadas[0][jogada - 1] = 1;
                         if (quadra() == true) {
-                            for (int k = 0; k < 5; k++) {
-                                pontos += getValorDado(k);
-                            }
+                            pontos = somarFacesSorteadas();
                         } else {
                             pontos = 0;
                         }
@@ -230,7 +198,7 @@ public final class JogoGeneral extends JogoDados {
                     // Jogada aleatoria
                     case 13: {
                         jogadas[0][jogada - 1] = 1;
-                        jogadas[1][jogada - 1] = jogadaAleatoria();
+                        jogadas[1][jogada - 1] = somarFacesSorteadas();
                         break;
                     }
                 }
@@ -258,15 +226,158 @@ public final class JogoGeneral extends JogoDados {
                         case 11: {
                             if (jogadas[0][10] == 0 && sequenciaBaixa() == true) {
                                 jogadas[0][10] = 1;
-                                jogadas[0][10] = 40;
+                                jogadas[1][10] = 40;
                                 System.out.println("11");
                                 jogadaFeita = true;
                                 break;
                             }
                         }
-
-                        default:
+                        // Sequencia Alta
+                        case 10: {
+                            if (jogadas[0][9] == 0 && sequenciaAlta() == true) {
+                                jogadas[0][9] = 1;
+                                jogadas[1][9] = 30;
+                                System.out.println("10");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Full-hand ou Full-house
+                        case 9: {
+                            if (jogadas[0][8] == 0 && fullHand() == true) {
+                                jogadas[0][8] = 1;
+                                jogadas[1][8] = 25;
+                                System.out.println("9");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Quadra
+                        case 8: {
+                            if (jogadas[0][7] == 0 && quadra() == true) {
+                                jogadas[0][7] = 1;
+                                jogadas[1][7] = somarFacesSorteadas();
+                                System.out.println("8");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Trinca
+                        case 7: {
+                            if (jogadas[0][6] == 0 && trinca() == true) {
+                                jogadas[0][6] = 1;
+                                jogadas[1][6] = somarFacesSorteadas();
+                                System.out.println("7");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 6
+                        case 6: {
+                            ordenaDados();
+                            int count6 = jogada1a6(6);
+                            if (jogadas[0][5] == 0 && count6 >= 1) {
+                                jogadas[0][5] = 1;
+                                jogadas[1][5] = count6 * 6;
+                                System.out.println("6");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 5
+                        case 5: {
+                            ordenaDados();
+                            int count5 = jogada1a6(5);
+                            if (jogadas[0][4] == 0 && count5 >= 1) {
+                                jogadas[0][4] = 1;
+                                jogadas[1][4] = count5 * 5;
+                                System.out.println("5");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 4
+                        case 4: {
+                            ordenaDados();
+                            int count4 = jogada1a6(4);
+                            if (jogadas[0][3] == 0 && count4 >= 1) {
+                                jogadas[0][3] = 1;
+                                jogadas[1][3] = count4 * 4;
+                                System.out.println("4");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 3
+                        case 3: {
+                            ordenaDados();
+                            int count3 = jogada1a6(3);
+                            if (jogadas[0][2] == 0 && count3 >= 1) {
+                                jogadas[0][2] = 1;
+                                jogadas[1][2] = count3 * 3;
+                                System.out.println("3");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 2
+                        case 2: {
+                            ordenaDados();
+                            int count2 = jogada1a6(2);
+                            if (jogadas[0][1] == 0 && count2 >= 1) {
+                                jogadas[0][1] = 1;
+                                jogadas[1][1] = count2 * 2;
+                                System.out.println("2");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada de 1
+                        case 1: {
+                            ordenaDados();
+                            int count1 = jogada1a6(1);
+                            if (jogadas[0][0] == 0 && count1 >= 1) {
+                                jogadas[0][0] = 1;
+                                jogadas[1][0] = count1 * 1;
+                                System.out.println("1");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada Aleatoria
+                        case 0: {
+                            if (jogadas[0][12] == 0) {
+                                jogadas[0][12] = 1;
+                                jogadas[1][12] = somarFacesSorteadas();
+                                System.out.println("13");
+                                jogadaFeita = true;
+                                break;
+                            }
+                        }
+                        // Jogada em sequencia
+                        // Se ate aqui uma posicao adequada nao foi encontrada, e escolhida a primeira
+                        // posicao livre
+                        default: {
+                            for (int i = 0; i < 13; i++) {
+                                if (jogadas[0][i] == 0) {
+                                    if (i < 6) {
+                                        jogadas[0][i] = 1;
+                                        jogadas[1][i] = jogada1a6(i + 1) * (i+1);
+                                        System.out.println("" + (i+1));
+                                        jogadaFeita = true;
+                                        break;
+                                    }
+                                    if (i >= 6) {
+                                        jogadas[0][i] = 1;
+                                        jogadas[1][i] = 0;
+                                        System.out.println("" + (i+1));
+                                        jogadaFeita = true;
+                                        break;
+                                    }
+                                }
+                            }
                             break;
+                        }
                     }
 
                 } while (jogadaFeita != true);
@@ -278,6 +389,7 @@ public final class JogoGeneral extends JogoDados {
 
         return resultado;
     }
+    // Ninguem no mundo consegue o que quer, e eu acho isso lindo.
 
     // Calcula a pontuacao das jogadas de 1 a 6
     public int jogada1a6(int n) {
@@ -433,326 +545,4 @@ public final class JogoGeneral extends JogoDados {
         return general;
     }
 
-    public int jogadaAleatoria() {
-        int pontos = 0;
-
-        for (int k = 0; k < 5; k++) {
-            pontos += getValorDado(k);
-        }
-
-        return pontos;
-    }
-
-    // Ninguem no mundo consegue o que quer, e eu acho isso lindo.
-
-    // Pontua automaticamente a jogada da maquina, buscando maximizar a pontuacao
-    // total (obviamente poderia ser melhor)
-    public void pontuarJogadaMaquina() {
-        boolean jogadaFeita = false;
-        int repeticao = 13;
-        int maiorRepeticao = 0;
-        int pontos = 0;
-
-        do { // O laco do serve para garantir que todas as opcoes sejam verificadas
-            repeticao--;
-            switch (repeticao) {
-                // General
-                case 12: {
-                    if (jogadas[0][11] == 0) {
-                        for (int i = 1; i <= 6; i++) {
-                            maiorRepeticao = 0;
-                            for (int j = 0; j < 5; j++) {
-                                if (this.getValorDado(j) == i) {
-                                    maiorRepeticao++;
-                                }
-                            }
-                            if (maiorRepeticao == 5) {
-                                jogadas[1][11] = 50;
-                                jogadas[0][11] = 1;
-                                System.out.println("12");
-                                jogadaFeita = true;
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-                // Sequencia abaixa
-                case 11: {
-                    if (jogadas[0][10] == 0) {
-                        if (this.getValorDado(0) == 1 && this.getValorDado(1) == 2 && this.getValorDado(2) == 3
-                                && this.getValorDado(3) == 4 && this.getValorDado(4) == 5) {
-                            jogadas[1][10] = 40;
-                            jogadas[0][10] = 1;
-                            System.out.println("11");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Sequencia alta
-                case 10: {
-                    if (jogadas[0][9] == 0) {
-                        if (this.getValorDado(0) == 2 && this.getValorDado(1) == 3 && this.getValorDado(2) == 4
-                                && this.getValorDado(3) == 5 && this.getValorDado(4) == 6) {
-                            jogadas[1][9] = 30;
-                            jogadas[0][9] = 1;
-                            System.out.println("10");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Full-hand/Full-house
-                case 9: {
-                    if (jogadas[0][8] == 0) {
-                        ordenaDados();
-                        int trio = 0, dupla = 0;
-                        // Verifica se ha um trio
-                        for (int i = 1; i <= 6; i++) {
-                            trio = 0;
-                            for (int j = 0; j < 5; j++) {
-                                if (this.getValorDado(j) == i) {
-                                    trio++;
-                                }
-                            }
-                            if (trio == 3) {
-                                break;
-                            }
-                        }
-                        // Verifica se ha uma dupla
-                        for (int i = 1; i <= 6; i++) {
-                            dupla = 0;
-                            for (int j = 0; j < 5; j++) {
-                                if (this.getValorDado(j) == i) {
-                                    dupla++;
-                                }
-                            }
-                            if (dupla == 2) {
-                                break;
-                            }
-                        }
-                        // Se existir um trio e uma dupla, pontua
-                        if (dupla == 2 && trio == 3) {
-                            jogadas[1][8] = 25;
-                            jogadas[0][8] = 1;
-                            System.out.println("9");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Quadra
-                case 8: {
-                    if (jogadas[0][7] == 0) {
-                        ordenaDados();
-                        int repetidoX4 = 0;
-                        pontos = 0;
-                        for (int i = 1; i <= 6; i++) {
-                            repetidoX4 = 0;
-                            for (int j = 0; j < 5; j++) {
-                                if (this.getValorDado(j) == i) {
-                                    repetidoX4++;
-                                }
-                            }
-                            if (repetidoX4 == 4) {
-                                for (int k = 0; k < 5; k++) {
-                                    pontos += this.getValorDado(k);
-                                }
-                                jogadas[1][7] = pontos;
-                                jogadas[0][7] = 1;
-                                System.out.println("8");
-                                jogadaFeita = true;
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-                // Codigo desenvolvido por Samuel Grontoski
-                // Trinca
-                case 7: {
-                    if (jogadas[0][6] == 0) {
-                        ordenaDados();
-                        int repetidoX3 = 0;
-                        pontos = 0;
-                        for (int i = 1; i <= 6; i++) {
-                            repetidoX3 = 0;
-                            for (int j = 0; j < 5; j++) {
-                                if (this.getValorDado(j) == i) {
-                                    repetidoX3++;
-                                }
-                            }
-                            if (repetidoX3 == 3) {
-                                for (int k = 0; k < 5; k++) {
-                                    pontos += this.getValorDado(k);
-                                }
-                                jogadas[1][6] = pontos;
-                                jogadas[0][6] = 1;
-                                System.out.println("7");
-                                jogadaFeita = true;
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-                // Jogada de 6
-                case 6: {
-                    if (jogadas[0][5] == 0) {
-                        ordenaDados();
-                        int count6 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 6)
-                                count6++;
-                        }
-                        if (count6 >= 1) {
-                            jogadas[1][5] = count6 * 6;
-                            jogadas[0][5] = 1;
-                            System.out.println("6");
-                            jogadaFeita = true;
-                        }
-                        break;
-                    }
-                    break;
-                }
-                // Jogada de 5
-                case 5: {
-                    if (jogadas[0][4] == 0) {
-                        ordenaDados();
-                        int count5 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 5)
-                                count5++;
-                        }
-                        if (count5 >= 1) {
-                            jogadas[1][4] = count5 * 5;
-                            jogadas[0][4] = 1;
-                            System.out.println("5");
-                            jogadaFeita = true;
-                        }
-
-                    }
-                    break;
-                }
-                // Jogada de 4
-                case 4: {
-                    if (jogadas[0][3] == 0) {
-                        ordenaDados();
-                        int count4 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 4)
-                                count4++;
-                        }
-                        if (count4 >= 1) {
-                            jogadas[1][3] = count4 * 4;
-                            jogadas[0][3] = 1;
-                            System.out.println("4");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Jogada de 3
-                case 3: {
-                    if (jogadas[0][2] == 0) {
-                        ordenaDados();
-                        int count3 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 3)
-                                count3++;
-                        }
-                        if (count3 >= 1) {
-                            jogadas[1][2] = count3 * 3;
-                            jogadas[0][2] = 1;
-                            System.out.println("3");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Jogada de 2
-                case 2: {
-                    if (jogadas[0][1] == 0) {
-                        ordenaDados();
-                        int count2 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 2)
-                                count2++;
-                        }
-                        if (count2 >= 1) {
-                            jogadas[1][1] = count2 * 2;
-                            jogadas[0][1] = 1;
-                            System.out.println("2");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Jogada de 1
-                case 1: {
-                    if (jogadas[0][0] == 0) {
-                        ordenaDados();
-                        int count1 = 0;
-                        for (int i = 0; i < 5; i++) {
-                            if (this.getValorDado(i) == 1)
-                                count1++;
-                        }
-                        if (count1 >= 1) {
-                            jogadas[1][0] = count1 * 1;
-                            jogadas[0][0] = 1;
-                            System.out.println("1");
-                            jogadaFeita = true;
-                        }
-                    }
-                    break;
-                }
-                // Jogada aleatoria
-                case 0: {
-                    if (jogadas[0][12] == 0) {
-                        pontos = 0;
-                        for (int k = 0; k < 5; k++) {
-                            pontos += this.getValorDado(k);
-                        }
-                        jogadas[1][12] = pontos;
-                        jogadas[0][12] = 1;
-                        System.out.println("13");
-                        jogadaFeita = true;
-                    }
-                    break;
-                }
-                // Jogada em sequencia
-                // Se ate aqui uma posicao adequada nao foi encontrada, e escolhida a primeira
-                // posicao livre
-                default: {
-                    for (int i = 0; i < 13; i++) {
-                        int valor = 0;
-                        if (jogadas[0][i] == 0) {
-                            if (i < 6) {
-                                for (int j = 0; j < 5; j++) {
-                                    if (this.getValorDado(j) == i + 1)
-                                        valor++;
-                                }
-                                int num = i + 1;
-                                jogadas[1][i] = valor * num;
-                                jogadas[0][i] = 1;
-                                System.out.println("" + num);
-                                jogadaFeita = true;
-                                break;
-                            }
-                            if (i >= 6) {
-                                jogadas[1][i] = 0;
-                                jogadas[0][i] = 1;
-                                int num = i + 1;
-                                System.out.println("" + num);
-                                jogadaFeita = true;
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-            }
-        } while (jogadaFeita != true);
-    }
 }
