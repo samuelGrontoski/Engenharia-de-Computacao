@@ -16,12 +16,12 @@ public abstract class Jogador implements Serializable {
 
     // Joga os dados para o jogador especifico
     public void jogarDados() {
-        jogos[numJogos].rolarDados();
+        jogos[numJogos - 1].rolarDados();
     }
 
     // Passa o resultados dos dados jogados pelo jogador para uma string
     public String toString() {
-        String resultado = jogos.toString();
+        String resultado = jogos[numJogos - 1].toString();
 
         return resultado;
     }
@@ -47,10 +47,10 @@ public abstract class Jogador implements Serializable {
 
     public abstract void iniciarJogoAzar(float valorAposta, int rodada);
 
-    public abstract void iniciarJogoGeneral(float valorAposta, int jogada);
+    public abstract void iniciarJogoGeneral(float valorAposta, int rodada);
 
-    public boolean executarJogo(int rodada) {
-        boolean resultado = jogos[rodada].executarJogo();
+    public boolean executarJogo(int rodada, int n) {
+        boolean resultado = jogos[rodada].executarJogo(n);
 
         return resultado;
     }

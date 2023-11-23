@@ -86,7 +86,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
         JogoDados novoJogo = new JogoAzar(valorAposta);
         setJogo(novoJogo, rodada);
 
-        boolean resultado = executarJogo(rodada);
+        boolean resultado = executarJogo(rodada, rodada);
 
         if (resultado == true) {
             setSaldo(getSaldo() + (valorAposta * 2));
@@ -97,8 +97,14 @@ public final class Humano extends Jogador implements JogarComoHumano {
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
         JogoDados novoJogo = new JogoGeneral(valorAposta);
         setJogo(novoJogo, rodada);
+        boolean resultado = false;
 
-        boolean resultado = executarJogo(rodada);
+        for(int i = 0; i < 13; i++) {
+            jogarDados();
+            System.out.println(toString());
+            int jogada = escolherJogada();
+            resultado = executarJogo(rodada, jogada);
+        }
 
         if (resultado == true) {
             setSaldo(getSaldo() + (valorAposta * 2));

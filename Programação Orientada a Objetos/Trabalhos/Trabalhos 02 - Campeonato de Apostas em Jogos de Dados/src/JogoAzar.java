@@ -1,9 +1,7 @@
 public final class JogoAzar extends JogoDados {
-    private float valorAposta;
 
     public JogoAzar(float valorAposta) {
-        super("Jogo Azar", 2);
-        this.valorAposta = valorAposta;
+        super("Jogo Azar", 2, valorAposta);
     }
 
     // Soma as faces dos dados
@@ -17,14 +15,14 @@ public final class JogoAzar extends JogoDados {
     // Valida se a jogada e validad ou nao
     @Override
     public boolean validarJogada(int jogada) {
-        boolean validade = false;
+        boolean validade = true;
 
         return validade;
     }
 
     // Executa o jogo
     @Override
-    public boolean executarJogo() {
+    public boolean executarJogo(int rodada) {
         boolean resultado = false;
 
         // Rola os dados a primeira vez

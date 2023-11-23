@@ -1,16 +1,14 @@
 public final class JogoGeneral extends JogoDados {
     private int[][] jogadas;
-    private float valorAposta;
 
     // Construtor
     public JogoGeneral(float valorAposta) {
-        super("Jogo General", 5);
+        super("Jogo General", 5, valorAposta);
         jogadas = new int[2][13];
         for (int i = 0; i < 13; i++) {
             jogadas[0][i] = 0;
             jogadas[1][i] = 0;
         }
-        this.valorAposta = valorAposta;
     }
 
     // Soma as faces dos dados
@@ -54,9 +52,9 @@ public final class JogoGeneral extends JogoDados {
 
     // Executa o jogo
     @Override
-    public boolean executarJogo() {
-        boolean resultado = false;
-        rolarDados();
+    public boolean executarJogo(int jogada) {
+        boolean resultado = true;
+
 
         return resultado;
     }

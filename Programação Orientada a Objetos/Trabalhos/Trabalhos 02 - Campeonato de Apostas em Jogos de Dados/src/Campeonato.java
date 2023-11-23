@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Campeonato implements Serializable {
     private Jogador[] jogadores;
@@ -116,11 +117,11 @@ public class Campeonato implements Serializable {
                     if (valorAposta != 0) {
                         int jogo = jogadores[j].escolherJogo();
                         if (jogo == 1) {
-                            System.out.println("Apostando R$" + valorAposta + " no Jogo de Azar!");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo de Azar!");
                             jogadores[j].iniciarJogoAzar(valorAposta, i);
                         }
                         if (jogo == 2) {
-                            System.out.println("Apostando R$" + valorAposta + " no Jogo General!");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo General!");
                             jogadores[j].iniciarJogoGeneral(valorAposta, i);
                         }
                     } else {

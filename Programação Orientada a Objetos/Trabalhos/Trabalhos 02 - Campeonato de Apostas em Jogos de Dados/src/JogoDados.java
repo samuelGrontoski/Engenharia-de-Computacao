@@ -4,14 +4,16 @@ public abstract class JogoDados implements Serializable, Estatistica {
     private int nDados;
     private String nomeJogo;
     private Dado[] dados;
+    private float valorAposta;
 
-    public JogoDados(String nomeJogo, int nDados) {
+    public JogoDados(String nomeJogo, int nDados, float valorAposta) {
         this.nomeJogo = nomeJogo;
         this.nDados = nDados;
         dados = new Dado[nDados];
         for (int i = 0; i < nDados; i++) {
             dados[i] = new Dado();
         }
+        this.valorAposta = valorAposta;
     }
 
     // Rola os dados
@@ -42,7 +44,7 @@ public abstract class JogoDados implements Serializable, Estatistica {
     public abstract boolean validarJogada(int jogada);
 
     // Executa o jogo
-    public abstract boolean executarJogo();
+    public abstract boolean executarJogo(int n);
 
     public int getnDados() {
         return nDados;
@@ -68,11 +70,19 @@ public abstract class JogoDados implements Serializable, Estatistica {
         this.dados[i].atualizaValor(valor);
     }
 
+    public float getValorAposta() {
+        return valorAposta;
+    }
+
+    public void setValorAposta(float valorAposta) {
+        this.valorAposta = valorAposta;
+    }
+
     // Passa os valores rodados para uma string
     public String toString() {
         String resultado = "Valores obtidos: ";
         for (int i = 0; i < nDados; i++) {
-            resultado += "" + dados[i];
+            resultado += "" + getValorDado(i);
             if (i != 4)
                 resultado += "-";
         }
