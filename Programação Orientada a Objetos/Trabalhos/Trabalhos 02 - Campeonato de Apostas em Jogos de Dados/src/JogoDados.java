@@ -40,9 +40,6 @@ public abstract class JogoDados implements Serializable, Estatistica {
     // Soma as faces dos dados
     public abstract int somarFacesSorteadas();
 
-    // Validar jogada
-    public abstract boolean validarJogada(int jogada);
-
     // Mostrar as jogadas
     public abstract String mostrarJogadas();
 

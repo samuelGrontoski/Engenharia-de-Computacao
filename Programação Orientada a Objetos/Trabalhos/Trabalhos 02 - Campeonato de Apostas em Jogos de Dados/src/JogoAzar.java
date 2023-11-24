@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public final class JogoAzar extends JogoDados {
 
     public JogoAzar(float valorAposta) {
@@ -14,14 +16,6 @@ public final class JogoAzar extends JogoDados {
         }
 
         return soma;
-    }
-
-    // Valida se a jogada e validad ou nao
-    @Override
-    public boolean validarJogada(int jogada) {
-        boolean validade = true;
-
-        return validade;
     }
 
     @Override
@@ -44,12 +38,16 @@ public final class JogoAzar extends JogoDados {
         // Se o resultado da soma dos dados for 7 ou 11, o jogador ganha
         if (somaFaces == 7 || somaFaces == 11) {
             resultado = true;
-            System.out.println("Jogador ganhou!\n");
+            System.out.println("\n------------------------------\n");
+            System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            System.out.println("\n------------------------------\n");
         }
         // Se o resultado da soma dos dados for 2, 3 ou 12 , o jogador perde
         if (somaFaces == 2 || somaFaces == 3 || somaFaces == 12) {
             resultado = false;
-            System.out.println("Jogador perdeu!\n");
+            System.out.println("\n------------------------------\n");
+            System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            System.out.println("\n------------------------------\n");
         } else { // Caso nenhum dos casos seja cumprido, inicia o ciclo para achar o valor obtido
                  // da soma
             int valorBuscado = somaFaces;
@@ -66,13 +64,17 @@ public final class JogoAzar extends JogoDados {
                 // Se o resultado da nova soma for igual a anterior, o jogador ganha
                 if (novaSoma == valorBuscado) {
                     resultado = true;
-                    System.out.println("Jogador ganhou!\n");
+                    System.out.println("\n------------------------------\n");
+                    System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+                    System.out.println("\n------------------------------\n");
                     break;
                 }
                 // Se o resultado da nova soma dos dados for 2, 3 ou 12 , o jogador perde
                 if (novaSoma == 2 || novaSoma == 3 || novaSoma == 12) {
                     resultado = false;
-                    System.out.println("Jogador perdeu!\n");
+                    System.out.println("\n------------------------------\n");
+                    System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+                    System.out.println("\n------------------------------\n");
                     break;
                 }
                 lancamentoAtual++;

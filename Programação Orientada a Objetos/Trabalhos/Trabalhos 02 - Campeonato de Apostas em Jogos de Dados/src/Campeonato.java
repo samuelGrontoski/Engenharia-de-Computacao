@@ -107,25 +107,30 @@ public class Campeonato implements Serializable {
     // Inicia o campeonato
     public void iniciarCampeonato() {
         if (numJogadores == 0) {
-            System.out.println("Nenhum jogador registrado, nao foi possivel iniciar o campeonato.");
+            System.out.println("Nenhum jogador registrado, nao foi possivel iniciar o campeonato.\n");
         } else {
             for (int i = 0; i < 10; i++) {
-                System.out.println("Iniciando a rodada numero " + (i + 1) + "!\n");
+                System.out.println("------------------------------");
+                System.out.println("\nIniciando a rodada numero " + (i + 1) + "!\n");
 
                 for (int j = 0; j < numJogadores; j++) {
                     float valorAposta = jogadores[j].valorAposta();
                     if (valorAposta != 0) {
                         int jogo = jogadores[j].escolherJogo();
                         if (jogo == 1) {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo de Azar!\n");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
+                                    + " no Jogo de Azar!\n");
+                            System.out.println("------------------------------");
                             jogadores[j].iniciarJogoAzar(valorAposta, i);
                         }
                         if (jogo == 2) {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta) + " no Jogo General!\n");
+                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
+                                    + " no Jogo General!\n");
+                            System.out.println("------------------------------");
                             jogadores[j].iniciarJogoGeneral(valorAposta, i);
                         }
                     } else {
-                        System.out.println("Nao e possivel realizar a rodada para " + jogadores[j].getNome());
+                        System.out.println("Nao e possivel realizar a rodada para " + jogadores[j].getNome() + ".\n");
                     }
                 }
             }
@@ -133,11 +138,63 @@ public class Campeonato implements Serializable {
     }
 
     public void imprimirSaldos() {
+        Scanner teclado = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("Escolha uma opcao:");
+            System.out.println("(1) Para todos os jogadores");
+            System.out.println("(2) Para todos os jogadores humanos");
+            System.out.println("(3) Para todos os jogadores maquinas");
+            opcao = teclado.nextInt();
+            teclado.nextLine();
+
+            switch (opcao) {
+                case 1: {
+                    System.out.println("\n------------------------------\n");
+                    System.out.println("Saldos atuais de todos os jogadores:");
+                    for (int i = 0; i < numJogadores; i++) {
+                        System.out.println(
+                                jogadores[i].getNome() + ": R$"
+                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
+                    }
+                    System.out.println("\n------------------------------\n");
+                    break;
+                }
+                case 2: {
+                    System.out.println("\n------------------------------\n");
+                    System.out.println("Saldos atuais de todos os jogadores humanos:");
+                    for (int i = 0; i < numJogadores; i++) {
+                        if (jogadores[i] instanceof Humano) {
+                            System.out.println(
+                                jogadores[i].getNome() + ": R$"
+                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
+                        }
+                    }
+                    System.out.println("\n------------------------------\n");
+                    break;
+                }
+                case 3: {
+                    System.out.println("\n------------------------------\n");
+                    System.out.println("Saldos atuais de todos os jogadores maquinas:");
+                    for (int i = 0; i < numJogadores; i++) {
+                        if (jogadores[i] instanceof Maquina) {
+                            System.out.println(
+                                jogadores[i].getNome() + ": R$"
+                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
+                        }
+                    }
+                    System.out.println("\n------------------------------\n");
+                    break;
+                }
+            }
+        } while (opcao < 1 || opcao > 3);
 
     }
 
     public void imprimirResultados() {
-
+        Scanner teclado = new Scanner(System.in);
+        int opcao;
     }
 
     public void imprimirEstatisticas() {

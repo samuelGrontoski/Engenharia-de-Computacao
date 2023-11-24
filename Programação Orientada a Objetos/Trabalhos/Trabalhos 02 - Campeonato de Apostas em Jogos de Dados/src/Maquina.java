@@ -1,7 +1,7 @@
 import java.util.Random;
 
-public final class Maquina extends Jogador implements JogarComoMaquina{
-    public Maquina(String nome){
+public final class Maquina extends Jogador implements JogarComoMaquina {
+    public Maquina(String nome) {
         super(nome);
     }
 
@@ -10,7 +10,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina{
         float valorAposta;
 
         if (getSaldo() != 0) {
-            valorAposta = (float)getSaldo() * (float)(0.2);
+            valorAposta = (float) getSaldo() * (float) (0.2);
             setSaldo(getSaldo() - valorAposta);
         } else {
             System.out.println("Saldo esta zerado!");
@@ -45,6 +45,14 @@ public final class Maquina extends Jogador implements JogarComoMaquina{
 
     @Override
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
-        
+        Jogador jogadorAtual = new Maquina(getNome());
+        JogoDados novoJogo = new JogoGeneral(valorAposta);
+        setJogo(novoJogo, rodada);
+
+        boolean resultado = executarJogo(rodada, jogadorAtual);
+
+        if (resultado == true) {
+            setSaldo(getSaldo() + (valorAposta * 2));
+        }
     }
 }

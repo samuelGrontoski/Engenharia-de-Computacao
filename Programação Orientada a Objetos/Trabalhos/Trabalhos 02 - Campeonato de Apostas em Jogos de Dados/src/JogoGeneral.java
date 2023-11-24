@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public final class JogoGeneral extends JogoDados {
@@ -33,10 +34,9 @@ public final class JogoGeneral extends JogoDados {
     }
 
     // Verifica se a posicao da jogada e valida ou nao
-    @Override
     public boolean validarJogada(int jogada) {
         boolean validade = true;
-        if (jogadas[0][jogada] != 0) {
+        if (jogadas[0][jogada - 1] != 0) {
             validade = false;
         }
         return validade;
@@ -63,17 +63,19 @@ public final class JogoGeneral extends JogoDados {
         Scanner teclado = new Scanner(System.in);
         int jogada;
         boolean validade;
-        boolean resultado = true;
+        boolean resultado;
 
         for (int r = 0; r < 13; r++) {
             System.out.println("Iniciando a rodada " + (r + 1) + " do Jogo General!");
             rolarDados();
-            System.out.println(toString());
+            System.out.println(toString() + "\n");
             // Verifica se e um humano jogando
             if (jogador instanceof Humano) {
                 do {
                     do {
                         System.out.println("Para qual jogada deseja marcar: [1 - 13] " + jogador.getNome() + "?");
+                        System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+                        System.out.println(mostrarJogadas());
                         jogada = teclado.nextInt();
                         teclado.nextLine();
                         if (jogada < 1 || jogada > 13) {
@@ -206,6 +208,8 @@ public final class JogoGeneral extends JogoDados {
             // Verifica se e uma maquina jogando
             if (jogador instanceof Maquina) {
                 System.out.println("Para qual jogada deseja marcar: [1 - 13] " + jogador.getNome() + "?");
+                System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+                System.out.println(mostrarJogadas());
 
                 boolean jogadaFeita = false;
                 int repeticao = 13;
@@ -362,15 +366,15 @@ public final class JogoGeneral extends JogoDados {
                                 if (jogadas[0][i] == 0) {
                                     if (i < 6) {
                                         jogadas[0][i] = 1;
-                                        jogadas[1][i] = jogada1a6(i + 1) * (i+1);
-                                        System.out.println("" + (i+1));
+                                        jogadas[1][i] = jogada1a6(i + 1) * (i + 1);
+                                        System.out.println("" + (i + 1));
                                         jogadaFeita = true;
                                         break;
                                     }
                                     if (i >= 6) {
                                         jogadas[0][i] = 1;
                                         jogadas[1][i] = 0;
-                                        System.out.println("" + (i+1));
+                                        System.out.println("" + (i + 1));
                                         jogadaFeita = true;
                                         break;
                                     }
@@ -382,9 +386,25 @@ public final class JogoGeneral extends JogoDados {
 
                 } while (jogadaFeita != true);
             }
-            System.out.println("Jogada registrada!");
+            System.out.println("\nJogada registrada!");
+            System.out.println("Pontuacao atual:");
             System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
             System.out.println(mostrarJogadas());
+            System.out.println("\n----------------------------------------------------------------------------------------------------\n");
+        }
+
+        int soma1a12 = 0;
+        for (int i = 0; i < 12; i++) {
+            soma1a12 += jogadas[1][i];
+        }
+        if (soma1a12 > jogadas[1][12] * 2) {
+            resultado = true;
+            System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            System.out.println("\n------------------------------\n");
+        } else {
+            resultado = false;
+            System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            System.out.println("\n------------------------------\n");
         }
 
         return resultado;

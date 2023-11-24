@@ -26,19 +26,6 @@ public abstract class Jogador implements Serializable {
         return resultado;
     }
 
-    // Valida a jogada
-    public boolean validarJogada(int jogada) {
-        boolean validade = jogos[numJogos - 1].validarJogada(jogada);
-
-        if(validade == false) {
-            System.out.println("Esta jogada ja foi escolhida");
-        }
-        if(validade == true) {
-            System.out.println("Jogada registrada\n");
-        }
-        return validade;
-    }
-
     public abstract float valorAposta();
 
     public abstract int escolherJogo();
@@ -51,12 +38,6 @@ public abstract class Jogador implements Serializable {
         boolean resultado = jogos[rodada].executarJogo(jogador);
 
         return resultado;
-    }
-
-    // Mostra as jogadas executadas
-    public void mostrarJogadasJogoGeneral(int rodada) {
-        System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
-        System.out.println(jogos[rodada].mostrarJogadas());
     }
 
     // Obtem e retorna o nome do jogador
