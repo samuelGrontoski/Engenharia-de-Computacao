@@ -138,63 +138,183 @@ public class Campeonato implements Serializable {
     }
 
     public void imprimirSaldos() {
-        Scanner teclado = new Scanner(System.in);
-        int opcao;
+        System.out.println("\nEscolha uma opcao de impressao dos saldos:");
+        int opcao = escolherTipoJogador();
 
-        do {
-            System.out.println("Escolha uma opcao:");
-            System.out.println("(1) Para todos os jogadores");
-            System.out.println("(2) Para todos os jogadores humanos");
-            System.out.println("(3) Para todos os jogadores maquinas");
-            opcao = teclado.nextInt();
-            teclado.nextLine();
-
-            switch (opcao) {
-                case 1: {
-                    System.out.println("\n------------------------------\n");
-                    System.out.println("Saldos atuais de todos os jogadores:");
-                    for (int i = 0; i < numJogadores; i++) {
+        switch (opcao) {
+            case 1: {
+                System.out.println("\n------------------------------\n");
+                System.out.println("Saldos atuais de todos os jogadores:");
+                for (int i = 0; i < numJogadores; i++) {
+                    System.out.println(
+                            jogadores[i].getNome() + ": R$"
+                                    + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
+                }
+                System.out.println("\n------------------------------\n");
+                break;
+            }
+            case 2: {
+                System.out.println("\n------------------------------\n");
+                System.out.println("Saldos atuais de todos os jogadores humanos:");
+                for (int i = 0; i < numJogadores; i++) {
+                    if (jogadores[i] instanceof Humano) {
                         System.out.println(
                                 jogadores[i].getNome() + ": R$"
                                         + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
                     }
-                    System.out.println("\n------------------------------\n");
-                    break;
                 }
-                case 2: {
-                    System.out.println("\n------------------------------\n");
-                    System.out.println("Saldos atuais de todos os jogadores humanos:");
-                    for (int i = 0; i < numJogadores; i++) {
-                        if (jogadores[i] instanceof Humano) {
-                            System.out.println(
-                                jogadores[i].getNome() + ": R$"
-                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
-                        }
-                    }
-                    System.out.println("\n------------------------------\n");
-                    break;
-                }
-                case 3: {
-                    System.out.println("\n------------------------------\n");
-                    System.out.println("Saldos atuais de todos os jogadores maquinas:");
-                    for (int i = 0; i < numJogadores; i++) {
-                        if (jogadores[i] instanceof Maquina) {
-                            System.out.println(
-                                jogadores[i].getNome() + ": R$"
-                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
-                        }
-                    }
-                    System.out.println("\n------------------------------\n");
-                    break;
-                }
+                System.out.println("\n------------------------------\n");
+                break;
             }
-        } while (opcao < 1 || opcao > 3);
-
+            case 3: {
+                System.out.println("\n------------------------------\n");
+                System.out.println("Saldos atuais de todos os jogadores maquinas:");
+                for (int i = 0; i < numJogadores; i++) {
+                    if (jogadores[i] instanceof Maquina) {
+                        System.out.println(
+                                jogadores[i].getNome() + ": R$"
+                                        + new DecimalFormat("#0.##").format(jogadores[i].getSaldo()));
+                    }
+                }
+                System.out.println("\n------------------------------\n");
+                break;
+            }
+        }
     }
 
     public void imprimirResultados() {
         Scanner teclado = new Scanner(System.in);
-        int opcao;
+        int opcao1, opcao2;
+
+        do {
+            System.out.println("\nEscolha uma opcao de impressao para o extratos dos resultados:");
+            System.out.println("(1) Para o jogo de azar");
+            System.out.println("(2) Para o jogo general");
+            System.out.println("(3) Para todos os jogos");
+            opcao1 = teclado.nextInt();
+            teclado.nextLine();
+
+        } while (opcao1 < 1 || opcao1 > 3);
+
+        System.out.println("\nEscolha uma opcao:");
+        opcao2 = escolherTipoJogador();
+
+        switch (opcao1) {
+            // Imprime resultados de Jogo de Azar
+            case 1: {
+                switch (opcao2) {
+                    // Todos os jogadores
+                    case 1: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores humanos
+                    case 2: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Humano) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores maquinas
+                    case 3: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Maquina) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                }
+
+                break;
+            }
+            // Imprime resultados de Jogo General
+            case 2: {
+                switch (opcao2) {
+                    // Todos os jogadores
+                    case 1: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores humanos
+                    case 2: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Humano) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores maquinas
+                    case 3: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Maquina) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                }
+
+                break;
+            }
+            // Imprime resultados de todos os jogos
+            case 3: {
+                switch (opcao2) {
+                    // Todos os jogadores
+                    case 1: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores humanos
+                    case 2: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Humano) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                    // Jogadores maquinas
+                    case 3: {
+                        System.out.println("\n------------------------------\n");
+                        for (int i = 0; i < numJogadores; i++) {
+                            if (jogadores[i] instanceof Maquina) {
+
+                            }
+                        }
+                        System.out.println("\n------------------------------\n");
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
     }
 
     public void imprimirEstatisticas() {
@@ -240,5 +360,21 @@ public class Campeonato implements Serializable {
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());
         }
+    }
+
+    // Pergunta se a opcao é para humanos, maquinas ou todos os jogadores
+    public int escolherTipoJogador() {
+        Scanner teclado = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("(1) Para todos os jogadores");
+            System.out.println("(2) Para todos os jogadores humanos");
+            System.out.println("(3) Para todos os jogadores maquinas");
+            opcao = teclado.nextInt();
+            teclado.nextLine();
+        } while (opcao < 1 || opcao > 3);
+
+        return opcao;
     }
 }
