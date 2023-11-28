@@ -24,10 +24,13 @@ public final class Humano extends Jogador implements JogarComoHumano {
                 if (valorAposta > getSaldo()) {
                     System.out.println("Valor de aposta e maior que o saldo atual!\n");
                 }
-                if (valorAposta <= 0) {
+                if (valorAposta < 0) {
                     System.out.println("Valor de aposta invalido!\n");
                 }
-            } while (valorAposta > getSaldo() || valorAposta <= 0);
+                if (valorAposta == 0) {
+                    System.out.println("Aposta nula, a aposta nao sera executada!\n");
+                }
+            } while (valorAposta > getSaldo() || valorAposta < 0);
             setSaldo(getSaldo() - valorAposta);
             if (getSaldo() < 0) {
                 setSaldo(0);
@@ -64,7 +67,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
     public void iniciarJogoAzar(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoAzar(valorAposta);
-        setJogo(novoJogo, rodada);
+        super.setJogo(novoJogo, rodada);
 
         boolean resultado = executarJogo(rodada, jogadorAtual);
 
@@ -78,7 +81,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoGeneral(valorAposta);
-        setJogo(novoJogo, rodada);
+        super.setJogo(novoJogo, rodada);
 
         boolean resultado = executarJogo(rodada, jogadorAtual);
 

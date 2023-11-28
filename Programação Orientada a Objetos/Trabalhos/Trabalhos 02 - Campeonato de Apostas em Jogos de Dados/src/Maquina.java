@@ -42,7 +42,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina {
     public void iniciarJogoAzar(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoAzar(valorAposta);
-        setJogo(novoJogo, rodada);
+        super.setJogo(novoJogo, rodada);
 
         boolean resultado = executarJogo(rodada, jogadorAtual);
 
@@ -56,7 +56,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina {
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Maquina(getNome());
         JogoDados novoJogo = new JogoGeneral(valorAposta);
-        setJogo(novoJogo, rodada);
+        super.setJogo(novoJogo, rodada);
 
         boolean resultado = executarJogo(rodada, jogadorAtual);
 
