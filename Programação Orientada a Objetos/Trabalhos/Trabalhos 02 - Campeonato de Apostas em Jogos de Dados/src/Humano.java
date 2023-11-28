@@ -1,6 +1,8 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public final class Humano extends Jogador implements JogarComoHumano {
+    // Construtor (Heranca de Jogador)
     public Humano(String nome) {
         super(nome);
     }
@@ -13,7 +15,8 @@ public final class Humano extends Jogador implements JogarComoHumano {
         float valorAposta;
 
         if (getSaldo() != 0) {
-            System.out.println("Quanto deseja apostar? Saldo atual: " + getSaldo());
+            System.out.println(getNome() + " quanto deseja apostar? Saldo atual: R$"
+                    + new DecimalFormat("#0.##").format(getSaldo()));
             do {
                 valorAposta = teclado.nextFloat();
                 teclado.nextLine();
@@ -37,6 +40,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
         return valorAposta;
     }
 
+    // Pergunta ao jogador para qual jogo deseja apostar
     @Override
     public int escolherJogo() {
         Scanner teclado = new Scanner(System.in);
@@ -55,6 +59,7 @@ public final class Humano extends Jogador implements JogarComoHumano {
         return jogo;
     }
 
+    // Inicia o jogo de azar
     @Override
     public void iniciarJogoAzar(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
@@ -68,12 +73,13 @@ public final class Humano extends Jogador implements JogarComoHumano {
         }
     };
 
+    // Inicia o jogo general
     @Override
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
         JogoDados novoJogo = new JogoGeneral(valorAposta);
         setJogo(novoJogo, rodada);
-        
+
         boolean resultado = executarJogo(rodada, jogadorAtual);
 
         if (resultado == true) {

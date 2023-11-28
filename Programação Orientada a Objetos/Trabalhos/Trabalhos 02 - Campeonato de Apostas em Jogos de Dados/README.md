@@ -2,13 +2,13 @@
 
 Status      Classe
 ok          Dados
-            JogoDados
-            JogoAzar
-            JogoGeneral
-            Jogador
-            Humano
-            Maquina
-            Campeonato
+ok          JogoDados
+ok          JogoAzar
+ok          JogoGeneral
+ok          Jogador
+ok          Humano
+ok          Maquina
+ok          Campeonato
 ok          usaCampeonato
 
 Colocar o saldo na classe Jogador, e nao na classe JogoDados OK

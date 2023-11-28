@@ -2,22 +2,12 @@ import java.text.DecimalFormat;
 
 public final class JogoAzar extends JogoDados {
 
+    // Construtor (Heranca de JogoDados)
     public JogoAzar(float valorAposta) {
         super("Jogo Azar", 2, valorAposta);
     }
 
-    // Soma as faces dos dados
-    @Override
-    public int somarFacesSorteadas() {
-        int soma = 0;
-
-        for (int i = 0; i < 2; i++) {
-            soma += getValorDado(i);
-        }
-
-        return soma;
-    }
-
+    // Mostra as jogadas do jogo
     @Override
     public String mostrarJogadas() {
         String jogadas = "";
@@ -31,6 +21,7 @@ public final class JogoAzar extends JogoDados {
 
         // Rola os dados a primeira vez
         rolarDados();
+        ocorrenciaDosDados();
         int somaFaces = somarFacesSorteadas();
         System.out.println("Lancamento 1:");
         System.out.println(getValorDado(0) + " e " + getValorDado(1) + " = " + somaFaces);
@@ -39,15 +30,17 @@ public final class JogoAzar extends JogoDados {
         if (somaFaces == 7 || somaFaces == 11) {
             resultado = true;
             System.out.println("\n------------------------------\n");
-            System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-            System.out.println("\n------------------------------\n");
+            System.out.println(
+                    jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            setResultado("Ganhou");
         }
         // Se o resultado da soma dos dados for 2, 3 ou 12 , o jogador perde
         if (somaFaces == 2 || somaFaces == 3 || somaFaces == 12) {
             resultado = false;
             System.out.println("\n------------------------------\n");
-            System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-            System.out.println("\n------------------------------\n");
+            System.out.println(
+                    jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            setResultado("Perdeu");
         } else { // Caso nenhum dos casos seja cumprido, inicia o ciclo para achar o valor obtido
                  // da soma
             int valorBuscado = somaFaces;
@@ -58,6 +51,7 @@ public final class JogoAzar extends JogoDados {
             do {
                 novaSoma = 0;
                 rolarDados();
+                ocorrenciaDosDados();
                 novaSoma = somarFacesSorteadas();
                 System.out.println("Lancamento " + lancamentoAtual + ":");
                 System.out.println(getValorDado(0) + " e " + getValorDado(1) + " = " + novaSoma);
@@ -65,16 +59,18 @@ public final class JogoAzar extends JogoDados {
                 if (novaSoma == valorBuscado) {
                     resultado = true;
                     System.out.println("\n------------------------------\n");
-                    System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-                    System.out.println("\n------------------------------\n");
+                    System.out.println(jogador.getNome() + " ganhou R$"
+                            + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+                    setResultado("Ganhou");
                     break;
                 }
                 // Se o resultado da nova soma dos dados for 2, 3 ou 12 , o jogador perde
                 if (novaSoma == 2 || novaSoma == 3 || novaSoma == 12) {
                     resultado = false;
                     System.out.println("\n------------------------------\n");
-                    System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-                    System.out.println("\n------------------------------\n");
+                    System.out.println(jogador.getNome() + " perdeu R$"
+                            + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+                    setResultado("Perdeu");
                     break;
                 }
                 lancamentoAtual++;
@@ -82,5 +78,13 @@ public final class JogoAzar extends JogoDados {
         }
 
         return resultado;
+    }
+
+    // Imprime os resultados do jogo
+    @Override
+    public void imprimirResultados() {
+        System.out
+                .println(getNome() + ":\n\t-- Valor apostado: R$" + new DecimalFormat("#0.##").format(getValorAposta())
+                        + "\n\t-- Resultado: " + getResultado());
     }
 }

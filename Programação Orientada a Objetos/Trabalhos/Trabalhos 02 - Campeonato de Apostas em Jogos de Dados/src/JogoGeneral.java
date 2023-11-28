@@ -4,7 +4,7 @@ import java.util.Scanner;
 public final class JogoGeneral extends JogoDados {
     private int[][] jogadas;
 
-    // Construtor
+    // Construtor (Heranca de JogoDados)
     public JogoGeneral(float valorAposta) {
         super("Jogo General", 5, valorAposta);
         jogadas = new int[2][13];
@@ -12,18 +12,6 @@ public final class JogoGeneral extends JogoDados {
             jogadas[0][i] = 0;
             jogadas[1][i] = 0;
         }
-    }
-
-    // Soma as faces dos dados
-    @Override
-    public int somarFacesSorteadas() {
-        int soma = 0;
-
-        for (int i = 0; i < 5; i++) {
-            soma += getValorDado(i);
-        }
-
-        return soma;
     }
 
     // Retorna a pontuacao de uma jogada especifica
@@ -68,6 +56,7 @@ public final class JogoGeneral extends JogoDados {
         for (int r = 0; r < 13; r++) {
             System.out.println("Iniciando a rodada " + (r + 1) + " do Jogo General!");
             rolarDados();
+            ocorrenciaDosDados();
             System.out.println(toString() + "\n");
             // Verifica se e um humano jogando
             if (jogador instanceof Humano) {
@@ -390,26 +379,42 @@ public final class JogoGeneral extends JogoDados {
             System.out.println("Pontuacao atual:");
             System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
             System.out.println(mostrarJogadas());
-            System.out.println("\n----------------------------------------------------------------------------------------------------\n");
+            System.out.println(
+                    "\n----------------------------------------------------------------------------------------------------\n");
         }
 
+        // Soma as jogadas de 1 a 12
         int soma1a12 = 0;
         for (int i = 0; i < 12; i++) {
             soma1a12 += jogadas[1][i];
         }
+        // Verifica se o jogador ganhou ou nao
         if (soma1a12 > jogadas[1][12] * 2) {
             resultado = true;
-            System.out.println(jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-            System.out.println("\n------------------------------\n");
+            System.out.println(
+                    jogador.getNome() + " ganhou R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            setResultado("Ganhou");
         } else {
             resultado = false;
-            System.out.println(jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
-            System.out.println("\n------------------------------\n");
+            System.out.println(
+                    jogador.getNome() + " perdeu R$" + new DecimalFormat("#0.##").format(getValorAposta()) + "!");
+            setResultado("Perdeu");
         }
 
         return resultado;
     }
-    // Ninguem no mundo consegue o que quer, e eu acho isso lindo.
+
+    // Imprime os resultados do jogo
+    @Override
+    public void imprimirResultados() {
+        System.out
+                .println(getNome() + ":\n\t-- Valor apostado: R$" + new DecimalFormat("#0.##").format(getValorAposta())
+                        + "\n\t-- Resultado: " + getResultado());
+        System.out.println("\t-- Jogadas:");
+        System.out.println("\t\t1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+        System.out.println("\t\t" + mostrarJogadas());
+    }
+    // Ninguem no mundo consegue o que quer, e eu acho isso lindo. - Jogador Numero Um
 
     // Calcula a pontuacao das jogadas de 1 a 6
     public int jogada1a6(int n) {

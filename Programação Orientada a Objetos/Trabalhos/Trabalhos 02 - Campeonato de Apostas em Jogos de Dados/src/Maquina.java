@@ -1,15 +1,21 @@
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public final class Maquina extends Jogador implements JogarComoMaquina {
+    // Construtor (Heranca de Jogador)
     public Maquina(String nome) {
         super(nome);
     }
 
+    // Pergunta e valida quanto o jogador deseja apostar, e atualiza o saldo do
+    // jogador (a maquina sempre aposta 20% do saldo total)
     @Override
     public float valorAposta() {
         float valorAposta;
 
         if (getSaldo() != 0) {
+            System.out.println(getNome() + " quanto deseja apostar? Saldo atual: R$"
+                    + new DecimalFormat("#0.##").format(getSaldo()));
             valorAposta = (float) getSaldo() * (float) (0.2);
             setSaldo(getSaldo() - valorAposta);
         } else {
@@ -20,6 +26,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina {
         return valorAposta;
     }
 
+    // Pergunta ao jogador para qual jogo deseja apostar (a maquina escolha de forma aleatoria)
     @Override
     public int escolherJogo() {
         int jogo = 1;
@@ -30,6 +37,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina {
         return jogo;
     }
 
+    // Inicia o jogo de azar
     @Override
     public void iniciarJogoAzar(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Humano(getNome());
@@ -43,6 +51,7 @@ public final class Maquina extends Jogador implements JogarComoMaquina {
         }
     };
 
+    // Inicia o jogo general
     @Override
     public void iniciarJogoGeneral(float valorAposta, int rodada) {
         Jogador jogadorAtual = new Maquina(getNome());
