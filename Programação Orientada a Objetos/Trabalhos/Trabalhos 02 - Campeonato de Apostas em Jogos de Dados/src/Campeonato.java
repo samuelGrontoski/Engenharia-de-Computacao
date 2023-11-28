@@ -114,9 +114,11 @@ public class Campeonato implements Serializable {
 
     // Inicia o campeonato
     public void iniciarCampeonato() {
-        /* for (int p = 0; p < numJogadores; p++) {
-            jogadores[p].resetarJogos();
-        } */
+        /*
+         * for (int p = 0; p < numJogadores; p++) {
+         * jogadores[p].resetarJogos();
+         * }
+         */
         if (numJogadores == 0) {
             System.out.println("Nenhum jogador registrado, nao foi possivel iniciar o campeonato.\n");
         } else {
@@ -124,33 +126,37 @@ public class Campeonato implements Serializable {
             System.out.println("Iniciando a rodada numero " + (rodadas + 1) + "!\n");
 
             for (int j = 0; j < numJogadores; j++) {
-                float valorAposta = jogadores[j].valorAposta();
-                if (valorAposta != 0 && jogadores[j].getNumJogos() < 10) {
-                    int jogo = jogadores[j].escolherJogo();
-                    switch (jogo) {
-                        case 1: {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
-                                    + " no Jogo de Azar!\n");
-                            System.out.println("\n------------------------------\n");
-                            jogadores[j].iniciarJogoAzar(valorAposta, rodadas);
-                            System.out.println(
-                                    "Novo saldo: R$" + new DecimalFormat("#0.##").format(jogadores[j].getSaldo()));
-                            System.out.println("\n------------------------------\n");
-                            break;
+                if (jogadores[j].getNumJogos() < 10) {
+                    float valorAposta = jogadores[j].valorAposta();
+                    if (valorAposta != 0) {
+                        int jogo = jogadores[j].escolherJogo();
+                        switch (jogo) {
+                            case 1: {
+                                System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
+                                        + " no Jogo de Azar!\n");
+                                System.out.println("\n------------------------------\n");
+                                jogadores[j].iniciarJogoAzar(valorAposta, rodadas);
+                                System.out.println(
+                                        "Novo saldo: R$" + new DecimalFormat("#0.##").format(jogadores[j].getSaldo()));
+                                System.out.println("\n------------------------------\n");
+                                break;
+                            }
+                            case 2: {
+                                System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
+                                        + " no Jogo General!\n");
+                                System.out.println("\n------------------------------\n");
+                                jogadores[j].iniciarJogoGeneral(valorAposta, rodadas);
+                                System.out.println(
+                                        "Novo saldo: R$" + new DecimalFormat("#0.##").format(jogadores[j].getSaldo()));
+                                System.out.println("\n------------------------------\n");
+                                break;
+                            }
                         }
-                        case 2: {
-                            System.out.println("Apostando R$" + new DecimalFormat("#0.##").format(valorAposta)
-                                    + " no Jogo General!\n");
-                            System.out.println("\n------------------------------\n");
-                            jogadores[j].iniciarJogoGeneral(valorAposta, rodadas);
-                            System.out.println(
-                                    "Novo saldo: R$" + new DecimalFormat("#0.##").format(jogadores[j].getSaldo()));
-                            System.out.println("\n------------------------------\n");
-                            break;
-                        }
+                    } else {
+                        System.out.println("Nao e possivel realizar a rodada para " + jogadores[j].getNome() + ".\n");
                     }
                 } else {
-                    System.out.println("Nao e possivel realizar a rodada para " + jogadores[j].getNome() + ".\n");
+                    System.out.println("Numero limite de jogos excedido para " + jogadores[j].getNome());
                 }
             }
             rodadas++;
