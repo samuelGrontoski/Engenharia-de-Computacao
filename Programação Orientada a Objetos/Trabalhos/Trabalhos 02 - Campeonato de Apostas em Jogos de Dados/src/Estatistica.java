@@ -3,5 +3,5 @@ public interface Estatistica {
 
     int somarFacesSorteadas();
     void ocorrenciaDosDados();
-    public int ocorrenciaDeN(int n);
+    int ocorrenciaDeN(int n);
 }
