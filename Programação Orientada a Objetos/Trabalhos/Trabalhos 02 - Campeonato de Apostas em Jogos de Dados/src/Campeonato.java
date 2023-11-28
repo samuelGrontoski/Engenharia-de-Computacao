@@ -125,7 +125,7 @@ public class Campeonato implements Serializable {
 
             for (int j = 0; j < numJogadores; j++) {
                 float valorAposta = jogadores[j].valorAposta();
-                if (valorAposta != 0) {
+                if (valorAposta != 0 && jogadores[j].getNumJogos() < 10) {
                     int jogo = jogadores[j].escolherJogo();
                     switch (jogo) {
                         case 1: {

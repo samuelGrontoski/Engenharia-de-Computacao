@@ -152,6 +152,11 @@ public abstract class Jogador implements Serializable {
         numJogos++;
     }
 
+    // Retorna o numero de jogos
+    public int getNumJogos() {
+        return numJogos;
+    }
+
     // Retorna o saldo do jogador
     public float getSaldo() {
         return saldo;
