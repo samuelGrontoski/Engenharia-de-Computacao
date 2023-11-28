@@ -44,15 +44,13 @@ public abstract class Jogador implements Serializable {
 
     // Imprime os resultados dos jogos
     public void imprimirResultados(int tipoJogo) {
-        int count = 0;
         switch (tipoJogo) {
             // Jogo de Azar
             case 1: {
                 System.out.println("- Imprimindo resultados dos Jogos de Azar:");
                 for (int i = 0; i < numJogos; i++) {
                     if (jogos[i] instanceof JogoAzar) {
-                        count++;
-                        System.out.print("\n" + count + " - ");
+                        System.out.print("\n" + (i+1) + " - ");
                         jogos[i].imprimirResultados();
                     }
                 }
@@ -63,8 +61,7 @@ public abstract class Jogador implements Serializable {
                 System.out.println("- Imprimindo resultados dos Jogos General:");
                 for (int i = 0; i < numJogos; i++) {
                     if (jogos[i] instanceof JogoGeneral) {
-                        count++;
-                        System.out.print("\n" + count + " - ");
+                        System.out.print("\n" + (i+1) + " - ");
                         jogos[i].imprimirResultados();
                     }
                 }
@@ -74,8 +71,7 @@ public abstract class Jogador implements Serializable {
             case 3: {
                 System.out.println("- Imprimindo resultados de todos os jogos:");
                 for (int i = 0; i < numJogos; i++) {
-                    count++;
-                    System.out.print("\n" + count + " - ");
+                    System.out.print("\n" + (i+1) + " - ");
                     jogos[i].imprimirResultados();
                 }
                 break;
