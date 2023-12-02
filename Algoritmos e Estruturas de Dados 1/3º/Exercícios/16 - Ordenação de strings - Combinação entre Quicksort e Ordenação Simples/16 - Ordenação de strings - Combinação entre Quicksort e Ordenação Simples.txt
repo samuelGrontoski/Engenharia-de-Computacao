@@ -1,0 +1,36 @@
+Implemente uma combinação entre o quicksort e um método de ordenação simples. A função deve, pelo menos, receber três parâmetros: vetor de stings (**vstr), tamanho do vetor (n) e um número inteiro representando tamanho mínimo (m). Nessa função, enquanto a partição for maior que m, o método de ordenação que deve ser aplicado é quicksort. Caso contrário, um método de ordenação simples (bubblesort, select sort ou insert sort) deve ser utilizado na partição.
+
+Input Format
+
+Na primeira linha deve ser lido o tamanho do vetor. A partir segunda linha, devem ser lidos os elementos do vetor. Após a leitura do vetor, deve ser lido um número inteiro que represente o tamanho mínimo de partição.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o vetor ordenado.
+
+Sample Input 0
+
+8
+clementino
+hastrides
+edineia
+ivan
+amanda
+beraldo
+danieli
+francisco
+4
+Sample Output 0
+
+amanda
+beraldo
+clementino
+danieli
+edineia
+francisco
+hastrides
+ivan

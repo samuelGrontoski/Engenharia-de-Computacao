@@ -1,0 +1,23 @@
+Implemente uma função recursiva que retorne a soma de todos os elementos de um vetor.
+
+Input Format
+
+Na primeira linha, ler o tamanho do vetor.
+
+Na segunda linha, ler os elementos do vetor.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o resultado da soma de todos os elementos do vetor
+
+Sample Input 0
+
+5
+1 2 3 4 5
+Sample Output 0
+
+15
