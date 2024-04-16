@@ -18,7 +18,7 @@ struct ListaE{
 
 
 Cell* criar_celula(char* key){
-    Cell *c = (Cell*) malloc(sizeof(Cell));
+    Cell *c = (Cell*) malloc(sizeof(Cell)+1);
     c->item = key;
 
     c->next = NULL;
@@ -52,7 +52,8 @@ void inserir_primeiro(char* key, ListaE *l){
 }
 
 void inserir_ultimo(char* key, ListaE *l){
-    Cell *aux, *novo;
+    Cell *aux = malloc(sizeof(Cell));
+    Cell *novo = malloc(sizeof(Cell));
     
     if (l == NULL)
         l = criar_listaE();
@@ -88,14 +89,13 @@ int tamanho_LE(ListaE *l){
     return tam;
 }
 
-// Problema na impressão
 void imprimir(ListaE *l){
     Cell *aux;
     
     if (!listaE_vazia(l)){
         aux = l->head;
 
-        while (aux != NULL){
+        while (aux){
             printf("%s\n", aux->item);
 
             aux = aux->next;
@@ -164,3 +164,5 @@ int main() {
     
     return 0;
 }
+
+// https://stackoverflow.com/questions/33116474/linked-lists-with-strings
