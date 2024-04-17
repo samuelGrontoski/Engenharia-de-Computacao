@@ -1,0 +1,62 @@
+Implemente uma função que receba duas listas encadeadas (l1 e l2). Na função, a lista l1 deve ser procurada na l2. Caso l1 seja encontrada, a função deverá retornar a posição da lista na l2. Caso contrário, a função deverá retornar -1.
+
+Exemplo:
+
+l1 = {8, 7, 6, 8}
+
+l2 = {1, 2, 3, 4, 5, 6, 7,** 8, 7, 6, 8**, 9, 10}
+
+No exemplo acima, l1 está (inicia) na posição 7 da lista l2.
+
+Para a implementação do exercício, utilize um TAD de listas encadeadas simples, podendo ser o código que foi apresentado em aula (disponível no repositório da disciplina no GitHub).
+
+Input Format
+
+Na primeira linha, enquanto -1 não for lido, ler números inteiros e colocá-los na lista l1.
+
+Na segunda linha, enquanto -1 não for lido, ler números inteiros e colocá-los na lista l2.
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir a posição da lista l1 na l2.
+
+Sample Input 0
+
+8 7 6 8 -1
+1 2 3 4 5 6 7 8 7 6 8 9 10 -1
+
+Sample Output 0
+
+7
+
+Sample Input 1
+
+8 9 10 11 -1
+1 2 3 4 5 6 7 8 7 6 8 9 10 -1
+
+Sample Output 1
+
+-1
+
+Sample Input 2
+
+1 2 3 4 -1
+1 2 3 4 5 6 7 8 7 6 8 9 10 -1
+
+Sample Output 2
+
+0
+
+Sample Input 3
+
+8 9 10 -1
+1 2 3 4 5 6 7 8 7 6 8 9 10 -1
+
+Sample Output 3
+
+10
+
