@@ -1,0 +1,64 @@
+body {
+    font-family: JetBrains Mono, monospace;
+    background-color: #F2F2F2;
+    z-index: -1;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.inputs .inputControl {
+    display: grid;
+    gap: 4px;   
+}
+
+.inputs .inputBotao {
+    display: flex;
+    align-self: end;
+}
+
+.inputs #nome {
+    width: 300px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.inputs #pontuacao {
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.inputs #adicionar {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #358337;
+    color: white;
+    box-shadow: 0 0 5px #358337;
+}
+
+.inputs #adicionar:hover {
+    background-color: #1bbe20;
+    transform: scale(1.05);
+    cursor: pointer;
+}
