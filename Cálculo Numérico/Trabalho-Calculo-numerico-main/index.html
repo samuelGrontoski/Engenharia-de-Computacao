@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Parcela Mensal Ideal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cálculo de Parcela Mensal Ideal </h1>
+        <h2>(Método de Newton)</h2>
+        <label for="p">Valor do Empréstimo/Dívida (P):</label>
+        <input type="number" id="p" placeholder="Ex: 10000" required>
+
+        <label for="taxa">Taxa de Juros Mensal (%):</label>
+        <input type="number" id="taxa" step="0.01" placeholder="Ex: 5" required>
+
+        <label for="parcelas">Número de Parcelas:</label>
+        <input type="number" id="parcelas" placeholder="Ex: 12" required>
+
+        <button onclick="calcularParcela()">Calcular Parcela</button>
+
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
