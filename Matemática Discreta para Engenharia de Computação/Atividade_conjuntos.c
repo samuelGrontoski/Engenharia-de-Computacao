@@ -101,40 +101,67 @@ void criar_subconjuntos(ListaE *A, ListaE *A1, ListaE *A2, int num, int c1,
   int i, pos;
 
   if (listaE_vazia(A)) {
-    printf("Conjunto A está vazio!\n");
+    printf("Conjunto A esta vazio!\n");
     return;
   }
-
-  // Inicializa o gerador de números aleatórios
   srand(time(NULL));
 
-  // Preencher subconjunto A1 com c1 elementos aleatórios de A
   for (i = 0; i < c1; i++) {
-    pos = rand() % num;  // Escolhe uma posição aleatória no conjunto A
+    pos = rand() % num;
     aux = A->head;
 
-    // Navega até o elemento na posição 'pos'
     for (int j = 0; j < pos; j++) {
       aux = aux->next;
     }
 
-    // Insere o elemento selecionado em A1
     inserir_ultimo(aux->item, A1);
   }
 
-  // Preencher subconjunto A2 com c2 elementos aleatórios de A
   for (i = 0; i < c2; i++) {
-    pos = rand() % num;  // Escolhe uma posição aleatória no conjunto A
+    pos = rand() % num;
     aux = A->head;
 
-    // Navega até o elemento na posição 'pos'
     for (int j = 0; j < pos; j++) {
       aux = aux->next;
     }
 
-    // Insere o elemento selecionado em A2
     inserir_ultimo(aux->item, A2);
   }
+}
+
+void conjunto_potencia(ListaE *l) {
+  if (listaE_vazia(l)) {
+    printf("O conjunto esta vazio!\n");
+    return;
+  }
+
+  int n = 0;
+  Cell *aux = l->head;
+  while (aux != NULL) {
+    n++;
+    aux = aux->next;
+  }
+
+  int *elementos = (int *)malloc(n * sizeof(int));
+  aux = l->head;
+  for (int i = 0; i < n; i++) {
+    elementos[i] = aux->item;
+    aux = aux->next;
+  }
+
+  int total_subsets = 1 << n;
+  printf("Conjunto potencia:\n");
+  for (int i = 0; i < total_subsets; i++) {
+    printf("{ ");
+    for (int j = 0; j < n; j++) {
+      if (i & (1 << j)) {
+        printf("%d ", elementos[j]);
+      }
+    }
+    printf("}\n");
+  }
+
+  free(elementos);
 }
 
 int main() {
@@ -180,6 +207,12 @@ int main() {
   while (potencia != 1 && potencia != 2) {
     printf("Informe o subconjunto que se deve calcular o conjunto potencia: ");
     scanf("%d", &potencia);
+  }
+
+  if (potencia == 1) {
+    conjunto_potencia(A1);
+  } else if (potencia == 2) {
+    conjunto_potencia(A2);
   }
 
   printf("A: ");
