@@ -1,7 +1,7 @@
 
 | OK  | Escopo para o sistema                                                      |
 | --- | -------------------------------------------------------------------------- |
-|     | Identificar e classificar os requisitos (funcionais e não funcionais)      |
+| OK  | Identificar e classificar os requisitos (funcionais e não funcionais)      |
 |     | Organizar os requisitos em casos de uso                                    |
 |     | Elaborar o modelo de casos de uso;                                         |
 |     | Expandir os principais casos de uso para o sistema (pelo menos 4)          |
