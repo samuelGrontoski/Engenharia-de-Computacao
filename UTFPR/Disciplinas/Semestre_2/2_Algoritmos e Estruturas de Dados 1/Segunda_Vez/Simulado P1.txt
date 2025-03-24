@@ -1,0 +1,92 @@
+1)
+Desalocar a memória.
+
+2)
+a) -1.     *float multiplicar(float*f1, float*f2){
+    2.         float*p;
+    3.         *p = (*f1) * (*f2);
+    4.         return p;
+    5.     }
+
+    6.     int main(){
+    7.        float a = 10, b = 5;
+    8.        flaot *c = multiplicar(&a, &b);
+    9.        return 0;
+    10.    }
+    
+b) -1.    typedef struct P3D{
+    2.         int x, y, z;
+    3.    }P3D;
+
+    4.    typedef struct Ponto3D{
+    5.         int x, y, z;
+    6.    }Ponto3D;
+
+    7.    int main(){
+    8.         Ponto3D a = {1, 2, 3};
+    9.         Ponto3D b;
+    10.        P3D c = {3, 2, 1};
+    11.        P3D *p1 = &c;
+    12.        Ponto3D*p2 = &a;
+    13.        b = a;
+    14.        return 0;
+    15.    }
+
+
+3)
+int palindromo (char *s){
+    Pilha *p = criar_pilha();
+    int i, r = 0;
+
+    if(str != NULL){
+        for(i = strlen(s)/2; i < strlen(s); i++){
+            empilhar(p,s[i]);
+        }
+        for(i = 0; !pilha_vazia(s) && (s[i] == obter_topo(p)); i++){
+            desempilhar(p);
+        }
+        r = pilha_vazia(p);
+        liberar_pilha(p);
+    }
+    return r;
+}
+
+4)
+char    P          S
+a               a
++       +       a
+b       +       ab
++       +       ab+     
+c       +       ab+c
+*       +*      ab+c
+(       +*(     ab+c
+b       +*(     ab+cb
+-       +*(-    -----
+d       +*(-    ab+cbd
++       +*(+    ab+cbd-
+e       +*(+    ab+cbd-e
++       +*(+    ab+cbd-e+
+a       +*(+    ab+cbd-e+a
+)       +*      ab+cbd-e+a+
+/       +/      ab+cbd-e+a+*
+c       +/      ab+cbd-e+a+*c
+-       -       ab+cbd-e+a+*c/+
+d       -       ab+cbd-e+a+*c/+d
+-       -       ab+cbd-e+a+*c/+d-
+a       -       ab+cbd-e+a+*c/+d-a
+a               ab+cbd-e+a+*c/+d-a-
+
+
+
+5)
+int sublista_existente(Lista +l1, Lista +l2){
+    int i, int j =0;
+
+    if(!lista_vazia(l1) && !lista_vazia(l2)){
+        for(i = 0; i < (l1->tam - l2->tam + 1) && (j != l2->tam); i++){
+            for(j = 0; (j < l2->tam) && (l2->item[j] == l1->item[j + i]); j++);
+            return (j == l2->tam);
+        }
+    }
+    return 0;
+}

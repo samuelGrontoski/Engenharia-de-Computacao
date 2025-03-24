@@ -1,0 +1,20 @@
+Comandos em R:
+
+• summary
+    Dá um resumo sobre as informações do banco de dados
+
+• head
+    Mostra as primeiras linhas do banco de dados
+
+• mean 
+    Calcula a média aritmética de determinado conjunto de dados
+
+• median
+    Calcula a mediana de determinado conjunto de dados
+
+• var
+    Calcula a variância
+
+• sd
+    Calcula o desvio padrão
+    

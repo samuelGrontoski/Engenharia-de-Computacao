@@ -1,0 +1,55 @@
+Aluno: Samuel Grontoski						RA: 2018098
+Lista 1 – complexidade (Exercícios 5 – c, e)
+
+5.
+c)
+
+- Quantidade máxima de instruções:
+• Linha 3: uma atribuição + (n – 1) * (uma comparação + um incremento + loop interno + condição interna) + comparação final
+1 + (n – 1) * (1 + 1 + x + y) + 1		(1)
+• Linha 4: uma atribuição
+	1					(2)
+• Linha 5: uma atribuição + n * (uma comparação + um incremento + condição interna) + comparação final
+	1 + n * (1 + 1 + z) + 1 = x
+	x = 1 + n * (4) + 1
+	x = 4n + 2
+ • Linha 6: uma comparação + uma atribuição
+	2 = z
+• Linha 9: uma comparação + 3 atribuições
+	4 = y
+
+Substituindo os valores de x, y, z em (1) e somando com (2), temos:
+	1 + (n – 1) * (1 + 1 + 4n + 2 + 4) + 1
+	= (n – 1) * (4n + 8) + 2
+	= 4n² + 8n – 4n – 8 + 2
+	= 4n² + 4n – 6 operações	 (Resposta)
+	
+
+- Complexidade no pior caso: 
+	O(n²)
+
+- Quantidade de unidades de espaço extras necessárias:
+	Nenhuma, já que o selection_sort ordena o vetor de entrada sem usar um vetor auxiliar.
+
+
+
+e)
+
+Por se tratar de uma função recursiva, a cada chamada o intevalo é dividido ao meio. Assim, podemos supor que a complexicidade desse algoritmo seja de O(log n), por ter um crescimento menor que uma função linear (iterativa).
+
+- Quantidade máxima de instruções:
+• Linha 1: duas comparações
+	2
+• Linha 3: uma subtração + duas comparações
+	1 + 2 = 3
+• Linha 6: uma atribuição + uma soma + uma divisão
+	1 + 1 + 1 = 3
+
+Resposta: log n + 8 operações.
+
+- Complexidade no pior caso:
+	O(log n)
+
+
+- Quantidade de unidades de espaço extras necessárias:
+	Por ser um algoritmo recursivo, é utilizado um espaço na pilha de chamadas de função, e como foi suporto que o número de chamadas recursivas é O(log n), o espaço extra utilizado também será O(log n).

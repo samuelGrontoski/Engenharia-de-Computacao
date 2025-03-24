@@ -1,0 +1,7 @@
+a)
+Regra:
+mae(X,Y) :- genitor(Y,X), mulher(Y).
+
+e)
+Regra:
+pai(X,Y,Z) :- genitor(Z,X), genitor(Z,Y), homem(Z).
