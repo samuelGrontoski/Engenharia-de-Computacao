@@ -1,4 +1,0 @@
-7.  Dado o seguinte conjunto de chaves:  {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}. 
-Mostre como fica o conjunto após busca por cada uma das seguintes chaves (em sequência)
-utilizando o métododa transposição: 2, 3, 12, 11, 8, 3, 8, 11, 8, 3.
-
