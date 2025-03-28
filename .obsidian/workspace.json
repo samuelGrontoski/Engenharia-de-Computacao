@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "02bff26b23c5fb6e",
+        "id": "4a61448717d7df88",
         "type": "tabs",
         "children": [
           {
-            "id": "966d424fbfe6d3fc",
+            "id": "8d391c12f81d0643",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -167,21 +167,23 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Abrir a troca rápida": false,
+      "vscode-editor:Create Code File": false,
+      "canvas:Criar novo canvas": false,
       "obsidian-git:Open Git source control": false,
       "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
       "daily-notes:Abrir a nota de hoje": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
       "templates:Inserir modelo": false,
       "command-palette:Abrir paleta de comandos": false,
-      "obsidian-full-calendar:Open Full Calendar": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "c094e9d3c15b5875",
+  "active": "8d391c12f81d0643",
   "lastOpenFiles": [
+    "Algoritmos e Estruturas de Dados 2/1º/Exercícios/01 - Listas encadeadas - ordenação em listas encadeadas de strings/01 - Listas encadeadas - ordenação em listas encadeadas de strings.c",
     "Algoritmos e Estruturas de Dados 2/1º",
     "Eletrônica Digital/Sistemas de Numeração.md",
     "Eletrônica Digital/Lista 01.md",
@@ -201,7 +203,6 @@
     "Matemática Discreta para Engenharia de Computação",
     "Eletrônica Digital",
     "Análise e Projeto de Sistemas/Trabalho_Final/Sistema para Controle de Leitura.md",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRL1872.tmp",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Listar Leituras.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Listar Livros.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Adicionar Leitura.jpg",

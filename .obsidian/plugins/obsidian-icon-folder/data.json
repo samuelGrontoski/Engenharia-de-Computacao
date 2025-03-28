@@ -5,7 +5,9 @@
     "fontSize": 16,
     "emojiStyle": "native",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "LiFolder"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
@@ -27,5 +29,34 @@
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
-  }
+  },
+  "Algoritmos e Estruturas de Dados 1": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2": "LiFolder",
+  "Análise e Projeto de Sistemas": "LiFolder",
+  "Cálculo Numérico": "LiFolder",
+  "Eletrônica Digital": "LiFolder",
+  "Fundamentos de Programação": "LiFolder",
+  "Matemática Discreta para Engenharia de Computação": "LiFolder",
+  "Programação Orientada a Objetos": "LiFolder",
+  "UTFPR": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º": "LiFolder",
+  "Algoritmos e Estruturas de Dados 1/1º": "LiFolder",
+  "Algoritmos e Estruturas de Dados 1/2º": "LiFolder",
+  "Algoritmos e Estruturas de Dados 1/3º": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/01 - Listas encadeadas - ordenação em listas encadeadas de strings": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/02 - Listas encadeadas - procurar sub-lista encadeada": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/03 - Listas duplamente encadeadas - remoção de elementos repetidos": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/04 - Pilhas encadeadas - balanço de parênteses": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/05 - Filas encadeadas - concatenação inversa": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/06 - Árvores binárias de busca - nós folhas": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/07 - Árvores binárias de busca - caminho com maior valor de soma entre os nós": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/08 - Árvore rubro-negra - contar nós pretos ímpares": "LiFolder",
+  "Algoritmos e Estruturas de Dados 2/1º/Exercícios/09 - Árvore B - contagem de páginas cheias": "LiFolder",
+  "Análise e Projeto de Sistemas/Atividades": "LiFolder",
+  "Análise e Projeto de Sistemas/Trabalho_Final": "LiFolder",
+  "Cálculo Numérico/Seminário_web": "LiFolder",
+  "Cálculo Numérico/Trabalho-Calculo-numerico-main": "LiFolder",
+  "UTFPR/Estágio": "LiFolder",
+  "UTFPR/Padrão UTFPR": "LiFolder"
 }
