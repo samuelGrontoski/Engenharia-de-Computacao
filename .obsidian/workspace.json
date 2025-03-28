@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f935acad0ac2e3e1",
+        "id": "02bff26b23c5fb6e",
         "type": "tabs",
         "children": [
           {
-            "id": "5d4f66fbd15cd979",
+            "id": "966d424fbfe6d3fc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Eletrônica Digital/Sistemas de Numeração.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Sistemas de Numeração"
+              "title": "Nova aba"
             }
           }
         ]
@@ -184,9 +180,11 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "5d4f66fbd15cd979",
+  "active": "c094e9d3c15b5875",
   "lastOpenFiles": [
+    "Algoritmos e Estruturas de Dados 2/1º",
     "Eletrônica Digital/Sistemas de Numeração.md",
+    "Eletrônica Digital/Lista 01.md",
     "Sem título 1.md",
     "Sem título.md",
     "Excalidraw/Drawing 2025-03-28 13.58.43.excalidraw.md",

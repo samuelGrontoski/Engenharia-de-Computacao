@@ -12,7 +12,7 @@
 
 ### Binário:
 
-1101<sub>2</sub> = 1 x 2<sup>4</sup> + 1 x 2<sup>3</sup> + 1 x 2<sup>2</sup> + 0 x 2<sup>1</sup> + 1 x 2<sup>0</sup> = 16 + 8 + 4 + 0 + 1 = 29<sub>10</sub>
+11101<sub>2</sub> = 1 x 2<sup>4</sup> + 1 x 2<sup>3</sup> + 1 x 2<sup>2</sup> + 0 x 2<sup>1</sup> + 1 x 2<sup>0</sup> = 16 + 8 + 4 + 0 + 1 = 29<sub>10</sub>
 
 10101110<sub>2</sub> = 1 x 2<sup>7</sup> + 1 x 2<sup>5</sup> + 1 x 2<sup>3</sup> + 1 x 2<sup>2</sup>  + 1 x 2<sup>1</sup> = 128 + 32 + 8 + 4 + 2 = 174
 
@@ -54,7 +54,7 @@ F\0CA<sub>16</sub> = F x 16<sup>3</sup> + \0 x 16<sup>2</sup> + C x 16<sup>1</su
 
 1    3    1<sub>8</sub>
 
-### **- Conversão Binário / Octal**
+### **- Conversão Octal / Binário**
 
 517<sub>8</sub>
 101 001 111<sub>2</sub>
@@ -70,3 +70,19 @@ F\0CA<sub>16</sub> = F x 16<sup>3</sup> + \0 x 16<sup>2</sup> + C x 16<sup>1</su
 
 7CE<sub>16</sub>
 0111 1100 1110<sub>2</sub>
+
+### **- Conversão Octal / Hexadecimal**
+
+7405<sub>8</sub> = ( F05 )<sub>16</sub>
+7    4     0     5
+==111==1 00==00 0==101
+F       0       5
+
+
+### **- Conversão Hexadecimal / Octal**
+
+FACA<sub>16</sub> = 175312<sub>8</sub>
+F        A      C       A
+1==111== 101==0 11==00 1==010==
+1     7     5     3     1    2
+
