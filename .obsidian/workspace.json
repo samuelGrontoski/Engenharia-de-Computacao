@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e2f9bd8ee429bec3",
+        "id": "f935acad0ac2e3e1",
         "type": "tabs",
         "children": [
           {
-            "id": "61234d6ff3ba2efd",
+            "id": "5d4f66fbd15cd979",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Eletrônica Digital/Sistemas de Numeração.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Sistemas de Numeração"
             }
           }
         ]
@@ -109,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Análise e Projeto de Sistemas/Trabalho_Final/Sistema para Controle de Leitura.md",
+                "file": "Eletrônica Digital/Sistemas de Numeração.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Sistema para Controle de Leitura"
+              "title": "Links de saída para Sistemas de Numeração"
             }
           },
           {
@@ -138,45 +142,68 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Análise e Projeto de Sistemas/Trabalho_Final/Sistema para Controle de Leitura.md",
+                "file": "Eletrônica Digital/Sistemas de Numeração.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Sistema para Controle de Leitura"
+              "title": "Sumário de Sistemas de Numeração"
+            }
+          },
+          {
+            "id": "e889eea676730ba5",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Abrir a troca rápida": false,
+      "obsidian-git:Open Git source control": false,
       "graph:Abrir visualização em gráfico": false,
       "canvas:Criar novo canvas": false,
       "daily-notes:Abrir a nota de hoje": false,
       "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false
+      "command-palette:Abrir paleta de comandos": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "obsidian-textgenerator-plugin:Generate Text!": false,
+      "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-projects:Open projects": false
     }
   },
-  "active": "61234d6ff3ba2efd",
+  "active": "5d4f66fbd15cd979",
   "lastOpenFiles": [
+    "Eletrônica Digital/Sistemas de Numeração.md",
+    "Sem título 1.md",
+    "Sem título.md",
+    "Excalidraw/Drawing 2025-03-28 13.58.43.excalidraw.md",
+    "Excalidraw",
+    "Análise e Projeto de Sistemas/Trabalho_Final/Sistema para Controle de Leitura.pdf",
+    "Programação Orientada a Objetos/Exercícios Extras/Agenda Simplória/README.md",
+    "2025-03-28.md",
+    "Eletrônica Digital/Sem título.canvas",
+    "Matemática Discreta para Engenharia de Computação/output/Atividade_contagem.exe",
+    "Matemática Discreta para Engenharia de Computação/output/Atividade_conjuntos.exe",
+    "Matemática Discreta para Engenharia de Computação/output",
+    "Matemática Discreta para Engenharia de Computação/Atividade_contagem.c",
+    "Matemática Discreta para Engenharia de Computação/Atividade_conjuntos.c",
+    "Matemática Discreta para Engenharia de Computação",
+    "Eletrônica Digital",
     "Análise e Projeto de Sistemas/Trabalho_Final/Sistema para Controle de Leitura.md",
     "Análise e Projeto de Sistemas/Trabalho_Final/~WRL1872.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRD1849.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRD1841.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRL3689.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRD3658.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRL1280.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRD1237.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRL1602.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRD1571.tmp",
-    "Análise e Projeto de Sistemas/Trabalho_Final/~WRL3170.tmp",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Listar Leituras.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Listar Livros.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Diagrama de Sequência - Adicionar Leitura.jpg",
@@ -187,7 +214,6 @@
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Subprocesso Histórico de Leituras.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Subprocesso Adicionar Livro.jpg",
     "Análise e Projeto de Sistemas/Trabalho_Final/diagramas/imagens/Subprocesso Adicionar Leitura.jpg",
-    "Análise e Projeto de Sistemas/Trabalho_Final/Sem título.canvas",
-    "Sem título.md"
+    "Análise e Projeto de Sistemas/Trabalho_Final/Sem título.canvas"
   ]
 }
