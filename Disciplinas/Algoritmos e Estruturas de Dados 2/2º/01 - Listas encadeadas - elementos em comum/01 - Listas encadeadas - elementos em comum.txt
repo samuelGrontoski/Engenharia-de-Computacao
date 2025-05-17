@@ -1,0 +1,23 @@
+Implemente uma função que receba duas listas encadeadas. A função deverá retornar uma lista encadeada com elementos em comum entre as listas de entrada.
+
+Input Format
+
+Na primeira linha, enquanto -1 não for lido, ler um número inteiro e colocá-lo na lista encadeada. Na segunda linha, repetir o processo da primeira, mas com inserção em uma outra lista encadeada.
+
+Constraints
+
+Utilizar o TAD de lista encadeada simples disponível em
+
+Output Format
+
+.
+
+Sample Input 0
+
+1 2 3 5 7 8 15 13 14 11 -1
+11 4 1 2 9 10 8 12 -1
+
+Sample Output 0
+
+1 2 8 11
+
