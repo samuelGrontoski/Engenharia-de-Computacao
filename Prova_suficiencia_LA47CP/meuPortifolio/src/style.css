@@ -1,0 +1,43 @@
+body {
+    font-family: JetBrains Mono, monospace;
+    background-color: #1d1d20;
+    color: azure;
+    padding: 2em;
+}
+
+header {
+    display: flex;
+    justify-content: end;
+}
+
+.title {
+    font-size: 2em;
+    display: grid;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.social_icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.social_icon {
+    width: 2em;
+    height: 2em;
+}
+
+.social_icon:hover {
+    transform: scale(1.2);
+}
