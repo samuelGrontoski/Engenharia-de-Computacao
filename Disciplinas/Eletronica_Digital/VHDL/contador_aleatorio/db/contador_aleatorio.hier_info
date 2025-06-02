@@ -1,0 +1,15 @@
+|contador_aleatorio
+CLK => estado_atual[0].CLK
+CLK => estado_atual[1].CLK
+CLK => estado_atual[2].CLK
+CLK => estado_atual[3].CLK
+RESET => estado_atual[0].ACLR
+RESET => estado_atual[1].PRESET
+RESET => estado_atual[2].ACLR
+RESET => estado_atual[3].PRESET
+Q_out[0] <= estado_atual[0].DB_MAX_OUTPUT_PORT_TYPE
+Q_out[1] <= estado_atual[1].DB_MAX_OUTPUT_PORT_TYPE
+Q_out[2] <= estado_atual[2].DB_MAX_OUTPUT_PORT_TYPE
+Q_out[3] <= estado_atual[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
