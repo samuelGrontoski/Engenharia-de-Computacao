@@ -1,0 +1,59 @@
+A lanchonete Lanche Bão tem uma fila de clientes a espera do seu pedido. O tempo de preparo dos pedidos pode variar de acordo com o pedido e quem prepara o lanche. Determine a ordem em que os clientes recebem seus pedidos. Comece numerando cada um dos clientes de 1 até n (quantidade total de clientes atendidos), do início ao fim da fila. Para cada cliente, haverá um número de pedido e um tempo de preparo. O prazo de entrega deve ser calculado pela soma do número do pedido e do tempo de preparação. Caso dois pedidos sejam entregues ao mesmo tempo, considere a ordem crescente de número de clientes. A função deve retornar um vetor de números inteiros referentes à ordem de entrega aos clientes. Exemplo:
+
+Cliente: 1 2 3 4 5
+
+Nro. Ordem: 7 5 6 2 4
+
+Tempo de preparo: 3 6 2 3 3
+
+Tempo para a entrega: 10 11 8 5 7
+
+A entrega deve seguir a seguinte ordem:
+
+Cliente: 4 5 3 1 2
+
+Tempo p/ entrega: 5 7 8 10 11
+
+Input Format
+
+Na primeira linha deve ser lido um número inteiro n.
+
+Em cada uma das próximas n linhas ler dois números para os seguintes campos:
+
+    Ordem do pedido
+    Tempo de preparo
+
+Constraints
+
+.
+
+Output Format
+
+Imprimir o vetor referente ao tempo de entrega.
+
+Sample Input 0
+
+5
+8 1
+4 2
+5 6
+3 1
+4 3
+
+Sample Output 0
+
+4 2 5 1 3
+
+Sample Input 1
+
+5
+7 3
+5 6
+6 2
+2 3
+4 3
+
+Sample Output 1
+
+4 5 3 1 2
+

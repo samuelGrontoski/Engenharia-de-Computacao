@@ -1,0 +1,23 @@
+Implemente o algoritmo de ordenação mergesort. O algoritmo deve receber como entrada: um vetor de números inteiros e dois números inteiros (posições inicial e final, a partir de onde é calculado o meio do arranjo ou da partição). Na intercalação, em vez de utilizar 2 vetores auxiliares, devem ser utilizadas duas filas encadeadas para armazenamento temporário do vetor/partição de entrada (metade esquerda e metade direita) para fazer intercalação no vetor/partição por meio da operação desenfileirar.
+
+Input Format
+
+Na primeira linha deve ser lido o tamanho do vetor. Na segunda linha devem ser lidos os elementos do vetor.
+
+Constraints
+
+Deve ser utilizado o TAD de fila encadeda disponível em
+
+Output Format
+
+Imprimir o vetor ordenado.
+
+Sample Input 0
+
+8
+3 8 5 9 1 2 4 6
+
+Sample Output 0
+
+1 2 3 4 5 6 8 9
+

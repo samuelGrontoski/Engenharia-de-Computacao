@@ -1,0 +1,33 @@
+Seja um arranjo composto por números inteiros, podendo ser positivos e/ou negativos. A subsequência máxima é aquela que tem o maior valor de soma entre todos os os seus elementos.
+
+Por exemplo, dada a sequência a seguir:
+
+.
+
+A subsequência máxima é
+
+, pois, de todas as subsequências possíveis, essa foi a que registrou a maior soma entre os seus elementos (43).
+
+Implemente, utilizando a estratégia programação dinâmica, uma função que retorne o somatório da subsequência máxima.
+
+Input Format
+
+Na primeira linha deve ser lido um número inteiro (n). Na segunda linha deve ser lida um vetor de números inteiros de tamanho n.
+
+Constraints
+
+.
+
+Output Format
+
+Somatório da subsequência máxima.
+
+Sample Input 0
+
+14
+10 -3 -30 20 -3 -16 -23 15 23 -7 12 -4 -25 6
+
+Sample Output 0
+
+43
+
