@@ -64,7 +64,9 @@ void inserir_elemento(Tipo_Mat_Esparsa *matriz, int linha, int coluna, int valor
     }
 
     // A matriz esparsa não armazena zeros, então se o valor for 0, a função simplesmente retorna.
-    if (valor == 0) return;
+    if (valor == 0) {
+        return;
+    }
 
     // Não permite valores negativos. Informa o usuário e interrompe a execução.
     if (valor < 0) {
@@ -92,7 +94,9 @@ void inserir_elemento(Tipo_Mat_Esparsa *matriz, int linha, int coluna, int valor
     if (coluna_atual == NULL || coluna_atual->ID_Coluna != coluna) {
         // Aloca memória para o novo nó da coluna.
         tipo_coluna *coluna_nova = (tipo_coluna*) malloc(sizeof(tipo_coluna));
-        if (coluna_nova == NULL) return;
+        if (coluna_nova == NULL) { 
+            return;
+        }
 
         // Preenche os dados da nova coluna.
         coluna_nova->ID_Coluna = coluna;
@@ -134,7 +138,9 @@ void inserir_elemento(Tipo_Mat_Esparsa *matriz, int linha, int coluna, int valor
         // Se não existe, um novo nó de elemento precisa ser criado e inserido.
         // Aloca memória para o novo elemento.
         tipo_elemento *elemento_novo = (tipo_elemento*) malloc(sizeof(tipo_elemento));
-        if (elemento_novo == NULL) return;
+        if (elemento_novo == NULL) {
+            return;
+        }
 
         // Preenche os dados do novo elemento.
         elemento_novo->valor = valor;
@@ -501,10 +507,8 @@ Tipo_Mat_Esparsa* multiplicar_matrizes(Tipo_Mat_Esparsa *matriz_A, Tipo_Mat_Espa
             if (soma_produto != 0) {
                 inserir_elemento(matriz_resultado, i, j, soma_produto);
             }
-            // Avança para a próxima coluna da matriz B.
             coluna_matriz_B = coluna_matriz_B->proximo;
         }
-        // Avança para a próxima coluna (linha original) da matriz transposta de A.
         coluna_matriz_A_t = coluna_matriz_A_t->proximo;
     }
 
