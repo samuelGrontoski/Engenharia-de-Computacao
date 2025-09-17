@@ -1,0 +1,6 @@
+# -------------------------------------------------------------------------- #
+QUARTUS_VERSION = "12.1sp1"
+DATE = "14:47:54  June 17, 2025"
+
+# Revisions
+PROJECT_REVISION = "circuito_02"

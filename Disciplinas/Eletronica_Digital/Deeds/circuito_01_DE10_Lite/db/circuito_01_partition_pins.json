@@ -1,0 +1,57 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oSAIDA_a",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_b",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_c",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_d",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_e",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_f",
+					"strict" : false
+				},
+				{
+					"name" : "oSAIDA_g",
+					"strict" : false
+				},
+				{
+					"name" : "iID0015_00",
+					"strict" : false
+				},
+				{
+					"name" : "iID0008",
+					"strict" : false
+				},
+				{
+					"name" : "iID0015_01",
+					"strict" : false
+				},
+				{
+					"name" : "iID0015_02",
+					"strict" : false
+				},
+				{
+					"name" : "iID0015_03",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

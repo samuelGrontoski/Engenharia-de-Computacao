@@ -1,0 +1,76 @@
+# -------------------------------------------------------------------------- #
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C7G
+set_global_assignment -name TOP_LEVEL_ENTITY circuito_01
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 12.1SP1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:28:52  JUNE 17, 2025"
+set_global_assignment -name LAST_QUARTUS_VERSION 12.1sp1
+set_global_assignment -name VHDL_FILE Components.vhd
+set_global_assignment -name VHDL_FILE circuito_01.vhd
+set_location_assignment PIN_C10 -to iID0008
+set_location_assignment PIN_F15 -to iID0015_03
+set_location_assignment PIN_B14 -to iID0015_02
+set_location_assignment PIN_A14 -to iID0015_01
+set_location_assignment PIN_A13 -to iID0015_00
+set_location_assignment PIN_C14 -to oSAIDA_a
+set_location_assignment PIN_E15 -to oSAIDA_b
+set_location_assignment PIN_C15 -to oSAIDA_c
+set_location_assignment PIN_C16 -to oSAIDA_d
+set_location_assignment PIN_E16 -to oSAIDA_e
+set_location_assignment PIN_D17 -to oSAIDA_f
+set_location_assignment PIN_C17 -to oSAIDA_g
+set_location_assignment PIN_A8 -to oPIN_A8
+set_location_assignment PIN_A9 -to oPIN_A9
+set_location_assignment PIN_A10 -to oPIN_A10
+set_location_assignment PIN_B10 -to oPIN_B10
+set_location_assignment PIN_D13 -to oPIN_D13
+set_location_assignment PIN_C13 -to oPIN_C13
+set_location_assignment PIN_E14 -to oPIN_E14
+set_location_assignment PIN_D14 -to oPIN_D14
+set_location_assignment PIN_A11 -to oPIN_A11
+set_location_assignment PIN_B11 -to oPIN_B11
+set_location_assignment PIN_C18 -to oPIN_C18
+set_location_assignment PIN_D18 -to oPIN_D18
+set_location_assignment PIN_E18 -to oPIN_E18
+set_location_assignment PIN_B16 -to oPIN_B16
+set_location_assignment PIN_A17 -to oPIN_A17
+set_location_assignment PIN_A18 -to oPIN_A18
+set_location_assignment PIN_B17 -to oPIN_B17
+set_location_assignment PIN_A16 -to oPIN_A16
+set_location_assignment PIN_B20 -to oPIN_B20
+set_location_assignment PIN_A20 -to oPIN_A20
+set_location_assignment PIN_B19 -to oPIN_B19
+set_location_assignment PIN_A21 -to oPIN_A21
+set_location_assignment PIN_B21 -to oPIN_B21
+set_location_assignment PIN_C22 -to oPIN_C22
+set_location_assignment PIN_B22 -to oPIN_B22
+set_location_assignment PIN_A19 -to oPIN_A19
+set_location_assignment PIN_F21 -to oPIN_F21
+set_location_assignment PIN_E22 -to oPIN_E22
+set_location_assignment PIN_E21 -to oPIN_E21
+set_location_assignment PIN_C19 -to oPIN_C19
+set_location_assignment PIN_C20 -to oPIN_C20
+set_location_assignment PIN_D19 -to oPIN_D19
+set_location_assignment PIN_E17 -to oPIN_E17
+set_location_assignment PIN_D22 -to oPIN_D22
+set_location_assignment PIN_F18 -to oPIN_F18
+set_location_assignment PIN_E20 -to oPIN_E20
+set_location_assignment PIN_E19 -to oPIN_E19
+set_location_assignment PIN_J18 -to oPIN_J18
+set_location_assignment PIN_H19 -to oPIN_H19
+set_location_assignment PIN_F19 -to oPIN_F19
+set_location_assignment PIN_F20 -to oPIN_F20
+set_location_assignment PIN_F17 -to oPIN_F17
+set_location_assignment PIN_J20 -to oPIN_J20
+set_location_assignment PIN_K20 -to oPIN_K20
+set_location_assignment PIN_L18 -to oPIN_L18
+set_location_assignment PIN_N18 -to oPIN_N18
+set_location_assignment PIN_M20 -to oPIN_M20
+set_location_assignment PIN_N19 -to oPIN_N19
+set_location_assignment PIN_N20 -to oPIN_N20
+set_location_assignment PIN_L19 -to oPIN_L19
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

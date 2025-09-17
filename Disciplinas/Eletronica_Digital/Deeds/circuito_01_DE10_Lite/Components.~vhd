@@ -1,0 +1,144 @@
+------------------------------------------------------------
+-- Deeds (Digital Electronics Education and Design Suite)
+-- VHDL Code generated on (17/06/2025, 14:24:35)
+--      by Deeds (Digital Circuit Simulator)(Deeds-DcS)
+--      Ver. 3.01.250 (Feb 28, 2025)
+-- Copyright (c) 2002-2025 University of Genoa, Italy
+--      Web Site:  https://www.digitalelectronicsdeeds.com
+------------------------------------------------------------
+-- FPGA Board: "DE10-Lite Board"
+-- Chip FPGA: Intel/Altera MAX 10 (r) (10M50DAF484C7G)
+-- Proprietary EDA Tool: Quartus(r) II (Ver = 12.1sp1)
+------------------------------------------------------------
+
+--------------------------------------------------------------------
+LIBRARY ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY ROM16x4C004 IS           -- (programmable) ROM 16 x 4
+  PORT( CS  : IN  std_logic;
+        A00 : IN  std_logic;   -- ADR 3..0 (16 locations)
+        A01 : IN  std_logic;
+        A02 : IN  std_logic;
+        A03 : IN  std_logic;
+        D00 : OUT std_logic;   -- Data Output 3..0 (4-bits)
+        D01 : OUT std_logic;
+        D02 : OUT std_logic;
+        D03 : OUT std_logic );
+END ROM16x4C004;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF ROM16x4C004 IS
+  --
+  type ROM_Array is array (0 to 15) of std_logic_vector(3 downto 0);
+  SIGNAL A : std_logic_vector( 3 downto 0);
+  SIGNAL D : std_logic_vector( 3 downto 0);
+
+  -- ROM Memory Array ----------------------------------------------
+  constant ROM_Cells: ROM_Array:= (
+		00000 => "1111",
+		00001 => "1110",
+		00002 => "1101",
+		00003 => "1100",
+		00004 => "1011",
+		00005 => "1010",
+		00006 => "1001",
+		00007 => "1000",
+		00008 => "0111",
+		00009 => "0110",
+		00010 => "0101",
+		00011 => "0100",
+		00012 => "0011",
+		00013 => "0010",
+		00014 => "0001",
+		00015 => "0000",
+		OTHERS=> "1111"
+		);
+
+BEGIN
+  A <= (A03 & A02 & A01 & A00);
+  --
+  PROCESS( CS, A )
+  BEGIN
+    if (CS = '1') then
+          D <= ROM_Cells(to_integer(unsigned(A))); -- READ condition
+    else  D <= (others => '0');                    -- Chip Select Off
+    end if;
+  END PROCESS;
+  --
+  D03 <= D(3); D02 <= D(2); D01 <= D(1); D00 <= D(0);
+END behavioral;
+
+
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- Seven Segment Display Decoder
+
+ENTITY SevenSegm_Decoder IS
+  PORT( iD3:    IN  std_logic;  -- iD3 = MSB, iD0 = LSB
+        iD2:    IN  std_logic;
+        iD1:    IN  std_logic;
+        iD0:    IN  std_logic;
+        oHEX_a: OUT std_logic;  -- All "Active Low"
+        oHEX_b: OUT std_logic;
+        oHEX_c: OUT std_logic;
+        oHEX_d: OUT std_logic;
+        oHEX_e: OUT std_logic;
+        oHEX_f: OUT std_logic;
+        oHEX_g: OUT std_logic );
+END SevenSegm_Decoder;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF SevenSegm_Decoder IS
+  SIGNAL HexNumber: std_logic_vector( 3 downto 0 );
+BEGIN
+  -- REM: All Segment are active Low
+  HexNumber <= iD3 & iD2 & iD1 & iD0;
+  with HexNumber select
+    oHEX_a <= '0' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '1' when "0100", '0' when "0101", '0' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '1' when "1011",
+              '0' when "1100", '1' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_b <= '0' when "0000", '0' when "0001", '0' when "0010", '0' when "0011",
+              '0' when "0100", '1' when "0101", '1' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '1' when "1011",
+              '1' when "1100", '0' when "1101", '1' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_c <= '0' when "0000", '0' when "0001", '1' when "0010", '0' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '1' when "1100", '0' when "1101", '1' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_d <= '0' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '1' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '1' when "1010", '0' when "1011",
+              '0' when "1100", '0' when "1101", '0' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_e <= '0' when "0000", '1' when "0001", '0' when "0010", '1' when "0011",
+              '1' when "0100", '1' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '1' when "1001", '0' when "1010", '0' when "1011",
+              '0' when "1100", '0' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_f <= '0' when "0000", '1' when "0001", '1' when "0010", '1' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '0' when "1100", '1' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_g <= '1' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '1' when "1100", '0' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+END behavioral;
+

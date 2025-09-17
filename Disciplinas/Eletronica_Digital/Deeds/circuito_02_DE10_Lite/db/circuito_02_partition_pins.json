@@ -1,0 +1,85 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oID0026_L_a",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_b",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_c",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_d",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_e",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_f",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_L_g",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_a",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_b",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_c",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_d",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_e",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_f",
+					"strict" : false
+				},
+				{
+					"name" : "oID0026_H_g",
+					"strict" : false
+				},
+				{
+					"name" : "iID0016_03",
+					"strict" : false
+				},
+				{
+					"name" : "iID0016_00",
+					"strict" : false
+				},
+				{
+					"name" : "iID0016_01",
+					"strict" : false
+				},
+				{
+					"name" : "iCLOCK_50MHz",
+					"strict" : false
+				},
+				{
+					"name" : "inReset",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

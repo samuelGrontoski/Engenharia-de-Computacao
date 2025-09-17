@@ -1,0 +1,308 @@
+------------------------------------------------------------
+-- Deeds (Digital Electronics Education and Design Suite)
+-- VHDL Code generated on (17/06/2025, 14:45:27)
+--      by Deeds (Digital Circuit Simulator)(Deeds-DcS)
+--      Ver. 3.01.250 (Feb 28, 2025)
+-- Copyright (c) 2002-2025 University of Genoa, Italy
+--      Web Site:  https://www.digitalelectronicsdeeds.com
+------------------------------------------------------------
+-- FPGA Board: "DE10-Lite Board"
+-- Chip FPGA: Intel/Altera MAX 10 (r) (10M50DAF484C7G)
+-- Proprietary EDA Tool: Quartus(r) II (Ver = 12.1sp1)
+------------------------------------------------------------
+
+--------------------------------------------------------------------
+LIBRARY ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY ROM64x8C001 IS           -- (programmable) ROM 64 x 8
+  PORT( CS  : IN  std_logic;
+        A00 : IN  std_logic;   -- ADR 5..0 (64 locations)
+        A01 : IN  std_logic;
+        A02 : IN  std_logic;
+        A03 : IN  std_logic;
+        A04 : IN  std_logic;
+        A05 : IN  std_logic;
+        D00 : OUT std_logic;   -- Data Output 7..0 (8-bits)
+        D01 : OUT std_logic;
+        D02 : OUT std_logic;
+        D03 : OUT std_logic;
+        D04 : OUT std_logic;
+        D05 : OUT std_logic;
+        D06 : OUT std_logic;
+        D07 : OUT std_logic );
+END ROM64x8C001;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF ROM64x8C001 IS
+  --
+  type ROM_Array is array (0 to 63) of std_logic_vector(7 downto 0);
+  SIGNAL A : std_logic_vector( 5 downto 0);
+  SIGNAL D : std_logic_vector( 7 downto 0);
+
+  -- ROM Memory Array ----------------------------------------------
+  constant ROM_Cells: ROM_Array:= (
+		00000 => "00000101",
+		00001 => "11011101",
+		00002 => "11000010",
+		00003 => "10101010",
+		00004 => "10011101",
+		00005 => "10010101",
+		00006 => "10001001",
+		00007 => "10000111",
+		00008 => "10010000",
+		00009 => "10011001",
+		00010 => "10100100",
+		00011 => "10101011",
+		00012 => "10110111",
+		00013 => "11000001",
+		00014 => "11000110",
+		00015 => "11001100",
+		00016 => "11001011",
+		00017 => "11001101",
+		00018 => "11001011",
+		00019 => "11001001",
+		00020 => "11000111",
+		00021 => "11001111",
+		00022 => "11010010",
+		00023 => "11011011",
+		00024 => "11011111",
+		00025 => "11101100",
+		00026 => "11101110",
+		00027 => "11110001",
+		00028 => "11111011",
+		00029 => "00000001",
+		00030 => "00000000",
+		00031 => "00000001",
+		00032 => "00000001",
+		00033 => "00000011",
+		00034 => "11111100",
+		00035 => "00000000",
+		00036 => "00000110",
+		00037 => "00001101",
+		00038 => "00010110",
+		00039 => "00011101",
+		00040 => "00100011",
+		00041 => "00100110",
+		00042 => "00110011",
+		00043 => "00110111",
+		00044 => "00111010",
+		00045 => "00110010",
+		00046 => "00110111",
+		00047 => "00110001",
+		00048 => "00101111",
+		00049 => "00110011",
+		00050 => "00111100",
+		00051 => "01000010",
+		00052 => "01001000",
+		00053 => "01010001",
+		00054 => "01100101",
+		00055 => "01100110",
+		00056 => "01101111",
+		00057 => "01110110",
+		00058 => "01110111",
+		00059 => "01110100",
+		00060 => "01101000",
+		00061 => "01001110",
+		00062 => "00111010",
+		00063 => "00011101",
+		OTHERS=> "11111111"
+		);
+
+
+BEGIN
+  A <= (A05 & A04 & A03 & A02 & A01 & A00);
+  --
+  PROCESS( CS, A )
+  BEGIN
+    if (CS = '1') then
+          D <= ROM_Cells(to_integer(unsigned(A))); -- READ condition
+    else  D <= (others => '0');                    -- Chip Select Off
+    end if;
+  END PROCESS;
+  --
+  D07 <= D(7); D06 <= D(6); D05 <= D(5); D04 <= D(4);
+  D03 <= D(3); D02 <= D(2); D01 <= D(1); D00 <= D(0);
+END behavioral;
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY CounterUDE8 IS
+  PORT( Ck : IN std_logic;
+        nCL: IN std_logic;
+        ENP: IN std_logic;
+        UD : IN std_logic;		  
+        Q7 : OUT std_logic;
+        Q6 : OUT std_logic;
+        Q5 : OUT std_logic;
+        Q4 : OUT std_logic;
+        Q3 : OUT std_logic;
+        Q2 : OUT std_logic;
+        Q1 : OUT std_logic;
+        Q0 : OUT std_logic;		  
+        Tc : OUT std_logic );
+END CounterUDE8;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF CounterUDE8 IS
+BEGIN
+  CountUDE8: PROCESS( Ck, nCL, ENP, UD )
+  variable aCnt: unsigned( 7 downto 0 );
+  BEGIN
+    if    (nCL = '0') then          		aCnt := (others =>'0');
+    elsif (nCL = '1') then
+      if (Ck'event) AND (Ck='1') then
+        if  (ENP = '1') then
+          if    (UD = '1') then
+            if (aCnt < "11111111") then	aCnt := aCnt + 1;
+            else                    		aCnt := (others =>'0');
+            end if;
+          elsif (UD = '0') then
+            if (aCnt > "00000000") then 	aCnt := aCnt - 1;
+            else                    		aCnt := (others =>'1');
+            end if;
+          else                     	 		aCnt := (others =>'X'); -- (UD: Unknown)
+          END IF;
+        elsif not(ENP ='0') then    		aCnt := (others =>'X'); -- (ENP: Unknown)
+        END IF;
+      END IF;
+    else                            		aCnt := (others =>'X'); -- (nCL: Unknown)
+    END IF;
+    --
+	 Tc <=     (aCnt(7) and aCnt(6) and aCnt(5) and aCnt(4) and aCnt(3) and aCnt(2) and aCnt(1) and aCnt(0) and UD) or
+          (not(aCnt(7) or  aCnt(6) or  aCnt(5) or  aCnt(4) or  aCnt(3) or  aCnt(2) or  aCnt(1) or  aCnt(0) or  UD));
+    --
+    Q7 <= aCnt(7);
+    Q6 <= aCnt(6);
+    Q5 <= aCnt(5);
+    Q4 <= aCnt(4);
+    Q3 <= aCnt(3);
+    Q2 <= aCnt(2);
+    Q1 <= aCnt(1);
+    Q0 <= aCnt(0);
+    --
+  END PROCESS;
+END behavioral;
+
+
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY AutoResetGen IS				-- Auto Reset Generator
+   PORT( iMClk: IN  std_logic;   -- Master Clock
+         inBut: IN  std_logic;   -- PushBut, Switch on Ext. Reset (active low)
+         onRes: OUT std_logic    -- Reset Output (active low)
+         );
+   END AutoResetGen;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF AutoResetGen IS
+
+SIGNAL FFR: std_logic;
+SIGNAL SHR: unsigned( 15 downto 0 );
+SIGNAL FeedBack: std_logic;		 
+
+BEGIN
+   ------------------------------------------------------------------
+   -- 16-bits shift-register-based "Auto-Reset" network.
+	-- It appears over-complicated, but a simpler structure,
+	-- even if accepted by the VHDL compiler, is deleted
+   -- by the logic optimizer. This one... not!
+   ------------------------------------------------------------------
+   FeedBack <= not( 	SHR(15) and SHR(14) and SHR(13) and SHR(12) and 
+							SHR(11) and SHR(10) and SHR(09) and SHR(08) and
+							SHR(07) and SHR(06) and SHR(05) and SHR(04) and 
+							SHR(03) and SHR(02) and SHR(01) and SHR(00) );
+							
+   ARG: process( iMClk, inBut )
+   begin
+		if (inBut = '0') then
+			SHR <= "0000000000000000";
+		   FFR <= '0';
+      elsif (FFR = '0') and rising_edge( iMClk ) then 
+			SHR <= FeedBack & SHR(15 downto 1);
+			FFR <= SHR(00) or SHR(01);
+      end if;
+   end process;
+	--
+	onRes <= FFR;
+	--
+END behavioral;
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- Seven Segment Display Decoder
+
+ENTITY SevenSegm_Decoder IS
+  PORT( iD3:    IN  std_logic;  -- iD3 = MSB, iD0 = LSB
+        iD2:    IN  std_logic;
+        iD1:    IN  std_logic;
+        iD0:    IN  std_logic;
+        oHEX_a: OUT std_logic;  -- All "Active Low"
+        oHEX_b: OUT std_logic;
+        oHEX_c: OUT std_logic;
+        oHEX_d: OUT std_logic;
+        oHEX_e: OUT std_logic;
+        oHEX_f: OUT std_logic;
+        oHEX_g: OUT std_logic );
+END SevenSegm_Decoder;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF SevenSegm_Decoder IS
+  SIGNAL HexNumber: std_logic_vector( 3 downto 0 );
+BEGIN
+  -- REM: All Segment are active Low
+  HexNumber <= iD3 & iD2 & iD1 & iD0;
+  with HexNumber select
+    oHEX_a <= '0' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '1' when "0100", '0' when "0101", '0' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '1' when "1011",
+              '0' when "1100", '1' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_b <= '0' when "0000", '0' when "0001", '0' when "0010", '0' when "0011",
+              '0' when "0100", '1' when "0101", '1' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '1' when "1011",
+              '1' when "1100", '0' when "1101", '1' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_c <= '0' when "0000", '0' when "0001", '1' when "0010", '0' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '0' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '1' when "1100", '0' when "1101", '1' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_d <= '0' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '1' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '1' when "1010", '0' when "1011",
+              '0' when "1100", '0' when "1101", '0' when "1110", '1' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_e <= '0' when "0000", '1' when "0001", '0' when "0010", '1' when "0011",
+              '1' when "0100", '1' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '1' when "1001", '0' when "1010", '0' when "1011",
+              '0' when "1100", '0' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_f <= '0' when "0000", '1' when "0001", '1' when "0010", '1' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '0' when "1100", '1' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+  with HexNumber select
+    oHEX_g <= '1' when "0000", '1' when "0001", '0' when "0010", '0' when "0011",
+              '0' when "0100", '0' when "0101", '0' when "0110", '1' when "0111",
+              '0' when "1000", '0' when "1001", '0' when "1010", '0' when "1011",
+              '1' when "1100", '0' when "1101", '0' when "1110", '0' when "1111",
+              '1' when others;
+END behavioral;
+

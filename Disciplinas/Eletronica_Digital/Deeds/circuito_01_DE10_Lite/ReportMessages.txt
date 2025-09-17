@@ -1,0 +1,33 @@
+(Info) ************************************************************************
+(Info) Deeds VHDL converter (ver. 3.01.250) is running...
+(Info) Convertion started (14:28:51, 17/06/2025) on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_01.pbs"
+(Info) ------------------------------------------------------------------------
+(Info) Converting schematic file "circuito_01.pbs" into VHDL
+(Info) --> Top level VHDL file: "circuito_01.vhd"
+(Info) Extracting and Coding VHDL components
+(Info) VHDL components coded (file: "Components.vhd", 5905 bytes)
+(Info) Processing Input and Output Signals
+(Warning) Unnamed Input [Id#8] named as "iID0008"
+(Warning) Unnamed Input [Id#15] named as "iID0015"
+(Warning) Output "SAIDA" [Id#7] renamed to "oSAIDA"
+(Info) 2 Native Input(s), 1 Native Output(s) processed.
+(Info) 0 Added Input(s), 0 Added Output(s), 50 Default Output(s).
+(Info) Top level structural VHDL description coded (file "circuito_01.vhd", 9364 bytes)
+(Info) ------------------------------------------------------------------------
+(Info) Saving all the VHDL files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_01_DE10_Lite"
+(Info)   |--- "Components.vhd" file saved (a backup copy has been created).
+(Info)   |--- "circuito_01.vhd" file saved (a backup copy has been created).
+(Info) ------------------------------------------------------------------------
+(Info) Building QuartusR II project files.
+(Info) Saving QuartusR II project files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_01_DE10_Lite"
+(Info)   |--- "circuito_01.qpf" (QuartusR II project file) saved.
+(Info)   |--- "circuito_01.qsf" (QuartusR II project file) saved.
+(Info) ------------------------------------------------------------------------
+(Info) This message list saved on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_01_DE10_Lite\ReportMessages.txt"
+(Info) ------------------------------------------------------------------------
+(Info) All files saved! VHDL conversion ended (14:28:52, 17/06/2025)
+(Info) ************************************************************************
