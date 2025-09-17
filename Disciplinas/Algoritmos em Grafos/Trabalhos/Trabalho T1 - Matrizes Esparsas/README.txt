@@ -4,6 +4,6 @@ Estrutura das matrizes nos arquivos txt:
 
 Executar o programa:
 
-gcc main.c matriz_esparsa.c -o programa_matriz
+gcc main.c -o programa_matriz
 
 ./programa_matriz
