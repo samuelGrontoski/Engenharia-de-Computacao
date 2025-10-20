@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Define os códigos de cores ANSI
+#define ANSI_COLOR_RED     "\x1b[31m"  // Vermelho
+#define ANSI_COLOR_GREEN   "\x1b[32m"  // Verde
+#define ANSI_COLOR_YELLOW  "\x1b[33m"  // Amarelo
+#define ANSI_COLOR_BLUE    "\x1b[34m"  // Azul
+#define ANSI_COLOR_CYAN    "\x1b[36m"  // Ciano
+#define ANSI_COLOR_RESET   "\x1b[0m"   // Reseta a cor para o padrão
+
 // --- Estruturas de Dados ---
 
 // Estrutura para um nó da lista de adjacência (horizontal)
 typedef struct NoAdjacente {
-    int vertice;    // O vértice vizinho
-    struct NoAdjacente *proximo;   // Próximo vizinho na lista
+    int vertice;    // O vértice adjacente
+    struct NoAdjacente *proximo;   // Próximo adjacente na lista
 } NoAdjacente;
 
 // Estrutura para um nó da lista de vértices (vertical)
@@ -27,7 +35,7 @@ typedef struct Grafo {
 NoAdjacente* criarNoAdjacente(int v) {
     NoAdjacente* novoNo = (NoAdjacente*)malloc(sizeof(NoAdjacente));
     if (novoNo == NULL) {
-        printf("Erro de alocacao de memoria!\n");
+        printf(ANSI_COLOR_RED "Erro de alocacao de memoria!\n" ANSI_COLOR_RESET);
         exit(1);
     }
     novoNo->vertice = v;
@@ -39,7 +47,7 @@ NoAdjacente* criarNoAdjacente(int v) {
 NoVertice* criarNoVertice(int v) {
     NoVertice* novoNo = (NoVertice*)malloc(sizeof(NoVertice));
     if (novoNo == NULL) {
-        printf("Erro de alocacao de memoria!\n");
+        printf(ANSI_COLOR_RED "Erro de alocacao de memoria!\n" ANSI_COLOR_RESET);
         exit(1);
     }
     novoNo->vertice = v;
@@ -52,7 +60,7 @@ NoVertice* criarNoVertice(int v) {
 Grafo* criarGrafo() {
     Grafo* grafo = (Grafo*)malloc(sizeof(Grafo));
     if (grafo == NULL) {
-        printf("Erro de alocacao de memoria!\n");
+        printf(ANSI_COLOR_RED "Erro de alocacao de memoria!\n" ANSI_COLOR_RESET);
         exit(1);
     }
     grafo->inicio = NULL;
@@ -74,7 +82,7 @@ NoVertice* buscarVertice(Grafo* grafo, int v) {
 }
 
 // Função auxiliar para inserir um vizinho na lista de adjacência (ordenado)
-// (Usada por inserirAresta e inserirArestaAutomatico)
+// (Usada por inserirAresta e inserirArestaNoGrafo)
 void adicionarVizinho(NoVertice* no, int vizinho) {
     NoAdjacente* novoNo = criarNoAdjacente(vizinho);
 
@@ -124,9 +132,9 @@ int removerVizinho(NoVertice* no, int vizinho) {
     return 1;
 }
 
-// Função interna para inserir vértice (sem input do usuário)
+// Função interna para inserir vértice
 // Retorna o nó criado ou o nó existente
-NoVertice* inserirVerticeAutomatico(Grafo* grafo, int v) {
+NoVertice* inserirVerticeNoGrafo(Grafo* grafo, int v) {
     NoVertice* existente = buscarVertice(grafo, v);
     if (existente != NULL) {
         return existente; // Vértice já existe, apenas retorna
@@ -153,8 +161,8 @@ NoVertice* inserirVerticeAutomatico(Grafo* grafo, int v) {
     return novoNo;
 }
 
-// Função interna para inserir aresta (sem input do usuário)
-void inserirArestaAutomatico(Grafo* grafo, int v1, int v2) {
+// Função interna para inserir aresta
+void inserirArestaNoGrafo(Grafo* grafo, int v1, int v2) {
     NoVertice* no1 = buscarVertice(grafo, v1);
     NoVertice* no2 = buscarVertice(grafo, v2);
 
@@ -207,29 +215,29 @@ void limparGrafo(Grafo* grafo) {
 // 1. Inserir Vértice
 void inserirVertice(Grafo* grafo) {
     int v;
-    printf("Digite o numero do vertice a ser inserido: ");
+    printf(ANSI_COLOR_BLUE "Digite o numero do vertice a ser inserido: " ANSI_COLOR_RESET);
     scanf("%d", &v);
 
     // Verifica se o vértice já existe
     if (buscarVertice(grafo, v) != NULL) {
-        printf("Erro: O vertice %d ja existe no grafo.\n", v);
+        printf(ANSI_COLOR_RED "Erro: O vertice %d ja existe no grafo.\n" ANSI_COLOR_RESET, v);
         return;
     }
     
     // Chama a função interna para fazer a inserção
-    inserirVerticeAutomatico(grafo, v);
+    inserirVerticeNoGrafo(grafo, v);
 
-    printf("Vertice %d inserido com sucesso.\n", v);
+    printf(ANSI_COLOR_GREEN "Vertice %d inserido com sucesso.\n" ANSI_COLOR_RESET, v);
 }
 
 // 2. Inserir Aresta
 void inserirAresta(Grafo* grafo) {
     int v1, v2;
-    printf("Digite os dois vertices da aresta (ex: 3 5): ");
+    printf(ANSI_COLOR_BLUE "Digite os dois vertices da aresta (ex: 3 5): " ANSI_COLOR_RESET);
     scanf("%d %d", &v1, &v2);
 
     if (v1 == v2) {
-        printf("Erro: Nao sao permitidos lacos (aresta de um vertice para ele mesmo).\n");
+        printf(ANSI_COLOR_RED "Erro: Nao sao permitidos lacos (aresta de um vertice para ele mesmo).\n" ANSI_COLOR_RESET);
         return;
     }
 
@@ -237,23 +245,23 @@ void inserirAresta(Grafo* grafo) {
     NoVertice* no2 = buscarVertice(grafo, v2);
 
     if (no1 == NULL || no2 == NULL) {
-        printf("Erro: Um ou ambos os vertices (%d, %d) nao existem no grafo.\n", v1, v2);
+        printf(ANSI_COLOR_RED "Erro: Um ou ambos os vertices (%d, %d) nao existem no grafo.\n" ANSI_COLOR_RESET, v1, v2);
         return;
     }
 
     NoAdjacente* temp = no1->inicioListaAdjacente;
     while (temp != NULL) {
         if (temp->vertice == v2) {
-            printf("Erro: A aresta %d - %d ja existe.\n", v1, v2);
+            printf(ANSI_COLOR_RED "Erro: A aresta %d - %d ja existe.\n" ANSI_COLOR_RESET, v1, v2);
             return;
         }
         temp = temp->proximo;
     }
 
     // Chama a função interna para inserir
-    inserirArestaAutomatico(grafo, v1, v2);
+    inserirArestaNoGrafo(grafo, v1, v2);
 
-    printf("Aresta %d - %d inserida com sucesso.\n", v1, v2);
+    printf(ANSI_COLOR_GREEN "Aresta %d - %d inserida com sucesso.\n" ANSI_COLOR_RESET, v1, v2);
 }
 
 // 3. Visualizar Grafo
@@ -261,7 +269,7 @@ void visualizarGrafo(Grafo* grafo) {
     NoVertice* verticeTemp = grafo->inicio; 
 
     if (verticeTemp == NULL) {
-        printf("O grafo esta vazio.\n");
+        printf(ANSI_COLOR_YELLOW "O grafo esta vazio.\n" ANSI_COLOR_RESET);
         return;
     }
 
@@ -284,12 +292,12 @@ void visualizarGrafo(Grafo* grafo) {
 // 4. Remover Vértice
 void removerVertice(Grafo* grafo) {
     int v;
-    printf("Digite o numero do vertice a ser removido: ");
+    printf(ANSI_COLOR_BLUE "Digite o numero do vertice a ser removido: " ANSI_COLOR_RESET);
     scanf("%d", &v);
 
     NoVertice *verticeParaRemover = buscarVertice(grafo, v);
     if (verticeParaRemover == NULL) {
-        printf("Erro: O vertice %d nao foi encontrado.\n", v);
+        printf(ANSI_COLOR_RED "Erro: O vertice %d nao foi encontrado.\n" ANSI_COLOR_RESET, v);
         return;
     }
 
@@ -311,7 +319,6 @@ void removerVertice(Grafo* grafo) {
     }
     verticeParaRemover->inicioListaAdjacente = NULL;
 
-    // Remove o vértice da lista principal
     NoVertice *prev = NULL;
     verticeTemp = grafo->inicio;
 
@@ -330,21 +337,21 @@ void removerVertice(Grafo* grafo) {
         prev->proximoVertice = verticeParaRemover->proximoVertice;
     }
 
-    free(verticeParaRemover); 
-    printf("Vertice %d e todas as suas arestas foram removidos.\n", v);
+    free(verticeParaRemover);
+    printf(ANSI_COLOR_GREEN "Vertice %d e todas as suas arestas foram removidos.\n" ANSI_COLOR_RESET, v);
 }
 
 // 5. Remover Aresta
 void removerAresta(Grafo* grafo) {
     int v1, v2;
-    printf("Digite os dois vertices da aresta a ser removida (ex: 3 5): ");
+    printf(ANSI_COLOR_BLUE "Digite os dois vertices da aresta a ser removida (ex: 3 5): " ANSI_COLOR_RESET);
     scanf("%d %d", &v1, &v2);
 
     NoVertice* no1 = buscarVertice(grafo, v1);
     NoVertice* no2 = buscarVertice(grafo, v2);
 
     if (no1 == NULL || no2 == NULL) {
-        printf("Erro: Um ou ambos os vertices (%d, %d) nao existem.\n", v1, v2);
+        printf(ANSI_COLOR_RED "Erro: Um ou ambos os vertices (%d, %d) nao existem.\n" ANSI_COLOR_RESET, v1, v2);
         return;
     }
 
@@ -353,23 +360,23 @@ void removerAresta(Grafo* grafo) {
     int sucesso2 = removerVizinho(no2, v1);
 
     if (sucesso1 && sucesso2) {
-        printf("Aresta %d - %d removida com sucesso.\n", v1, v2);
+        printf(ANSI_COLOR_GREEN "Aresta %d - %d removida com sucesso.\n" ANSI_COLOR_RESET, v1, v2);
     } else {
-        printf("Erro: A aresta %d - %d nao foi encontrada.\n", v1, v2);
+        printf(ANSI_COLOR_RED "Erro: A aresta %d - %d nao foi encontrada.\n" ANSI_COLOR_RESET, v1, v2);
     }
 }
 
 // 6. Inserir Grafo Padrão
 void inserirGrafoPadrao(Grafo* grafo) {
     // Limpa o grafo atual para evitar duplicatas
-    limparGrafo(grafo); 
-    printf("Limpando grafo atual e inserindo grafo padrao...\n");
+    limparGrafo(grafo);
+    printf(ANSI_COLOR_YELLOW "Limpando grafo atual e inserindo grafo padrao...\n" ANSI_COLOR_RESET);
 
     // Inserir todos os vértices
     int vertices[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int numVertices = sizeof(vertices) / sizeof(vertices[0]);
     for (int i = 0; i < numVertices; i++) {
-        inserirVerticeAutomatico(grafo, vertices[i]);
+        inserirVerticeNoGrafo(grafo, vertices[i]);
     }
 
     // Inserir as arestas
@@ -382,18 +389,18 @@ void inserirGrafoPadrao(Grafo* grafo) {
     // [7] -> 4 -> 9 -> 8
     // [8] -> 7
     // [9] -> 7
-    inserirArestaAutomatico(grafo, 1, 2);
-    inserirArestaAutomatico(grafo, 1, 6);
-    inserirArestaAutomatico(grafo, 2, 4);
-    inserirArestaAutomatico(grafo, 2, 3);
-    inserirArestaAutomatico(grafo, 3, 5);
-    inserirArestaAutomatico(grafo, 4, 6);
-    inserirArestaAutomatico(grafo, 4, 5);
-    inserirArestaAutomatico(grafo, 4, 7);
-    inserirArestaAutomatico(grafo, 7, 9);
-    inserirArestaAutomatico(grafo, 7, 8);
-    
-    printf("Grafo padrao inserido com sucesso.\n");
+    inserirArestaNoGrafo(grafo, 1, 2);
+    inserirArestaNoGrafo(grafo, 1, 6);
+    inserirArestaNoGrafo(grafo, 2, 4);
+    inserirArestaNoGrafo(grafo, 2, 3);
+    inserirArestaNoGrafo(grafo, 3, 5);
+    inserirArestaNoGrafo(grafo, 4, 6);
+    inserirArestaNoGrafo(grafo, 4, 5);
+    inserirArestaNoGrafo(grafo, 4, 7);
+    inserirArestaNoGrafo(grafo, 7, 9);
+    inserirArestaNoGrafo(grafo, 7, 8);
+
+    printf(ANSI_COLOR_GREEN "Grafo padrao inserido com sucesso.\n" ANSI_COLOR_RESET);
     // Mostra o resultado automaticamente
     visualizarGrafo(grafo); 
 }
@@ -402,7 +409,7 @@ void inserirGrafoPadrao(Grafo* grafo) {
 void liberarGrafo(Grafo* grafo) {
     limparGrafo(grafo); // Chama a nova função de limpeza
     free(grafo); // Libera a estrutura do grafo em si
-    printf("Memoria do grafo liberada. Saindo...\n");
+    printf(ANSI_COLOR_YELLOW "Memoria do grafo liberada. Saindo...\n" ANSI_COLOR_RESET);
 }
 
 // --- Funções de Interface ---
@@ -436,7 +443,7 @@ int main() {
     do {
         mostrarMenu();
         if (scanf("%d", &escolha) != 1) {
-            printf("Entrada invalida. Por favor, digite um numero.\n");
+            printf(ANSI_COLOR_RED "Entrada invalida. Por favor, digite um numero.\n" ANSI_COLOR_RESET);
             limparBuffer();
             continue;
         }
@@ -465,7 +472,7 @@ int main() {
                 liberarGrafo(meuGrafo);
                 break;
             default:
-                printf("Opcao invalida. Tente novamente.\n");
+                printf(ANSI_COLOR_RED "Opcao invalida. Tente novamente.\n" ANSI_COLOR_RESET);
         }
 
     } while (escolha != 7);
