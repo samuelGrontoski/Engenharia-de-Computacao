@@ -1,0 +1,45 @@
+(Info) ************************************************************************
+(Info) Deeds VHDL converter (ver. 3.01.250) is running...
+(Info) Convertion started (14:39:29, 17/10/2025) on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_contador_async_17-10-25.pbs"
+(Info) ------------------------------------------------------------------------
+(Info) Converting schematic file "circuito_contador_async_17-10-25.pbs" into VHDL
+(Info) --> Top level VHDL file (renamed to be compliant): "circuito_contador_async_17_10_25.vhd"
+(Info) Extracting and Coding VHDL components
+(Info) VHDL components coded (file: "Components.vhd", 21089 bytes)
+(Info) Processing Input and Output Signals
+(Warning) Input "CLR" [Id#54] renamed to "iCLR"
+(Warning) Input "CK" [Id#89] renamed to "iCK"
+(Warning) Input "CK 2" [Id#90] renamed to "iCK_2"
+(Warning) Input "CLR 2" [Id#255] renamed to "iCLR_2"
+(Warning) Input "CK 3" [Id#259] renamed to "iCK_3"
+(Warning) Input "CLR 3" [Id#266] renamed to "iCLR_3"
+(Warning) Output "OUTPUT" [Id#82] renamed to "oOUTPUT"
+(Warning) Output "OUTPUT 2" [Id#96] renamed to "oOUTPUT_2"
+(Warning) Output "OUTPUT 3" [Id#265] renamed to "oOUTPUT_3"
+(Warning) "Slow Clock mode" not completely defined for clock input "iCK":
+(Warning) "Slow Clock mode" of "iCK" has been cancelled!
+(Warning) "Slow Clock mode" not completely defined for clock input "iCK_2":
+(Warning) "Slow Clock mode" of "iCK_2" has been cancelled!
+(Warning) "Slow Clock mode" not completely defined for clock input "iCK_3":
+(Warning) "Slow Clock mode" of "iCK_3" has been cancelled!
+(Info) 6 Native Input(s), 3 Native Output(s) processed.
+(Info) 1 Added Input(s), 0 Added Output(s), 34 Default Output(s).
+(Info) Top level structural VHDL description coded (file "circuito_contador_async_17_10_25.vhd", 14133 bytes)
+(Info) ------------------------------------------------------------------------
+(Info) Saving all the VHDL files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_contador_async_17_10_25_DE10_Lite"
+(Info)   |--- "Components.vhd" file saved (a backup copy has been created).
+(Info)   |--- "circuito_contador_async_17_10_25.vhd" file saved (a backup copy has been created).
+(Info) ------------------------------------------------------------------------
+(Info) Building QuartusR II project files.
+(Info) Saving QuartusR II project files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_contador_async_17_10_25_DE10_Lite"
+(Info)   |--- "circuito_contador_async_17_10_25.qpf" (QuartusR II project file) saved.
+(Info)   |--- "circuito_contador_async_17_10_25.qsf" (QuartusR II project file) saved.
+(Info) ------------------------------------------------------------------------
+(Info) This message list saved on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_contador_async_17_10_25_DE10_Lite\ReportMessages.txt"
+(Info) ------------------------------------------------------------------------
+(Info) All files saved! VHDL conversion ended (14:39:30, 17/10/2025)
+(Info) ************************************************************************

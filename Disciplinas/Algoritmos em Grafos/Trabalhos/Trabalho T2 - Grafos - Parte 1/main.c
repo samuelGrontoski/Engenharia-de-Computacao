@@ -5,14 +5,14 @@
 
 // Estrutura para um nó da lista de adjacência (horizontal)
 typedef struct NoAdjacente {
-    int vertice;             // O vértice vizinho
+    int vertice;    // O vértice vizinho
     struct NoAdjacente *proximo;   // Próximo vizinho na lista
 } NoAdjacente;
 
 // Estrutura para um nó da lista de vértices (vertical)
 typedef struct NoVertice {
-    int vertice;                  // O próprio vértice
-    struct NoVertice *proximoVertice; // Próximo vértice na lista principal
+    int vertice;    // O próprio vértice
+    struct NoVertice *proximoVertice;   // Próximo vértice na lista principal
     struct NoAdjacente *inicioListaAdjacente;    // Ponteiro para o início da lista de adjacência
 } NoVertice;
 
@@ -74,39 +74,49 @@ NoVertice* buscarVertice(Grafo* grafo, int v) {
 }
 
 // Função auxiliar para inserir um vizinho na lista de adjacência (ordenado)
-// (Usada por inserirAresta e inserirArestaInterna)
+// (Usada por inserirAresta e inserirArestaAutomatico)
 void adicionarVizinho(NoVertice* no, int vizinho) {
     NoAdjacente* novoNo = criarNoAdjacente(vizinho);
 
+    // Insere o novo vizinho na lista de adjacência de forma ordenada
     if (no->inicioListaAdjacente == NULL || no->inicioListaAdjacente->vertice > vizinho) {
+        // Insere o novo nó no início da lista de adjacência.
         novoNo->proximo = no->inicioListaAdjacente;
         no->inicioListaAdjacente = novoNo;
     } else {
+        // Se não for inserido no início, percorre a lista para achar a posição.
         NoAdjacente* temp = no->inicioListaAdjacente;
         while (temp->proximo != NULL && temp->proximo->vertice < vizinho) {
             temp = temp->proximo;
         }
+        // Insere o 'novoNo' após 'temp' e antes do nó seguinte a 'temp'.
         novoNo->proximo = temp->proximo;
         temp->proximo = novoNo;
     }
 }
 
 // Função auxiliar para remover um vizinho da lista de adjacência
+// (Usada por removerVertice e removerAresta)
 int removerVizinho(NoVertice* no, int vizinho) {
     NoAdjacente *temp = no->inicioListaAdjacente, *prev = NULL;
 
+    // Percorre a lista de adjacência para encontrar o vizinho a ser removido
     while (temp != NULL && temp->vertice != vizinho) {
         prev = temp;
         temp = temp->proximo;
     }
 
+    // Se o vizinho não foi encontrado
     if (temp == NULL) {
         return 0;
     }
 
+    // Remove o vizinho encontrado
     if (prev == NULL) {
+        // Se o vizinho a ser removido é o primeiro da lista
         no->inicioListaAdjacente = temp->proximo;
     } else {
+        // Se o vizinho a ser removido não é o primeiro
         prev->proximo = temp->proximo;
     }
 
@@ -116,7 +126,7 @@ int removerVizinho(NoVertice* no, int vizinho) {
 
 // Função interna para inserir vértice (sem input do usuário)
 // Retorna o nó criado ou o nó existente
-NoVertice* inserirVerticeInterno(Grafo* grafo, int v) {
+NoVertice* inserirVerticeAutomatico(Grafo* grafo, int v) {
     NoVertice* existente = buscarVertice(grafo, v);
     if (existente != NULL) {
         return existente; // Vértice já existe, apenas retorna
@@ -127,13 +137,16 @@ NoVertice* inserirVerticeInterno(Grafo* grafo, int v) {
 
     // Insere o novo vértice na lista principal de forma ordenada
     if (grafo->inicio == NULL || grafo->inicio->vertice > v) {
+        // Insere no início
         novoNo->proximoVertice = grafo->inicio;
         grafo->inicio = novoNo;
     } else {
+        // Insere em posição correta
         NoVertice* temp = grafo->inicio;
         while (temp->proximoVertice != NULL && temp->proximoVertice->vertice < v) {
             temp = temp->proximoVertice;
         }
+        // Insere após 'temp' e antes do próximo
         novoNo->proximoVertice = temp->proximoVertice;
         temp->proximoVertice = novoNo;
     }
@@ -141,15 +154,16 @@ NoVertice* inserirVerticeInterno(Grafo* grafo, int v) {
 }
 
 // Função interna para inserir aresta (sem input do usuário)
-void inserirArestaInterna(Grafo* grafo, int v1, int v2) {
+void inserirArestaAutomatico(Grafo* grafo, int v1, int v2) {
     NoVertice* no1 = buscarVertice(grafo, v1);
     NoVertice* no2 = buscarVertice(grafo, v2);
 
+    // Não insere se vértices não existem ou é laço
     if (no1 == NULL || no2 == NULL || v1 == v2) {
-        return; // Não insere se vértices não existem ou é laço
+        return;
     }
 
-    // Verifica se a aresta já existe (basta checar em uma direção)
+    // Verifica se a aresta já existe
     NoAdjacente* temp = no1->inicioListaAdjacente;
     while (temp != NULL) {
         if (temp->vertice == v2) {
@@ -203,7 +217,7 @@ void inserirVertice(Grafo* grafo) {
     }
     
     // Chama a função interna para fazer a inserção
-    inserirVerticeInterno(grafo, v);
+    inserirVerticeAutomatico(grafo, v);
 
     printf("Vertice %d inserido com sucesso.\n", v);
 }
@@ -237,7 +251,7 @@ void inserirAresta(Grafo* grafo) {
     }
 
     // Chama a função interna para inserir
-    inserirArestaInterna(grafo, v1, v2);
+    inserirArestaAutomatico(grafo, v1, v2);
 
     printf("Aresta %d - %d inserida com sucesso.\n", v1, v2);
 }
@@ -260,7 +274,7 @@ void visualizarGrafo(Grafo* grafo) {
             printf("%d -> ", arestaTemp->vertice);
             arestaTemp = arestaTemp->proximo;
         }
-        printf("NULL\n"); // (MODIFICADO) Mudei de "//" para "NULL"
+        printf("NULL\n");
         
         verticeTemp = verticeTemp->proximoVertice; 
     }
@@ -279,7 +293,7 @@ void removerVertice(Grafo* grafo) {
         return;
     }
 
-    // Passo 1: Remover arestas conectadas
+    // Remove todas as arestas conectadas ao vértice 'v'
     NoVertice* verticeTemp = grafo->inicio;
     while (verticeTemp != NULL) {
         if (verticeTemp->vertice != v) {
@@ -288,27 +302,31 @@ void removerVertice(Grafo* grafo) {
         verticeTemp = verticeTemp->proximoVertice;
     }
 
-    // Passo 2: Liberar lista de adjacência do próprio vértice 'v'
+    // Libera a lista de adjacência do próprio vértice 'v'
     NoAdjacente* arestaTemp = verticeParaRemover->inicioListaAdjacente;
     while (arestaTemp != NULL) {
-        NoAdjacente* liberar = arestaTemp;
-        arestaTemp = arestaTemp->proximo;
-        free(liberar);
+        NoAdjacente* liberar = arestaTemp;  // Guarda o nó atual
+        arestaTemp = arestaTemp->proximo;   // Avança para o próximo
+        free(liberar);  // Libera o nó guardado
     }
     verticeParaRemover->inicioListaAdjacente = NULL;
 
-    // Passo 3: Remover o nó 'v' da lista principal (vertical)
+    // Remove o vértice da lista principal
     NoVertice *prev = NULL;
     verticeTemp = grafo->inicio;
 
+    // Encontra o vértice anterior
     while (verticeTemp != NULL && verticeTemp->vertice != v) {
         prev = verticeTemp;
         verticeTemp = verticeTemp->proximoVertice;
     }
 
+    // Remove o vértice da lista
     if (prev == NULL) {
+        // Se o vértice a ser removido é o primeiro da lista
         grafo->inicio = verticeParaRemover->proximoVertice;
     } else {
+        // Se o vértice a ser removido não é o primeiro da lista
         prev->proximoVertice = verticeParaRemover->proximoVertice;
     }
 
@@ -330,6 +348,7 @@ void removerAresta(Grafo* grafo) {
         return;
     }
 
+    // Tenta remover 'v1' e 'v2' das listas de adjacência
     int sucesso1 = removerVizinho(no1, v2);
     int sucesso2 = removerVizinho(no2, v1);
 
@@ -346,14 +365,14 @@ void inserirGrafoPadrao(Grafo* grafo) {
     limparGrafo(grafo); 
     printf("Limpando grafo atual e inserindo grafo padrao...\n");
 
-    // 1. Inserir todos os vértices
+    // Inserir todos os vértices
     int vertices[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int numVertices = sizeof(vertices) / sizeof(vertices[0]);
     for (int i = 0; i < numVertices; i++) {
-        inserirVerticeInterno(grafo, vertices[i]);
+        inserirVerticeAutomatico(grafo, vertices[i]);
     }
 
-    // 2. Inserir as arestas
+    // Inserir as arestas
     // [1] -> 2 -> 6
     // [2] -> 1 -> 4 -> 3
     // [3] -> 2 -> 5
@@ -363,16 +382,16 @@ void inserirGrafoPadrao(Grafo* grafo) {
     // [7] -> 4 -> 9 -> 8
     // [8] -> 7
     // [9] -> 7
-    inserirArestaInterna(grafo, 1, 2);
-    inserirArestaInterna(grafo, 1, 6);
-    inserirArestaInterna(grafo, 2, 4);
-    inserirArestaInterna(grafo, 2, 3);
-    inserirArestaInterna(grafo, 3, 5);
-    inserirArestaInterna(grafo, 4, 6);
-    inserirArestaInterna(grafo, 4, 5);
-    inserirArestaInterna(grafo, 4, 7);
-    inserirArestaInterna(grafo, 7, 9);
-    inserirArestaInterna(grafo, 7, 8);
+    inserirArestaAutomatico(grafo, 1, 2);
+    inserirArestaAutomatico(grafo, 1, 6);
+    inserirArestaAutomatico(grafo, 2, 4);
+    inserirArestaAutomatico(grafo, 2, 3);
+    inserirArestaAutomatico(grafo, 3, 5);
+    inserirArestaAutomatico(grafo, 4, 6);
+    inserirArestaAutomatico(grafo, 4, 5);
+    inserirArestaAutomatico(grafo, 4, 7);
+    inserirArestaAutomatico(grafo, 7, 9);
+    inserirArestaAutomatico(grafo, 7, 8);
     
     printf("Grafo padrao inserido com sucesso.\n");
     // Mostra o resultado automaticamente
@@ -418,10 +437,10 @@ int main() {
         mostrarMenu();
         if (scanf("%d", &escolha) != 1) {
             printf("Entrada invalida. Por favor, digite um numero.\n");
-            limparBuffer(); // Limpa a entrada inválida
+            limparBuffer();
             continue;
         }
-        limparBuffer(); // Limpa o '\n' deixado pelo scanf
+        limparBuffer();
 
         switch (escolha) {
             case 1:

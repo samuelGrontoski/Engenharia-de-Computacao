@@ -1,0 +1,509 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'iCLR_2'
+Slack : -7.259
+TNS   : -21.425
+
+Type  : Slow 1200mV 85C Model Setup 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -7.203
+TNS   : -7.203
+
+Type  : Slow 1200mV 85C Model Setup 'iCLOCK_50MHz'
+Slack : -5.906
+TNS   : -254.496
+
+Type  : Slow 1200mV 85C Model Setup 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : -1.497
+TNS   : -2.719
+
+Type  : Slow 1200mV 85C Model Setup 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : -0.877
+TNS   : -0.877
+
+Type  : Slow 1200mV 85C Model Setup 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : -0.754
+TNS   : -0.754
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C262|Q'
+Slack : -0.547
+TNS   : -0.547
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C086|Q'
+Slack : -0.399
+TNS   : -0.399
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C263|Q'
+Slack : -0.393
+TNS   : -0.393
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C085|Q'
+Slack : -0.246
+TNS   : -0.246
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C087|Q'
+Slack : 0.298
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'JKnetFF:C261|Q'
+Slack : 0.298
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'iCLR_2'
+Slack : -0.860
+TNS   : -2.131
+
+Type  : Slow 1200mV 85C Model Hold 'iCLOCK_50MHz'
+Slack : 0.347
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C087|Q'
+Slack : 0.393
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C261|Q'
+Slack : 0.393
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C085|Q'
+Slack : 0.498
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C263|Q'
+Slack : 0.528
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C086|Q'
+Slack : 0.629
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'JKnetFF:C262|Q'
+Slack : 0.682
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.740
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : 0.779
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : 0.874
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -8.541
+TNS   : -8.541
+
+Type  : Slow 1200mV 85C Model Recovery 'iCLR_2'
+Slack : -6.786
+TNS   : -20.039
+
+Type  : Slow 1200mV 85C Model Recovery 'iCLOCK_50MHz'
+Slack : 0.059
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'iCLR_2'
+Slack : -1.318
+TNS   : -3.248
+
+Type  : Slow 1200mV 85C Model Removal 'iCLOCK_50MHz'
+Slack : -0.109
+TNS   : -6.431
+
+Type  : Slow 1200mV 85C Model Removal 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 2.508
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -109.628
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'iCLR_2'
+Slack : -3.000
+TNS   : -41.295
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C085|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C086|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C087|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C261|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C262|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JKnetFF:C263|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.414
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -6.726
+TNS   : -6.726
+
+Type  : Slow 1200mV 0C Model Setup 'iCLR_2'
+Slack : -6.632
+TNS   : -19.589
+
+Type  : Slow 1200mV 0C Model Setup 'iCLOCK_50MHz'
+Slack : -5.349
+TNS   : -229.344
+
+Type  : Slow 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : -1.302
+TNS   : -2.359
+
+Type  : Slow 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : -0.811
+TNS   : -0.811
+
+Type  : Slow 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : -0.689
+TNS   : -0.689
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C262|Q'
+Slack : -0.450
+TNS   : -0.450
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C086|Q'
+Slack : -0.343
+TNS   : -0.343
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C263|Q'
+Slack : -0.315
+TNS   : -0.315
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C085|Q'
+Slack : -0.192
+TNS   : -0.192
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C087|Q'
+Slack : 0.361
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'JKnetFF:C261|Q'
+Slack : 0.362
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'iCLR_2'
+Slack : -0.877
+TNS   : -2.207
+
+Type  : Slow 1200mV 0C Model Hold 'iCLOCK_50MHz'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C087|Q'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C261|Q'
+Slack : 0.355
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 0.442
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C085|Q'
+Slack : 0.467
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C263|Q'
+Slack : 0.482
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C086|Q'
+Slack : 0.604
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'JKnetFF:C262|Q'
+Slack : 0.607
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.665
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : 0.768
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : 0.847
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -7.996
+TNS   : -7.996
+
+Type  : Slow 1200mV 0C Model Recovery 'iCLR_2'
+Slack : -6.222
+TNS   : -18.342
+
+Type  : Slow 1200mV 0C Model Recovery 'iCLOCK_50MHz'
+Slack : 0.163
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'iCLR_2'
+Slack : -1.272
+TNS   : -3.158
+
+Type  : Slow 1200mV 0C Model Removal 'iCLOCK_50MHz'
+Slack : -0.108
+TNS   : -6.348
+
+Type  : Slow 1200mV 0C Model Removal 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 2.344
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -109.628
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'iCLR_2'
+Slack : -3.000
+TNS   : -37.970
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C085|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C086|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C087|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C261|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C262|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C263|Q'
+Slack : -1.403
+TNS   : -1.403
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.486
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'iCLR_2'
+Slack : -2.532
+TNS   : -7.340
+
+Type  : Fast 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -2.388
+TNS   : -2.388
+
+Type  : Fast 1200mV 0C Model Setup 'iCLOCK_50MHz'
+Slack : -2.017
+TNS   : -77.647
+
+Type  : Fast 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : -0.110
+TNS   : -0.123
+
+Type  : Fast 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : 0.025
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : 0.054
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C262|Q'
+Slack : 0.107
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C263|Q'
+Slack : 0.165
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C086|Q'
+Slack : 0.190
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C085|Q'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C087|Q'
+Slack : 0.693
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'JKnetFF:C261|Q'
+Slack : 0.694
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'iCLR_2'
+Slack : -0.219
+TNS   : -0.475
+
+Type  : Fast 1200mV 0C Model Hold 'iCLOCK_50MHz'
+Slack : 0.098
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C085|Q'
+Slack : 0.147
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C087|Q'
+Slack : 0.169
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C261|Q'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C086|Q'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C263|Q'
+Slack : 0.184
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : 0.198
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 0.248
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'JKnetFF:C262|Q'
+Slack : 0.251
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : 0.303
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.315
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -3.052
+TNS   : -3.052
+
+Type  : Fast 1200mV 0C Model Recovery 'iCLR_2'
+Slack : -2.313
+TNS   : -6.745
+
+Type  : Fast 1200mV 0C Model Recovery 'iCLOCK_50MHz'
+Slack : 0.193
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'iCLR_2'
+Slack : -0.485
+TNS   : -1.098
+
+Type  : Fast 1200mV 0C Model Removal 'iCLOCK_50MHz'
+Slack : -0.086
+TNS   : -5.043
+
+Type  : Fast 1200mV 0C Model Removal 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : 1.146
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -81.606
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'iCLR_2'
+Slack : -3.000
+TNS   : -15.404
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|oSClk'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_3|oSClk'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|oSClk'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C085|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C086|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C087|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C261|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C262|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JKnetFF:C263|Q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK_2|nAutoReset'
+Slack : 0.367
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,998 @@
+Analysis & Synthesis report for circuito_contador_async_17_10_25
+Fri Oct 17 14:40:03 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "JKnetFF:C263"
+ 13. Port Connectivity Checks: "JKnetFF:C262"
+ 14. Port Connectivity Checks: "JKnetFF:C261"
+ 15. Port Connectivity Checks: "JKnetFF:C260"
+ 16. Port Connectivity Checks: "JKnetFF:C094"
+ 17. Port Connectivity Checks: "JKnetFF:C093"
+ 18. Port Connectivity Checks: "JKnetFF:C092"
+ 19. Port Connectivity Checks: "JKnetFF:C091"
+ 20. Port Connectivity Checks: "JKnetFF:C088"
+ 21. Port Connectivity Checks: "JKnetFF:C087"
+ 22. Port Connectivity Checks: "JKnetFF:C086"
+ 23. Port Connectivity Checks: "JKnetFF:C085"
+ 24. Port Connectivity Checks: "ClockScaler:ClockScaler_iCK_3"
+ 25. Port Connectivity Checks: "ClockScaler:ClockScaler_iCK_2"
+ 26. Port Connectivity Checks: "ClockScaler:ClockScaler_iCK"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Oct 17 14:40:03 2025          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; circuito_contador_async_17_10_25               ;
+; Top-level Entity Name              ; circuito_contador_async_17_10_25               ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 225                                            ;
+;     Total combinational functions  ; 205                                            ;
+;     Dedicated logic registers      ; 88                                             ;
+; Total registers                    ; 88                                             ;
+; Total pins                         ; 59                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                                          ;
++------------------------------------------------------------------+----------------------------------+----------------------------------+
+; Option                                                           ; Setting                          ; Default Value                    ;
++------------------------------------------------------------------+----------------------------------+----------------------------------+
+; Device                                                           ; 10M50DAF484C7G                   ;                                  ;
+; Top-level entity name                                            ; circuito_contador_async_17_10_25 ; circuito_contador_async_17_10_25 ;
+; Family name                                                      ; MAX 10                           ; Cyclone V                        ;
+; Use smart compilation                                            ; Off                              ; Off                              ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                               ; On                               ;
+; Enable compact report table                                      ; Off                              ; Off                              ;
+; Restructure Multiplexers                                         ; Auto                             ; Auto                             ;
+; Create Debugging Nodes for IP Cores                              ; Off                              ; Off                              ;
+; Preserve fewer node names                                        ; On                               ; On                               ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable                           ; Enable                           ;
+; Verilog Version                                                  ; Verilog_2001                     ; Verilog_2001                     ;
+; VHDL Version                                                     ; VHDL_1993                        ; VHDL_1993                        ;
+; State Machine Processing                                         ; Auto                             ; Auto                             ;
+; Safe State Machine                                               ; Off                              ; Off                              ;
+; Extract Verilog State Machines                                   ; On                               ; On                               ;
+; Extract VHDL State Machines                                      ; On                               ; On                               ;
+; Ignore Verilog initial constructs                                ; Off                              ; Off                              ;
+; Iteration limit for constant Verilog loops                       ; 5000                             ; 5000                             ;
+; Iteration limit for non-constant Verilog loops                   ; 250                              ; 250                              ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                               ; On                               ;
+; Infer RAMs from Raw Logic                                        ; On                               ; On                               ;
+; Parallel Synthesis                                               ; On                               ; On                               ;
+; DSP Block Balancing                                              ; Auto                             ; Auto                             ;
+; NOT Gate Push-Back                                               ; On                               ; On                               ;
+; Power-Up Don't Care                                              ; On                               ; On                               ;
+; Remove Redundant Logic Cells                                     ; Off                              ; Off                              ;
+; Remove Duplicate Registers                                       ; On                               ; On                               ;
+; Ignore CARRY Buffers                                             ; Off                              ; Off                              ;
+; Ignore CASCADE Buffers                                           ; Off                              ; Off                              ;
+; Ignore GLOBAL Buffers                                            ; Off                              ; Off                              ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                              ; Off                              ;
+; Ignore LCELL Buffers                                             ; Off                              ; Off                              ;
+; Ignore SOFT Buffers                                              ; On                               ; On                               ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                              ; Off                              ;
+; Optimization Technique                                           ; Balanced                         ; Balanced                         ;
+; Carry Chain Length                                               ; 70                               ; 70                               ;
+; Auto Carry Chains                                                ; On                               ; On                               ;
+; Auto Open-Drain Pins                                             ; On                               ; On                               ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                              ; Off                              ;
+; Auto ROM Replacement                                             ; On                               ; On                               ;
+; Auto RAM Replacement                                             ; On                               ; On                               ;
+; Auto DSP Block Replacement                                       ; On                               ; On                               ;
+; Auto Shift Register Replacement                                  ; Auto                             ; Auto                             ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                             ; Auto                             ;
+; Auto Clock Enable Replacement                                    ; On                               ; On                               ;
+; Strict RAM Replacement                                           ; Off                              ; Off                              ;
+; Allow Synchronous Control Signals                                ; On                               ; On                               ;
+; Force Use of Synchronous Clear Signals                           ; Off                              ; Off                              ;
+; Auto RAM Block Balancing                                         ; On                               ; On                               ;
+; Auto RAM to Logic Cell Conversion                                ; Off                              ; Off                              ;
+; Auto Resource Sharing                                            ; Off                              ; Off                              ;
+; Allow Any RAM Size For Recognition                               ; Off                              ; Off                              ;
+; Allow Any ROM Size For Recognition                               ; Off                              ; Off                              ;
+; Allow Any Shift Register Size For Recognition                    ; Off                              ; Off                              ;
+; Use LogicLock Constraints during Resource Balancing              ; On                               ; On                               ;
+; Ignore translate_off and synthesis_off directives                ; Off                              ; Off                              ;
+; Timing-Driven Synthesis                                          ; On                               ; On                               ;
+; Report Parameter Settings                                        ; On                               ; On                               ;
+; Report Source Assignments                                        ; On                               ; On                               ;
+; Report Connectivity Checks                                       ; On                               ; On                               ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                              ; Off                              ;
+; Synchronization Register Chain Length                            ; 2                                ; 2                                ;
+; Power Optimization During Synthesis                              ; Normal compilation               ; Normal compilation               ;
+; HDL message level                                                ; Level2                           ; Level2                           ;
+; Suppress Register Optimization Related Messages                  ; Off                              ; Off                              ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                             ; 5000                             ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                             ; 5000                             ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                              ; 100                              ;
+; Clock MUX Protection                                             ; On                               ; On                               ;
+; Auto Gated Clock Conversion                                      ; Off                              ; Off                              ;
+; Block Design Naming                                              ; Auto                             ; Auto                             ;
+; SDC constraint protection                                        ; Off                              ; Off                              ;
+; Synthesis Effort                                                 ; Auto                             ; Auto                             ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                               ; On                               ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                              ; Off                              ;
+; Analysis & Synthesis Message Level                               ; Medium                           ; Medium                           ;
+; Disable Register Merging Across Hierarchies                      ; Auto                             ; Auto                             ;
+; Resource Aware Inference For Block RAM                           ; On                               ; On                               ;
++------------------------------------------------------------------+----------------------------------+----------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                         ;
++--------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path     ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                                              ; Library ;
++--------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Components.vhd                       ; yes             ; User VHDL File  ; C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd                       ;         ;
+; circuito_contador_async_17_10_25.vhd ; yes             ; User VHDL File  ; C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd ;         ;
++--------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                            ;
++---------------------------------------------+------------------------------------------+
+; Resource                                    ; Usage                                    ;
++---------------------------------------------+------------------------------------------+
+; Estimated Total logic elements              ; 225                                      ;
+;                                             ;                                          ;
+; Total combinational functions               ; 205                                      ;
+; Logic element usage by number of LUT inputs ;                                          ;
+;     -- 4 input functions                    ; 118                                      ;
+;     -- 3 input functions                    ; 12                                       ;
+;     -- <=2 input functions                  ; 75                                       ;
+;                                             ;                                          ;
+; Logic elements by mode                      ;                                          ;
+;     -- normal mode                          ; 156                                      ;
+;     -- arithmetic mode                      ; 49                                       ;
+;                                             ;                                          ;
+; Total registers                             ; 88                                       ;
+;     -- Dedicated logic registers            ; 88                                       ;
+;     -- I/O registers                        ; 0                                        ;
+;                                             ;                                          ;
+; I/O pins                                    ; 59                                       ;
+;                                             ;                                          ;
+; Embedded Multiplier 9-bit elements          ; 0                                        ;
+;                                             ;                                          ;
+; Maximum fan-out node                        ; ClockScaler:ClockScaler_iCK_2|nAutoReset ;
+; Maximum fan-out                             ; 91                                       ;
+; Total fan-out                               ; 995                                      ;
+; Average fan-out                             ; 2.42                                     ;
++---------------------------------------------+------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                         ;
++----------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+----------------------------------+--------------+
+; Compilation Hierarchy Node                         ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                             ; Entity Name                      ; Library Name ;
++----------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+----------------------------------+--------------+
+; |circuito_contador_async_17_10_25                  ; 205 (0)             ; 88 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 59   ; 0            ; 0          ; |circuito_contador_async_17_10_25                                               ; circuito_contador_async_17_10_25 ; work         ;
+;    |ClockScaler:ClockScaler_iCK_2|                 ; 145 (145)           ; 74 (74)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|ClockScaler:ClockScaler_iCK_2                 ; ClockScaler                      ; work         ;
+;    |ClockScaler:ClockScaler_iCK_3|                 ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|ClockScaler:ClockScaler_iCK_3                 ; ClockScaler                      ; work         ;
+;    |ClockScaler:ClockScaler_iCK|                   ; 18 (18)             ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|ClockScaler:ClockScaler_iCK                   ; ClockScaler                      ; work         ;
+;    |JKnetFF:C085|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C085                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C086|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C086                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C087|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C087                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C088|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C088                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C091|                                  ; 5 (5)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C091                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C092|                                  ; 2 (2)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C092                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C093|                                  ; 2 (2)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C093                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C094|                                  ; 4 (4)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C094                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C260|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C260                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C261|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C261                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C262|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C262                                  ; JKnetFF                          ; work         ;
+;    |JKnetFF:C263|                                  ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|JKnetFF:C263                                  ; JKnetFF                          ; work         ;
+;    |SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT_2| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT_2 ; SevenSegm_Decoder                ; work         ;
+;    |SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT_3| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT_3 ; SevenSegm_Decoder                ; work         ;
+;    |SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT|   ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_contador_async_17_10_25|SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT   ; SevenSegm_Decoder                ; work         ;
++----------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+----------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                            ;
++----------------------------------------------------+----------------------------------------------------------+
+; Register name                                      ; Reason for Removal                                       ;
++----------------------------------------------------+----------------------------------------------------------+
+; ClockScaler:ClockScaler_iCK_3|aButton_SHR[0..2]    ; Stuck at GND due to stuck port data_in                   ;
+; ClockScaler:ClockScaler_iCK_3|StepPulse            ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|\PULSE:Pulser[0..4]  ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|\PULSE:Stepper[0..6] ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|\PULSE:Pulsing       ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|aButton_SHR[0..2]    ; Stuck at GND due to stuck port data_in                   ;
+; ClockScaler:ClockScaler_iCK_2|StepPulse            ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|\PULSE:Pulser[0..4]  ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|\PULSE:Stepper[0..6] ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|\PULSE:Pulsing       ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|aButton_SHR[0..2]      ; Stuck at GND due to stuck port data_in                   ;
+; ClockScaler:ClockScaler_iCK|StepPulse              ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Pulser[0..4]    ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Stepper[0..6]   ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Pulsing         ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|aButton              ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|\PULSE:Level         ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|aButton              ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_2|\PULSE:Level         ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|aButton                ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Level           ; Lost fanout                                              ;
+; ClockScaler:ClockScaler_iCK_3|aCount[31]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[31]     ;
+; ClockScaler:ClockScaler_iCK|aCount[31]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[31]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[30]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[30]     ;
+; ClockScaler:ClockScaler_iCK|aCount[30]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[30]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[29]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[29]     ;
+; ClockScaler:ClockScaler_iCK|aCount[29]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[29]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[28]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[28]     ;
+; ClockScaler:ClockScaler_iCK|aCount[28]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[28]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[27]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[27]     ;
+; ClockScaler:ClockScaler_iCK|aCount[27]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[27]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[26]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[26]     ;
+; ClockScaler:ClockScaler_iCK|aCount[26]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[26]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[25]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[25]     ;
+; ClockScaler:ClockScaler_iCK|aCount[25]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[25]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[24]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[24]     ;
+; ClockScaler:ClockScaler_iCK|aCount[24]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[24]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[23]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[23]     ;
+; ClockScaler:ClockScaler_iCK|aCount[23]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[23]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[22]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[22]     ;
+; ClockScaler:ClockScaler_iCK|aCount[22]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[22]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[21]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[21]     ;
+; ClockScaler:ClockScaler_iCK|aCount[21]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[21]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[20]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[20]     ;
+; ClockScaler:ClockScaler_iCK|aCount[20]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[20]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[19]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[19]     ;
+; ClockScaler:ClockScaler_iCK|aCount[19]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[19]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[18]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[18]     ;
+; ClockScaler:ClockScaler_iCK|aCount[18]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[18]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[17]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[17]     ;
+; ClockScaler:ClockScaler_iCK|aCount[17]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[17]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[16]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[16]     ;
+; ClockScaler:ClockScaler_iCK|aCount[16]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[16]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[15]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[15]     ;
+; ClockScaler:ClockScaler_iCK|aCount[15]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[15]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[14]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[14]     ;
+; ClockScaler:ClockScaler_iCK|aCount[14]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[14]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[13]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[13]     ;
+; ClockScaler:ClockScaler_iCK|aCount[13]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[13]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[12]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[12]     ;
+; ClockScaler:ClockScaler_iCK|aCount[12]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[12]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[11]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[11]     ;
+; ClockScaler:ClockScaler_iCK|aCount[11]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[11]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[10]           ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[10]     ;
+; ClockScaler:ClockScaler_iCK|aCount[10]             ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[10]     ;
+; ClockScaler:ClockScaler_iCK_3|aCount[9]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[9]      ;
+; ClockScaler:ClockScaler_iCK|aCount[9]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[9]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[8]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[8]      ;
+; ClockScaler:ClockScaler_iCK|aCount[8]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[8]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[7]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[7]      ;
+; ClockScaler:ClockScaler_iCK|aCount[7]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[7]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[6]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[6]      ;
+; ClockScaler:ClockScaler_iCK|aCount[6]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[6]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[5]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[5]      ;
+; ClockScaler:ClockScaler_iCK|aCount[5]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[5]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[4]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[4]      ;
+; ClockScaler:ClockScaler_iCK|aCount[4]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[4]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[3]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[3]      ;
+; ClockScaler:ClockScaler_iCK|aCount[3]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[3]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[2]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[2]      ;
+; ClockScaler:ClockScaler_iCK|aCount[2]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[2]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[1]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[1]      ;
+; ClockScaler:ClockScaler_iCK|aCount[1]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[1]      ;
+; ClockScaler:ClockScaler_iCK_3|aCount[0]            ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[0]      ;
+; ClockScaler:ClockScaler_iCK|aCount[0]              ; Merged with ClockScaler:ClockScaler_iCK_2|aCount[0]      ;
+; ClockScaler:ClockScaler_iCK_3|aSwitch              ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch        ;
+; ClockScaler:ClockScaler_iCK|aSwitch                ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch        ;
+; ClockScaler:ClockScaler_iCK_3|nAutoReset           ; Merged with ClockScaler:ClockScaler_iCK_2|nAutoReset     ;
+; ClockScaler:ClockScaler_iCK|nAutoReset             ; Merged with ClockScaler:ClockScaler_iCK_2|nAutoReset     ;
+; ClockScaler:ClockScaler_iCK_3|aSwitch_SHR[2]       ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[2] ;
+; ClockScaler:ClockScaler_iCK|aSwitch_SHR[2]         ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[2] ;
+; ClockScaler:ClockScaler_iCK_3|aSwitch_SHR[1]       ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[1] ;
+; ClockScaler:ClockScaler_iCK|aSwitch_SHR[1]         ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[1] ;
+; ClockScaler:ClockScaler_iCK_3|aSwitch_SHR[0]       ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[0] ;
+; ClockScaler:ClockScaler_iCK|aSwitch_SHR[0]         ; Merged with ClockScaler:ClockScaler_iCK_2|aSwitch_SHR[0] ;
+; ClockScaler:ClockScaler_iCK_3|aTick                ; Merged with ClockScaler:ClockScaler_iCK_2|aTick          ;
+; ClockScaler:ClockScaler_iCK|aTick                  ; Merged with ClockScaler:ClockScaler_iCK_2|aTick          ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[0]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[0]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[0]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[0]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[1]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[1]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[1]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[1]        ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[18]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[18]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[18]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[18]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[17]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[17]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[17]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[17]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[16]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[16]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[16]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[16]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[15]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[15]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[15]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[15]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[14]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[14]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[14]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[14]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[13]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[13]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[13]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[13]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[12]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[12]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[12]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[12]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[11]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[11]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[11]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[11]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[10]        ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[10]  ;
+; ClockScaler:ClockScaler_iCK|aDebCount[10]          ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[10]  ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[9]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[9]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[9]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[9]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[8]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[8]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[8]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[8]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[7]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[7]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[7]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[7]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[6]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[6]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[6]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[6]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[5]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[5]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[5]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[5]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[4]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[4]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[4]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[4]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[3]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[3]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[3]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[3]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[2]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[2]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[2]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[2]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[1]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[1]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[1]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[1]   ;
+; ClockScaler:ClockScaler_iCK_3|aDebCount[0]         ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[0]   ;
+; ClockScaler:ClockScaler_iCK|aDebCount[0]           ; Merged with ClockScaler:ClockScaler_iCK_2|aDebCount[0]   ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[2]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[2]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[2]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[2]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[3]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[3]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[3]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[3]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[4]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[4]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[4]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[4]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[5]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[5]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[5]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[5]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[6]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[6]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[6]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[6]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[7]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[7]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[7]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[7]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[8]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[8]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[8]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[8]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[9]              ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[9]        ;
+; ClockScaler:ClockScaler_iCK|ASHR[9]                ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[9]        ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[10]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[10]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[10]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[10]       ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[11]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[11]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[11]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[11]       ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[12]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[12]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[12]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[12]       ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[13]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[13]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[13]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[13]       ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[14]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[14]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[14]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[14]       ;
+; ClockScaler:ClockScaler_iCK_3|ASHR[15]             ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[15]       ;
+; ClockScaler:ClockScaler_iCK|ASHR[15]               ; Merged with ClockScaler:ClockScaler_iCK_2|ASHR[15]       ;
+; Total Number of Removed Registers = 203            ;                                                          ;
++----------------------------------------------------+----------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 88    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 71    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------+
+; Inverted Register Statistics                       ;
++------------------------------------------+---------+
+; Inverted Register                        ; Fan out ;
++------------------------------------------+---------+
+; ClockScaler:ClockScaler_iCK_2|aSwitch    ; 43      ;
+; ClockScaler:ClockScaler_iCK_2|aCount[17] ; 6       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[15] ; 5       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[13] ; 7       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[4]  ; 2       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[3]  ; 2       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[2]  ; 2       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[1]  ; 2       ;
+; ClockScaler:ClockScaler_iCK_2|aCount[0]  ; 2       ;
+; Total number of inverted registers = 9   ;         ;
++------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |circuito_contador_async_17_10_25|ClockScaler:ClockScaler_iCK_2|aCount[11] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C263" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; j    ; Input ; Info     ; Stuck at VCC   ;
+; k    ; Input ; Info     ; Stuck at VCC   ;
+; npr  ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C262" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; j    ; Input ; Info     ; Stuck at VCC   ;
+; k    ; Input ; Info     ; Stuck at VCC   ;
+; npr  ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C261" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; j    ; Input ; Info     ; Stuck at VCC   ;
+; k    ; Input ; Info     ; Stuck at VCC   ;
+; npr  ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C260"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; j    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; npr  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C094" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; k    ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C093"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C092" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; k    ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C091"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C088"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; j    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; npr  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C087"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; j    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; npr  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C086"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; j    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; npr  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "JKnetFF:C085"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; j    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; k    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; npr  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ClockScaler:ClockScaler_iCK_3"                                                       ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; ih4   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih2   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih0   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; il3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il2   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il0   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; iswch ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ibut  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; oled  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ClockScaler:ClockScaler_iCK_2"                                                       ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; ih4   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih2   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih0   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; il3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il2   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il0   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; iswch ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ibut  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; oled  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ClockScaler:ClockScaler_iCK"                                                         ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; ih4   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih2   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih0   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; il3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il2   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il0   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; iswch ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ibut  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; oled  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 59                          ;
+; cycloneiii_ff         ; 88                          ;
+;     CLR               ; 67                          ;
+;     ENA               ; 16                          ;
+;     ENA CLR           ; 4                           ;
+;     SLD               ; 1                           ;
+; cycloneiii_lcell_comb ; 210                         ;
+;     arith             ; 49                          ;
+;         2 data inputs ; 49                          ;
+;     normal            ; 161                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 16                          ;
+;         3 data inputs ; 12                          ;
+;         4 data inputs ; 118                         ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 4.42                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Fri Oct 17 14:39:52 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off circuito_contador_async_17_10_25 -c circuito_contador_async_17_10_25
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 8 design units, including 4 entities, in source file components.vhd
+    Info (12022): Found design unit 1: NAND4_gate-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 24
+    Info (12022): Found design unit 2: JKnetFF-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 40
+    Info (12022): Found design unit 3: ClockScaler-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 92
+    Info (12022): Found design unit 4: SevenSegm_Decoder-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 484
+    Info (12023): Found entity 1: NAND4_gate File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 18
+    Info (12023): Found entity 2: JKnetFF File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 34
+    Info (12023): Found entity 3: ClockScaler File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 73
+    Info (12023): Found entity 4: SevenSegm_Decoder File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 469
+Info (12021): Found 2 design units, including 1 entities, in source file circuito_contador_async_17_10_25.vhd
+    Info (12022): Found design unit 1: circuito_contador_async_17_10_25-structural File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 95
+    Info (12023): Found entity 1: circuito_contador_async_17_10_25 File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 19
+Info (12127): Elaborating entity "circuito_contador_async_17_10_25" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(182): object "ncp7_C085" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 182
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(183): object "ncp7_C086" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 183
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(184): object "ncp7_C087" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 184
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(185): object "ncp7_C088" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 185
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(186): object "ncp7_C091" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 186
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(187): object "ncp7_C093" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 187
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(188): object "ncp7_C260" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 188
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(192): object "iCK_LED_NotCon" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 192
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(194): object "iCK_2_LED_NotCon" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 194
+Warning (10036): Verilog HDL or VHDL warning at circuito_contador_async_17_10_25.vhd(196): object "iCK_3_LED_NotCon" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 196
+Info (12128): Elaborating entity "ClockScaler" for hierarchy "ClockScaler:ClockScaler_iCK" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 287
+Warning (10492): VHDL Process Statement warning at Components.vhd(137): signal "nAutoReset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 137
+Warning (10631): VHDL Process Statement warning at Components.vhd(205): inferring latch(es) for signal or variable "aCntMod", which holds its previous value in one or more paths through the process File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (10631): VHDL Process Statement warning at Components.vhd(205): inferring latch(es) for signal or variable "aCntMid", which holds its previous value in one or more paths through the process File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (10492): VHDL Process Statement warning at Components.vhd(333): signal "aCntMod" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 333
+Info (10041): Inferred latch for "aCntMid[0]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[1]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[2]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[3]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[4]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[5]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[6]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[7]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[8]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[9]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[10]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[11]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[12]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[13]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[14]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[15]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[16]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[17]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[18]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[19]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[20]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[21]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[22]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[23]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[24]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[25]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[26]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[27]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[28]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[29]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[30]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMid[31]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[0]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[1]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[2]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[3]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[4]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[5]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[6]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[7]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[8]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[9]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[10]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[11]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[12]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[13]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[14]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[15]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[16]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[17]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[18]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[19]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[20]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[21]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[22]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[23]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[24]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[25]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[26]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[27]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[28]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[29]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[30]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (10041): Inferred latch for "aCntMod[31]" at Components.vhd(205) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (12128): Elaborating entity "SevenSegm_Decoder" for hierarchy "SevenSegm_Decoder:SevenSegm_Decoder_oOUTPUT" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 301
+Info (12128): Elaborating entity "JKnetFF" for hierarchy "JKnetFF:C085" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 313
+Info (12128): Elaborating entity "NAND4_gate" for hierarchy "NAND4_gate:C245" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 329
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[6]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[9]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[10]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[11]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[13]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[15]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[17]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[24]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[0]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[1]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMod[25]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[6]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[9]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[10]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[11]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[13]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[15]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[17]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[24]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[0]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[1]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMod[25]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[6]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[9]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[10]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[11]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[13]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[15]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[17]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[24]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[0]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[1]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[25]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_3|aCntMid[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK_2|aCntMid[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 205
+Info (13000): Registers with preset signals will power-up high File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 106
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "JKnetFF:C094|Q" is converted into an equivalent circuit using register "JKnetFF:C094|Q~_emulated" and latch "JKnetFF:C094|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 37
+    Warning (13310): Register "JKnetFF:C093|Q" is converted into an equivalent circuit using register "JKnetFF:C093|Q~_emulated" and latch "JKnetFF:C094|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 37
+    Warning (13310): Register "JKnetFF:C092|Q" is converted into an equivalent circuit using register "JKnetFF:C092|Q~_emulated" and latch "JKnetFF:C094|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 37
+    Warning (13310): Register "JKnetFF:C091|Q" is converted into an equivalent circuit using register "JKnetFF:C091|Q~_emulated" and latch "JKnetFF:C094|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 37
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[25]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[25]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[23]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[23]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[22]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[22]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[21]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[21]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[20]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[20]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[19]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[19]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[18]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[18]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[16]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[16]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[14]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[14]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[12]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[12]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[8]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[8]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[6]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[6]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK_2|aCount[5]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK_2|aCount[5]~_emulated" and latch "ClockScaler:ClockScaler_iCK_2|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/Components.vhd Line: 332
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "oPIN_A8" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 56
+    Warning (13410): Pin "oPIN_A9" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 57
+    Warning (13410): Pin "oPIN_A10" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 58
+    Warning (13410): Pin "oPIN_B10" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 59
+    Warning (13410): Pin "oPIN_D13" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 60
+    Warning (13410): Pin "oPIN_C13" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 61
+    Warning (13410): Pin "oPIN_E14" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 62
+    Warning (13410): Pin "oPIN_D14" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 63
+    Warning (13410): Pin "oPIN_A11" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 64
+    Warning (13410): Pin "oPIN_B11" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 65
+    Warning (13410): Pin "oPIN_F21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 66
+    Warning (13410): Pin "oPIN_E22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 67
+    Warning (13410): Pin "oPIN_E21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 68
+    Warning (13410): Pin "oPIN_C19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 69
+    Warning (13410): Pin "oPIN_C20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 70
+    Warning (13410): Pin "oPIN_D19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 71
+    Warning (13410): Pin "oPIN_E17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 72
+    Warning (13410): Pin "oPIN_D22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 73
+    Warning (13410): Pin "oPIN_F18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 74
+    Warning (13410): Pin "oPIN_E20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 75
+    Warning (13410): Pin "oPIN_E19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 76
+    Warning (13410): Pin "oPIN_J18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 77
+    Warning (13410): Pin "oPIN_H19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 78
+    Warning (13410): Pin "oPIN_F19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 79
+    Warning (13410): Pin "oPIN_F20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 80
+    Warning (13410): Pin "oPIN_F17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 81
+    Warning (13410): Pin "oPIN_J20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 82
+    Warning (13410): Pin "oPIN_K20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 83
+    Warning (13410): Pin "oPIN_L18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 84
+    Warning (13410): Pin "oPIN_N18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 85
+    Warning (13410): Pin "oPIN_M20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 86
+    Warning (13410): Pin "oPIN_N19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 87
+    Warning (13410): Pin "oPIN_N20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 88
+    Warning (13410): Pin "oPIN_L19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_contador_async_17_10_25_DE10_Lite/circuito_contador_async_17_10_25.vhd Line: 89
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 48 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 286 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 55 output pins
+    Info (21061): Implemented 227 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 191 warnings
+    Info: Peak virtual memory: 4872 megabytes
+    Info: Processing ended: Fri Oct 17 14:40:04 2025
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:23
+
+

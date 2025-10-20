@@ -1,0 +1,109 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oOUTPUT_a",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_b",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_c",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_d",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_e",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_f",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_g",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_a",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_b",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_c",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_d",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_e",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_f",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_2_g",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_a",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_b",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_c",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_d",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_e",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_f",
+					"strict" : false
+				},
+				{
+					"name" : "oOUTPUT_3_g",
+					"strict" : false
+				},
+				{
+					"name" : "iCLR",
+					"strict" : false
+				},
+				{
+					"name" : "iCLR_3",
+					"strict" : false
+				},
+				{
+					"name" : "iCLOCK_50MHz",
+					"strict" : false
+				},
+				{
+					"name" : "iCLR_2",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

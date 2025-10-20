@@ -1,0 +1,6 @@
+# -------------------------------------------------------------------------- #
+QUARTUS_VERSION = "12.1sp1"
+DATE = "14:39:30  October 17, 2025"
+
+# Revisions
+PROJECT_REVISION = "circuito_contador_async_17_10_25"

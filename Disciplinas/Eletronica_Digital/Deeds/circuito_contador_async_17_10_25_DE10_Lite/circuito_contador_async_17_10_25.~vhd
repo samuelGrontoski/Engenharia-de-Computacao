@@ -1,0 +1,338 @@
+------------------------------------------------------------
+-- Deeds (Digital Electronics Education and Design Suite)
+-- VHDL Code generated on (17/10/2025, 14:23:51)
+--      by Deeds (Digital Circuit Simulator)(Deeds-DcS)
+--      Ver. 3.01.250 (Feb 28, 2025)
+-- Copyright (c) 2002-2025 University of Genoa, Italy
+--      Web Site:  https://www.digitalelectronicsdeeds.com
+------------------------------------------------------------
+-- FPGA Board: "DE10-Lite Board"
+-- Chip FPGA: Intel/Altera MAX 10 (r) (10M50DAF484C7G)
+-- Proprietary EDA Tool: Quartus(r) II (Ver = 12.1sp1)
+------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.all;
+
+
+ENTITY circuito_contador_async_17_10_25 IS
+  PORT( 
+    --------------------------------------> Clocks:
+    iCLOCK_50MHz: IN  std_logic;   --> PIN_P11
+                                   --> "iCK"  Clock: 1 Hz ! Warning: Uncompleted Definition !
+                                   --> "iCK_2"  Clock: 1 Hz ! Warning: Uncompleted Definition !
+                                   --> "iCK_3"  Clock: 1 Hz ! Warning: Uncompleted Definition !
+    --------------------------------------> Inputs:
+    iCLR:         IN  std_logic;   --> PIN_C10,  Switch: Sw[00]
+    iCLR_2:       IN  std_logic;   --> PIN_C11,  Switch: Sw[01]
+    iCLR_3:       IN  std_logic;   --> PIN_D12,  Switch: Sw[02]
+    --------------------------------------> Outputs:
+  --oOUTPUT, decoded:
+    oOUTPUT_a:    OUT std_logic;   --> PIN_C14,  Seven Segm. Display: HEX 0 Segment: 0 (a)
+    oOUTPUT_b:    OUT std_logic;   --> PIN_E15,  Seven Segm. Display: HEX 0 Segment: 1 (b)
+    oOUTPUT_c:    OUT std_logic;   --> PIN_C15,  Seven Segm. Display: HEX 0 Segment: 2 (c)
+    oOUTPUT_d:    OUT std_logic;   --> PIN_C16,  Seven Segm. Display: HEX 0 Segment: 3 (d)
+    oOUTPUT_e:    OUT std_logic;   --> PIN_E16,  Seven Segm. Display: HEX 0 Segment: 4 (e)
+    oOUTPUT_f:    OUT std_logic;   --> PIN_D17,  Seven Segm. Display: HEX 0 Segment: 5 (f)
+    oOUTPUT_g:    OUT std_logic;   --> PIN_C17,  Seven Segm. Display: HEX 0 Segment: 6 (g)
+  --oOUTPUT_2, decoded:
+    oOUTPUT_2_a:  OUT std_logic;   --> PIN_C18,  Seven Segm. Display: HEX 1 Segment: 0 (a)
+    oOUTPUT_2_b:  OUT std_logic;   --> PIN_D18,  Seven Segm. Display: HEX 1 Segment: 1 (b)
+    oOUTPUT_2_c:  OUT std_logic;   --> PIN_E18,  Seven Segm. Display: HEX 1 Segment: 2 (c)
+    oOUTPUT_2_d:  OUT std_logic;   --> PIN_B16,  Seven Segm. Display: HEX 1 Segment: 3 (d)
+    oOUTPUT_2_e:  OUT std_logic;   --> PIN_A17,  Seven Segm. Display: HEX 1 Segment: 4 (e)
+    oOUTPUT_2_f:  OUT std_logic;   --> PIN_A18,  Seven Segm. Display: HEX 1 Segment: 5 (f)
+    oOUTPUT_2_g:  OUT std_logic;   --> PIN_B17,  Seven Segm. Display: HEX 1 Segment: 6 (g)
+  --oOUTPUT_3, decoded:
+    oOUTPUT_3_a:  OUT std_logic;   --> PIN_B20,  Seven Segm. Display: HEX 2 Segment: 0 (a)
+    oOUTPUT_3_b:  OUT std_logic;   --> PIN_A20,  Seven Segm. Display: HEX 2 Segment: 1 (b)
+    oOUTPUT_3_c:  OUT std_logic;   --> PIN_B19,  Seven Segm. Display: HEX 2 Segment: 2 (c)
+    oOUTPUT_3_d:  OUT std_logic;   --> PIN_A21,  Seven Segm. Display: HEX 2 Segment: 3 (d)
+    oOUTPUT_3_e:  OUT std_logic;   --> PIN_B21,  Seven Segm. Display: HEX 2 Segment: 4 (e)
+    oOUTPUT_3_f:  OUT std_logic;   --> PIN_C22,  Seven Segm. Display: HEX 2 Segment: 5 (f)
+    oOUTPUT_3_g:  OUT std_logic;   --> PIN_B22,  Seven Segm. Display: HEX 2 Segment: 6 (g)
+    --------------------------------------> Default Outputs:
+    oPIN_A8:      OUT std_logic;   --> PIN_A8,   LED (Red): LEDR[00]
+    oPIN_A9:      OUT std_logic;   --> PIN_A9,   LED (Red): LEDR[01]
+    oPIN_A10:     OUT std_logic;   --> PIN_A10,  LED (Red): LEDR[02]
+    oPIN_B10:     OUT std_logic;   --> PIN_B10,  LED (Red): LEDR[03]
+    oPIN_D13:     OUT std_logic;   --> PIN_D13,  LED (Red): LEDR[04]
+    oPIN_C13:     OUT std_logic;   --> PIN_C13,  LED (Red): LEDR[05]
+    oPIN_E14:     OUT std_logic;   --> PIN_E14,  LED (Red): LEDR[06]
+    oPIN_D14:     OUT std_logic;   --> PIN_D14,  LED (Red): LEDR[07]
+    oPIN_A11:     OUT std_logic;   --> PIN_A11,  LED (Red): LEDR[08]
+    oPIN_B11:     OUT std_logic;   --> PIN_B11,  LED (Red): LEDR[09]
+    oPIN_F21:     OUT std_logic;   --> PIN_F21,  Seven Segm. Display:  HEX 3 0 (a)
+    oPIN_E22:     OUT std_logic;   --> PIN_E22,  Seven Segm. Display:  HEX 3 1 (b)
+    oPIN_E21:     OUT std_logic;   --> PIN_E21,  Seven Segm. Display:  HEX 3 2 (c)
+    oPIN_C19:     OUT std_logic;   --> PIN_C19,  Seven Segm. Display:  HEX 3 3 (d)
+    oPIN_C20:     OUT std_logic;   --> PIN_C20,  Seven Segm. Display:  HEX 3 4 (e)
+    oPIN_D19:     OUT std_logic;   --> PIN_D19,  Seven Segm. Display:  HEX 3 5 (f)
+    oPIN_E17:     OUT std_logic;   --> PIN_E17,  Seven Segm. Display:  HEX 3 6 (g)
+    oPIN_D22:     OUT std_logic;   --> PIN_D22,  Seven Segm. Display:  HEX 3 Dot
+    oPIN_F18:     OUT std_logic;   --> PIN_F18,  Seven Segm. Display:  HEX 4 0 (a)
+    oPIN_E20:     OUT std_logic;   --> PIN_E20,  Seven Segm. Display:  HEX 4 1 (b)
+    oPIN_E19:     OUT std_logic;   --> PIN_E19,  Seven Segm. Display:  HEX 4 2 (c)
+    oPIN_J18:     OUT std_logic;   --> PIN_J18,  Seven Segm. Display:  HEX 4 3 (d)
+    oPIN_H19:     OUT std_logic;   --> PIN_H19,  Seven Segm. Display:  HEX 4 4 (e)
+    oPIN_F19:     OUT std_logic;   --> PIN_F19,  Seven Segm. Display:  HEX 4 5 (f)
+    oPIN_F20:     OUT std_logic;   --> PIN_F20,  Seven Segm. Display:  HEX 4 6 (g)
+    oPIN_F17:     OUT std_logic;   --> PIN_F17,  Seven Segm. Display:  HEX 4 Dot
+    oPIN_J20:     OUT std_logic;   --> PIN_J20,  Seven Segm. Display:  HEX 5 0 (a)
+    oPIN_K20:     OUT std_logic;   --> PIN_K20,  Seven Segm. Display:  HEX 5 1 (b)
+    oPIN_L18:     OUT std_logic;   --> PIN_L18,  Seven Segm. Display:  HEX 5 2 (c)
+    oPIN_N18:     OUT std_logic;   --> PIN_N18,  Seven Segm. Display:  HEX 5 3 (d)
+    oPIN_M20:     OUT std_logic;   --> PIN_M20,  Seven Segm. Display:  HEX 5 4 (e)
+    oPIN_N19:     OUT std_logic;   --> PIN_N19,  Seven Segm. Display:  HEX 5 5 (f)
+    oPIN_N20:     OUT std_logic;   --> PIN_N20,  Seven Segm. Display:  HEX 5 6 (g)
+    oPIN_L19:     OUT std_logic    --> PIN_L19,  Seven Segm. Display:  HEX 5 Dot
+    ------------------------------------------------------
+    );
+END circuito_contador_async_17_10_25;
+
+
+ARCHITECTURE structural OF circuito_contador_async_17_10_25 IS 
+
+  ----------------------------------------> Components:
+  COMPONENT ClockScaler IS
+    PORT( iMClk: IN  std_logic;   -- Master Clock
+          iH4:   IN  std_logic;   -- iH4..iH0 = "high" frequency selection
+          iH3:   IN  std_logic;
+          iH2:   IN  std_logic;
+          iH1:   IN  std_logic;
+          iH0:   IN  std_logic;
+          iL3:   IN  std_logic;   -- iL3..iL0 = "low" frequency selection
+          iL2:   IN  std_logic;   --                  and Button Modes
+          iL1:   IN  std_logic;
+          iL0:   IN  std_logic;
+          iSwch: IN  std_logic;   -- Switch (low: iH<n> selection, high: iL<n> selection)
+          iBut:  IN  std_logic;   -- Button for manual pulsed Clock
+          oSClk: OUT std_logic;   -- Output Clock
+          oLed:  OUT std_logic 	-- Slow "Clock Pulse" Led
+          );
+  END COMPONENT;
+  --
+  COMPONENT SevenSegm_Decoder IS
+    PORT( iD3:    IN  std_logic;  -- iD3 = MSB, iD0 = LSB
+          iD2:    IN  std_logic;
+          iD1:    IN  std_logic;
+          iD0:    IN  std_logic;
+          oHEX_a: OUT std_logic;  -- All "Active Low"
+          oHEX_b: OUT std_logic;
+          oHEX_c: OUT std_logic;
+          oHEX_d: OUT std_logic;
+          oHEX_e: OUT std_logic;
+          oHEX_f: OUT std_logic;
+          oHEX_g: OUT std_logic );
+  END COMPONENT;
+  --
+  COMPONENT NAND4_gate IS
+    PORT( I0,I1,I2,I3: IN std_logic;
+          O: OUT std_logic );
+  END COMPONENT;
+  --
+  COMPONENT JKnetFF IS
+    PORT( J, K, Ck: IN std_logic;
+          nCL, nPR: IN std_logic;
+          Q, nQ   : OUT std_logic );
+  END COMPONENT;
+
+  ----------------------------------------> Signals:
+  SIGNAL S001: std_logic;
+  SIGNAL S002: std_logic;
+  SIGNAL S003: std_logic;
+  SIGNAL S004: std_logic;
+  SIGNAL S005: std_logic;
+  SIGNAL S006: std_logic;
+  SIGNAL S007: std_logic;
+  SIGNAL S008: std_logic;
+  SIGNAL S009: std_logic;
+  SIGNAL S010: std_logic;
+  SIGNAL S011: std_logic;
+  SIGNAL S012: std_logic;
+  SIGNAL S013: std_logic;
+  SIGNAL S014: std_logic;
+  SIGNAL S015: std_logic;
+  SIGNAL S016: std_logic;
+  SIGNAL S017: std_logic;
+  SIGNAL S018: std_logic;
+  SIGNAL S019: std_logic;
+  SIGNAL S020: std_logic;
+  SIGNAL S021: std_logic;
+  SIGNAL S022: std_logic;
+  SIGNAL S023: std_logic;
+  SIGNAL S024: std_logic;
+  SIGNAL S025: std_logic;
+  SIGNAL S026: std_logic;
+  SIGNAL S027: std_logic;
+  SIGNAL S028: std_logic;
+  SIGNAL S029: std_logic;
+  SIGNAL S030: std_logic;
+  SIGNAL S031: std_logic;
+  SIGNAL S032: std_logic;
+  SIGNAL S033: std_logic;
+  SIGNAL S034: std_logic;
+  SIGNAL S035: std_logic;
+  SIGNAL S036: std_logic;
+  SIGNAL S037: std_logic;
+  SIGNAL S038: std_logic;
+
+  ----------------------------------------> Not Connected Pins:
+  SIGNAL ncp7_C085: std_logic;
+  SIGNAL ncp7_C086: std_logic;
+  SIGNAL ncp7_C087: std_logic;
+  SIGNAL ncp7_C088: std_logic;
+  SIGNAL ncp7_C091: std_logic;
+  SIGNAL ncp7_C093: std_logic;
+  SIGNAL ncp7_C260: std_logic;
+
+  ----------------------------------------> Added Signals:
+  SIGNAL iCK: std_logic;
+  SIGNAL iCK_LED_NotCon: std_logic;
+  SIGNAL iCK_2: std_logic;
+  SIGNAL iCK_2_LED_NotCon: std_logic;
+  SIGNAL iCK_3: std_logic;
+  SIGNAL iCK_3_LED_NotCon: std_logic;
+  SIGNAL oOUTPUT_03: std_logic;
+  SIGNAL oOUTPUT_02: std_logic;
+  SIGNAL oOUTPUT_01: std_logic;
+  SIGNAL oOUTPUT_00: std_logic;
+  SIGNAL oOUTPUT_2_03: std_logic;
+  SIGNAL oOUTPUT_2_02: std_logic;
+  SIGNAL oOUTPUT_2_01: std_logic;
+  SIGNAL oOUTPUT_2_00: std_logic;
+  SIGNAL oOUTPUT_3_03: std_logic;
+  SIGNAL oOUTPUT_3_02: std_logic;
+  SIGNAL oOUTPUT_3_01: std_logic;
+  SIGNAL oOUTPUT_3_00: std_logic;
+
+
+BEGIN -- structural
+
+  ----------------------------------------> Input:
+  S010 <= iCLR;
+  S009 <= iCK;
+  S014 <= iCK_2;
+  S015 <= iCLR_2;
+  S027 <= iCK_3;
+  S026 <= iCLR_3;
+
+  ----------------------------------------> Output:
+  oOUTPUT_00 <= S006;
+  oOUTPUT_01 <= S007;
+  oOUTPUT_02 <= S008;
+  oOUTPUT_03 <= S011;
+  oOUTPUT_2_00 <= S012;
+  oOUTPUT_2_01 <= S021;
+  oOUTPUT_2_02 <= S013;
+  oOUTPUT_2_03 <= S020;
+  oOUTPUT_3_00 <= S030;
+  oOUTPUT_3_01 <= S029;
+  oOUTPUT_3_02 <= S028;
+  oOUTPUT_3_03 <= S025;
+
+  ----------------------------------------> Constants:
+  S001 <= '1';
+  S002 <= '1';
+  S003 <= '1';
+  S004 <= '1';
+  S005 <= '1';
+  S016 <= '1';
+  S017 <= '1';
+  S018 <= '1';
+  S019 <= '1';
+  S031 <= '1';
+  S032 <= '1';
+  S033 <= '1';
+  S034 <= '1';
+  S035 <= '1';
+  oPIN_A8   <= '0';
+  oPIN_A9   <= '0';
+  oPIN_A10  <= '0';
+  oPIN_B10  <= '0';
+  oPIN_D13  <= '0';
+  oPIN_C13  <= '0';
+  oPIN_E14  <= '0';
+  oPIN_D14  <= '0';
+  oPIN_A11  <= '0';
+  oPIN_B11  <= '0';
+  oPIN_F21  <= '1';
+  oPIN_E22  <= '1';
+  oPIN_E21  <= '1';
+  oPIN_C19  <= '1';
+  oPIN_C20  <= '1';
+  oPIN_D19  <= '1';
+  oPIN_E17  <= '1';
+  oPIN_D22  <= '1';
+  oPIN_F18  <= '1';
+  oPIN_E20  <= '1';
+  oPIN_E19  <= '1';
+  oPIN_J18  <= '1';
+  oPIN_H19  <= '1';
+  oPIN_F19  <= '1';
+  oPIN_F20  <= '1';
+  oPIN_F17  <= '1';
+  oPIN_J20  <= '1';
+  oPIN_K20  <= '1';
+  oPIN_L18  <= '1';
+  oPIN_N18  <= '1';
+  oPIN_M20  <= '1';
+  oPIN_N19  <= '1';
+  oPIN_N20  <= '1';
+  oPIN_L19  <= '1';
+
+  ----------------------------------------> Component Mapping:
+
+  ClockScaler_iCK: ClockScaler PORT MAP ( 
+      iCLOCK_50MHz, '1', '0', '1', '0', '1', '0', '0', '0', '0',
+      '0', '0', iCK, iCK_LED_NotCon );
+
+
+  ClockScaler_iCK_2: ClockScaler PORT MAP ( 
+      iCLOCK_50MHz, '1', '0', '1', '0', '1', '0', '0', '0', '0',
+      '0', '0', iCK_2, iCK_2_LED_NotCon );
+
+
+  ClockScaler_iCK_3: ClockScaler PORT MAP ( 
+      iCLOCK_50MHz, '1', '0', '1', '0', '1', '0', '0', '0', '0',
+      '0', '0', iCK_3, iCK_3_LED_NotCon );
+
+  SevenSegm_Decoder_oOUTPUT: SevenSegm_Decoder PORT MAP ( 
+    oOUTPUT_03, oOUTPUT_02, oOUTPUT_01, oOUTPUT_00, 
+    oOUTPUT_a, oOUTPUT_b, oOUTPUT_c, oOUTPUT_d, oOUTPUT_e, oOUTPUT_f, oOUTPUT_g );
+
+  SevenSegm_Decoder_oOUTPUT_2: SevenSegm_Decoder PORT MAP ( 
+    oOUTPUT_2_03, oOUTPUT_2_02, oOUTPUT_2_01, oOUTPUT_2_00, 
+    oOUTPUT_2_a, oOUTPUT_2_b, oOUTPUT_2_c, oOUTPUT_2_d, oOUTPUT_2_e, oOUTPUT_2_f, oOUTPUT_2_g );
+
+  SevenSegm_Decoder_oOUTPUT_3: SevenSegm_Decoder PORT MAP ( 
+    oOUTPUT_3_03, oOUTPUT_3_02, oOUTPUT_3_01, oOUTPUT_3_00, 
+    oOUTPUT_3_a, oOUTPUT_3_b, oOUTPUT_3_c, oOUTPUT_3_d, oOUTPUT_3_e, oOUTPUT_3_f, oOUTPUT_3_g );
+
+  C085: JKnetFF PORT MAP ( S005, S001, S009, S010, S005, S006, 
+                           ncp7_C085 );
+  C086: JKnetFF PORT MAP ( S005, S002, S006, S010, S005, S007, 
+                           ncp7_C086 );
+  C087: JKnetFF PORT MAP ( S005, S003, S007, S010, S005, S008, 
+                           ncp7_C087 );
+  C088: JKnetFF PORT MAP ( S005, S004, S008, S010, S005, S011, 
+                           ncp7_C088 );
+  C091: JKnetFF PORT MAP ( S015, S016, S013, S022, S015, S020, 
+                           ncp7_C091 );
+  C092: JKnetFF PORT MAP ( S015, S017, S021, S022, S015, S013, 
+                           S024 );
+  C093: JKnetFF PORT MAP ( S015, S018, S012, S022, S015, S021, 
+                           ncp7_C093 );
+  C094: JKnetFF PORT MAP ( S015, S019, S014, S022, S015, S012, 
+                           S023 );
+  C245: NAND4_gate PORT MAP ( S024, S021, S020, S023, S022 );
+  C260: JKnetFF PORT MAP ( S031, S032, S038, S026, S031, S025, 
+                           ncp7_C260 );
+  C261: JKnetFF PORT MAP ( S031, S033, S037, S026, S031, S028, 
+                           S038 );
+  C262: JKnetFF PORT MAP ( S031, S034, S036, S026, S031, S029, 
+                           S037 );
+  C263: JKnetFF PORT MAP ( S031, S035, S027, S026, S031, S030, 
+                           S036 );
+END structural;
