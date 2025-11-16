@@ -1,0 +1,275 @@
+------------------------------------------------------------
+-- Deeds (Digital Electronics Education and Design Suite)
+-- VHDL Code generated on (31/10/2025, 15:24:13)
+--      by Deeds (Digital Circuit Simulator)(Deeds-DcS)
+--      Ver. 3.01.250 (Feb 28, 2025)
+-- Copyright (c) 2002-2025 University of Genoa, Italy
+--      Web Site:  https://www.digitalelectronicsdeeds.com
+------------------------------------------------------------
+-- FPGA Board: "DE10-Lite Board"
+-- Chip FPGA: Intel/Altera MAX 10 (r) (10M50DAF484C7G)
+-- Proprietary EDA Tool: Quartus(r) II (Ver = 12.1sp1)
+------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.all;
+
+
+ENTITY circuito_31_10_25 IS
+  PORT( 
+    --------------------------------------> Clocks:
+    iCLOCK_50MHz: IN  std_logic;   --> PIN_P11
+                                   --> "iReset" (Reset Generator) Push-Button: Key[00]
+                                   --> "iCK"  Clock: 1 Hz
+    --------------------------------------> Inputs:
+    iPL:          IN  std_logic;   --> PIN_A12,  Switch: Sw[04]
+    iSERIAL:      IN  std_logic;   --> PIN_B14,  Switch: Sw[08]
+    iButons_03:   IN  std_logic;   --> PIN_C10,  Switch: Sw[00]
+    iButons_02:   IN  std_logic;   --> PIN_C11,  Switch: Sw[01]
+    iButons_01:   IN  std_logic;   --> PIN_D12,  Switch: Sw[02]
+    iButons_00:   IN  std_logic;   --> PIN_C12,  Switch: Sw[03]
+    iReset:       IN  std_logic;   --> PIN_B8,   Push-Button: Key[00] (Reset Generator)
+    iChave_Ck:    IN  std_logic;   --> PIN_F15,  Switch: Sw[09]
+    --------------------------------------> Outputs:
+    oQ1:          OUT std_logic;   --> PIN_B10,  LED (Red): LEDR[03]
+    oQ2:          OUT std_logic;   --> PIN_A10,  LED (Red): LEDR[02]
+    oQ3:          OUT std_logic;   --> PIN_A9,   LED (Red): LEDR[01]
+    oQ4:          OUT std_logic;   --> PIN_A8,   LED (Red): LEDR[00]
+    --------------------------------------> Default Outputs:
+    oPIN_D13:     OUT std_logic;   --> PIN_D13,  LED (Red): LEDR[04]
+    oPIN_C13:     OUT std_logic;   --> PIN_C13,  LED (Red): LEDR[05]
+    oPIN_E14:     OUT std_logic;   --> PIN_E14,  LED (Red): LEDR[06]
+    oPIN_D14:     OUT std_logic;   --> PIN_D14,  LED (Red): LEDR[07]
+    oPIN_A11:     OUT std_logic;   --> PIN_A11,  LED (Red): LEDR[08]
+    oPIN_B11:     OUT std_logic;   --> PIN_B11,  LED (Red): LEDR[09]
+    oPIN_C14:     OUT std_logic;   --> PIN_C14,  Seven Segm. Display:  HEX 0 0 (a)
+    oPIN_E15:     OUT std_logic;   --> PIN_E15,  Seven Segm. Display:  HEX 0 1 (b)
+    oPIN_C15:     OUT std_logic;   --> PIN_C15,  Seven Segm. Display:  HEX 0 2 (c)
+    oPIN_C16:     OUT std_logic;   --> PIN_C16,  Seven Segm. Display:  HEX 0 3 (d)
+    oPIN_E16:     OUT std_logic;   --> PIN_E16,  Seven Segm. Display:  HEX 0 4 (e)
+    oPIN_D17:     OUT std_logic;   --> PIN_D17,  Seven Segm. Display:  HEX 0 5 (f)
+    oPIN_C17:     OUT std_logic;   --> PIN_C17,  Seven Segm. Display:  HEX 0 6 (g)
+    oPIN_D15:     OUT std_logic;   --> PIN_D15,  Seven Segm. Display:  HEX 0 Dot
+    oPIN_C18:     OUT std_logic;   --> PIN_C18,  Seven Segm. Display:  HEX 1 0 (a)
+    oPIN_D18:     OUT std_logic;   --> PIN_D18,  Seven Segm. Display:  HEX 1 1 (b)
+    oPIN_E18:     OUT std_logic;   --> PIN_E18,  Seven Segm. Display:  HEX 1 2 (c)
+    oPIN_B16:     OUT std_logic;   --> PIN_B16,  Seven Segm. Display:  HEX 1 3 (d)
+    oPIN_A17:     OUT std_logic;   --> PIN_A17,  Seven Segm. Display:  HEX 1 4 (e)
+    oPIN_A18:     OUT std_logic;   --> PIN_A18,  Seven Segm. Display:  HEX 1 5 (f)
+    oPIN_B17:     OUT std_logic;   --> PIN_B17,  Seven Segm. Display:  HEX 1 6 (g)
+    oPIN_A16:     OUT std_logic;   --> PIN_A16,  Seven Segm. Display:  HEX 1 Dot
+    oPIN_B20:     OUT std_logic;   --> PIN_B20,  Seven Segm. Display:  HEX 2 0 (a)
+    oPIN_A20:     OUT std_logic;   --> PIN_A20,  Seven Segm. Display:  HEX 2 1 (b)
+    oPIN_B19:     OUT std_logic;   --> PIN_B19,  Seven Segm. Display:  HEX 2 2 (c)
+    oPIN_A21:     OUT std_logic;   --> PIN_A21,  Seven Segm. Display:  HEX 2 3 (d)
+    oPIN_B21:     OUT std_logic;   --> PIN_B21,  Seven Segm. Display:  HEX 2 4 (e)
+    oPIN_C22:     OUT std_logic;   --> PIN_C22,  Seven Segm. Display:  HEX 2 5 (f)
+    oPIN_B22:     OUT std_logic;   --> PIN_B22,  Seven Segm. Display:  HEX 2 6 (g)
+    oPIN_A19:     OUT std_logic;   --> PIN_A19,  Seven Segm. Display:  HEX 2 Dot
+    oPIN_F21:     OUT std_logic;   --> PIN_F21,  Seven Segm. Display:  HEX 3 0 (a)
+    oPIN_E22:     OUT std_logic;   --> PIN_E22,  Seven Segm. Display:  HEX 3 1 (b)
+    oPIN_E21:     OUT std_logic;   --> PIN_E21,  Seven Segm. Display:  HEX 3 2 (c)
+    oPIN_C19:     OUT std_logic;   --> PIN_C19,  Seven Segm. Display:  HEX 3 3 (d)
+    oPIN_C20:     OUT std_logic;   --> PIN_C20,  Seven Segm. Display:  HEX 3 4 (e)
+    oPIN_D19:     OUT std_logic;   --> PIN_D19,  Seven Segm. Display:  HEX 3 5 (f)
+    oPIN_E17:     OUT std_logic;   --> PIN_E17,  Seven Segm. Display:  HEX 3 6 (g)
+    oPIN_D22:     OUT std_logic;   --> PIN_D22,  Seven Segm. Display:  HEX 3 Dot
+    oPIN_F18:     OUT std_logic;   --> PIN_F18,  Seven Segm. Display:  HEX 4 0 (a)
+    oPIN_E20:     OUT std_logic;   --> PIN_E20,  Seven Segm. Display:  HEX 4 1 (b)
+    oPIN_E19:     OUT std_logic;   --> PIN_E19,  Seven Segm. Display:  HEX 4 2 (c)
+    oPIN_J18:     OUT std_logic;   --> PIN_J18,  Seven Segm. Display:  HEX 4 3 (d)
+    oPIN_H19:     OUT std_logic;   --> PIN_H19,  Seven Segm. Display:  HEX 4 4 (e)
+    oPIN_F19:     OUT std_logic;   --> PIN_F19,  Seven Segm. Display:  HEX 4 5 (f)
+    oPIN_F20:     OUT std_logic;   --> PIN_F20,  Seven Segm. Display:  HEX 4 6 (g)
+    oPIN_F17:     OUT std_logic;   --> PIN_F17,  Seven Segm. Display:  HEX 4 Dot
+    oPIN_J20:     OUT std_logic;   --> PIN_J20,  Seven Segm. Display:  HEX 5 0 (a)
+    oPIN_K20:     OUT std_logic;   --> PIN_K20,  Seven Segm. Display:  HEX 5 1 (b)
+    oPIN_L18:     OUT std_logic;   --> PIN_L18,  Seven Segm. Display:  HEX 5 2 (c)
+    oPIN_N18:     OUT std_logic;   --> PIN_N18,  Seven Segm. Display:  HEX 5 3 (d)
+    oPIN_M20:     OUT std_logic;   --> PIN_M20,  Seven Segm. Display:  HEX 5 4 (e)
+    oPIN_N19:     OUT std_logic;   --> PIN_N19,  Seven Segm. Display:  HEX 5 5 (f)
+    oPIN_N20:     OUT std_logic;   --> PIN_N20,  Seven Segm. Display:  HEX 5 6 (g)
+    oPIN_L19:     OUT std_logic    --> PIN_L19,  Seven Segm. Display:  HEX 5 Dot
+    ------------------------------------------------------
+    );
+END circuito_31_10_25;
+
+
+ARCHITECTURE structural OF circuito_31_10_25 IS 
+
+  ----------------------------------------> Components:
+  COMPONENT AutoResetGen IS
+    PORT( iMClk: IN  std_logic;   -- Master Clock
+          inBut: IN  std_logic;   -- PushBut, Switch on Ext. Reset (active low)
+          onRes: OUT std_logic    -- Reset Output (active low)
+          );
+  END COMPONENT;
+  --
+  COMPONENT ClockScaler IS
+    PORT( iMClk: IN  std_logic;   -- Master Clock
+          iH4:   IN  std_logic;   -- iH4..iH0 = "high" frequency selection
+          iH3:   IN  std_logic;
+          iH2:   IN  std_logic;
+          iH1:   IN  std_logic;
+          iH0:   IN  std_logic;
+          iL3:   IN  std_logic;   -- iL3..iL0 = "low" frequency selection
+          iL2:   IN  std_logic;   --                  and Button Modes
+          iL1:   IN  std_logic;
+          iL0:   IN  std_logic;
+          iSwch: IN  std_logic;   -- Switch (low: iH<n> selection, high: iL<n> selection)
+          iBut:  IN  std_logic;   -- Button for manual pulsed Clock
+          oSClk: OUT std_logic;   -- Output Clock
+          oLed:  OUT std_logic 	-- Slow "Clock Pulse" Led
+          );
+  END COMPONENT;
+  --
+  COMPONENT AND2_gate IS
+    PORT( I0,I1: IN std_logic;
+          O: OUT std_logic );
+  END COMPONENT;
+  --
+  COMPONENT NAND2_gate IS
+    PORT( I0,I1: IN std_logic;
+          O: OUT std_logic );
+  END COMPONENT;
+  --
+  COMPONENT OR2_gate IS
+    PORT( I0,I1: IN std_logic;
+          O: OUT std_logic );
+  END COMPONENT;
+  --
+  COMPONENT DpetFF IS
+    PORT( D, Ck   : IN std_logic;
+          nCL, nPR: IN std_logic;
+          Q, nQ   : OUT std_logic );
+  END COMPONENT;
+
+  ----------------------------------------> Signals:
+  SIGNAL S001: std_logic;
+  SIGNAL S002: std_logic;
+  SIGNAL S003: std_logic;
+  SIGNAL S004: std_logic;
+  SIGNAL S005: std_logic;
+  SIGNAL S006: std_logic;
+  SIGNAL S007: std_logic;
+  SIGNAL S008: std_logic;
+  SIGNAL S009: std_logic;
+  SIGNAL S010: std_logic;
+  SIGNAL S011: std_logic;
+  SIGNAL S012: std_logic;
+  SIGNAL S013: std_logic;
+  SIGNAL S014: std_logic;
+  SIGNAL S015: std_logic;
+  SIGNAL S016: std_logic;
+  SIGNAL S017: std_logic;
+  SIGNAL S018: std_logic;
+  SIGNAL S019: std_logic;
+
+  ----------------------------------------> Not Connected Pins:
+  SIGNAL ncp6_C005: std_logic;
+  SIGNAL ncp6_C006: std_logic;
+  SIGNAL ncp6_C007: std_logic;
+  SIGNAL ncp6_C008: std_logic;
+
+  ----------------------------------------> Added Signals:
+  SIGNAL iReset_ResGen: std_logic;
+  SIGNAL iCK: std_logic;
+  SIGNAL iCK_LED_NotCon: std_logic;
+
+
+BEGIN -- structural
+
+  ----------------------------------------> Input:
+  S001 <= iPL;
+  S016 <= iSERIAL;
+  S002 <= iButons_00;
+  S003 <= iButons_01;
+  S004 <= iButons_02;
+  S005 <= iButons_03;
+  S006 <= iReset_ResGen;
+  S017 <= iCK;
+  S018 <= iChave_Ck;
+
+  ----------------------------------------> Output:
+  oQ1 <= S007;
+  oQ2 <= S008;
+  oQ3 <= S009;
+  oQ4 <= S010;
+
+  ----------------------------------------> Constants:
+  oPIN_D13  <= '0';
+  oPIN_C13  <= '0';
+  oPIN_E14  <= '0';
+  oPIN_D14  <= '0';
+  oPIN_A11  <= '0';
+  oPIN_B11  <= '0';
+  oPIN_C14  <= '1';
+  oPIN_E15  <= '1';
+  oPIN_C15  <= '1';
+  oPIN_C16  <= '1';
+  oPIN_E16  <= '1';
+  oPIN_D17  <= '1';
+  oPIN_C17  <= '1';
+  oPIN_D15  <= '1';
+  oPIN_C18  <= '1';
+  oPIN_D18  <= '1';
+  oPIN_E18  <= '1';
+  oPIN_B16  <= '1';
+  oPIN_A17  <= '1';
+  oPIN_A18  <= '1';
+  oPIN_B17  <= '1';
+  oPIN_A16  <= '1';
+  oPIN_B20  <= '1';
+  oPIN_A20  <= '1';
+  oPIN_B19  <= '1';
+  oPIN_A21  <= '1';
+  oPIN_B21  <= '1';
+  oPIN_C22  <= '1';
+  oPIN_B22  <= '1';
+  oPIN_A19  <= '1';
+  oPIN_F21  <= '1';
+  oPIN_E22  <= '1';
+  oPIN_E21  <= '1';
+  oPIN_C19  <= '1';
+  oPIN_C20  <= '1';
+  oPIN_D19  <= '1';
+  oPIN_E17  <= '1';
+  oPIN_D22  <= '1';
+  oPIN_F18  <= '1';
+  oPIN_E20  <= '1';
+  oPIN_E19  <= '1';
+  oPIN_J18  <= '1';
+  oPIN_H19  <= '1';
+  oPIN_F19  <= '1';
+  oPIN_F20  <= '1';
+  oPIN_F17  <= '1';
+  oPIN_J20  <= '1';
+  oPIN_K20  <= '1';
+  oPIN_L18  <= '1';
+  oPIN_N18  <= '1';
+  oPIN_M20  <= '1';
+  oPIN_N19  <= '1';
+  oPIN_N20  <= '1';
+  oPIN_L19  <= '1';
+
+  ----------------------------------------> Component Mapping:
+  AutoResetGen_iReset: AutoResetGen PORT MAP ( 
+      iCLOCK_50MHz, iReset, iReset_ResGen );
+
+
+  ClockScaler_iCK: ClockScaler PORT MAP ( 
+      iCLOCK_50MHz, '1', '0', '1', '0', '1', '0', '0', '0', '0',
+      '0', '0', iCK, iCK_LED_NotCon );
+
+  C001: NAND2_gate PORT MAP ( S005, S001, S011 );
+  C002: NAND2_gate PORT MAP ( S004, S001, S012 );
+  C003: NAND2_gate PORT MAP ( S003, S001, S013 );
+  C004: NAND2_gate PORT MAP ( S002, S001, S014 );
+  C005: DpetFF PORT MAP ( S015, S019, S006, S011, S007, ncp6_C005 );
+  C006: DpetFF PORT MAP ( S007, S019, S006, S012, S008, ncp6_C006 );
+  C007: DpetFF PORT MAP ( S008, S019, S006, S013, S009, ncp6_C007 );
+  C008: DpetFF PORT MAP ( S009, S019, S006, S014, S010, ncp6_C008 );
+  C127: OR2_gate PORT MAP ( S016, S010, S015 );
+  C135: AND2_gate PORT MAP ( S017, S018, S019 );
+END structural;

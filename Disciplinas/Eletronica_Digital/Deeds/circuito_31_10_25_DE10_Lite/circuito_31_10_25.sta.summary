@@ -1,0 +1,161 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'iCLOCK_50MHz'
+Slack : -6.025
+TNS   : -261.967
+
+Type  : Slow 1200mV 85C Model Setup 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : -1.294
+TNS   : -2.517
+
+Type  : Slow 1200mV 85C Model Setup 'iChave_Ck'
+Slack : -1.113
+TNS   : -3.969
+
+Type  : Slow 1200mV 85C Model Hold 'iCLOCK_50MHz'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'iChave_Ck'
+Slack : 0.868
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.937
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'iChave_Ck'
+Slack : -0.822
+TNS   : -3.061
+
+Type  : Slow 1200mV 85C Model Recovery 'iCLOCK_50MHz'
+Slack : -0.233
+TNS   : -13.135
+
+Type  : Slow 1200mV 85C Model Removal 'iCLOCK_50MHz'
+Slack : 0.138
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'iChave_Ck'
+Slack : 0.814
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -130.673
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'iChave_Ck'
+Slack : -3.000
+TNS   : -8.612
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.441
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'iCLOCK_50MHz'
+Slack : -5.562
+TNS   : -235.141
+
+Type  : Slow 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : -1.146
+TNS   : -2.221
+
+Type  : Slow 1200mV 0C Model Setup 'iChave_Ck'
+Slack : -0.948
+TNS   : -3.413
+
+Type  : Slow 1200mV 0C Model Hold 'iCLOCK_50MHz'
+Slack : 0.305
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'iChave_Ck'
+Slack : 0.632
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.844
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'iChave_Ck'
+Slack : -0.618
+TNS   : -2.183
+
+Type  : Slow 1200mV 0C Model Recovery 'iCLOCK_50MHz'
+Slack : -0.105
+TNS   : -5.855
+
+Type  : Slow 1200mV 0C Model Removal 'iCLOCK_50MHz'
+Slack : 0.128
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'iChave_Ck'
+Slack : 0.645
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -130.673
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'iChave_Ck'
+Slack : -3.000
+TNS   : -8.612
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.473
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'iCLOCK_50MHz'
+Slack : -2.040
+TNS   : -77.101
+
+Type  : Fast 1200mV 0C Model Setup 'iChave_Ck'
+Slack : -0.054
+TNS   : -0.056
+
+Type  : Fast 1200mV 0C Model Setup 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : -0.028
+TNS   : -0.028
+
+Type  : Fast 1200mV 0C Model Hold 'iCLOCK_50MHz'
+Slack : -0.004
+TNS   : -0.004
+
+Type  : Fast 1200mV 0C Model Hold 'iChave_Ck'
+Slack : 0.344
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.347
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'iCLOCK_50MHz'
+Slack : -0.007
+TNS   : -0.007
+
+Type  : Fast 1200mV 0C Model Recovery 'iChave_Ck'
+Slack : -0.007
+TNS   : -0.007
+
+Type  : Fast 1200mV 0C Model Removal 'iCLOCK_50MHz'
+Slack : 0.050
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'iChave_Ck'
+Slack : 0.367
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'iCLOCK_50MHz'
+Slack : -3.000
+TNS   : -96.875
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'iChave_Ck'
+Slack : -3.000
+TNS   : -7.688
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ClockScaler:ClockScaler_iCK|nAutoReset'
+Slack : 0.358
+TNS   : 0.000
+
+------------------------------------------------------------

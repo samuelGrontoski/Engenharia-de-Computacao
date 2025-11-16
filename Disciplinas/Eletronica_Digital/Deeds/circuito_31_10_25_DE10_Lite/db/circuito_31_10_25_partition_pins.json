@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oQ1",
+					"strict" : false
+				},
+				{
+					"name" : "oQ2",
+					"strict" : false
+				},
+				{
+					"name" : "oQ3",
+					"strict" : false
+				},
+				{
+					"name" : "oQ4",
+					"strict" : false
+				},
+				{
+					"name" : "iSERIAL",
+					"strict" : false
+				},
+				{
+					"name" : "iButons_03",
+					"strict" : false
+				},
+				{
+					"name" : "iPL",
+					"strict" : false
+				},
+				{
+					"name" : "iButons_02",
+					"strict" : false
+				},
+				{
+					"name" : "iButons_01",
+					"strict" : false
+				},
+				{
+					"name" : "iChave_Ck",
+					"strict" : false
+				},
+				{
+					"name" : "iCLOCK_50MHz",
+					"strict" : false
+				},
+				{
+					"name" : "iReset",
+					"strict" : false
+				},
+				{
+					"name" : "iButons_00",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

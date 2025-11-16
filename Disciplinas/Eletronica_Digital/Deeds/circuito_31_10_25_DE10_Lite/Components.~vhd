@@ -1,0 +1,516 @@
+------------------------------------------------------------
+-- Deeds (Digital Electronics Education and Design Suite)
+-- VHDL Code generated on (31/10/2025, 15:16:24)
+--      by Deeds (Digital Circuit Simulator)(Deeds-DcS)
+--      Ver. 3.01.250 (Feb 28, 2025)
+-- Copyright (c) 2002-2025 University of Genoa, Italy
+--      Web Site:  https://www.digitalelectronicsdeeds.com
+------------------------------------------------------------
+-- FPGA Board: "DE10-Lite Board"
+-- Chip FPGA: Intel/Altera MAX 10 (r) (10M50DAF484C7G)
+-- Proprietary EDA Tool: Quartus(r) II (Ver = 12.1sp1)
+------------------------------------------------------------
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+ENTITY NAND2_gate IS
+  PORT( I0,I1: IN std_logic;
+        O: OUT std_logic );
+END NAND2_gate;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF NAND2_gate IS
+BEGIN
+  O <= (not (I0 and I1));
+END behavioral;
+
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+ENTITY OR2_gate IS
+  PORT( I0,I1: IN std_logic;
+        O: OUT std_logic );
+END OR2_gate;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF OR2_gate IS
+BEGIN
+  O <= (I0 or I1);
+END behavioral;
+
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+ENTITY DpetFF IS
+  PORT(  D, Ck   : IN std_logic;
+         nCL, nPR: IN std_logic;
+         Q, nQ   : OUT std_logic );
+END DpetFF;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF DpetFF IS 
+BEGIN
+  Dff: PROCESS( Ck, nCL, nPR ) 
+  BEGIN
+    if    (nCL = '0') and (nPR = '0') then  Q <= 'X';  nQ <= 'X';
+    elsif (nCL = '0') and (nPR = '1') then  Q <= '0';  nQ <= '1';
+    elsif (nCL = '1') and (nPR = '0') then  Q <= '1';  nQ <= '0';
+    elsif (nCL = '1') and (nPR = '1') then
+      if (Ck'event) AND (Ck='1') THEN -- Positive Edge -----------
+                                            Q <=  D;   nQ <= not D;
+      END IF;
+    else                                    Q <= 'X';  nQ <= 'X';
+    END IF;
+  END PROCESS; 
+END behavioral;
+
+
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY AutoResetGen IS				-- Auto Reset Generator
+   PORT( iMClk: IN  std_logic;   -- Master Clock
+         inBut: IN  std_logic;   -- PushBut, Switch on Ext. Reset (active low)
+         onRes: OUT std_logic    -- Reset Output (active low)
+         );
+   END AutoResetGen;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF AutoResetGen IS
+
+SIGNAL FFR: std_logic;
+SIGNAL SHR: unsigned( 15 downto 0 );
+SIGNAL FeedBack: std_logic;		 
+
+BEGIN
+   ------------------------------------------------------------------
+   -- 16-bits shift-register-based "Auto-Reset" network.
+	-- It appears over-complicated, but a simpler structure,
+	-- even if accepted by the VHDL compiler, is deleted
+   -- by the logic optimizer. This one... not!
+   ------------------------------------------------------------------
+   FeedBack <= not( 	SHR(15) and SHR(14) and SHR(13) and SHR(12) and 
+							SHR(11) and SHR(10) and SHR(09) and SHR(08) and
+							SHR(07) and SHR(06) and SHR(05) and SHR(04) and 
+							SHR(03) and SHR(02) and SHR(01) and SHR(00) );
+							
+   ARG: process( iMClk, inBut )
+   begin
+		if (inBut = '0') then
+			SHR <= "0000000000000000";
+		   FFR <= '0';
+      elsif (FFR = '0') and rising_edge( iMClk ) then 
+			SHR <= FeedBack & SHR(15 downto 1);
+			FFR <= SHR(00) or SHR(01);
+      end if;
+   end process;
+	--
+	onRes <= FFR;
+	--
+END behavioral;
+
+--------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- Clock Scaler (Altera DE1, DE2 and DE2-115 version, master clock = 50 MHz)
+
+ENTITY ClockScaler IS
+	PORT(	iMClk: IN  std_logic;   -- Master Clock
+			iH4:   IN  std_logic;   -- iH4..iH0 = "high" frequency selection
+			iH3:   IN  std_logic;
+			iH2:   IN  std_logic;
+			iH1:   IN  std_logic;
+			iH0:   IN  std_logic;
+			iL3:   IN  std_logic;   -- iL3..iL0 = "low" frequency selection
+			iL2:   IN  std_logic;   --                  and Button Modes
+			iL1:   IN  std_logic;
+			iL0:   IN  std_logic;
+			iSwch: IN  std_logic;   -- Switch (low: iH<n> selection, high: iL<n> selection)
+			iBut:  IN  std_logic;   -- Button for manual pulsed Clock
+			oSClk: OUT std_logic;   -- Output Clock
+			oLed:  OUT std_logic 	-- Slow "Clock Pulse" Led
+			);
+	END ClockScaler;
+
+--------------------------------------------------------------------
+ARCHITECTURE behavioral OF ClockScaler IS
+
+-- "Auto Reset" shift register & flip-flop --------------------
+SIGNAL	ASHR:	unsigned( 15 downto 0 );
+SIGNAL 	AFBack: std_logic;		 
+SIGNAL	nAutoReset: std_logic;
+
+-- 10 mS Tick, input debounce ---------------------------------
+--                               Clock 50 MHz --> 100Hz = 10 mS
+constant	aDebCountMax:	integer:= 500000-1;
+SIGNAL	aDebCount:		integer range 0 to aDebCountMax;
+SIGNAL	aButton_SHR:	unsigned( 2 downto 0 );
+SIGNAL	aSwitch_SHR:	unsigned( 2 downto 0 );
+SIGNAL	aButton: 		std_logic;
+SIGNAL	aSwitch: 		std_logic;
+SIGNAL	aTick: 			std_logic;
+
+-- Main Clock Scaler ------------------------------------------
+constant	nBits:	integer:= 32;
+constant	highBit:	integer:= nBits -1;
+SIGNAL	aCount:  unsigned( highBit downto 0 );
+SIGNAL	aCntMod: unsigned( highBit downto 0 );
+SIGNAL	aCntMid: unsigned( highBit downto 0 );
+SIGNAL 	aHIGH: unsigned( 4 downto 0 );
+SIGNAL 	aLOW:  unsigned( 3 downto 0 );
+
+-- Clock and LED Outputs --------------------------------------
+SIGNAL	ManualClkMode: std_logic;
+SIGNAL	StepPulse:		std_logic;
+SIGNAL	StepLED:			std_logic;
+
+BEGIN
+   ------------------------------------------------------------------
+   -- Shift register to create an "Auto-Reset" signal.
+	-- (it appears over-complicated, but a simpler structure,
+	--  even if accepted by the VHDL compiler, is deleted anyway
+   --  by the logic optimizer) 
+   ------------------------------------------------------------------
+   AFBack <= not( ASHR(15) and ASHR(14) and ASHR(13) and ASHR(12) and 
+						ASHR(11) and ASHR(10) and ASHR(09) and ASHR(08) and
+						ASHR(07) and ASHR(06) and ASHR(05) and ASHR(04) and 
+						ASHR(03) and ASHR(02) and ASHR(01) and ASHR(00) );
+							
+   Res: process( iMClk )
+   begin
+      if (nAutoReset = '0') and rising_edge( iMClk ) then 
+			ASHR <= AFBack & ASHR(15 downto 1);
+			nAutoReset <= ASHR(00) or ASHR(01);
+      end if;
+   end process;
+	
+	
+	------------------------------------------------------------
+	-- Counter to generate 10 mS Time Tick used to debounce
+	-- switches and button used for the "slow clock" and the
+	-- "Instruction Step by Step" modes. It is used also as
+	-- time base for the timing of button pressing repetitions.
+	------------------------------------------------------------
+	DebTick: process( nAutoReset, iMClk )
+	begin
+		if (nAutoReset = '0') then
+			aDebCount <= 0;
+			aTick <= '0';
+		--
+		elsif rising_edge( iMClk ) then
+			if (aDebCount = 0) then
+				aDebCount <= aDebCountMax;	-- re-init. count
+				aTick <= '1'; 					-- generate 10 mS Time Tick
+         else
+				aDebCount <= aDebCount - 1;
+				aTick <= '0';
+			end if;
+		end if;
+	end process;
+
+	------------------------------------------------------------
+	-- Shift registers for sincronize and debounce the signals:
+	-- iSwch --> becomes  "aSwitch"
+	-- iBut  --> becomes  "aButton"
+	------------------------------------------------------------
+	Debounce: process( nAutoReset, iMClk )
+	begin
+		if (nAutoReset = '0') then
+			aSwitch_SHR <= "000";
+			aSwitch <= '1';
+			aButton_SHR <= "000";
+			aButton <= '0';
+		--
+		elsif rising_edge( iMClk ) then
+		  if (aTick = '1') then -- (10 mS period)
+
+				--------- Switch ----------------------------------
+				if    (aSwitch_SHR = "000") then  aSwitch <= '1';	-- '1' at Reset
+				elsif (aSwitch_SHR = "111") then  aSwitch <= '0';
+				end if;
+				aSwitch_SHR <= (not iSwch) & aSwitch_SHR(2) & aSwitch_SHR(1);
+
+			   --------- Button -----------------------------------
+				if    (aButton_SHR = "000") then  aButton <= '0';	-- '0' at Reset
+				elsif (aButton_SHR = "111") then  aButton <= '1';
+				end if;
+				aButton_SHR <= iBut & aButton_SHR(2) & aButton_SHR(1);
+				--
+			end if;
+		end if;
+	end process;
+
+	------------------------------------------------------------
+	-- Scaled Clock: Frequency and Mode setting
+	------------------------------------------------------------
+	aHIGH <= iH4 & iH3 & iH2 & iH1 & iH0;
+	aLOW  <= iL3 & iL2 & iL1 & iL0;
+
+	CK_PERIOD: process( aSwitch, aHIGH, aLOW )
+	begin
+		ManualClkMode <= '0';
+		--
+		if (aSwitch = '0') then  -- "normal mode" ---------------------
+		---------------------------------------------------------------
+			case aHIGH is
+			---- 10 MHz ------------------------------------------------
+			when "00000" =>   aCntMod <= TO_UNSIGNED( 5, nBits);
+									aCntMid <= TO_UNSIGNED( 2, nBits);
+			----  5 MHz ------------------------------------------------
+			when "00001" =>   aCntMod <= TO_UNSIGNED(10, nBits);
+									aCntMid <= TO_UNSIGNED( 5, nBits);
+			----  2 MHz ------------------------------------------------
+			when "00010" =>   aCntMod <= TO_UNSIGNED(25, nBits);
+									aCntMid <= TO_UNSIGNED(12, nBits);
+			----  1 MHz ------------------------------------------------
+			when "00011" =>   aCntMod <= TO_UNSIGNED(50, nBits);
+									aCntMid <= TO_UNSIGNED(25, nBits);
+			---- 500 KHz -----------------------------------------------
+			when "00100" =>   aCntMod <= TO_UNSIGNED(100, nBits);
+									aCntMid <= TO_UNSIGNED( 50, nBits);
+			---- 200 KHz -----------------------------------------------
+			when "00101" =>   aCntMod <= TO_UNSIGNED(250, nBits);
+									aCntMid <= TO_UNSIGNED(125, nBits);
+			---- 100 KHz -----------------------------------------------
+			when "00110" =>   aCntMod <= TO_UNSIGNED(500, nBits);
+									aCntMid <= TO_UNSIGNED(250, nBits);
+			---- 50 KHz ------------------------------------------------
+			when "00111" =>   aCntMod <= TO_UNSIGNED(1000, nBits);
+									aCntMid <= TO_UNSIGNED( 500, nBits);
+			---- 20 KHz ------------------------------------------------
+			when "01000" =>   aCntMod <= TO_UNSIGNED(2500, nBits);
+									aCntMid <= TO_UNSIGNED(1250, nBits);
+			---- 10 KHz ------------------------------------------------
+			when "01001" =>   aCntMod <= TO_UNSIGNED(5000, nBits);
+									aCntMid <= TO_UNSIGNED(2500, nBits);
+			---- 5 KHz -------------------------------------------------
+			when "01010" =>   aCntMod <= TO_UNSIGNED(10000, nBits);
+									aCntMid <= TO_UNSIGNED( 5000, nBits);
+			---- 2 KHz -------------------------------------------------
+			when "01011" =>   aCntMod <= TO_UNSIGNED(25000, nBits);
+									aCntMid <= TO_UNSIGNED(12500, nBits);
+			---- 1 KHz -------------------------------------------------
+			when "01100" =>   aCntMod <= TO_UNSIGNED(50000, nBits);
+									aCntMid <= TO_UNSIGNED(25000, nBits);
+			---- 500 Hz ------------------------------------------------
+			when "01101" =>   aCntMod <= TO_UNSIGNED(100000, nBits);
+									aCntMid <= TO_UNSIGNED( 50000, nBits);
+			---- 200 Hz ------------------------------------------------
+			when "01110" =>   aCntMod <= TO_UNSIGNED(250000, nBits);
+									aCntMid <= TO_UNSIGNED(125000, nBits);
+			---- 100 Hz ------------------------------------------------
+			when "01111" =>   aCntMod <= TO_UNSIGNED(500000, nBits);
+									aCntMid <= TO_UNSIGNED(250000, nBits);
+			---- 50 Hz -------------------------------------------------
+			when "10000" =>   aCntMod <= TO_UNSIGNED(1000000, nBits);
+									aCntMid <= TO_UNSIGNED( 500000, nBits);
+			---- 20 Hz -------------------------------------------------
+			when "10001" =>   aCntMod <= TO_UNSIGNED(2500000, nBits);
+									aCntMid <= TO_UNSIGNED(1250000, nBits);
+			---- 10 Hz -------------------------------------------------
+			when "10010" =>   aCntMod <= TO_UNSIGNED(5000000, nBits);
+									aCntMid <= TO_UNSIGNED(2500000, nBits);
+			---- 5 Hz --------------------------------------------------
+			when "10011" =>   aCntMod <= TO_UNSIGNED(10000000, nBits);
+									aCntMid <= TO_UNSIGNED( 5000000, nBits);
+			---- 2 Hz --------------------------------------------------
+			when "10100" =>   aCntMod <= TO_UNSIGNED(25000000, nBits);
+									aCntMid <= TO_UNSIGNED(12500000, nBits);
+			---- 1 Hz --------------------------------------------------
+			when "10101" =>   aCntMod <= TO_UNSIGNED(50000000, nBits);
+									aCntMid <= TO_UNSIGNED(25000000, nBits);
+			--- if error: 1 Hz -----------------------------------------
+			when others  =>   aCntMod <= TO_UNSIGNED(50000000, nBits);
+									aCntMid <= TO_UNSIGNED(25000000, nBits);
+			end case;
+
+		else -- if (aSwitch = '1'.. "Slow clock modes" ----------------
+		---------------------------------------------------------------
+			case aLOW is
+			---- 100 Hz ------------------------------------------------
+			when "0000" =>	aCntMod <= TO_UNSIGNED(500000, nBits);
+								aCntMid <= TO_UNSIGNED(250000, nBits);								
+			---- 50 Hz -------------------------------------------------
+			when "0001" =>	aCntMod <= TO_UNSIGNED(1000000, nBits);
+								aCntMid <= TO_UNSIGNED( 500000, nBits);
+			---- 20 Hz -------------------------------------------------
+			when "0010" =>	aCntMod <= TO_UNSIGNED(2500000, nBits);
+								aCntMid <= TO_UNSIGNED(1250000, nBits);
+			---- 10 Hz -------------------------------------------------
+			when "0011" =>	aCntMod <= TO_UNSIGNED(5000000, nBits);
+								aCntMid <= TO_UNSIGNED(2500000, nBits);
+			---- 5 Hz --------------------------------------------------
+			when "0100" =>	aCntMod <= TO_UNSIGNED(10000000, nBits);
+								aCntMid <= TO_UNSIGNED( 5000000, nBits);
+			---- 2 Hz --------------------------------------------------
+			when "0101" =>	aCntMod <= TO_UNSIGNED(25000000, nBits);
+								aCntMid <= TO_UNSIGNED(12500000, nBits);
+			---- 1 Hz --------------------------------------------------
+			when "0110" =>	aCntMod <= TO_UNSIGNED(50000000, nBits);
+								aCntMid <= TO_UNSIGNED(25000000, nBits);
+			---- 0.5 Hz ------------------------------------------------
+			when "0111" =>	aCntMod <= TO_UNSIGNED(100000000, nBits);
+								aCntMid <= TO_UNSIGNED( 50000000, nBits);
+			---- 0.2 Hz ------------------------------------------------
+			when "1000" =>	aCntMod <= TO_UNSIGNED(250000000, nBits);
+								aCntMid <= TO_UNSIGNED(125000000, nBits);
+			---- 0.1 Hz ------------------------------------------------
+			when "1001" =>	aCntMod <= TO_UNSIGNED(500000000, nBits);
+								aCntMid <= TO_UNSIGNED(250000000, nBits);
+			--
+			---- Slow Clock Step ---------------------------------------
+			when others =>  ManualClkMode <= '1';
+			end case;
+		end if;
+	end process;
+
+
+	------------------------------------------------------------
+	-- Clock Scaler Main Counter
+	-- In "Manual Clock Mode", the clock is inhibited.
+	-- In "Normal Mode", the clock is obtained by frequency
+	--    division from the 50 MHz master clock.
+	------------------------------------------------------------
+	CNT: process( nAutoReset, iMClk )
+	begin
+		if (nAutoReset = '0') then
+			aCount <= (aCntMod - 1);
+			oSClk <= '0';
+			oLed <= '0';
+		--
+		elsif rising_edge( iMClk ) then
+			if (ManualClkMode = '0') then
+
+				--- Normal (or Slow) Cyclic Clock Mode ------------
+				if ((aCount < 0) or (aCount >= aCntMod)) then
+					aCount <= (aCntMod - 1); -- "Pseudo Reset"
+				elsif (aCount = 0) then
+					aCount <= (aCntMod - 1);
+				else
+					aCount <= (aCount - 1);
+				end if;
+				--
+				if (aCount < aCntMid)	then
+					oSClk <= '1'; 				-- High if count is Low!
+					if (aSwitch = '1') then
+							oLed <= '1';
+					else	oLed <= '0';
+					end if;
+				else
+					oSClk <= '0';
+					oLed <= '0';
+				end if;
+			else
+				--(ManualClkMode = '1') -------------------------
+				oSClk <= StepPulse;
+				oLed <= StepLED;
+			end if;
+		end if;
+	end process;
+
+
+	------------------------------------------------------------
+	-- Button Step and Step Repetition Handler
+	------------------------------------------------------------
+	PULSE: process( nAutoReset, iMClk )
+		constant IsTime: integer := 100;
+		constant IsLedEnd: integer := 25;
+		variable Stepper: integer range 0 to IsTime;
+		--
+		constant TimeCycle: integer := 25;
+		variable Pulser: integer range 0 to TimeCycle;
+		--
+		variable Level: integer range 0 to 1;
+		variable Pulsing: boolean;
+		--
+	begin
+		if (nAutoReset = '0') then
+			Stepper:= 0;
+			Pulsing:= false;
+			Pulser:= 0;
+			StepPulse <= '0';
+			StepLED <= '0';
+		--
+		elsif rising_edge( iMClk ) then
+	      ------------------------------------------------------
+			if (ManualClkMode = '0') then
+				Stepper:= 0;
+				Pulsing:= false;
+				Pulser:= 0;
+				StepPulse <= '0';
+				StepLED <= '0';
+	         ---------------------------------------------------
+
+			else --(ManualClkMode = '1')
+	         ----- Button Pulsed Mode --------------------------
+				if (aTick = '1') then -- every 10 mS
+					--
+					if (aButton = '1')	then
+               	if (not Pulsing) then
+                  	if (Stepper < IsTime) then
+								---------------------------------------
+								StepPulse <= '1';
+								StepLED <= '1';
+                     	Stepper:= Stepper + 1;
+                     else
+								--(Stepper = IsTime) ------------------
+                     	Pulsing:= true;
+                     	Pulser:= TimeCycle;
+                        Level := 0;
+								StepPulse <= '0';
+								StepLED <= '0';
+                     end if;
+
+                  else --(Pulsing)
+                  	if (Pulser > 0) then
+								---------------------------------------
+                     	Pulser:= Pulser -1;
+                     else
+								--(Pulser = 0) ------------------------
+                     	Pulser:= TimeCycle;
+                        if (Level = 0) then
+									Level:= 1;
+									StepPulse <= '1';
+									StepLED <= '1';
+                        else -- (oLevel = 1)
+									Level:= 0;
+									StepPulse <= '0';
+									StepLED <= '0';
+								end if;
+                     end if;
+							------------------------------------------
+                  end if; -- Pulsed
+						--
+					else -- (aButton = '0')
+           			Stepper:= 0;
+               	if (not Pulsing) then
+							StepPulse <= '0';
+							StepLED <= '0';
+                  else --(Pulsing)
+                  	if (Pulser > 0) then
+                     	Pulser:= Pulser -1;
+                     else --(Pulser = 0)
+                     	Pulsing:= false;
+								StepPulse <= '0';
+								StepLED <= '0';
+							end if;
+						end if;
+					end if;
+            end if;
+			end if;
+		end if;
+	end process;
+
+END behavioral;
+

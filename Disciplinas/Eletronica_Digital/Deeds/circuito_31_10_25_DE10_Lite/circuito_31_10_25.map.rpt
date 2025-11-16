@@ -1,0 +1,622 @@
+Analysis & Synthesis report for circuito_31_10_25
+Fri Oct 31 15:24:41 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "DpetFF:C008"
+ 13. Port Connectivity Checks: "DpetFF:C007"
+ 14. Port Connectivity Checks: "DpetFF:C006"
+ 15. Port Connectivity Checks: "DpetFF:C005"
+ 16. Port Connectivity Checks: "ClockScaler:ClockScaler_iCK"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Oct 31 15:24:41 2025          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; circuito_31_10_25                              ;
+; Top-level Entity Name              ; circuito_31_10_25                              ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 227                                            ;
+;     Total combinational functions  ; 194                                            ;
+;     Dedicated logic registers      ; 95                                             ;
+; Total registers                    ; 95                                             ;
+; Total pins                         ; 67                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; circuito_31_10_25  ; circuito_31_10_25  ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                       ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------+---------+
+; Components.vhd                   ; yes             ; User VHDL File  ; C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd        ;         ;
+; circuito_31_10_25.vhd            ; yes             ; User VHDL File  ; C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                      ;
++---------------------------------------------+--------------------+
+; Resource                                    ; Usage              ;
++---------------------------------------------+--------------------+
+; Estimated Total logic elements              ; 227                ;
+;                                             ;                    ;
+; Total combinational functions               ; 194                ;
+; Logic element usage by number of LUT inputs ;                    ;
+;     -- 4 input functions                    ; 101                ;
+;     -- 3 input functions                    ; 20                 ;
+;     -- <=2 input functions                  ; 73                 ;
+;                                             ;                    ;
+; Logic elements by mode                      ;                    ;
+;     -- normal mode                          ; 145                ;
+;     -- arithmetic mode                      ; 49                 ;
+;                                             ;                    ;
+; Total registers                             ; 95                 ;
+;     -- Dedicated logic registers            ; 95                 ;
+;     -- I/O registers                        ; 0                  ;
+;                                             ;                    ;
+; I/O pins                                    ; 67                 ;
+;                                             ;                    ;
+; Embedded Multiplier 9-bit elements          ; 0                  ;
+;                                             ;                    ;
+; Maximum fan-out node                        ; iCLOCK_50MHz~input ;
+; Maximum fan-out                             ; 91                 ;
+; Total fan-out                               ; 984                ;
+; Average fan-out                             ; 2.33               ;
++---------------------------------------------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                 ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                 ; Entity Name       ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------+-------------------+--------------+
+; |circuito_31_10_25                    ; 194 (0)             ; 95 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 67   ; 0            ; 0          ; |circuito_31_10_25                                  ; circuito_31_10_25 ; work         ;
+;    |AND2_gate:C135|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|AND2_gate:C135                   ; AND2_gate         ; work         ;
+;    |AutoResetGen:AutoResetGen_iReset| ; 6 (6)               ; 17 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|AutoResetGen:AutoResetGen_iReset ; AutoResetGen      ; work         ;
+;    |ClockScaler:ClockScaler_iCK|      ; 163 (163)           ; 74 (74)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|ClockScaler:ClockScaler_iCK      ; ClockScaler       ; work         ;
+;    |DpetFF:C005|                      ; 6 (6)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|DpetFF:C005                      ; DpetFF            ; work         ;
+;    |DpetFF:C006|                      ; 6 (6)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|DpetFF:C006                      ; DpetFF            ; work         ;
+;    |DpetFF:C007|                      ; 6 (6)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|DpetFF:C007                      ; DpetFF            ; work         ;
+;    |DpetFF:C008|                      ; 6 (6)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |circuito_31_10_25|DpetFF:C008                      ; DpetFF            ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                        ;
++--------------------------------------------------+----------------------------------------+
+; Register name                                    ; Reason for Removal                     ;
++--------------------------------------------------+----------------------------------------+
+; ClockScaler:ClockScaler_iCK|aButton_SHR[0..2]    ; Stuck at GND due to stuck port data_in ;
+; ClockScaler:ClockScaler_iCK|StepPulse            ; Lost fanout                            ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Pulser[0..4]  ; Lost fanout                            ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Stepper[0..6] ; Lost fanout                            ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Pulsing       ; Lost fanout                            ;
+; ClockScaler:ClockScaler_iCK|aButton              ; Lost fanout                            ;
+; ClockScaler:ClockScaler_iCK|\PULSE:Level         ; Lost fanout                            ;
+; Total Number of Removed Registers = 19           ;                                        ;
++--------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 95    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 78    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 36    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; ClockScaler:ClockScaler_iCK|aSwitch    ; 43      ;
+; ClockScaler:ClockScaler_iCK|aCount[17] ; 6       ;
+; ClockScaler:ClockScaler_iCK|aCount[15] ; 5       ;
+; ClockScaler:ClockScaler_iCK|aCount[13] ; 7       ;
+; ClockScaler:ClockScaler_iCK|aCount[4]  ; 2       ;
+; ClockScaler:ClockScaler_iCK|aCount[3]  ; 2       ;
+; ClockScaler:ClockScaler_iCK|aCount[2]  ; 2       ;
+; ClockScaler:ClockScaler_iCK|aCount[1]  ; 2       ;
+; ClockScaler:ClockScaler_iCK|aCount[0]  ; 2       ;
+; Total number of inverted registers = 9 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |circuito_31_10_25|ClockScaler:ClockScaler_iCK|aCount[7] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DpetFF:C008"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DpetFF:C007"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DpetFF:C006"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DpetFF:C005"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ClockScaler:ClockScaler_iCK"                                                         ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; ih4   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih2   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; ih1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ih0   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; il3   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il2   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il1   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; il0   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; iswch ; Input  ; Info     ; Stuck at GND                                                                        ;
+; ibut  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; oled  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 67                          ;
+; cycloneiii_ff         ; 95                          ;
+;     CLR               ; 57                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA               ; 16                          ;
+;     ENA CLR           ; 20                          ;
+;     SLD               ; 1                           ;
+; cycloneiii_lcell_comb ; 196                         ;
+;     arith             ; 49                          ;
+;         2 data inputs ; 49                          ;
+;     normal            ; 147                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 22                          ;
+;         3 data inputs ; 20                          ;
+;         4 data inputs ; 101                         ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 4.48                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Fri Oct 31 15:24:31 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off circuito_31_10_25 -c circuito_31_10_25
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 12 design units, including 6 entities, in source file components.vhd
+    Info (12022): Found design unit 1: AND2_gate-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 24
+    Info (12022): Found design unit 2: NAND2_gate-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 40
+    Info (12022): Found design unit 3: OR2_gate-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 56
+    Info (12022): Found design unit 4: DpetFF-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 73
+    Info (12022): Found design unit 5: AutoResetGen-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 104
+    Info (12022): Found design unit 6: ClockScaler-behavioral File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 163
+    Info (12023): Found entity 1: AND2_gate File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 18
+    Info (12023): Found entity 2: NAND2_gate File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 34
+    Info (12023): Found entity 3: OR2_gate File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 50
+    Info (12023): Found entity 4: DpetFF File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 66
+    Info (12023): Found entity 5: AutoResetGen File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 96
+    Info (12023): Found entity 6: ClockScaler File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 144
+Info (12021): Found 2 design units, including 1 entities, in source file circuito_31_10_25.vhd
+    Info (12022): Found design unit 1: circuito_31_10_25-structural File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 99
+    Info (12023): Found entity 1: circuito_31_10_25 File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 19
+Info (12127): Elaborating entity "circuito_31_10_25" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at circuito_31_10_25.vhd(170): object "ncp6_C005" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 170
+Warning (10036): Verilog HDL or VHDL warning at circuito_31_10_25.vhd(171): object "ncp6_C006" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 171
+Warning (10036): Verilog HDL or VHDL warning at circuito_31_10_25.vhd(172): object "ncp6_C007" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 172
+Warning (10036): Verilog HDL or VHDL warning at circuito_31_10_25.vhd(173): object "ncp6_C008" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 173
+Warning (10036): Verilog HDL or VHDL warning at circuito_31_10_25.vhd(178): object "iCK_LED_NotCon" assigned a value but never read File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 178
+Info (12128): Elaborating entity "AutoResetGen" for hierarchy "AutoResetGen:AutoResetGen_iReset" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 257
+Warning (10492): VHDL Process Statement warning at Components.vhd(127): signal "FFR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 127
+Info (12128): Elaborating entity "ClockScaler" for hierarchy "ClockScaler:ClockScaler_iCK" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 261
+Warning (10492): VHDL Process Statement warning at Components.vhd(208): signal "nAutoReset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 208
+Warning (10631): VHDL Process Statement warning at Components.vhd(276): inferring latch(es) for signal or variable "aCntMod", which holds its previous value in one or more paths through the process File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (10631): VHDL Process Statement warning at Components.vhd(276): inferring latch(es) for signal or variable "aCntMid", which holds its previous value in one or more paths through the process File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (10492): VHDL Process Statement warning at Components.vhd(404): signal "aCntMod" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 404
+Info (10041): Inferred latch for "aCntMid[0]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[1]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[2]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[3]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[4]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[5]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[6]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[7]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[8]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[9]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[10]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[11]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[12]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[13]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[14]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[15]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[16]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[17]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[18]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[19]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[20]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[21]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[22]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[23]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[24]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[25]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[26]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[27]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[28]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[29]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[30]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMid[31]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[0]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[1]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[2]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[3]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[4]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[5]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[6]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[7]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[8]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[9]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[10]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[11]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[12]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[13]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[14]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[15]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[16]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[17]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[18]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[19]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[20]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[21]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[22]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[23]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[24]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[25]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[26]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[27]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[28]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[29]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[30]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (10041): Inferred latch for "aCntMod[31]" at Components.vhd(276) File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (12128): Elaborating entity "NAND2_gate" for hierarchy "NAND2_gate:C001" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 265
+Info (12128): Elaborating entity "DpetFF" for hierarchy "DpetFF:C005" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 269
+Info (12128): Elaborating entity "OR2_gate" for hierarchy "OR2_gate:C127" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 273
+Info (12128): Elaborating entity "AND2_gate" for hierarchy "AND2_gate:C135" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 274
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[6]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[9]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[10]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[11]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[13]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[15]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[17]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[24]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[0]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[1]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[2]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[3]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[5]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[7]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[8]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[12]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[14]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[16]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[18]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[19]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[20]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[21]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[22]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[23]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMod[25]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Warning (14026): LATCH primitive "ClockScaler:ClockScaler_iCK|aCntMid[4]" is permanently enabled File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 276
+Info (13000): Registers with preset signals will power-up high File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 177
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "DpetFF:C005|Q" is converted into an equivalent circuit using register "DpetFF:C005|Q~_emulated" and latch "DpetFF:C005|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 69
+    Warning (13310): Register "DpetFF:C006|Q" is converted into an equivalent circuit using register "DpetFF:C006|Q~_emulated" and latch "DpetFF:C006|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 69
+    Warning (13310): Register "DpetFF:C007|Q" is converted into an equivalent circuit using register "DpetFF:C007|Q~_emulated" and latch "DpetFF:C007|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 69
+    Warning (13310): Register "DpetFF:C008|Q" is converted into an equivalent circuit using register "DpetFF:C008|Q~_emulated" and latch "DpetFF:C008|Q~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 69
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[25]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[25]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[23]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[23]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[22]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[22]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[21]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[21]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[20]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[20]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[19]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[19]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[18]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[18]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[16]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[16]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[14]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[14]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[12]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[12]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[8]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[8]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[18]~15" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[6]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[6]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+    Warning (13310): Register "ClockScaler:ClockScaler_iCK|aCount[5]" is converted into an equivalent circuit using register "ClockScaler:ClockScaler_iCK|aCount[5]~_emulated" and latch "ClockScaler:ClockScaler_iCK|aCount[25]~1" File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/Components.vhd Line: 403
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "oPIN_D13" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 40
+    Warning (13410): Pin "oPIN_C13" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 41
+    Warning (13410): Pin "oPIN_E14" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 42
+    Warning (13410): Pin "oPIN_D14" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 43
+    Warning (13410): Pin "oPIN_A11" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 44
+    Warning (13410): Pin "oPIN_B11" is stuck at GND File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 45
+    Warning (13410): Pin "oPIN_C14" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 46
+    Warning (13410): Pin "oPIN_E15" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 47
+    Warning (13410): Pin "oPIN_C15" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 48
+    Warning (13410): Pin "oPIN_C16" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 49
+    Warning (13410): Pin "oPIN_E16" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 50
+    Warning (13410): Pin "oPIN_D17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 51
+    Warning (13410): Pin "oPIN_C17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 52
+    Warning (13410): Pin "oPIN_D15" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 53
+    Warning (13410): Pin "oPIN_C18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 54
+    Warning (13410): Pin "oPIN_D18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 55
+    Warning (13410): Pin "oPIN_E18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 56
+    Warning (13410): Pin "oPIN_B16" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 57
+    Warning (13410): Pin "oPIN_A17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 58
+    Warning (13410): Pin "oPIN_A18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 59
+    Warning (13410): Pin "oPIN_B17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 60
+    Warning (13410): Pin "oPIN_A16" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 61
+    Warning (13410): Pin "oPIN_B20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 62
+    Warning (13410): Pin "oPIN_A20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 63
+    Warning (13410): Pin "oPIN_B19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 64
+    Warning (13410): Pin "oPIN_A21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 65
+    Warning (13410): Pin "oPIN_B21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 66
+    Warning (13410): Pin "oPIN_C22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 67
+    Warning (13410): Pin "oPIN_B22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 68
+    Warning (13410): Pin "oPIN_A19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 69
+    Warning (13410): Pin "oPIN_F21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 70
+    Warning (13410): Pin "oPIN_E22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 71
+    Warning (13410): Pin "oPIN_E21" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 72
+    Warning (13410): Pin "oPIN_C19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 73
+    Warning (13410): Pin "oPIN_C20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 74
+    Warning (13410): Pin "oPIN_D19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 75
+    Warning (13410): Pin "oPIN_E17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 76
+    Warning (13410): Pin "oPIN_D22" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 77
+    Warning (13410): Pin "oPIN_F18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 78
+    Warning (13410): Pin "oPIN_E20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 79
+    Warning (13410): Pin "oPIN_E19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 80
+    Warning (13410): Pin "oPIN_J18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 81
+    Warning (13410): Pin "oPIN_H19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 82
+    Warning (13410): Pin "oPIN_F19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 83
+    Warning (13410): Pin "oPIN_F20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 84
+    Warning (13410): Pin "oPIN_F17" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 85
+    Warning (13410): Pin "oPIN_J20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 86
+    Warning (13410): Pin "oPIN_K20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 87
+    Warning (13410): Pin "oPIN_L18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 88
+    Warning (13410): Pin "oPIN_N18" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 89
+    Warning (13410): Pin "oPIN_M20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 90
+    Warning (13410): Pin "oPIN_N19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 91
+    Warning (13410): Pin "oPIN_N20" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 92
+    Warning (13410): Pin "oPIN_L19" is stuck at VCC File: C:/Projetos/Engenharia-de-Computacao/Disciplinas/Eletronica_Digital/Deeds/circuito_31_10_25_DE10_Lite/circuito_31_10_25.vhd Line: 93
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 295 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 228 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 125 warnings
+    Info: Peak virtual memory: 4856 megabytes
+    Info: Processing ended: Fri Oct 31 15:24:41 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:23
+
+

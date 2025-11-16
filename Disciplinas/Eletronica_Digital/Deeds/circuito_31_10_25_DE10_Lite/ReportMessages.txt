@@ -1,0 +1,40 @@
+(Info) ************************************************************************
+(Info) Deeds VHDL converter (ver. 3.01.250) is running...
+(Info) Convertion started (15:24:12, 31/10/2025) on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_31-10-25.pbs"
+(Info) ------------------------------------------------------------------------
+(Info) Converting schematic file "circuito_31-10-25.pbs" into VHDL
+(Info) --> Top level VHDL file (renamed to be compliant): "circuito_31_10_25.vhd"
+(Info) Extracting and Coding VHDL components
+(Info) VHDL components coded (file: "Components.vhd", 19668 bytes)
+(Info) Processing Input and Output Signals
+(Warning) Input "PL" [Id#16] renamed to "iPL"
+(Warning) Input "SERIAL" [Id#17] renamed to "iSERIAL"
+(Warning) Input "Butons" [Id#29] renamed to "iButons"
+(Warning) Input "Reset" [Id#54] renamed to "iReset"
+(Warning) Input "CK" [Id#134] renamed to "iCK"
+(Warning) Input "Chave Ck" [Id#139] renamed to "iChave_Ck"
+(Warning) Output "Q1" [Id#66] renamed to "oQ1"
+(Warning) Output "Q2" [Id#67] renamed to "oQ2"
+(Warning) Output "Q3" [Id#69] renamed to "oQ3"
+(Warning) Output "Q4" [Id#70] renamed to "oQ4"
+(Info) 6 Native Input(s), 4 Native Output(s) processed.
+(Info) 1 Added Input(s), 0 Added Output(s), 54 Default Output(s).
+(Info) Top level structural VHDL description coded (file "circuito_31_10_25.vhd", 11637 bytes)
+(Info) ------------------------------------------------------------------------
+(Info) Saving all the VHDL files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_31_10_25_DE10_Lite"
+(Info)   |--- "Components.vhd" file saved (a backup copy has been created).
+(Info)   |--- "circuito_31_10_25.vhd" file saved (a backup copy has been created).
+(Info) ------------------------------------------------------------------------
+(Info) Building QuartusR II project files.
+(Info) Saving QuartusR II project files in the subfolder:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_31_10_25_DE10_Lite"
+(Info)   |--- "circuito_31_10_25.qpf" (QuartusR II project file) saved.
+(Info)   |--- "circuito_31_10_25.qsf" (QuartusR II project file) saved.
+(Info) ------------------------------------------------------------------------
+(Info) This message list saved on file:
+(Info) --> "C:\Projetos\Engenharia-de-Computacao\Disciplinas\Eletronica_Digital\Deeds\circuito_31_10_25_DE10_Lite\ReportMessages.txt"
+(Info) ------------------------------------------------------------------------
+(Info) All files saved! VHDL conversion ended (15:24:13, 31/10/2025)
+(Info) ************************************************************************
