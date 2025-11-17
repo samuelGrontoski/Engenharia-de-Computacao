@@ -243,6 +243,13 @@ void liberarListaVisitados(NoVisitado* inicio) {
 }
 
 // Algoritmo de Busca em Profundidade
+// O objetivo desta função é visitar todos os vértices que são alcançáveis a partir de um vértice inicial, 
+// "mergulhando" o mais fundo possível em um caminho antes de voltar atrás.
+//
+// Parâmetros:
+// 1. 'grafo': O grafo inteiro (para poder buscar vértices).
+// 2. 'vertice': O ID do vértice ATUAL que está sendo visitado.
+// 3. 'listaVisitados': Ponteiro duplo para a lista de vértices visitados.
 void visitarBuscaProfundidade(Grafo* grafo, int vertice, NoVisitado** listaVisitados) {
     // Marca o vértice atual como visitado
     *listaVisitados = adicionarVisitado(*listaVisitados, vertice);
@@ -255,6 +262,8 @@ void visitarBuscaProfundidade(Grafo* grafo, int vertice, NoVisitado** listaVisit
     while (vizinho != NULL) {
         // Se o vizinho ainda não foi visitado, visita recursivamente
         if (!estaVisitado(*listaVisitados, vizinho->vertice)) {
+            // Se o vizinho ainda não foi visitado, a função chama ela mesma
+            // para começar uma nova busca a partir daquele vizinho.
             visitarBuscaProfundidade(grafo, vizinho->vertice, listaVisitados);
         }
         vizinho = vizinho->proximo;
@@ -262,17 +271,29 @@ void visitarBuscaProfundidade(Grafo* grafo, int vertice, NoVisitado** listaVisit
 }
 
 // Busca em Profundidade modificada para contar Vértices (V) e Arestas (E) de um componente
+//
+// Parâmetros:
+// 1. 'grafo': O grafo.
+// 2. 'v': O ID do vértice atual que está sendo visitado.
+// 3. 'visitadosGeral': O ponteiro duplo para a lista de visitados principal (para não visitar o mesmo nó duas vezes).
+// 4. 'V_i': Um ponteiro para o contador de vértices da componente.
+// 5. 'E_i_duplicado': Um ponteiro para o contador de arestas da componente.
 void buscaProfundidadeCiclos(Grafo* grafo, int v, NoVisitado** visitadosGeral, int* V_i, int* E_i_duplicado) {
+    // Sempre que esta função é chamada, significa que entrou em um novo vértice. Portanto, incrementa o contador de vértices.
     *V_i += 1; // Conta o vértice
+    // Adiciona o vértice 'v' à lista de visitados global, para que a função 'informarCiclos' não tente iniciar uma nova busca
+    // a partir de um vértice que já pertence a esta componente.
     *visitadosGeral = adicionarVisitado(*visitadosGeral, v);
     
     NoVertice* noV = buscarVertice(grafo, v);
     if (noV == NULL) return;
 
     NoAdjacente* vizinho = noV->inicioListaAdjacente;
+    // Itera por todos os vizinhos de 'v'.
     while (vizinho != NULL) {
         *E_i_duplicado += 1; // Conta aresta (será contada 2x)
         
+        // Verifica se o vizinho atual já foi visitado.
         if (!estaVisitado(*visitadosGeral, vizinho->vertice)) {
             buscaProfundidadeCiclos(grafo, vizinho->vertice, visitadosGeral, V_i, E_i_duplicado);
         }
@@ -288,7 +309,10 @@ int analisarComponentes(Grafo* grafo) {
 
     while (temp != NULL) {
         if (!estaVisitado(visitados, temp->vertice)) {
+            // Se entrar aqui, encontrou um vértice que pertence a uma componente que ainda não foi visitada.
+            // Portanto, incrementa o contador.
             componentes++;
+            // Inicia uma busca em profundidade a partir deste vértice para marcar todos os vértices da componente como visitados.
             visitarBuscaProfundidade(grafo, temp->vertice, &visitados);
         }
         temp = temp->proximoVertice;
@@ -476,7 +500,7 @@ void informarGrauVertice(Grafo* grafo) {
 // 7. Informar se o grafo é Euleriano
 void informarGrafoEuleriano(Grafo* grafo) {
     if (grafo->inicio == NULL) {
-        printf(ANSI_COLOR_GREEN "O grafo eh Euleriano (trivialmente, pois esta vazio).\n" ANSI_COLOR_RESET);
+        printf(ANSI_COLOR_GREEN "O grafo eh Euleriano (pois esta vazio).\n" ANSI_COLOR_RESET);
         return;
     }
 
@@ -497,8 +521,9 @@ void informarGrafoEuleriano(Grafo* grafo) {
         tempV = tempV->proximoVertice;
     }
 
+    // Se o loop terminou e 'primeiroNaoIsolado' ainda é NULL, significa que o grafo tem vértices, mas nenhuma aresta.
     if (primeiroNaoIsolado == NULL) {
-        printf(ANSI_COLOR_GREEN "O grafo eh Euleriano (trivialmente, nao possui arestas).\n" ANSI_COLOR_RESET);
+        printf(ANSI_COLOR_GREEN "O grafo eh Euleriano (nao possui arestas).\n" ANSI_COLOR_RESET);
         return;
     }
     
@@ -507,8 +532,9 @@ void informarGrafoEuleriano(Grafo* grafo) {
         return;
     }
 
-    // 2. Verifica se todos os vértices COM ARESTAS estão na mesma componente
+    // 2. Verifica se todos os vértices com arestas estão na mesma componente
     NoVisitado* visitados = NULL;
+    // Inicia uma busca em profundidade a partir do primeiro vértice não isolado para marcar todos os vértices da componente como visitados.
     visitarBuscaProfundidade(grafo, primeiroNaoIsolado->vertice, &visitados);
 
     tempV = grafo->inicio;
@@ -557,8 +583,12 @@ void informarCiclos(Grafo* grafo) {
 
     printf(ANSI_COLOR_YELLOW "--- Analise de Ciclos (Formula de Euler: C = E - V + 1 por componente) ---\n");
 
+    // Inicia o loop que passa por cada vértice do grafo.
     while(tempV != NULL) {
+        // Verifica se o vértice 'tempV' já foi visitado por uma busca anterior. 
+        // Se já foi, ele pertence a uma componente que já foi analisada.
         if (!estaVisitado(visitadosGeral, tempV->vertice)) {
+            // Se 'tempV' não foi visitado, foi encontrada uma nova componente conexa.
             componenteID++;
             int V_i = 0; // Vértices na componente
             int E_i_duplicado = 0; // Arestas contadas duas vezes
@@ -568,22 +598,28 @@ void informarCiclos(Grafo* grafo) {
             
             int E_i = E_i_duplicado / 2; // Número real de arestas
             
-            // Fórmula de Euler para grafos planares/ciclos
+            // Calcula o número de ciclos apenas para esta componente.
             int ciclosComp = E_i - V_i + 1; 
 
             if (ciclosComp > 0) {
                 printf("A componente conexa %d (iniciando em %d) possui %d ciclo(s) fundamental(is).\n", componenteID, tempV->vertice, ciclosComp);
+                // Adiciona os ciclos encontrados ao total geral.
                 totalCiclos += ciclosComp;
-            } else if (V_i > 0) {
+            } 
+            // Verifica se a componente não era só um vértice isolado mas não tinha ciclos.
+            else if (V_i > 0) {
                 printf("A componente conexa %d (iniciando em %d) eh aciclica.\n", componenteID, tempV->vertice);
             }
         }
         tempV = tempV->proximoVertice;
     }
 
+    // Se o total de ciclos é 0, mas existem componentes
     if (totalCiclos == 0 && componenteID > 0) {
         printf(ANSI_COLOR_GREEN "O grafo NAO possui ciclos.\n" ANSI_COLOR_RESET);
-    } else if (componenteID == 0) {
+    } 
+    // Se não há componentes...
+    else if (componenteID == 0) {
         printf(ANSI_COLOR_YELLOW "O grafo esta vazio.\n" ANSI_COLOR_RESET);
     } else {
          printf(ANSI_COLOR_YELLOW "Total de %d ciclos fundamentais no grafo.\n" ANSI_COLOR_RESET, totalCiclos);
