@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 // Define os códigos de cores ANSI
 #define ANSI_COLOR_RED     "\x1b[31m"
@@ -11,10 +12,11 @@
 
 // --- Estruturas de Dados ---
 
+// Estrutura para um nó da lista de adjacência (horizontal)
 typedef struct NoAdjacente {
-    int vertice;
-    int peso;
-    struct NoAdjacente *proximo;
+    int vertice;    // O vértice adjacente
+    int peso;       // O peso da aresta
+    struct NoAdjacente *proximo;   // Próximo adjacente na lista
 } NoAdjacente;
 
 // Estrutura para um nó da lista de vértices (vertical)
@@ -332,6 +334,97 @@ int calcularGrau(NoVertice* no) {
     return grau;
 }
 
+// --- Algoritmo de PRIM ---
+
+void algoritmoPrim(Grafo* grafo) {
+    if (grafo->inicio == NULL) {
+        printf(ANSI_COLOR_YELLOW "O grafo esta vazio.\n" ANSI_COLOR_RESET);
+        return;
+    }
+
+    printf(ANSI_COLOR_CYAN "\n--- Arvore Geradora Minima (Algoritmo de Prim) ---\n" ANSI_COLOR_RESET);
+
+    // Lista de vértices que já pertencem à Árvore Geradora Mínima
+    NoVisitado* naArvore = NULL;
+    int custoTotal = 0;
+
+    // Começa pelo primeiro vértice da lista (vértice inicial arbitrário)
+    naArvore = adicionarVisitado(naArvore, grafo->inicio->vertice);
+    
+    // Loop principal: continua enquanto conseguir adicionar arestas
+    while (1) {
+        // Encontra a aresta de menor peso que conecta a árvore a um vértice fora dela
+        int minPeso = INT_MAX; // Começa com infinito
+        int u_sel = -1; // Vértice de origem da melhor aresta
+        int v_sel = -1; // Vértice de destino da melhor aresta
+        int encontrou = 0;
+
+        // Itera sobre TODOS os vértices do grafo para encontrar:
+        // Uma aresta (u, v) tal que 'u' está na Árvore e 'v' NÃO está.
+        NoVertice* u_node = grafo->inicio;
+        while (u_node != NULL) {
+            
+            // Verifica se este vértice 'u' faz parte da árvore atual
+            if (estaVisitado(naArvore, u_node->vertice)) {
+                
+                // Se 'u' está na árvore, verifica todos os seus vizinhos 'v', verifica todas as arestas e guarda a de menor peso
+                NoAdjacente* vizinho = u_node->inicioListaAdjacente;
+                while (vizinho != NULL) {
+                    
+                    // Verifica se o vizinho 'v' AINDA NÃO está na árvore (evita ciclos)
+                    if (!estaVisitado(naArvore, vizinho->vertice)) {
+                        
+                        // Se encontrar uma aresta válida de menor peso, guarda ela
+                        if (vizinho->peso < minPeso) {
+                            minPeso = vizinho->peso;
+                            u_sel = u_node->vertice;
+                            v_sel = vizinho->vertice;
+                            encontrou = 1;
+                        }
+                    }
+                    vizinho = vizinho->proximo;
+                }
+            }
+            u_node = u_node->proximoVertice;
+        }
+
+        // Se não encontrar nenhuma aresta que sai da árvore para fora, termina
+        // Isso significa que a Árvore Geradora Mínima está completa ou o grafo acabou
+        if (!encontrou) {
+            break;
+        }
+
+        // Adiciona a melhor aresta encontrada à Árvore Geradora Mínima
+        printf("Aresta Escolhida: " ANSI_COLOR_GREEN "[%d] - [%d]" ANSI_COLOR_RESET " com peso: %d\n", u_sel, v_sel, minPeso);
+        custoTotal += minPeso;
+        
+        // Marca o novo vértice como parte da árvore
+        naArvore = adicionarVisitado(naArvore, v_sel);
+    }
+
+    printf(ANSI_COLOR_YELLOW "Custo Total da Arvore Geradora Minima: %d\n" ANSI_COLOR_RESET, custoTotal);
+    
+    // Verifica se todos os vértices foram cobertos (se o grafo era conexo)
+    int verticesNoGrafo = 0;
+    NoVertice* temp = grafo->inicio;
+    while(temp != NULL) { 
+        verticesNoGrafo++; 
+        temp = temp->proximoVertice; 
+    }
+    
+    int verticesNaArvore = 0;
+    NoVisitado* tempVis = naArvore;
+    while(tempVis != NULL) { 
+        verticesNaArvore++; 
+        tempVis = tempVis->proximo; 
+    }
+
+    if (verticesNaArvore < verticesNoGrafo) {
+        printf(ANSI_COLOR_RED "Nota: O grafo original nao era conexo. A Arvore Geradora Minima cobre apenas a componente do  vertice %d.\n" ANSI_COLOR_RESET, grafo->inicio->vertice);
+    }
+
+    liberarListaVisitados(naArvore);
+}
 
 // --- Funções do Menu ---
 
@@ -627,70 +720,70 @@ void informarCiclos(Grafo* grafo) {
     liberarListaVisitados(visitadosGeral);
 }
 
-// 10. Inserir Grafo Padrão (Euleriano)
+// 11. Inserir Grafo Padrão (Euleriano)
 void inserirGrafoPadraoEuleriano(Grafo* grafo) {
     limparGrafo(grafo);
     printf(ANSI_COLOR_YELLOW "Inserindo Grafo Padrao EULERIANO...\n" ANSI_COLOR_RESET);
-    // Propriedades: Conexo e todos os graus pares.
-    // Grafo: Triângulo (1-2-3-1)
     inserirVerticeNoGrafo(grafo, 1);
     inserirVerticeNoGrafo(grafo, 2);
     inserirVerticeNoGrafo(grafo, 3);
-    
-    inserirArestaNoGrafo(grafo, 1, 2, 1); // grau(1)=1, grau(2)=1
-    inserirArestaNoGrafo(grafo, 2, 3, 1); // grau(2)=2, grau(3)=1
-    inserirArestaNoGrafo(grafo, 1, 3, 1); // grau(1)=2, grau(3)=2
-    // Resultado: grau(1)=2, grau(2)=2, grau(3)=2. Conexo. É Euleriano.
-    
+    inserirArestaNoGrafo(grafo, 1, 2, 10);
+    inserirArestaNoGrafo(grafo, 2, 3, 5);
+    inserirArestaNoGrafo(grafo, 1, 3, 20);
     printf(ANSI_COLOR_GREEN "Grafo Euleriano inserido com sucesso.\n" ANSI_COLOR_RESET);
     visualizarGrafo(grafo);
 }
 
-// 11. Inserir Grafo Padrão (Conexo, Não-Euleriano)
+// 12. Inserir Grafo Padrão (Conexo, Não-Euleriano)
 void inserirGrafoPadraoConexo(Grafo* grafo) {
     limparGrafo(grafo);
-    printf(ANSI_COLOR_YELLOW "Inserindo Grafo Padrao CONEXO (Nao-Euleriano)...\n" ANSI_COLOR_RESET);
-    // Propriedades: Conexo, pelo menos 2 graus ímpares.
-    // Grafo: Caminho (1-2-3-4)
-    inserirVerticeNoGrafo(grafo, 1);
-    inserirVerticeNoGrafo(grafo, 2);
-    inserirVerticeNoGrafo(grafo, 3);
-    inserirVerticeNoGrafo(grafo, 4);
+    printf(ANSI_COLOR_YELLOW "Inserindo Grafo Padrao CONEXO (10 Vertices)...\n" ANSI_COLOR_RESET);
     
-    inserirArestaNoGrafo(grafo, 1, 2, 1); // grau(1)=1, grau(2)=1
-    inserirArestaNoGrafo(grafo, 2, 3, 1); // grau(2)=2, grau(3)=1
-    inserirArestaNoGrafo(grafo, 3, 4, 1); // grau(3)=2, grau(4)=1
-    // Resultado: grau(1)=1, grau(2)=2, grau(3)=2, grau(4)=1. Conexo. Não-Euleriano.
+    // 1. Insere 10 vértices (de 1 a 10)
+    for (int i = 1; i <= 10; i++) {
+        inserirVerticeNoGrafo(grafo, i);
+    }
+    
+    inserirArestaNoGrafo(grafo, 1, 2, 4);
+    inserirArestaNoGrafo(grafo, 2, 3, 2);
+    inserirArestaNoGrafo(grafo, 3, 4, 5);
+    inserirArestaNoGrafo(grafo, 4, 5, 3);
+    inserirArestaNoGrafo(grafo, 5, 6, 4);
+    inserirArestaNoGrafo(grafo, 6, 7, 2);
+    inserirArestaNoGrafo(grafo, 7, 8, 6);
+    inserirArestaNoGrafo(grafo, 8, 9, 3);
+    inserirArestaNoGrafo(grafo, 9, 10, 1);
 
-    printf(ANSI_COLOR_GREEN "Grafo Conexo inserido com sucesso.\n" ANSI_COLOR_RESET);
+    inserirArestaNoGrafo(grafo, 1, 5, 10);
+    inserirArestaNoGrafo(grafo, 1, 10, 15);
+    
+    inserirArestaNoGrafo(grafo, 2, 6, 8);
+    inserirArestaNoGrafo(grafo, 3, 7, 1);
+    inserirArestaNoGrafo(grafo, 4, 8, 7);
+    inserirArestaNoGrafo(grafo, 5, 9, 4); 
+    inserirArestaNoGrafo(grafo, 6, 10, 9);
+
+    printf(ANSI_COLOR_GREEN "Grafo Conexo de 10 vertices inserido com sucesso.\n" ANSI_COLOR_RESET);
     visualizarGrafo(grafo);
 }
 
-// 12. Inserir Grafo Padrão (Não-Conexo e Não-Euleriano)
+// 13. Inserir Grafo Padrão (Não-Conexo e Não-Euleriano)
 void inserirGrafoPadraoNaoConexoNaoEuleriano(Grafo* grafo) {
     limparGrafo(grafo);
-    printf(ANSI_COLOR_YELLOW "Inserindo Grafo Padrao NAO-CONEXO e NAO-EULERIANO...\n" ANSI_COLOR_RESET);
-    // Propriedades: Pelo menos 2 componentes, pelo menos 2 graus ímpares.
-    // Grafo: (1-2) e (3-4-5)
+    printf(ANSI_COLOR_YELLOW "Inserindo Grafo Padrao NAO-CONEXO...\n" ANSI_COLOR_RESET);
     inserirVerticeNoGrafo(grafo, 1);
     inserirVerticeNoGrafo(grafo, 2);
     inserirVerticeNoGrafo(grafo, 3);
     inserirVerticeNoGrafo(grafo, 4);
     inserirVerticeNoGrafo(grafo, 5);
-    
-    // Componente 1
-    inserirArestaNoGrafo(grafo, 1, 2, 1); // grau(1)=1, grau(2)=1
-    
-    // Componente 2
-    inserirArestaNoGrafo(grafo, 3, 4, 1); // grau(3)=1, grau(4)=1
-    inserirArestaNoGrafo(grafo, 4, 5, 1); // grau(4)=2, grau(5)=1
-    // Resultado: 2 componentes. Graus ímpares em 1, 2, 3, 5.
-    
-    printf(ANSI_COLOR_GREEN "Grafo Nao-Conexo e Nao-Euleriano inserido com sucesso.\n" ANSI_COLOR_RESET);
+    inserirArestaNoGrafo(grafo, 1, 2, 4); 
+    inserirArestaNoGrafo(grafo, 3, 4, 2); 
+    inserirArestaNoGrafo(grafo, 4, 5, 8); 
+    printf(ANSI_COLOR_GREEN "Grafo Nao-Conexo inserido com sucesso.\n" ANSI_COLOR_RESET);
     visualizarGrafo(grafo);
 }
 
-// 13. Sair (e liberar toda a memória)
+// 14. Sair (e liberar toda a memória)
 void liberarGrafo(Grafo* grafo) {
     limparGrafo(grafo);
     free(grafo);
@@ -707,7 +800,7 @@ void limparBuffer() {
 
 // Mostra o menu de opções
 void mostrarMenu() {
-    printf(ANSI_COLOR_CYAN "\n--- Gerenciador de Grafo Ponderado (Listas de Adjacencia) ---\n" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_CYAN "\n--- Gerenciador de Grafo Ponderado ---\n" ANSI_COLOR_RESET);
     printf("1. Inserir Vertice\n");
     printf("2. Inserir Aresta (Ponderada)\n");
     printf("3. Remover Vertice\n");
@@ -717,11 +810,12 @@ void mostrarMenu() {
     printf("7. Informar se o grafo e Euleriano\n");
     printf("8. Informar se o grafo e conexo\n");
     printf("9. Informar se o grafo possui ciclos\n");
-    printf("10. Inserir Grafo Padrao (Euleriano)\n");
-    printf("11. Inserir Grafo Padrao (Conexo, Nao-Euleriano)\n");
-    printf("12. Inserir Grafo Padrao (Nao-Conexo, Nao-Euleriano)\n");
-    printf("13. Sair\n");
-    printf("--------------------------------------------------\n");
+    printf("10. Arvore Geradora Minima (Algoritmo de Prim)\n");
+    printf("11. Inserir Grafo Padrao (Euleriano)\n");
+    printf("12. Inserir Grafo Padrao (Conexo)\n");
+    printf("13. Inserir Grafo Padrao (Nao-Conexo)\n");
+    printf("14. Sair\n");
+    printf("--------------------------------------\n");
     printf("Escolha uma opcao: ");
 }
 
@@ -741,50 +835,53 @@ int main() {
         limparBuffer();
 
         switch (escolha) {
-            case 1:
-                inserirVertice(meuGrafo);
+            case 1: 
+                inserirVertice(meuGrafo); 
                 break;
-            case 2:
-                inserirAresta(meuGrafo);
+            case 2: 
+                inserirAresta(meuGrafo); 
                 break;
-            case 3:
-                removerVertice(meuGrafo);
+            case 3: 
+                removerVertice(meuGrafo); 
                 break;
-            case 4:
-                removerAresta(meuGrafo);
+            case 4: 
+                removerAresta(meuGrafo); 
                 break;
-            case 5:
-                visualizarGrafo(meuGrafo);
+            case 5: 
+                visualizarGrafo(meuGrafo); 
                 break;
-            case 6:
-                informarGrauVertice(meuGrafo);
+            case 6: 
+                informarGrauVertice(meuGrafo); 
                 break;
-            case 7:
-                informarGrafoEuleriano(meuGrafo);
+            case 7: 
+                informarGrafoEuleriano(meuGrafo); 
                 break;
-            case 8:
-                informarConectividade(meuGrafo);
+            case 8: 
+                informarConectividade(meuGrafo); 
                 break;
-            case 9:
-                informarCiclos(meuGrafo);
+            case 9: 
+                informarCiclos(meuGrafo); 
                 break;
-            case 10:
-                inserirGrafoPadraoEuleriano(meuGrafo);
+            case 10: 
+                algoritmoPrim(meuGrafo); 
                 break;
-            case 11:
-                inserirGrafoPadraoConexo(meuGrafo);
+            case 11: 
+                inserirGrafoPadraoEuleriano(meuGrafo); 
                 break;
-            case 12:
-                inserirGrafoPadraoNaoConexoNaoEuleriano(meuGrafo);
+            case 12: 
+                inserirGrafoPadraoConexo(meuGrafo); 
                 break;
-            case 13:
-                liberarGrafo(meuGrafo);
+            case 13: 
+                inserirGrafoPadraoNaoConexoNaoEuleriano(meuGrafo); 
                 break;
-            default:
-                printf(ANSI_COLOR_RED "Opcao invalida. Tente novamente.\n" ANSI_COLOR_RESET);
+            case 14: 
+                liberarGrafo(meuGrafo); 
+                break;
+            default: 
+                printf(ANSI_COLOR_RED "Opcao invalida.\n" ANSI_COLOR_RESET);
         }
 
-    } while (escolha != 13);
+    } while (escolha != 14);
 
     return 0;
 }
