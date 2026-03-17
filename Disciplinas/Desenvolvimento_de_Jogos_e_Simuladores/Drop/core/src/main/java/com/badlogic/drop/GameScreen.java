@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
 
         // load the images for the background, bucket and droplet
         backgroundTexture = new Texture("background.png");
-        bucketTexture = new Texture("bucket.png");
+        bucketTexture = new Texture("Protagonista_Running.gif");
         dropTexture = new Texture("drop.png");
 
         // load the drop sound effect and background music
@@ -80,6 +80,12 @@ public class GameScreen implements Screen {
         else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             bucketSprite.translateX(-speed * delta);
         }
+        else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            bucketSprite.translateY(speed * delta);
+        }
+        else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            bucketSprite.translateY(-speed * delta);
+        }
 
         if (Gdx.input.isTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
@@ -96,6 +102,7 @@ public class GameScreen implements Screen {
         float delta = Gdx.graphics.getDeltaTime();
 
         bucketSprite.setX(MathUtils.clamp(bucketSprite.getX(), 0, worldWidth - bucketWidth));
+        bucketSprite.setY(MathUtils.clamp(bucketSprite.getY(), 0, worldHeight - bucketHeight));
         bucketRectangle.set(bucketSprite.getX(), bucketSprite.getY(), bucketWidth, bucketHeight);
 
         for (int i = dropSprites.size - 1; i >= 0; i--) {
